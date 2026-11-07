@@ -62,13 +62,14 @@ private class Run(val player: UUID, val format: LeagueFormat, val returnPoint: R
     val displayMegaForms = mutableMapOf<UUID, RandomRoster.Candidate>()
     val partyMegaForms = mutableMapOf<UUID, RandomRoster.Candidate>()
 }
-private data class GymRewardSummary(val legendary:String,val money:Int,val prize:String,val crystal:String?)
+private data class GymRewardSummary(val legendary:String,val money:Int,val prize:String,val crystal:String?,val legendaryKey:String,val prizeId:String,val choice:GymRewardChoice)
 private data class Match(
     val id: UUID, val battle: com.cobblemon.mod.common.api.battles.model.PokemonBattle,
     val players: List<UUID>, val arena: Int, val origins: Map<UUID, ReturnPoint>, val run: UUID? = null,
     val createdAt: Int,
     var finishedAt: Long? = null, var surrenderedBy: UUID? = null, var surrenderedAt: Int? = null,
-    val creepKind:DungeonRoundKind?=null, val battleCenter:Pair<Int,Int>?=null
+    val creepKind:DungeonRoundKind?=null, val battleCenter:Pair<Int,Int>?=null,
+    val restartVotes:BattleRestartVote=BattleRestartVote(players.toSet()),val restartFailed:Boolean=false
 )
 private enum class LobbyGamePhase { BUILDING, SELECTION, PREPARATION, BATTLES, RESULTS, REWARDS }
 private data class ActiveCreep(val player:UUID,val matchId:UUID,val trainer:GymTrainer,val handle:CreepNpcHandle)
@@ -232,7 +233,7 @@ class LeagueService(private val server: MinecraftServer) {
         }
     }
     fun lobby(p: ServerPlayer) {
-        require((clientProtocols[p.uuid]?:0)>=9){"친구용 CobbleLeague 0.7.1으로 업데이트하세요."}
+        require((clientProtocols[p.uuid]?:0)>=10){"친구용 CobbleLeague 0.7.3으로 업데이트하세요."}
         if (p.uuid in runs) surrenderGame(p)
         available(p); ensureMap()
         if (p.level().dimension() != dimension) remember(mapOf(p.uuid to point(p)))
@@ -274,7 +275,7 @@ class LeagueService(private val server: MinecraftServer) {
     }
     private fun broadcastCreepProgress(g:LobbyGameRuntime){g.model.standings.keys.mapNotNull(::player).forEach{sendCreepProgress(it,g)}}
     private fun sendLobby(p:ServerPlayer,open:Boolean=true) {
-        require((clientProtocols[p.uuid]?:0)>=9){"친구용 CobbleLeague 0.7.1으로 업데이트하세요."}
+        require((clientProtocols[p.uuid]?:0)>=10){"친구용 CobbleLeague 0.7.3으로 업데이트하세요."}
         LeagueMod.send(p,packet(if(open)"lobby" else "lobby_update"){
             addProperty("joined",p.uuid in lobbyQueue.members());addProperty("ready",lobbyQueue.isReady(p.uuid))
             addProperty("busy",lobbyGame!=null||runs.isNotEmpty()||matches.isNotEmpty())
@@ -395,24 +396,20 @@ class LeagueService(private val server: MinecraftServer) {
             if(r.state.inBattle)r.state.finishRound(if(won)RoundOutcome.WIN else RoundOutcome.LOSS)
             if(!won)r.preparation.credit(lobbyBalance.lossBonus)
             r.preparation.unlockWaiting();r.opponent=null
-            if(won&&r.rewardWallet.grant(CreepRewardKind.MYTHICAL,match.battle.battleId.toString())){
+            if(won){
                 val legendary=roster.drawReward(CreepRewardKind.LEGENDARY)
-                r.rewardWallet.reveal(legendary.key)
                 val cash=(lobbyBalance.gymMoneyMin..lobbyBalance.gymMoneyMax).random()
                 val prize=DungeonTraining.reward()
-                r.preparation.credit(cash)
-                r.preparation.awardFreeLesson()
-                r.equipment[prize]=(r.equipment[prize]?:0)+1
                 val crystal=DungeonTraining.choices(DungeonTraining.Z_CHOICE).randomOrNull()
-                if(crystal!=null)r.equipment[crystal]=(r.equipment[crystal]?:0)+1
                 val prizeName=when(prize){
                     DungeonTraining.Z_CHOICE->"Z크리스탈 선택권"
                     DungeonTraining.MEGA_CHOICE->"메가스톤 선택권"
                     DungeonTraining.GOLD->"금뚜껑"
                     else->BuiltInRegistries.ITEM.get(ResourceLocation.parse(prize)).description.string
                 }
-                r.gymReward=GymRewardSummary(legendary.name,cash,prizeName,crystal)
-                player(id)?.let{note(it,"관장전 승리 · 환상권 1개 · 전설 후보 ${legendary.name} · ${cash}원 · 무료 기술 학습 1회 · $prizeName${if(crystal!=null)" · Z크리스탈 1개" else ""}. F4에서 영입 여부를, 상점 보관함에서 도구를 확인하세요.")}
+                r.gymReward=GymRewardSummary(legendary.name,cash,prizeName,crystal,legendary.key,prize,
+                    GymRewardChoice.offer(GymPrize.entries.filter{it!=GymPrize.CRYSTAL||crystal!=null}))
+                player(id)?.let{note(it,"관장전 승리 · 전원 전투 종료 후 F4에서 보상 하나를 선택하세요. 선택 전에는 지급되지 않습니다.")}
             }
             if(g.model.standings.getValue(id).health<=0)restoreLobbyMember(id,"관장전에서 0점이 되어 탈락했습니다.")
             else player(id)?.let{p->r.party.forEach{it.heal()};moveRoom(p,r);syncVisibleParty(p,r.party);sendRun(p,r,false);if(!won)note(p,"관장전 패배 · 점수 1점 차감 · ${lobbyBalance.lossBonus}원 지급")}
@@ -440,7 +437,7 @@ class LeagueService(private val server: MinecraftServer) {
         val inArea=server.playerList.players.filter{inLobby(it)}
         lobbyOptOut.retainAll(inArea.map{it.uuid}.toSet())
         lobbyQueue.members().toList().forEach{id->val p=player(id);if(p==null||!p.isAlive||!inLobby(p))lobbyQueue.leave(id)}
-        inArea.filter{it.uuid !in runs&&it.uuid !in lobbyOptOut&&(clientProtocols[it.uuid]?:0)>=9&&it.isAlive&&!it.isSpectator}.forEach{p->
+        inArea.filter{it.uuid !in runs&&it.uuid !in lobbyOptOut&&(clientProtocols[it.uuid]?:0)>=10&&it.isAlive&&!it.isSpectator}.forEach{p->
             if(p.uuid !in lobbyQueue.members())runCatching{lobbyQueue.join(p.uuid);sendLobby(p)}
         }
         val g=lobbyGame
@@ -512,6 +509,7 @@ class LeagueService(private val server: MinecraftServer) {
     }
     fun menu(p: ServerPlayer) {
         runs[p.uuid]?.let { sendRun(p, it); return }
+        matches.values.firstOrNull{p.uuid in it.players}?.let{sendBattleControls(p,it);return}
         challenges.values.firstOrNull { it.accepted && p.uuid in listOf(it.sender, it.receiver) }?.let { c ->
             val owner = requireNotNull(player(if (p.uuid == c.sender) c.receiver else c.sender))
             sendDecks(p, c, owner, if (p.uuid == c.sender) c.receiverDecks else c.senderDecks); return
@@ -528,13 +526,18 @@ class LeagueService(private val server: MinecraftServer) {
             "odds" -> sendOdds(p)
             "odds_boost" -> boostOdds(p,json)
             "creep_status" -> {val g=requireNotNull(lobbyGame);require(p.uuid in g.model.standings);sendCreepProgress(p,g,true)}
+            "gym_reward_choose" -> chooseGymReward(p,json)
+            "battle_restart" -> restartBattle(p,json.text("battleId"))
             "reward_draw" -> drawCreepReward(p,json)
             "reward_view" -> showCreepReward(p)
             "reward_accept" -> acceptCreepReward(p,json)
             "reward_decline" -> declineCreepReward(p,json)
             "reward_done", "reward_resume" -> {
                 val g=requireNotNull(lobbyGame);require(g.phase==LobbyGamePhase.REWARDS&&p.uuid in g.model.alive)
-                if(json.text("action")=="reward_done")g.rewardReady.add(p.uuid) else g.rewardReady.remove(p.uuid)
+                if(json.text("action")=="reward_done"){
+                    require(runs[p.uuid]?.gymReward?.choice?.selected!=null||runs[p.uuid]?.gymReward==null){"승리 보상을 하나 선택하세요."}
+                    g.rewardReady.add(p.uuid)
+                } else g.rewardReady.remove(p.uuid)
                 runs[p.uuid]?.let{r->r.preparation.changed();sendRun(p,r)}
             }
             "sync_party" -> runs[p.uuid]?.let{syncVisibleParty(p,it.party);sendRun(p,it,false)}
@@ -848,6 +851,10 @@ class LeagueService(private val server: MinecraftServer) {
             addProperty("replacement", run.replacementSlot)
             addProperty("canSkipPick",run.lobbyGame!=null && run.party.count()>0 && selectionActionsAvailable(p,run))
             addProperty("waiting", run.waiting)
+            matches.values.firstOrNull{p.uuid in it.players}?.let{m->
+                addProperty("battleId",m.battle.battleId.toString());addProperty("restartVotes",m.restartVotes.count)
+                addProperty("restartVoted",m.restartVotes.voted(p.uuid));addProperty("battleParticipants",m.players.size)
+            }
             addProperty("money", run.preparation.money)
             addProperty("rerolls", run.preparation.rerolls)
             addProperty("revision", run.preparation.revision)
@@ -860,6 +867,8 @@ class LeagueService(private val server: MinecraftServer) {
                 addProperty("money",reward.money)
                 addProperty("prize",reward.prize)
                 addProperty("crystal",reward.crystal.orEmpty())
+                addProperty("token",reward.choice.token);addProperty("selected",reward.choice.selected?.name.orEmpty())
+                add("options",JsonArray().also{a->reward.choice.options.forEach{a.add(it.name)}})
             })}
             addProperty("mythicalTickets",run.rewardWallet.count(CreepRewardKind.MYTHICAL))
             addProperty("legendaryTickets",run.rewardWallet.count(CreepRewardKind.LEGENDARY))
@@ -1147,6 +1156,23 @@ class LeagueService(private val server: MinecraftServer) {
         val ids=lobbyGame?.takeIf{it.id==r.lobbyGame}?.model?.standings?.keys?:runs.values.filter{it.pairId==r.pairId}.map{it.player}
         ids.mapNotNull(::player).forEach{it.sendSystemMessage(message.copy())}
     }
+    private fun chooseGymReward(p:ServerPlayer,json:JsonObject) {
+        val r=requireNotNull(runs[p.uuid]);checkGymIntermission(r)
+        val g=requireNotNull(lobbyGame);require(g.phase==LobbyGamePhase.REWARDS&&p.uuid !in g.rewardReady)
+        val reward=requireNotNull(r.gymReward){"선택할 승리 보상이 없습니다."}
+        val prize=GymPrize.valueOf(json.text("prize"))
+        reward.choice.choose(json.text("token"),prize){
+            when(prize){
+                GymPrize.MYTHICAL->check(r.rewardWallet.grant(CreepRewardKind.MYTHICAL,reward.choice.token))
+                GymPrize.LEGENDARY->r.rewardWallet.reveal(reward.legendaryKey)
+                GymPrize.MONEY->r.preparation.credit(reward.money)
+                GymPrize.CRYSTAL->{val id=requireNotNull(reward.crystal);r.equipment[id]=(r.equipment[id]?:0)+1}
+                GymPrize.EQUIPMENT->r.equipment[reward.prizeId]=(r.equipment[reward.prizeId]?:0)+1
+                GymPrize.LESSON->r.preparation.awardFreeLesson()
+            }
+        }
+        r.preparation.changed();note(p,"선택한 승리 보상 · ${prize.label}");sendRun(p,r)
+    }
     private fun drawCreepReward(p:ServerPlayer,json:JsonObject) {
         val r=requireNotNull(runs[p.uuid]);require(!r.state.inBattle);checkGymIntermission(r);r.preparation.check(json.number("revision",-1),System.currentTimeMillis())
         val kind=CreepRewardKind.parse(json.text("kind"))
@@ -1276,9 +1302,62 @@ class LeagueService(private val server: MinecraftServer) {
         } }
         attempt("unregister battle ${match.id}") { if(BattleRegistry.getBattle(match.battle.battleId)!=null)BattleRegistry.closeBattle(match.battle) }
     }
+    private fun sendBattleControls(p:ServerPlayer,match:Match) {
+        LeagueMod.send(p,packet("battle_control"){
+            addProperty("battleId",match.battle.battleId.toString());addProperty("restartVoted",match.restartVotes.voted(p.uuid))
+            addProperty("restartVotes",match.restartVotes.count);addProperty("battleParticipants",match.players.size)
+        })
+    }
+    fun restartBattle(p:ServerPlayer,attempt:String="") {
+        val match=requireNotNull(matches.values.firstOrNull{p.uuid in it.players}){"참여 중인 대전이 없습니다."}
+        require(attempt.isBlank()||attempt==match.battle.battleId.toString()){"이전 대전의 재시작 요청입니다."}
+        require((!match.battle.ended||match.restartFailed)&&match.finishedAt==null&&match.surrenderedBy==null){"종료된 대전은 재시작할 수 없습니다."}
+        require(server.tickCount-match.createdAt>=100){"전투 시작 후 5초가 지나면 재시작할 수 있습니다."}
+        require(match.players.all{player(it)?.isAlive==true}){"접속 중인 참가자만 재시작할 수 있습니다."}
+        if(!match.restartVotes.request(p.uuid)){
+            match.players.mapNotNull(::player).forEach{other->
+                note(other,"${p.name.string}님이 이 대전의 재시작을 요청했습니다. 두 사람 모두 F4에서 동의하면 무효 후 재시작합니다.")
+                runs[other.uuid]?.let{sendRun(other,it,false)}?:sendBattleControls(other,match)
+            };return
+        }
+        // Detach this attempt before stopping it, so no old callback can count its result.
+        val teams=match.players.associateWith{id->runs[id]?.party?:party(requireNotNull(player(id)),
+            requireNotNull(match.battle.getActor(requireNotNull(player(id)))).pokemonList.map{it.originalPokemon.clone(registryAccess=server.registryAccess())})}
+        val g=lobbyGame
+        val creep=if(match.creepKind!=null)requireNotNull(g?.currentCreeps?.get(p.uuid)) else null
+        matches.remove(match.id)
+        try {
+            if(creep!=null)g!!.currentCreeps.remove(p.uuid)
+            stopBattle(match);creep?.handle?.abort()
+            teams.values.forEach{store->store.forEach{it.recall();it.heal()}}
+            if(creep!=null){
+                val r=runs.getValue(p.uuid);if(r.state.inBattle)r.state.retryBattle()
+                startCreepBattle(requireNotNull(g),p.uuid,requireNotNull(match.creepKind))
+            }else{
+                val a=requireNotNull(player(match.players[0]));val b=requireNotNull(player(match.players[1]))
+                val result=BattleBuilder.pvp1v1(a,b,battleFormat=match.battle.format,cloneParties=true,healFirst=true,partyAccessor={teams.getValue(it.uuid)})
+                require(result is SuccessfulBattleStart){"대전을 다시 시작하지 못했습니다."}
+                matches[match.id]=match.copy(battle=result.battle,createdAt=server.tickCount,finishedAt=null,
+                    restartVotes=BattleRestartVote(match.players.toSet()),restartFailed=false)
+                match.players.mapNotNull(::player).forEach{LeagueMod.send(it,packet("battle_started"))}
+            }
+            match.players.mapNotNull(::player).forEach{note(it,"이 대전만 무효로 하고 같은 파티로 다시 시작했습니다. HP·승패·돈·보상은 정산하지 않습니다.")}
+        }catch(e:Exception){
+            LeagueMod.LOGGER.error("Battle restart failed for {}",match.id,e)
+            // Keep only this duel waiting for retry/explicit surrender. Do not withdraw a
+            // participant or settle an ended attempt: that could terminate parallel battles.
+            val waiting=match.copy(createdAt=server.tickCount,restartVotes=BattleRestartVote(match.players.toSet()),restartFailed=true)
+            matches[match.id]=waiting
+            if(creep!=null){g!!.currentCreeps[p.uuid]=creep;runs[p.uuid]?.let{if(!it.state.inBattle&&it.state.ready)it.state.fight()}}
+            match.players.mapNotNull(::player).forEach{member->
+                note(member,"이 대전의 재시작에 실패했습니다. 5초 후 다시 요청하거나 항복할 수 있습니다. 다른 전투와 점수는 유지됩니다.")
+                runs[member.uuid]?.let{sendRun(member,it)}?:sendBattleControls(member,waiting)
+            }
+        }
+    }
     fun surrender(p: ServerPlayer) {
         val match = matches.values.firstOrNull { p.uuid in it.players }
-        if (match==null || match.battle.ended) { note(p,"항복할 수 있는 진행 중 대전이 없습니다."); return }
+        if (match==null || match.battle.ended&&!match.restartFailed) { note(p,"항복할 수 있는 진행 중 대전이 없습니다."); return }
         if (match.surrenderedBy!=null) { stopBattle(match); finish(match,true); return }
         try {
             val actor = requireNotNull(match.battle.getActor(p))
@@ -1433,7 +1512,7 @@ class LeagueService(private val server: MinecraftServer) {
         }
         BattleAnimationRecovery.prune(matches.values.map{it.battle.battleId}.toSet())
         matches.values.toList().forEach { match ->
-            if (match.id !in matches) return@forEach
+            if (match.id !in matches || match.restartFailed) return@forEach
             try {
                 BattleAnimationRecovery.tick(match.battle,server.tickCount)
                 val center = match.battleCenter ?: centers[match.arena]

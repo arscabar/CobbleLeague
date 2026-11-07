@@ -3,47 +3,57 @@ package dev.cobbleleague.client
 import com.google.gson.JsonObject
 import dev.cobbleleague.*
 import net.minecraft.client.gui.GuiGraphics
+import net.minecraft.network.chat.Component
 
 class GymRewardsScreen(data:JsonObject):LeaguePane(data) {
-    override val caption get()="${data.number("round")}라운드 관장전 · 보상 확인"
-    override val maximumHeight=252
+    override val caption get()="${data.number("round")}라운드 관장전 · 보상 선택"
+    override val maximumHeight=254
     private fun ready()=data.get("rewardReady")?.asBoolean==true
-
-    override fun init() {
-        val width=(pw-30)/2
-        val pending=data.text("pendingReward")
-        button(px+12,py+89,width,if(pending=="mythical")"환상 결과 보기" else "환상권 ${data.number("mythicalTickets")}장",
-            !ready() && (pending=="mythical" || pending.isBlank() && data.number("mythicalTickets")>0)){
-            if(pending=="mythical")action("reward_view")
-            else action("reward_draw"){addProperty("kind","mythical")}
+    private fun offer()=data.getAsJsonObject("gymReward")
+    private fun label(prize:GymPrize):String {
+        val r=offer()?:return prize.label
+        return when(prize){
+            GymPrize.MONEY->"${r.number("money")}원"
+            GymPrize.LEGENDARY->"전설 · ${r.text("legendary")}"
+            GymPrize.EQUIPMENT->r.text("prize")
+            GymPrize.CRYSTAL->LeagueCards.item(r.text("crystal"))
+            else->prize.label
         }
-        button(px+18+width,py+89,width,"전설 후보 보기",!ready() && pending=="legendary"){action("reward_view")}
-        button(px+12,py+113,width,"아이템·선택권",!ready()){action("shop"){addProperty("view","items")}}
-        button(px+18+width,py+113,width,"기술 학습",!ready()){action("shop"){addProperty("view","tms")}}
-        button(px+12,py+ph-52,pw-24,if(ready())"확인 완료 취소" else "보상 확인 완료 · 다음 라운드 대기"){
+    }
+    override fun init() {
+        val r=offer();val selected=r?.text("selected").orEmpty();val w=(pw-30)/2
+        val options=r?.getAsJsonArray("options")?.map{GymPrize.valueOf(it.asString)}.orEmpty()
+        options.forEachIndexed{i,prize->
+            val picked=selected==prize.name
+            button(px+12,py+54+i*23,pw-24,short((if(picked)"✓ " else "")+label(prize),pw-36),!ready()&&selected.isBlank()){
+                action("gym_reward_choose"){addProperty("token",r!!.text("token"));addProperty("prize",prize.name)}
+            }
+        }
+        val pending=data.text("pendingReward")
+        button(px+12,py+128,w,if(pending.isNotBlank())"포켓몬 결과 보기" else "환상권 사용",!ready()&&(pending.isNotBlank()||data.number("mythicalTickets")>0)){
+            if(pending.isNotBlank())action("reward_view")else action("reward_draw"){addProperty("kind","mythical")}
+        }
+        button(px+18+w,py+128,w,"상점 · 학습 · 보관함",!ready()){action("shop"){addProperty("view",if(selected==GymPrize.LESSON.name)"tms" else "items")}}
+        button(px+12,py+ph-52,pw-24,if(ready())"확인 완료 취소" else "보상 확인 완료 · 다음 라운드 대기",ready()||r==null||selected.isNotBlank()){
             action(if(ready())"reward_resume" else "reward_done")
         }
         button(px+12,py+ph-27,pw-24,"닫기 · F4로 다시 보기"){onClose()}
     }
-
     override fun updateProgress(update:JsonObject) {
-        val redraw=listOf("rewardReady","pendingReward","mythicalTickets","revision").any{data[it]!=update[it]}
-        data=update
-        if(redraw)rebuildWidgets()
+        val redraw=listOf("gymReward","rewardReady","pendingReward","mythicalTickets","revision").any{data[it]!=update[it]}
+        data=update;if(redraw)rebuildWidgets()
     }
-
     override fun drawContent(g:GuiGraphics,mx:Int,my:Int,delta:Float) {
-        val reward=data.getAsJsonObject("gymReward")
-        val summary=if(reward==null)"관장전 종료 · 보상 확인을 완료해 주세요." else "승리 보상 · ${reward.number("money")}원 · 환상권 1장 · 무료 학습 1회"
-        text(g,short(summary,pw-24),px+12,py+26,0xFFE39A)
-        if(reward!=null){
-            text(g,short("공개된 전설 후보  ${reward.text("legendary")}",pw-24),px+12,py+38)
-            text(g,short("획득 도구  ${reward.text("prize")}",pw-24),px+12,py+50)
-            val crystal=reward.text("crystal")
-            if(crystal.isNotBlank())text(g,short("Z크리스탈  ${LeagueCards.item(crystal)}",pw-24),px+12,py+62)
+        val r=offer();val selected=r?.text("selected").orEmpty()
+        text(g,if(r==null)"관장전 종료 · 전원 확인 후 함께 진행합니다." else if(selected.isBlank())"돈 + 무작위 보상 2개 중 하나를 선택하세요." else "선택 완료 · ${short(label(GymPrize.valueOf(selected)),pw-100)}",px+12,py+26,0xFFE39A)
+        text(g,short("${wallet()} · 무료 학습 ${data.number("freeLessons")}회",pw-24),px+12,py+39,0xB5E6E9)
+        text(g,"보상 확인 완료 ${data.number("rewardReadyCount")} / ${data.number("participantCount")}명",px+12,py+153,0xB5E6E9)
+        text(g,short("선택하지 않은 보상은 지급되지 않습니다.",pw-24),px+12,py+165)
+    }
+    override fun drawHints(g:GuiGraphics,mx:Int,my:Int) {
+        val options=offer()?.getAsJsonArray("options")?.map{GymPrize.valueOf(it.asString)}.orEmpty();val w=(pw-30)/2
+        options.forEachIndexed{i,prize->val x=px+12;val y=py+54+i*23
+            if(mx in x until x+pw-24&&my in y until y+20)g.renderTooltip(font,Component.literal(label(prize)+" · 다른 보상과 중복 수령할 수 없습니다."),mx,my)
         }
-        text(g,short("잔액 ${data.number("money")}원 · 무료 학습 ${data.number("freeLessons")}회 · Z 선택권 ${data.number("zChoices")}장 · 메가 선택권 ${data.number("megaChoices")}장",pw-24),px+12,py+74,0xB5E6E9)
-        text(g,"보상 확인 완료 ${data.number("rewardReadyCount")} / ${data.number("participantCount")}명",px+12,py+139,0xB5E6E9)
-        text(g,short("전원이 완료하면 함께 시작합니다. 남은 보상은 이후 사용할 수 있습니다.",pw-24),px+12,py+152)
     }
 }

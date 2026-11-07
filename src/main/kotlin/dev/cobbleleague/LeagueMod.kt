@@ -102,6 +102,7 @@ class LeagueMod : ModInitializer {
                 .then(literal("menu").executes { service?.menu(it.source.playerOrException); 1 })
                 .then(literal("lobby").executes { service?.lobby(it.source.playerOrException); 1 })
                 .then(literal("leave").executes { service?.leave(it.source.playerOrException); 1 })
+                .then(literal("restart").executes { service?.restartBattle(it.source.playerOrException); 1 })
                 .then(literal("surrender").executes { service?.surrender(it.source.playerOrException); 1 })
                 .then(literal("surrendergame").executes { service?.surrenderGame(it.source.playerOrException); 1 })
                 .executes { service?.menu(it.source.playerOrException); 1 })

@@ -25,7 +25,7 @@ class LeagueClient : ClientModInitializer {
         DraftPartyBinding.register()
         ClientPlayConnectionEvents.JOIN.register { _, _, _ ->
             RoundGraphSkin.reset(); ClientStorageLock.reset(); DraftHud.data=null;LobbyHud.data=null; hasLeagueBattle=false; NativeBattleRules.reset(); NativeBattleInvites.clear()
-            if (ClientPlayNetworking.canSend(LeaguePayload.TYPE)) send(JsonObject().apply { addProperty("action","hello"); addProperty("protocol",9) })
+            if (ClientPlayNetworking.canSend(LeaguePayload.TYPE)) send(JsonObject().apply { addProperty("action","hello"); addProperty("protocol",10) })
         }
         ClientPlayConnectionEvents.DISCONNECT.register { _, _ -> RoundGraphSkin.reset(); ClientStorageLock.reset(); DraftHud.data=null;LobbyHud.data=null; hasLeagueBattle=false; NativeBattleRules.reset(); NativeBattleInvites.clear() }
         ClientPlayNetworking.registerGlobalReceiver(LeaguePayload.TYPE) { payload, context ->
@@ -71,6 +71,7 @@ class LeagueClient : ClientModInitializer {
                     else if(data.text("kind")=="lobby")LobbyHud.update(data)
                     val screen=when(data.text("kind")) {
                         "run" -> if(data.text("stage")=="rewards") GymRewardsScreen(data) else DungeonPrepareScreen(data)
+                        "battle_control" -> BattleControlScreen(data)
                         "lobby" -> LobbyScreen(data)
                         "round_result" -> ScoreboardScreen(data)
                         "creep_reward" -> CreepRewardScreen(data)

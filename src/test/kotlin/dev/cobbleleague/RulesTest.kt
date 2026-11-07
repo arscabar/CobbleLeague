@@ -5,6 +5,18 @@ import org.junit.jupiter.api.Test
 import java.util.UUID
 
 class RulesTest {
+    @org.junit.jupiter.api.Test fun `void attempt preserves round picks roster and score`() {
+        val state=DraftState(1);state.choose(state.version);state.fight()
+        state.retryBattle()
+        org.junit.jupiter.api.Assertions.assertEquals(0,state.round)
+        org.junit.jupiter.api.Assertions.assertTrue(state.ready)
+        org.junit.jupiter.api.Assertions.assertEquals(1,state.teamSize)
+        org.junit.jupiter.api.Assertions.assertEquals(0,state.points)
+        state.fight();state.finishRound(RoundOutcome.WIN)
+        org.junit.jupiter.api.Assertions.assertEquals(1,state.round)
+        org.junit.jupiter.api.Assertions.assertEquals(3,state.points)
+    }
+
     @Test fun `game surrender awards opponent victory even at equal or higher forfeiter points`() {
         assertEquals(1, pointsWinner(0,0,0))
         assertEquals(1, pointsWinner(30,3,0))

@@ -56,6 +56,7 @@ class DraftState(val minimumTeam: Int, val rounds: Int = 12) {
         version=UUID.randomUUID().toString()
     }
     fun fight() { require(ready && !inBattle && !completed); inBattle = true }
+    fun retryBattle(){require(inBattle && !completed);inBattle=false}
     fun syncTeamSize(size:Int){require(size in 0..6&&!inBattle);teamSize=size;version=UUID.randomUUID().toString()}
     fun finishBye() {
         require(ready && !inBattle && !completed)

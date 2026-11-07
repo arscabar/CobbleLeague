@@ -2,7 +2,7 @@ from pathlib import Path
 import json, zipfile, hashlib, subprocess, uuid, shutil
 
 workspace = Path(__file__).resolve().parents[1]
-package = workspace / 'dist/cobbleleague-friends-0.7.2'
+package = workspace / 'dist/cobbleleague-friends-0.7.3'
 testroot = workspace / '.test-tmp' / ('친구 설치 검사 ' + uuid.uuid4().hex[:8])
 testroot.mkdir(parents=True)
 results = []
@@ -40,13 +40,13 @@ p = profile('한글 공백 새 설치')
 before = snapshot(p)
 run(p, '-CheckOnly'); assert snapshot(p) == before
 run(p)
-assert hashlib.sha256((p / 'mods/cobbleleague-0.7.2.jar').read_bytes()).hexdigest() == expected
+assert hashlib.sha256((p / 'mods/cobbleleague-0.7.3.jar').read_bytes()).hexdigest() == expected
 for relative, digest in before.items(): assert snapshot(p)[relative] == digest
 installed = snapshot(p)
 run(p); assert snapshot(p) == installed  # Idempotent install.
 run(p, '-Action','Restore')
 for relative, digest in before.items(): assert snapshot(p)[relative] == digest
-assert not (p / 'mods/cobbleleague-0.7.2.jar').exists()
+assert not (p / 'mods/cobbleleague-0.7.3.jar').exists()
 results.append('fresh install, check-only, repeated install and restore; other mods/config/world preserved')
 
 p = profile('구버전 이름 변경')
@@ -55,7 +55,7 @@ old = (p / 'mods/custom-filename.jar').read_bytes()
 run(p); assert not (p / 'mods/custom-filename.jar').exists()
 run(p, '-Action','Restore')
 assert (p / 'mods/custom-filename.jar').read_bytes() == old
-assert not (p / 'mods/cobbleleague-0.7.2.jar').exists()
+assert not (p / 'mods/cobbleleague-0.7.3.jar').exists()
 results.append('old version detected by mod ID regardless of filename; exact backup restored')
 
 p = profile('호환 안 되는 1.8', '1.8.2+1.21.1'); before = snapshot(p)
@@ -63,12 +63,12 @@ run(p, code=1); assert snapshot(p) == before
 results.append('Cobblemon 1.8 rejected without changing any files')
 
 p = profile('손상 배포 검사'); bad = testroot / '손상된 설치 파일'; shutil.copytree(package,bad)
-(bad / 'payload/cobbleleague-0.7.2.jar').write_bytes(b'broken')
+(bad / 'payload/cobbleleague-0.7.3.jar').write_bytes(b'broken')
 before = snapshot(p); run(p, code=1, script=bad / 'install-client.ps1'); assert snapshot(p) == before
 results.append('damaged payload rejected without changing profile')
 
 p = profile('복원 충돌 보호'); run(p)
-(p / 'mods/cobbleleague-0.7.2.jar').write_bytes(b'changed after install')
+(p / 'mods/cobbleleague-0.7.3.jar').write_bytes(b'changed after install')
 before = snapshot(p); run(p,'-Action','Restore',code=1); assert snapshot(p) == before
 results.append('changed installed file rejected during restore; current data preserved')
 

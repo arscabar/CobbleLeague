@@ -18,7 +18,6 @@ object DungeonMenuKey {
     private var lastToggle=0L
     private fun toggle(client:Minecraft) {
         if(client.player==null||!ClientPlayNetworking.canSend(LeaguePayload.TYPE))return
-        if(LeagueClient.hasLeagueBattle&&DraftHud.data==null)return
         val now=System.currentTimeMillis();if(now-lastToggle<150)return;lastToggle=now
         if(client.screen is LeaguePane)client.setScreen(null)
         else LeagueClient.send(JsonObject().apply {addProperty("action","status")})
