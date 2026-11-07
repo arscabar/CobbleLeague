@@ -1,0 +1,24 @@
+plugins {
+    id 'fabric-loom' version '1.11.8'
+    id 'org.jetbrains.kotlin.jvm' version '2.2.20'
+}
+version = '0.7.1'
+group = 'dev.cobbleleague'
+base { archivesName = 'cobbleleague' }
+repositories { mavenCentral(); maven { url = 'https://api.modrinth.com/maven' } }
+dependencies {
+    minecraft 'com.mojang:minecraft:1.21.1'
+    mappings loom.officialMojangMappings()
+    modImplementation 'net.fabricmc:fabric-loader:0.17.2'
+    modImplementation 'net.fabricmc.fabric-api:fabric-api:0.116.6+1.21.1'
+    modImplementation 'net.fabricmc:fabric-language-kotlin:1.13.6+kotlin.2.2.20'
+    modImplementation 'maven.modrinth:cobblemon:kF7CvxTo'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.11.4'
+    testImplementation 'org.ow2.asm:asm:9.8'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+java { toolchain.languageVersion = JavaLanguageVersion.of(21); withSourcesJar() }
+kotlin { jvmToolchain(21) }
+tasks.withType(JavaCompile).configureEach { options.release = 21; options.encoding = 'UTF-8' }
+test { useJUnitPlatform() }
+processResources { inputs.property 'version', project.version; filesMatching('fabric.mod.json') { expand version: project.version } }

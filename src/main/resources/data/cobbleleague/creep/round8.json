@@ -1,0 +1,185 @@
+{
+  "id": "creep_gym_8",
+  "pokemon": [
+    {
+      "species": "persian",
+      "aspects": "",
+      "nature": "jolly",
+      "ability": "technician",
+      "heldItem": "cobblemon:life_orb",
+      "moves": [
+        "fakeout",
+        "knockoff",
+        "uturn",
+        "taunt"
+      ],
+      "ivs": [
+        31,
+        31,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        4,
+        252,
+        0,
+        0,
+        0,
+        252
+      ],
+      "features": {}
+    },
+    {
+      "species": "hippowdon",
+      "aspects": "",
+      "nature": "impish",
+      "ability": "sandstream",
+      "heldItem": "cobblemon:leftovers",
+      "moves": [
+        "earthquake",
+        "slackoff",
+        "stealthrock",
+        "whirlwind"
+      ],
+      "ivs": [
+        31,
+        31,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        252,
+        0,
+        252,
+        0,
+        4,
+        0
+      ],
+      "features": {}
+    },
+    {
+      "species": "krookodile",
+      "aspects": "",
+      "nature": "jolly",
+      "ability": "intimidate",
+      "heldItem": "cobblemon:choice_scarf",
+      "moves": [
+        "earthquake",
+        "knockoff",
+        "stoneedge",
+        "closecombat"
+      ],
+      "ivs": [
+        31,
+        31,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        4,
+        252,
+        0,
+        0,
+        0,
+        252
+      ],
+      "features": {}
+    },
+    {
+      "species": "nidoking",
+      "aspects": "",
+      "nature": "timid",
+      "ability": "sheerforce",
+      "heldItem": "cobblemon:life_orb",
+      "moves": [
+        "earthpower",
+        "sludgewave",
+        "icebeam",
+        "thunderbolt"
+      ],
+      "ivs": [
+        31,
+        31,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        4,
+        0,
+        0,
+        252,
+        0,
+        252
+      ],
+      "features": {}
+    },
+    {
+      "species": "nidoqueen",
+      "aspects": "",
+      "nature": "modest",
+      "ability": "sheerforce",
+      "heldItem": "cobblemon:assault_vest",
+      "moves": [
+        "earthpower",
+        "sludgewave",
+        "icebeam",
+        "flamethrower"
+      ],
+      "ivs": [
+        31,
+        31,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        252,
+        0,
+        0,
+        252,
+        4,
+        0
+      ],
+      "features": {}
+    },
+    {
+      "species": "rhyperior",
+      "aspects": "",
+      "nature": "adamant",
+      "ability": "solidrock",
+      "heldItem": "cobblemon:assault_vest",
+      "moves": [
+        "earthquake",
+        "stoneedge",
+        "icepunch",
+        "megahorn"
+      ],
+      "ivs": [
+        31,
+        31,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        252,
+        252,
+        4,
+        0,
+        0,
+        0
+      ],
+      "features": {}
+    }
+  ]
+}

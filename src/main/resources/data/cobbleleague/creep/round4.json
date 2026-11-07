@@ -1,0 +1,125 @@
+{
+  "id": "creep_gym_4",
+  "pokemon": [
+    {
+      "species": "golem",
+      "aspects": "",
+      "nature": "adamant",
+      "ability": "sturdy",
+      "heldItem": "cobblemon:sitrus_berry",
+      "moves": [
+        "stoneedge",
+        "earthquake",
+        "rockpolish",
+        "explosion"
+      ],
+      "ivs": [
+        31,
+        31,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        252,
+        252,
+        4,
+        0,
+        0,
+        0
+      ],
+      "features": {}
+    },
+    {
+      "species": "aerodactyl",
+      "aspects": "",
+      "nature": "jolly",
+      "ability": "pressure",
+      "heldItem": "cobblemon:expert_belt",
+      "moves": [
+        "stoneedge",
+        "dualwingbeat",
+        "earthquake",
+        "taunt"
+      ],
+      "ivs": [
+        31,
+        31,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        4,
+        252,
+        0,
+        0,
+        0,
+        252
+      ],
+      "features": {}
+    },
+    {
+      "species": "lycanroc",
+      "aspects": "",
+      "nature": "jolly",
+      "ability": "sandrush",
+      "heldItem": "cobblemon:muscle_band",
+      "moves": [
+        "stoneedge",
+        "accelerock",
+        "closecombat",
+        "swordsdance"
+      ],
+      "ivs": [
+        31,
+        31,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        4,
+        252,
+        0,
+        0,
+        0,
+        252
+      ],
+      "features": {}
+    },
+    {
+      "species": "tyrantrum",
+      "aspects": "",
+      "nature": "adamant",
+      "ability": "rockhead",
+      "heldItem": "cobblemon:expert_belt",
+      "moves": [
+        "headsmash",
+        "dragonclaw",
+        "earthquake",
+        "dragondance"
+      ],
+      "ivs": [
+        31,
+        31,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        252,
+        252,
+        4,
+        0,
+        0,
+        0
+      ],
+      "features": {}
+    }
+  ]
+}

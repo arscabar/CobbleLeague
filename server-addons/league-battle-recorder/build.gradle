@@ -1,0 +1,22 @@
+plugins { id 'fabric-loom' version '1.10.5' }
+
+version = '1.2.0'
+group = 'ai.league'
+base { archivesName = 'league-battle-recorder' }
+repositories { mavenCentral(); maven { url = 'https://api.modrinth.com/maven' } }
+dependencies {
+    minecraft 'com.mojang:minecraft:1.21.1'
+    mappings loom.officialMojangMappings()
+    modImplementation 'net.fabricmc:fabric-loader:0.18.4'
+    modImplementation 'net.fabricmc.fabric-api:fabric-api:0.116.14+1.21.1'
+    modCompileOnly 'maven.modrinth:cobblemon:kF7CvxTo'
+    compileOnly 'org.jetbrains.kotlin:kotlin-stdlib:2.1.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.11.4'
+    testImplementation 'com.google.code.gson:gson:2.11.0'
+    testImplementation 'org.slf4j:slf4j-simple:2.0.16'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    testRuntimeOnly 'maven.modrinth:cobblemon:kF7CvxTo'
+}
+java { toolchain { languageVersion = JavaLanguageVersion.of(21) }; withSourcesJar() }
+tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8'; options.release = 21 }
+test { useJUnitPlatform() }

@@ -1,0 +1,185 @@
+{
+  "id": "creep_blaine",
+  "pokemon": [
+    {
+      "species": "torkoal",
+      "aspects": "",
+      "nature": "bold",
+      "ability": "drought",
+      "heldItem": "cobblemon:heat_rock",
+      "moves": [
+        "lavaplume",
+        "earthpower",
+        "rapidspin",
+        "stealthrock"
+      ],
+      "ivs": [
+        31,
+        31,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        252,
+        0,
+        4,
+        252,
+        0,
+        0
+      ],
+      "features": {}
+    },
+    {
+      "species": "charizard",
+      "aspects": "",
+      "nature": "timid",
+      "ability": "solarpower",
+      "heldItem": "cobblemon:life_orb",
+      "moves": [
+        "flamethrower",
+        "airslash",
+        "solarbeam",
+        "roost"
+      ],
+      "ivs": [
+        31,
+        31,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        4,
+        0,
+        0,
+        252,
+        0,
+        252
+      ],
+      "features": {}
+    },
+    {
+      "species": "arcanine",
+      "aspects": "",
+      "nature": "adamant",
+      "ability": "intimidate",
+      "heldItem": "cobblemon:heavy_duty_boots",
+      "moves": [
+        "flareblitz",
+        "extremespeed",
+        "wildcharge",
+        "morningsun"
+      ],
+      "ivs": [
+        31,
+        31,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        252,
+        252,
+        4,
+        0,
+        0,
+        0
+      ],
+      "features": {}
+    },
+    {
+      "species": "ninetales",
+      "aspects": "",
+      "nature": "timid",
+      "ability": "drought",
+      "heldItem": "cobblemon:heavy_duty_boots",
+      "moves": [
+        "flamethrower",
+        "solarbeam",
+        "nastyplot",
+        "willowisp"
+      ],
+      "ivs": [
+        31,
+        31,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        4,
+        0,
+        0,
+        252,
+        0,
+        252
+      ],
+      "features": {}
+    },
+    {
+      "species": "magmortar",
+      "aspects": "",
+      "nature": "modest",
+      "ability": "flamebody",
+      "heldItem": "cobblemon:assault_vest",
+      "moves": [
+        "fireblast",
+        "thunderbolt",
+        "focusblast",
+        "psychic"
+      ],
+      "ivs": [
+        31,
+        31,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        252,
+        0,
+        4,
+        252,
+        0,
+        0
+      ],
+      "features": {}
+    },
+    {
+      "species": "volcarona",
+      "aspects": "",
+      "nature": "timid",
+      "ability": "flamebody",
+      "heldItem": "cobblemon:heavy_duty_boots",
+      "moves": [
+        "fierydance",
+        "bugbuzz",
+        "gigadrain",
+        "quiverdance"
+      ],
+      "ivs": [
+        31,
+        31,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        4,
+        0,
+        0,
+        252,
+        0,
+        252
+      ],
+      "features": {}
+    }
+  ]
+}

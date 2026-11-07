@@ -1,0 +1,185 @@
+{
+  "id": "creep_sabrina",
+  "pokemon": [
+    {
+      "species": "alakazam",
+      "aspects": "",
+      "nature": "timid",
+      "ability": "magicguard",
+      "heldItem": "cobblemon:life_orb",
+      "moves": [
+        "psychic",
+        "focusblast",
+        "shadowball",
+        "nastyplot"
+      ],
+      "ivs": [
+        31,
+        31,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        4,
+        0,
+        0,
+        252,
+        0,
+        252
+      ],
+      "features": {}
+    },
+    {
+      "species": "espeon",
+      "aspects": "",
+      "nature": "timid",
+      "ability": "magicbounce",
+      "heldItem": "cobblemon:expert_belt",
+      "moves": [
+        "psychic",
+        "dazzlinggleam",
+        "shadowball",
+        "calmmind"
+      ],
+      "ivs": [
+        31,
+        31,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        4,
+        0,
+        0,
+        252,
+        0,
+        252
+      ],
+      "features": {}
+    },
+    {
+      "species": "slowbro",
+      "aspects": "",
+      "nature": "bold",
+      "ability": "regenerator",
+      "heldItem": "cobblemon:leftovers",
+      "moves": [
+        "surf",
+        "psychic",
+        "icebeam",
+        "slackoff"
+      ],
+      "ivs": [
+        31,
+        31,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        252,
+        0,
+        4,
+        252,
+        0,
+        0
+      ],
+      "features": {}
+    },
+    {
+      "species": "gardevoir",
+      "aspects": "",
+      "nature": "timid",
+      "ability": "trace",
+      "heldItem": "cobblemon:choice_scarf",
+      "moves": [
+        "moonblast",
+        "psychic",
+        "mysticalfire",
+        "thunderbolt"
+      ],
+      "ivs": [
+        31,
+        31,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        4,
+        0,
+        0,
+        252,
+        0,
+        252
+      ],
+      "features": {}
+    },
+    {
+      "species": "metagross",
+      "aspects": "",
+      "nature": "adamant",
+      "ability": "clearbody",
+      "heldItem": "cobblemon:assault_vest",
+      "moves": [
+        "meteormash",
+        "zenheadbutt",
+        "bulletpunch",
+        "earthquake"
+      ],
+      "ivs": [
+        31,
+        31,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        252,
+        252,
+        4,
+        0,
+        0,
+        0
+      ],
+      "features": {}
+    },
+    {
+      "species": "bronzong",
+      "aspects": "",
+      "nature": "relaxed",
+      "ability": "levitate",
+      "heldItem": "cobblemon:leftovers",
+      "moves": [
+        "gyroball",
+        "bodypress",
+        "earthquake",
+        "stealthrock"
+      ],
+      "ivs": [
+        31,
+        31,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        252,
+        252,
+        4,
+        0,
+        0,
+        0
+      ],
+      "features": {}
+    }
+  ]
+}

@@ -1,0 +1,2221 @@
+[
+  {
+    "id": "advanced-01",
+    "name": "메인",
+    "pokemon": [
+      {
+        "species": "volcarona",
+        "aspects": "",
+        "nature": "timid",
+        "ability": "flamebody",
+        "heldItem": "cobblemon:heavy_duty_boots",
+        "moves": [
+          "quiverdance",
+          "fierydance",
+          "bugbuzz",
+          "morningsun"
+        ],
+        "ivs": [
+          31,
+          0,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          4,
+          0,
+          0,
+          252,
+          0,
+          252
+        ],
+        "features": {
+          "gender": "female",
+          "friendship": "201",
+          "tera_type": "cobblemon:fire"
+        },
+        "expectedForm": "normal",
+        "sourceNickname": "불나방"
+      },
+      {
+        "species": "clodsire",
+        "aspects": "",
+        "nature": "careful",
+        "ability": "waterabsorb",
+        "heldItem": "cobblemon:black_sludge",
+        "moves": [
+          "toxic",
+          "recover",
+          "stealthrock",
+          "earthquake"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          135,
+          88,
+          36,
+          47,
+          145,
+          59
+        ],
+        "features": {
+          "gender": "male",
+          "friendship": "200",
+          "tera_type": "cobblemon:poison",
+          "paldean": "true"
+        },
+        "expectedForm": "normal",
+        "sourceNickname": "귀여워"
+      },
+      {
+        "species": "salamence",
+        "aspects": "",
+        "nature": "adamant",
+        "ability": "intimidate",
+        "heldItem": "mega_showdown:salamencite",
+        "moves": [
+          "earthquake",
+          "roost",
+          "dragondance",
+          "doubleedge"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          22,
+          252,
+          39,
+          44,
+          25,
+          128
+        ],
+        "features": {
+          "gender": "male",
+          "friendship": "200",
+          "tera_type": "cobblemon:dragon"
+        },
+        "expectedForm": "normal",
+        "sourceNickname": "보만다지진"
+      },
+      {
+        "species": "gholdengo",
+        "aspects": "",
+        "nature": "timid",
+        "ability": "goodasgold",
+        "heldItem": "cobblemon:choice_scarf",
+        "moves": [
+          "shadowball",
+          "makeitrain",
+          "powergem",
+          "thunderbolt"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          6,
+          39,
+          17,
+          176,
+          20,
+          252
+        ],
+        "features": {
+          "gender": "genderless",
+          "friendship": "201",
+          "tera_type": "cobblemon:ghost"
+        },
+        "expectedForm": "normal",
+        "sourceNickname": "바로 타부자고"
+      },
+      {
+        "species": "ursaluna",
+        "aspects": "",
+        "nature": "adamant",
+        "ability": "guts",
+        "heldItem": "cobblemon:flame_orb",
+        "moves": [
+          "earthquake",
+          "playrough",
+          "facade",
+          "icepunch"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          193,
+          252,
+          10,
+          19,
+          7,
+          29
+        ],
+        "features": {
+          "gender": "male",
+          "friendship": "198",
+          "tera_type": "cobblemon:normal",
+          "bloodmoon": "false"
+        },
+        "expectedForm": "normal",
+        "sourceNickname": "흑섬"
+      },
+      {
+        "species": "dondozo",
+        "aspects": "",
+        "nature": "impish",
+        "ability": "unaware",
+        "heldItem": "cobblemon:rocky_helmet",
+        "moves": [
+          "fissure",
+          "rest",
+          "wavecrash",
+          "yawn"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          252,
+          4,
+          252,
+          1,
+          0,
+          1
+        ],
+        "features": {
+          "gender": "female",
+          "friendship": "200",
+          "tera_type": "cobblemon:water"
+        },
+        "expectedForm": "normal",
+        "sourceNickname": "돈도조"
+      }
+    ]
+  },
+  {
+    "id": "advanced-02",
+    "name": "인디언",
+    "pokemon": [
+      {
+        "species": "swampert",
+        "aspects": "",
+        "nature": "adamant",
+        "ability": "swiftswim",
+        "heldItem": "mega_showdown:swampertite",
+        "moves": [
+          "icepunch",
+          "protect",
+          "earthquake",
+          "waterfall"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          252,
+          252,
+          4,
+          0,
+          0,
+          0
+        ],
+        "features": {
+          "gender": "male",
+          "friendship": "101",
+          "tera_type": "cobblemon:ground"
+        },
+        "expectedForm": "normal",
+        "sourceNickname": "멧짱이"
+      },
+      {
+        "species": "dracovish",
+        "aspects": "",
+        "nature": "jolly",
+        "ability": "strongjaw",
+        "heldItem": "cobblemon:choice_band",
+        "moves": [
+          "psychicfangs",
+          "icefang",
+          "fishiousrend",
+          "crunch"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          4,
+          252,
+          0,
+          0,
+          0,
+          252
+        ],
+        "features": {
+          "gender": "genderless",
+          "friendship": "90",
+          "tera_type": "cobblemon:fairy"
+        },
+        "expectedForm": "normal",
+        "sourceNickname": "아가미물기"
+      },
+      {
+        "species": "pelipper",
+        "aspects": "",
+        "nature": "bold",
+        "ability": "drizzle",
+        "heldItem": "cobblemon:damp_rock",
+        "moves": [
+          "tailwind",
+          "hurricane",
+          "surf",
+          "uturn"
+        ],
+        "ivs": [
+          31,
+          0,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          252,
+          0,
+          252,
+          4,
+          0,
+          0
+        ],
+        "features": {
+          "gender": "male",
+          "friendship": "99",
+          "tera_type": "cobblemon:flying"
+        },
+        "expectedForm": "normal",
+        "sourceNickname": "프리져"
+      },
+      {
+        "species": "rotom",
+        "aspects": "",
+        "nature": "bold",
+        "ability": "levitate",
+        "heldItem": "cobblemon:choice_specs",
+        "moves": [
+          "leafstorm",
+          "voltswitch",
+          "thunderbolt",
+          "trick"
+        ],
+        "ivs": [
+          31,
+          0,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          252,
+          0,
+          252,
+          4,
+          0,
+          0
+        ],
+        "features": {
+          "gender": "genderless",
+          "friendship": "89",
+          "tera_type": "cobblemon:electric",
+          "appliance": "mow"
+        },
+        "expectedForm": "mow",
+        "sourceNickname": "잔디깎이"
+      },
+      {
+        "species": "ceruledge",
+        "aspects": "",
+        "nature": "jolly",
+        "ability": "flashfire",
+        "heldItem": "cobblemon:focus_sash",
+        "moves": [
+          "bitterblade",
+          "shadowsneak",
+          "swordsdance",
+          "closecombat"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          4,
+          252,
+          0,
+          0,
+          0,
+          252
+        ],
+        "features": {
+          "gender": "male",
+          "friendship": "200",
+          "tera_type": "cobblemon:fire"
+        },
+        "expectedForm": "normal",
+        "sourceNickname": "흑기사"
+      },
+      {
+        "species": "grimmsnarl",
+        "aspects": "",
+        "nature": "careful",
+        "ability": "prankster",
+        "heldItem": "cobblemon:light_clay",
+        "moves": [
+          "taunt",
+          "partingshot",
+          "reflect",
+          "lightscreen"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          252,
+          0,
+          4,
+          0,
+          252,
+          0
+        ],
+        "features": {
+          "gender": "male",
+          "friendship": "49",
+          "tera_type": "cobblemon:fairy"
+        },
+        "expectedForm": "normal",
+        "sourceNickname": "뭘봐"
+      }
+    ]
+  },
+  {
+    "id": "advanced-03",
+    "name": "선공",
+    "pokemon": [
+      {
+        "species": "corviknight",
+        "aspects": "",
+        "nature": "impish",
+        "ability": "mirrorarmor",
+        "heldItem": "cobblemon:leftovers",
+        "moves": [
+          "ironhead",
+          "irondefense",
+          "uturn",
+          "roost"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          252,
+          4,
+          252,
+          0,
+          0,
+          0
+        ],
+        "features": {
+          "gender": "female",
+          "friendship": "51",
+          "tera_type": "cobblemon:flying"
+        },
+        "expectedForm": "normal",
+        "sourceNickname": "물리막이goat"
+      },
+      {
+        "species": "golisopod",
+        "aspects": "",
+        "nature": "adamant",
+        "ability": "emergencyexit",
+        "heldItem": "zamega:golisopite",
+        "moves": [
+          "firstimpression",
+          "suckerpunch",
+          "leechlife",
+          "bulkup"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          252,
+          252,
+          4,
+          0,
+          0,
+          0
+        ],
+        "features": {
+          "gender": "female",
+          "friendship": "193",
+          "tera_type": "cobblemon:bug"
+        },
+        "expectedForm": "normal",
+        "sourceNickname": "만나자마자"
+      },
+      {
+        "species": "kingambit",
+        "aspects": "",
+        "nature": "adamant",
+        "ability": "supremeoverlord",
+        "heldItem": "cobblemon:black_glasses",
+        "moves": [
+          "kowtowcleave",
+          "swordsdance",
+          "ironhead",
+          "suckerpunch"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          252,
+          252,
+          0,
+          0,
+          4,
+          0
+        ],
+        "features": {
+          "gender": "female",
+          "friendship": "200",
+          "tera_type": "cobblemon:dark"
+        },
+        "expectedForm": "normal",
+        "sourceNickname": "도요토미히데요시"
+      },
+      {
+        "species": "marshadow",
+        "aspects": "",
+        "nature": "jolly",
+        "ability": "technician",
+        "heldItem": "cobblemon:focus_sash",
+        "moves": [
+          "closecombat",
+          "icepunch",
+          "shadowsneak",
+          "spectralthief"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          4,
+          252,
+          0,
+          0,
+          0,
+          252
+        ],
+        "features": {
+          "gender": "genderless",
+          "friendship": "50",
+          "tera_type": "cobblemon:ghost"
+        },
+        "expectedForm": "normal",
+        "sourceNickname": "잼민이"
+      },
+      {
+        "species": "gardevoir",
+        "aspects": "",
+        "nature": "timid",
+        "ability": "synchronize",
+        "heldItem": "cobblemon:choice_scarf",
+        "moves": [
+          "trick",
+          "moonblast",
+          "psychic",
+          "hypnosis"
+        ],
+        "ivs": [
+          31,
+          0,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          4,
+          0,
+          0,
+          252,
+          0,
+          252
+        ],
+        "features": {
+          "gender": "female",
+          "friendship": "198",
+          "tera_type": "cobblemon:psychic"
+        },
+        "expectedForm": "normal",
+        "sourceNickname": "와이프"
+      },
+      {
+        "species": "goodra",
+        "aspects": "",
+        "nature": "modest",
+        "ability": "sapsipper",
+        "heldItem": "cobblemon:leftovers",
+        "moves": [
+          "dragonpulse",
+          "acidarmor",
+          "lifedew",
+          "bodypress"
+        ],
+        "ivs": [
+          31,
+          0,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          252,
+          0,
+          4,
+          252,
+          0,
+          0
+        ],
+        "features": {
+          "gender": "female",
+          "friendship": "107",
+          "tera_type": "cobblemon:dragon",
+          "hisuian": "false"
+        },
+        "expectedForm": "normal",
+        "sourceNickname": "순산형"
+      }
+    ]
+  },
+  {
+    "id": "advanced-04",
+    "name": "일격기",
+    "pokemon": [
+      {
+        "species": "garganacl",
+        "aspects": "",
+        "nature": "impish",
+        "ability": "purifyingsalt",
+        "heldItem": "cobblemon:rocky_helmet",
+        "moves": [
+          "recover",
+          "irondefense",
+          "saltcure",
+          "fissure"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          252,
+          0,
+          252,
+          0,
+          4,
+          0
+        ],
+        "features": {
+          "gender": "male",
+          "friendship": "49",
+          "tera_type": "cobblemon:rock"
+        },
+        "expectedForm": "normal",
+        "sourceNickname": "천일염"
+      },
+      {
+        "species": "dondozo",
+        "aspects": "",
+        "nature": "careful",
+        "ability": "unaware",
+        "heldItem": "cobblemon:leftovers",
+        "moves": [
+          "wavecrash",
+          "fissure",
+          "yawn",
+          "rest"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          252,
+          0,
+          4,
+          0,
+          252,
+          0
+        ],
+        "features": {
+          "gender": "female",
+          "friendship": "0",
+          "tera_type": "cobblemon:water"
+        },
+        "expectedForm": "normal",
+        "sourceNickname": "메기"
+      },
+      {
+        "species": "lapras",
+        "aspects": "",
+        "nature": "calm",
+        "ability": "waterabsorb",
+        "heldItem": "cobblemon:assault_vest",
+        "moves": [
+          "sheercold",
+          "freezedry",
+          "surf",
+          "iceshard"
+        ],
+        "ivs": [
+          31,
+          0,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          252,
+          0,
+          252,
+          0,
+          4,
+          0
+        ],
+        "features": {
+          "gender": "male",
+          "friendship": "47",
+          "tera_type": "cobblemon:water"
+        },
+        "expectedForm": "normal",
+        "sourceNickname": "등딱지"
+      },
+      {
+        "species": "gliscor",
+        "aspects": "",
+        "nature": "impish",
+        "ability": "poisonheal",
+        "heldItem": "cobblemon:toxic_orb",
+        "moves": [
+          "protect",
+          "guillotine",
+          "earthquake",
+          "substitute"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          252,
+          0,
+          252,
+          0,
+          4,
+          0
+        ],
+        "features": {
+          "gender": "male",
+          "friendship": "0",
+          "tera_type": "cobblemon:flying"
+        },
+        "expectedForm": "normal",
+        "sourceNickname": "하늘전갈"
+      },
+      {
+        "species": "excadrill",
+        "aspects": "",
+        "nature": "jolly",
+        "ability": "moldbreaker",
+        "heldItem": "cobblemon:focus_sash",
+        "moves": [
+          "rocktomb",
+          "earthquake",
+          "horndrill",
+          "ironhead"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          4,
+          252,
+          0,
+          0,
+          0,
+          252
+        ],
+        "features": {
+          "gender": "female",
+          "friendship": "139",
+          "tera_type": "cobblemon:steel"
+        },
+        "expectedForm": "normal",
+        "sourceNickname": "뿔드릴"
+      },
+      {
+        "species": "walrein",
+        "aspects": "",
+        "nature": "bold",
+        "ability": "thickfat",
+        "heldItem": "cobblemon:leftovers",
+        "moves": [
+          "sheercold",
+          "fissure",
+          "toxic",
+          "surf"
+        ],
+        "ivs": [
+          31,
+          0,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          252,
+          0,
+          252,
+          0,
+          4,
+          0
+        ],
+        "features": {
+          "gender": "male",
+          "friendship": "49",
+          "tera_type": "cobblemon:water"
+        },
+        "expectedForm": "normal",
+        "sourceNickname": "김풍"
+      }
+    ]
+  },
+  {
+    "id": "advanced-05",
+    "name": "카지노",
+    "pokemon": [
+      {
+        "species": "heracross",
+        "aspects": "",
+        "nature": "jolly",
+        "ability": "guts",
+        "heldItem": "mega_showdown:heracronite",
+        "moves": [
+          "closecombat",
+          "bulletseed",
+          "rockblast",
+          "pinmissile"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          4,
+          252,
+          0,
+          0,
+          0,
+          252
+        ],
+        "features": {
+          "gender": "female",
+          "friendship": "49",
+          "tera_type": "cobblemon:bug"
+        },
+        "expectedForm": "normal",
+        "sourceNickname": "동덕이"
+      },
+      {
+        "species": "cinccino",
+        "aspects": "",
+        "nature": "jolly",
+        "ability": "skilllink",
+        "heldItem": "cobblemon:kings_rock",
+        "moves": [
+          "rockblast",
+          "uturn",
+          "bulletseed",
+          "tailslap"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          4,
+          252,
+          0,
+          0,
+          0,
+          252
+        ],
+        "features": {
+          "gender": "female",
+          "friendship": "48",
+          "tera_type": "cobblemon:normal"
+        },
+        "expectedForm": "normal",
+        "sourceNickname": "왕의재림"
+      },
+      {
+        "species": "dragapult",
+        "aspects": "",
+        "nature": "timid",
+        "ability": "infiltrator",
+        "heldItem": "cobblemon:life_orb",
+        "moves": [
+          "dracometeor",
+          "uturn",
+          "thunder",
+          "shadowball"
+        ],
+        "ivs": [
+          31,
+          0,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          4,
+          0,
+          0,
+          252,
+          0,
+          252
+        ],
+        "features": {
+          "gender": "male",
+          "friendship": "101",
+          "tera_type": "cobblemon:dragon"
+        },
+        "expectedForm": "normal",
+        "sourceNickname": "고속드래곤"
+      },
+      {
+        "species": "greninja",
+        "aspects": "",
+        "nature": "timid",
+        "ability": "battlebond",
+        "heldItem": "cobblemon:loaded_dice",
+        "moves": [
+          "darkpulse",
+          "watershuriken",
+          "icebeam",
+          "uturn"
+        ],
+        "ivs": [
+          31,
+          0,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          4,
+          0,
+          0,
+          252,
+          0,
+          252
+        ],
+        "features": {
+          "gender": "male",
+          "friendship": "253",
+          "tera_type": "cobblemon:dark",
+          "battle_bond": "bond"
+        },
+        "expectedForm": "bond",
+        "sourceNickname": "무관따리"
+      },
+      {
+        "species": "cloyster",
+        "aspects": "",
+        "nature": "adamant",
+        "ability": "skilllink",
+        "heldItem": "cobblemon:focus_sash",
+        "moves": [
+          "shellsmash",
+          "iceshard",
+          "iciclespear",
+          "rockblast"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          4,
+          252,
+          0,
+          0,
+          0,
+          252
+        ],
+        "features": {
+          "gender": "female",
+          "friendship": "46",
+          "tera_type": "cobblemon:water"
+        },
+        "expectedForm": "normal",
+        "sourceNickname": "어흐어흐"
+      },
+      {
+        "species": "ferrothorn",
+        "aspects": "",
+        "nature": "relaxed",
+        "ability": "ironbarbs",
+        "heldItem": "cobblemon:leftovers",
+        "moves": [
+          "leechseed",
+          "gyroball",
+          "stealthrock",
+          "powerwhip"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          0
+        ],
+        "evs": [
+          252,
+          0,
+          252,
+          0,
+          4,
+          0
+        ],
+        "features": {
+          "gender": "male",
+          "friendship": "104",
+          "tera_type": "cobblemon:steel"
+        },
+        "expectedForm": "normal",
+        "sourceNickname": "물리막이goat"
+      }
+    ]
+  },
+  {
+    "id": "advanced-06",
+    "name": "두드리망나타부",
+    "pokemon": [
+      {
+        "species": "pelipper",
+        "aspects": "",
+        "nature": "bold",
+        "ability": "drizzle",
+        "heldItem": "cobblemon:lum_berry",
+        "moves": [
+          "uturn",
+          "hurricane",
+          "roost",
+          "chillingwater"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          252,
+          0,
+          252,
+          0,
+          5,
+          0
+        ],
+        "features": {
+          "gender": "male",
+          "friendship": "141",
+          "tera_type": "cobblemon:grass"
+        },
+        "expectedForm": "normal",
+        "sourceNickname": null
+      },
+      {
+        "species": "palafin",
+        "aspects": "",
+        "nature": "jolly",
+        "ability": "zerotohero",
+        "heldItem": "cobblemon:choice_band",
+        "moves": [
+          "wavecrash",
+          "flipturn",
+          "icepunch",
+          "jetpunch"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          0,
+          252,
+          1,
+          0,
+          5,
+          252
+        ],
+        "features": {
+          "gender": "male",
+          "friendship": "52",
+          "tera_type": "cobblemon:water"
+        },
+        "expectedForm": "normal",
+        "sourceNickname": null
+      },
+      {
+        "species": "tinkaton",
+        "aspects": "",
+        "nature": "impish",
+        "ability": "moldbreaker",
+        "heldItem": "cobblemon:air_balloon",
+        "moves": [
+          "knockoff",
+          "stealthrock",
+          "encore",
+          "thunderwave"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          244,
+          4,
+          164,
+          0,
+          92,
+          4
+        ],
+        "features": {
+          "gender": "female",
+          "friendship": "35",
+          "tera_type": "cobblemon:normal"
+        },
+        "expectedForm": "normal",
+        "sourceNickname": null
+      },
+      {
+        "species": "dragonite",
+        "aspects": "",
+        "nature": "impish",
+        "ability": "multiscale",
+        "heldItem": "cobblemon:leftovers",
+        "moves": [
+          "earthquake",
+          "roost",
+          "substitute",
+          "dragontail"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          244,
+          0,
+          244,
+          0,
+          0,
+          20
+        ],
+        "features": {
+          "gender": "female",
+          "friendship": "52",
+          "tera_type": "cobblemon:normal"
+        },
+        "expectedForm": "normal",
+        "sourceNickname": null
+      },
+      {
+        "species": "gholdengo",
+        "aspects": "",
+        "nature": "timid",
+        "ability": "goodasgold",
+        "heldItem": "cobblemon:choice_scarf",
+        "moves": [
+          "focusblast",
+          "shadowball",
+          "makeitrain",
+          "trick"
+        ],
+        "ivs": [
+          31,
+          0,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          4,
+          0,
+          0,
+          252,
+          0,
+          252
+        ],
+        "features": {
+          "gender": "genderless",
+          "friendship": "50",
+          "tera_type": "cobblemon:steel"
+        },
+        "expectedForm": "normal",
+        "sourceNickname": null
+      },
+      {
+        "species": "garchomp",
+        "aspects": "",
+        "nature": "jolly",
+        "ability": "roughskin",
+        "heldItem": "mega_showdown:dragonium_z",
+        "moves": [
+          "outrage",
+          "earthquake",
+          "swordsdance",
+          "terablast"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          0,
+          252,
+          4,
+          0,
+          0,
+          252
+        ],
+        "features": {
+          "gender": "male",
+          "friendship": "50",
+          "tera_type": "cobblemon:fire"
+        },
+        "expectedForm": "normal",
+        "sourceNickname": null
+      }
+    ]
+  },
+  {
+    "id": "advanced-07",
+    "name": "그래스필드팟",
+    "pokemon": [
+      {
+        "species": "rillaboom",
+        "aspects": "",
+        "nature": "adamant",
+        "ability": "grassysurge",
+        "heldItem": "cobblemon:assault_vest",
+        "moves": [
+          "woodhammer",
+          "uturn",
+          "grassyglide",
+          "knockoff"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          252,
+          252,
+          0,
+          0,
+          4,
+          0
+        ],
+        "features": {
+          "gender": "female",
+          "friendship": "50",
+          "tera_type": "cobblemon:grass"
+        },
+        "expectedForm": "normal",
+        "sourceNickname": "카푸우끼끼"
+      },
+      {
+        "species": "sneasler",
+        "aspects": "",
+        "nature": "jolly",
+        "ability": "unburden",
+        "heldItem": "cobblemon:grassy_seed",
+        "moves": [
+          "swordsdance",
+          "direclaw",
+          "closecombat",
+          "shadowclaw"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          0,
+          252,
+          4,
+          0,
+          0,
+          252
+        ],
+        "features": {
+          "gender": "female",
+          "friendship": "50",
+          "tera_type": "cobblemon:ghost",
+          "hisuian": "false"
+        },
+        "expectedForm": "normal",
+        "sourceNickname": "니크크"
+      },
+      {
+        "species": "gyarados",
+        "aspects": "",
+        "nature": "jolly",
+        "ability": "intimidate",
+        "heldItem": "mega_showdown:gyaradosite",
+        "moves": [
+          "waterfall",
+          "taunt",
+          "crunch",
+          "dragondance"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          4,
+          252,
+          0,
+          0,
+          0,
+          252
+        ],
+        "features": {
+          "gender": "female",
+          "friendship": "50",
+          "tera_type": "cobblemon:water"
+        },
+        "expectedForm": "normal",
+        "sourceNickname": "덩어리"
+      },
+      {
+        "species": "skeledirge",
+        "aspects": "",
+        "nature": "bold",
+        "ability": "unaware",
+        "heldItem": "cobblemon:leftovers",
+        "moves": [
+          "hex",
+          "willowisp",
+          "slackoff",
+          "torchsong"
+        ],
+        "ivs": [
+          31,
+          0,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          252,
+          0,
+          252,
+          0,
+          4,
+          0
+        ],
+        "features": {
+          "gender": "male",
+          "friendship": "50",
+          "tera_type": "cobblemon:water"
+        },
+        "expectedForm": "normal",
+        "sourceNickname": "퉁퉁이"
+      },
+      {
+        "species": "primarina",
+        "aspects": "",
+        "nature": "modest",
+        "ability": "torrent",
+        "heldItem": "cobblemon:choice_specs",
+        "moves": [
+          "surf",
+          "moonblast",
+          "flipturn",
+          "psychic"
+        ],
+        "ivs": [
+          31,
+          0,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          252,
+          0,
+          0,
+          252,
+          4,
+          0
+        ],
+        "features": {
+          "gender": "male",
+          "friendship": "35",
+          "tera_type": "cobblemon:steel"
+        },
+        "expectedForm": "normal",
+        "sourceNickname": "카푸느지느"
+      },
+      {
+        "species": "ditto",
+        "aspects": "",
+        "nature": "relaxed",
+        "ability": "imposter",
+        "heldItem": "cobblemon:choice_scarf",
+        "moves": [
+          "transform"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          0
+        ],
+        "evs": [
+          252,
+          2,
+          252,
+          0,
+          4,
+          0
+        ],
+        "features": {
+          "gender": "genderless",
+          "friendship": "50",
+          "tera_type": "cobblemon:steel"
+        },
+        "expectedForm": "normal",
+        "sourceNickname": "메타메타몽몽"
+      }
+    ]
+  },
+  {
+    "id": "advanced-08",
+    "name": "사이클팟",
+    "pokemon": [
+      {
+        "species": "dragalge",
+        "aspects": "",
+        "nature": "modest",
+        "ability": "adaptability",
+        "heldItem": "zamega:dragalgite",
+        "moves": [
+          "toxicspikes",
+          "dracometeor",
+          "flipturn",
+          "sludgebomb"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          252,
+          0,
+          0,
+          252,
+          6,
+          0
+        ],
+        "features": {
+          "gender": "female",
+          "friendship": "3",
+          "tera_type": "cobblemon:poison"
+        },
+        "expectedForm": "normal",
+        "sourceNickname": "쑤레기"
+      },
+      {
+        "species": "toxapex",
+        "aspects": "",
+        "nature": "bold",
+        "ability": "regenerator",
+        "heldItem": "cobblemon:rocky_helmet",
+        "moves": [
+          "haze",
+          "toxic",
+          "surf",
+          "recover"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          252,
+          0,
+          252,
+          0,
+          4,
+          0
+        ],
+        "features": {
+          "gender": "male",
+          "friendship": "51",
+          "tera_type": "cobblemon:grass"
+        },
+        "expectedForm": "normal",
+        "sourceNickname": "더심하사리?"
+      },
+      {
+        "species": "mandibuzz",
+        "aspects": "",
+        "nature": "careful",
+        "ability": "overcoat",
+        "heldItem": "cobblemon:leftovers",
+        "moves": [
+          "roost",
+          "knockoff",
+          "whirlwind",
+          "uturn"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          252,
+          0,
+          4,
+          0,
+          252,
+          0
+        ],
+        "features": {
+          "gender": "female",
+          "friendship": "51",
+          "tera_type": "cobblemon:steel"
+        },
+        "expectedForm": "normal",
+        "sourceNickname": "머대리"
+      },
+      {
+        "species": "dondozo",
+        "aspects": "",
+        "nature": "impish",
+        "ability": "unaware",
+        "heldItem": "cobblemon:leftovers",
+        "moves": [
+          "sleeptalk",
+          "bodypress",
+          "liquidation",
+          "rest"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          252,
+          0,
+          252,
+          0,
+          4,
+          0
+        ],
+        "features": {
+          "gender": "female",
+          "friendship": "50",
+          "tera_type": "cobblemon:water"
+        },
+        "expectedForm": "normal",
+        "sourceNickname": "그녀석"
+      },
+      {
+        "species": "blissey",
+        "aspects": "",
+        "nature": "calm",
+        "ability": "naturalcure",
+        "heldItem": "cobblemon:leftovers",
+        "moves": [
+          "seismictoss",
+          "softboiled",
+          "calmmind",
+          "stealthrock"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          4,
+          0,
+          252,
+          0,
+          252,
+          0
+        ],
+        "features": {
+          "gender": "female",
+          "friendship": "50",
+          "tera_type": "cobblemon:dark"
+        },
+        "expectedForm": "normal",
+        "sourceNickname": "아호이"
+      },
+      {
+        "species": "kingambit",
+        "aspects": "",
+        "nature": "adamant",
+        "ability": "supremeoverlord",
+        "heldItem": "cobblemon:black_glasses",
+        "moves": [
+          "ironhead",
+          "suckerpunch",
+          "swordsdance",
+          "kowtowcleave"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          252,
+          252,
+          0,
+          0,
+          4,
+          0
+        ],
+        "features": {
+          "gender": "male",
+          "friendship": "50",
+          "tera_type": "cobblemon:dark"
+        },
+        "expectedForm": "normal",
+        "sourceNickname": "오다노부나가"
+      }
+    ]
+  },
+  {
+    "id": "advanced-09",
+    "name": "메메그파티",
+    "pokemon": [
+      {
+        "species": "muk",
+        "aspects": "",
+        "nature": "careful",
+        "ability": "poisontouch",
+        "heldItem": "cobblemon:assault_vest",
+        "moves": [
+          "knockoff",
+          "poisonjab",
+          "shadowsneak",
+          "clearsmog"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          252,
+          4,
+          0,
+          0,
+          252,
+          0
+        ],
+        "features": {
+          "gender": "female",
+          "friendship": "50",
+          "tera_type": "cobblemon:normal",
+          "alolan": "true"
+        },
+        "expectedForm": "alola",
+        "sourceNickname": "pussyfuck"
+      },
+      {
+        "species": "dondozo",
+        "aspects": "",
+        "nature": "impish",
+        "ability": "unaware",
+        "heldItem": "cobblemon:leftovers",
+        "moves": [
+          "liquidation",
+          "rest",
+          "sleeptalk",
+          "bodypress"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          252,
+          0,
+          252,
+          0,
+          4,
+          2
+        ],
+        "features": {
+          "gender": "female",
+          "friendship": "51",
+          "tera_type": "cobblemon:water"
+        },
+        "expectedForm": "normal",
+        "sourceNickname": "그녀석"
+      },
+      {
+        "species": "blissey",
+        "aspects": "",
+        "nature": "calm",
+        "ability": "naturalcure",
+        "heldItem": "cobblemon:leftovers",
+        "moves": [
+          "stealthrock",
+          "softboiled",
+          "calmmind",
+          "seismictoss"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          4,
+          0,
+          252,
+          0,
+          252,
+          0
+        ],
+        "features": {
+          "gender": "female",
+          "friendship": "50",
+          "tera_type": "cobblemon:dark"
+        },
+        "expectedForm": "normal",
+        "sourceNickname": "간호순"
+      },
+      {
+        "species": "metagross",
+        "aspects": "",
+        "nature": "adamant",
+        "ability": "clearbody",
+        "heldItem": "mega_showdown:metagrossite",
+        "moves": [
+          "hammerarm",
+          "earthquake",
+          "meteormash",
+          "bulletpunch"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          4,
+          252,
+          0,
+          0,
+          0,
+          252
+        ],
+        "features": {
+          "gender": "genderless",
+          "friendship": "50",
+          "tera_type": "cobblemon:steel"
+        },
+        "expectedForm": "normal",
+        "sourceNickname": "펀치!"
+      },
+      {
+        "species": "palafin",
+        "aspects": "",
+        "nature": "adamant",
+        "ability": "zerotohero",
+        "heldItem": "cobblemon:choice_band",
+        "moves": [
+          "flipturn",
+          "wavecrash",
+          "jetpunch",
+          "closecombat"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          0,
+          252,
+          4,
+          0,
+          0,
+          252
+        ],
+        "features": {
+          "gender": "female",
+          "friendship": "50",
+          "tera_type": "cobblemon:water"
+        },
+        "expectedForm": "normal",
+        "sourceNickname": "올마이트"
+      },
+      {
+        "species": "ditto",
+        "aspects": "",
+        "nature": "relaxed",
+        "ability": "imposter",
+        "heldItem": "cobblemon:choice_scarf",
+        "moves": [
+          "transform"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          252,
+          0,
+          252,
+          0,
+          4,
+          0
+        ],
+        "features": {
+          "gender": "genderless",
+          "friendship": "50",
+          "tera_type": "cobblemon:steel"
+        },
+        "expectedForm": "normal",
+        "sourceNickname": "메타메타몽몽"
+      }
+    ]
+  },
+  {
+    "id": "advanced-10",
+    "name": "트릭룸",
+    "pokemon": [
+      {
+        "species": "ditto",
+        "aspects": "",
+        "nature": "relaxed",
+        "ability": "imposter",
+        "heldItem": "cobblemon:choice_scarf",
+        "moves": [
+          "transform"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          0
+        ],
+        "evs": [
+          252,
+          2,
+          252,
+          0,
+          4,
+          0
+        ],
+        "features": {
+          "gender": "genderless",
+          "friendship": "50",
+          "tera_type": "cobblemon:steel"
+        },
+        "expectedForm": "normal",
+        "sourceNickname": "메타메타몽몽"
+      },
+      {
+        "species": "mimikyu",
+        "aspects": "",
+        "nature": "brave",
+        "ability": "disguise",
+        "heldItem": "cobblemon:mental_herb",
+        "moves": [
+          "playrough",
+          "shadowsneak",
+          "curse",
+          "trickroom"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          0
+        ],
+        "evs": [
+          252,
+          252,
+          0,
+          0,
+          4,
+          0
+        ],
+        "features": {
+          "gender": "female",
+          "friendship": "50",
+          "tera_type": "cobblemon:ghost"
+        },
+        "expectedForm": "normal",
+        "sourceNickname": "미믹QUEUE"
+      },
+      {
+        "species": "porygon2",
+        "aspects": "",
+        "nature": "sassy",
+        "ability": "trace",
+        "heldItem": "cobblemon:eviolite",
+        "moves": [
+          "trickroom",
+          "foulplay",
+          "icebeam",
+          "recover"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          0
+        ],
+        "evs": [
+          252,
+          0,
+          4,
+          0,
+          252,
+          0
+        ],
+        "features": {
+          "gender": "genderless",
+          "friendship": "50",
+          "tera_type": "cobblemon:normal"
+        },
+        "expectedForm": "normal",
+        "sourceNickname": "방영종료"
+      },
+      {
+        "species": "mawile",
+        "aspects": "",
+        "nature": "brave",
+        "ability": "intimidate",
+        "heldItem": "mega_showdown:mawilite",
+        "moves": [
+          "playrough",
+          "suckerpunch",
+          "knockoff",
+          "ironhead"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          0
+        ],
+        "evs": [
+          252,
+          252,
+          0,
+          0,
+          4,
+          0
+        ],
+        "features": {
+          "gender": "female",
+          "friendship": "51",
+          "tera_type": "cobblemon:steel"
+        },
+        "expectedForm": "normal",
+        "sourceNickname": "쌍두"
+      },
+      {
+        "species": "hatterene",
+        "aspects": "",
+        "nature": "quiet",
+        "ability": "magicbounce",
+        "heldItem": "cobblemon:focus_sash",
+        "moves": [
+          "psychic",
+          "mysticalfire",
+          "dazzlinggleam",
+          "trickroom"
+        ],
+        "ivs": [
+          31,
+          0,
+          31,
+          31,
+          31,
+          0
+        ],
+        "evs": [
+          252,
+          0,
+          0,
+          252,
+          4,
+          1
+        ],
+        "features": {
+          "gender": "female",
+          "friendship": "51",
+          "tera_type": "cobblemon:psychic"
+        },
+        "expectedForm": "normal",
+        "sourceNickname": "몸매GOAT"
+      },
+      {
+        "species": "ursaluna",
+        "aspects": "",
+        "nature": "brave",
+        "ability": "guts",
+        "heldItem": "cobblemon:flame_orb",
+        "moves": [
+          "earthquake",
+          "playrough",
+          "facade",
+          "icepunch"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          0
+        ],
+        "evs": [
+          252,
+          252,
+          0,
+          0,
+          4,
+          0
+        ],
+        "features": {
+          "gender": "male",
+          "friendship": "198",
+          "tera_type": "cobblemon:normal",
+          "bloodmoon": "false"
+        },
+        "expectedForm": "normal",
+        "sourceNickname": "흑섬"
+      }
+    ]
+  }
+]

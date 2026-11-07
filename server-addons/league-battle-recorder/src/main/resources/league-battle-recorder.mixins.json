@@ -1,0 +1,7 @@
+{
+  "required": true,
+  "package": "ai.league.recorder.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": ["ShowdownMixin", "DisconnectMixin"],
+  "injectors": {"defaultRequire": 1}
+}

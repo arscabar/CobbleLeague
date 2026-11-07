@@ -1,0 +1,125 @@
+{
+  "id": "creep_surge",
+  "pokemon": [
+    {
+      "species": "raichu",
+      "aspects": "",
+      "nature": "timid",
+      "ability": "lightningrod",
+      "heldItem": "cobblemon:expert_belt",
+      "moves": [
+        "thunderbolt",
+        "grassknot",
+        "focusblast",
+        "voltswitch"
+      ],
+      "ivs": [
+        31,
+        31,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        4,
+        0,
+        0,
+        252,
+        0,
+        252
+      ],
+      "features": {}
+    },
+    {
+      "species": "magnezone",
+      "aspects": "",
+      "nature": "modest",
+      "ability": "sturdy",
+      "heldItem": "cobblemon:sitrus_berry",
+      "moves": [
+        "thunderbolt",
+        "flashcannon",
+        "voltswitch",
+        "thunderwave"
+      ],
+      "ivs": [
+        31,
+        31,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        252,
+        0,
+        4,
+        252,
+        0,
+        0
+      ],
+      "features": {}
+    },
+    {
+      "species": "electivire",
+      "aspects": "",
+      "nature": "jolly",
+      "ability": "motordrive",
+      "heldItem": "cobblemon:expert_belt",
+      "moves": [
+        "thunderpunch",
+        "icepunch",
+        "earthquake",
+        "crosschop"
+      ],
+      "ivs": [
+        31,
+        31,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        4,
+        252,
+        0,
+        0,
+        0,
+        252
+      ],
+      "features": {}
+    },
+    {
+      "species": "jolteon",
+      "aspects": "",
+      "nature": "timid",
+      "ability": "voltabsorb",
+      "heldItem": "cobblemon:expert_belt",
+      "moves": [
+        "thunderbolt",
+        "shadowball",
+        "voltswitch",
+        "thunderwave"
+      ],
+      "ivs": [
+        31,
+        31,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        4,
+        0,
+        0,
+        252,
+        0,
+        252
+      ],
+      "features": {}
+    }
+  ]
+}

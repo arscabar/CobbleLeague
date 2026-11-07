@@ -1,0 +1,185 @@
+{
+  "id": "creep_koga",
+  "pokemon": [
+    {
+      "species": "crobat",
+      "aspects": "",
+      "nature": "jolly",
+      "ability": "infiltrator",
+      "heldItem": "cobblemon:heavy_duty_boots",
+      "moves": [
+        "bravebird",
+        "crosspoison",
+        "uturn",
+        "roost"
+      ],
+      "ivs": [
+        31,
+        31,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        4,
+        252,
+        0,
+        0,
+        0,
+        252
+      ],
+      "features": {}
+    },
+    {
+      "species": "weezing",
+      "aspects": "",
+      "nature": "bold",
+      "ability": "levitate",
+      "heldItem": "cobblemon:black_sludge",
+      "moves": [
+        "sludgebomb",
+        "flamethrower",
+        "willowisp",
+        "painsplit"
+      ],
+      "ivs": [
+        31,
+        31,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        252,
+        0,
+        4,
+        252,
+        0,
+        0
+      ],
+      "features": {}
+    },
+    {
+      "species": "muk",
+      "aspects": "",
+      "nature": "adamant",
+      "ability": "stickyhold",
+      "heldItem": "cobblemon:black_sludge",
+      "moves": [
+        "gunkshot",
+        "knockoff",
+        "shadowpunch",
+        "curse"
+      ],
+      "ivs": [
+        31,
+        31,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        252,
+        252,
+        4,
+        0,
+        0,
+        0
+      ],
+      "features": {}
+    },
+    {
+      "species": "tentacruel",
+      "aspects": "",
+      "nature": "timid",
+      "ability": "liquidooze",
+      "heldItem": "cobblemon:black_sludge",
+      "moves": [
+        "surf",
+        "sludgebomb",
+        "icebeam",
+        "rapidspin"
+      ],
+      "ivs": [
+        31,
+        31,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        4,
+        0,
+        0,
+        252,
+        0,
+        252
+      ],
+      "features": {}
+    },
+    {
+      "species": "venomoth",
+      "aspects": "",
+      "nature": "timid",
+      "ability": "tintedlens",
+      "heldItem": "cobblemon:focus_sash",
+      "moves": [
+        "bugbuzz",
+        "sludgebomb",
+        "sleeppowder",
+        "quiverdance"
+      ],
+      "ivs": [
+        31,
+        31,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        4,
+        0,
+        0,
+        252,
+        0,
+        252
+      ],
+      "features": {}
+    },
+    {
+      "species": "toxicroak",
+      "aspects": "",
+      "nature": "jolly",
+      "ability": "dryskin",
+      "heldItem": "cobblemon:life_orb",
+      "moves": [
+        "drainpunch",
+        "gunkshot",
+        "suckerpunch",
+        "swordsdance"
+      ],
+      "ivs": [
+        31,
+        31,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        4,
+        252,
+        0,
+        0,
+        0,
+        252
+      ],
+      "features": {}
+    }
+  ]
+}

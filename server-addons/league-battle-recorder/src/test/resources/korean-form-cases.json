@@ -1,0 +1,1832 @@
+[
+  {
+    "name": "Abomasnow-Mega",
+    "base": "Abomasnow",
+    "form": "Mega"
+  },
+  {
+    "name": "Absol-Mega",
+    "base": "Absol",
+    "form": "Mega"
+  },
+  {
+    "name": "Aegislash-Blade",
+    "base": "Aegislash",
+    "form": "Blade"
+  },
+  {
+    "name": "Aerodactyl-Mega",
+    "base": "Aerodactyl",
+    "form": "Mega"
+  },
+  {
+    "name": "Aggron-Mega",
+    "base": "Aggron",
+    "form": "Mega"
+  },
+  {
+    "name": "Alakazam-Mega",
+    "base": "Alakazam",
+    "form": "Mega"
+  },
+  {
+    "name": "Alcremie-Caramel-Swirl",
+    "base": "Alcremie",
+    "form": "Caramel-Swirl"
+  },
+  {
+    "name": "Alcremie-Gmax",
+    "base": "Alcremie",
+    "form": "Gmax"
+  },
+  {
+    "name": "Alcremie-Lemon-Cream",
+    "base": "Alcremie",
+    "form": "Lemon-Cream"
+  },
+  {
+    "name": "Alcremie-Matcha-Cream",
+    "base": "Alcremie",
+    "form": "Matcha-Cream"
+  },
+  {
+    "name": "Alcremie-Mint-Cream",
+    "base": "Alcremie",
+    "form": "Mint-Cream"
+  },
+  {
+    "name": "Alcremie-Rainbow-Swirl",
+    "base": "Alcremie",
+    "form": "Rainbow-Swirl"
+  },
+  {
+    "name": "Alcremie-Ruby-Cream",
+    "base": "Alcremie",
+    "form": "Ruby-Cream"
+  },
+  {
+    "name": "Alcremie-Ruby-Swirl",
+    "base": "Alcremie",
+    "form": "Ruby-Swirl"
+  },
+  {
+    "name": "Alcremie-Salted-Cream",
+    "base": "Alcremie",
+    "form": "Salted-Cream"
+  },
+  {
+    "name": "Altaria-Mega",
+    "base": "Altaria",
+    "form": "Mega"
+  },
+  {
+    "name": "Ampharos-Mega",
+    "base": "Ampharos",
+    "form": "Mega"
+  },
+  {
+    "name": "Appletun-Gmax",
+    "base": "Appletun",
+    "form": "Gmax"
+  },
+  {
+    "name": "Arcanine-Hisui",
+    "base": "Arcanine",
+    "form": "Hisui"
+  },
+  {
+    "name": "Arceus-Bug",
+    "base": "Arceus",
+    "form": "Bug"
+  },
+  {
+    "name": "Arceus-Dark",
+    "base": "Arceus",
+    "form": "Dark"
+  },
+  {
+    "name": "Arceus-Dragon",
+    "base": "Arceus",
+    "form": "Dragon"
+  },
+  {
+    "name": "Arceus-Electric",
+    "base": "Arceus",
+    "form": "Electric"
+  },
+  {
+    "name": "Arceus-Fairy",
+    "base": "Arceus",
+    "form": "Fairy"
+  },
+  {
+    "name": "Arceus-Fighting",
+    "base": "Arceus",
+    "form": "Fighting"
+  },
+  {
+    "name": "Arceus-Fire",
+    "base": "Arceus",
+    "form": "Fire"
+  },
+  {
+    "name": "Arceus-Flying",
+    "base": "Arceus",
+    "form": "Flying"
+  },
+  {
+    "name": "Arceus-Ghost",
+    "base": "Arceus",
+    "form": "Ghost"
+  },
+  {
+    "name": "Arceus-Grass",
+    "base": "Arceus",
+    "form": "Grass"
+  },
+  {
+    "name": "Arceus-Ground",
+    "base": "Arceus",
+    "form": "Ground"
+  },
+  {
+    "name": "Arceus-Ice",
+    "base": "Arceus",
+    "form": "Ice"
+  },
+  {
+    "name": "Arceus-Poison",
+    "base": "Arceus",
+    "form": "Poison"
+  },
+  {
+    "name": "Arceus-Psychic",
+    "base": "Arceus",
+    "form": "Psychic"
+  },
+  {
+    "name": "Arceus-Rock",
+    "base": "Arceus",
+    "form": "Rock"
+  },
+  {
+    "name": "Arceus-Steel",
+    "base": "Arceus",
+    "form": "Steel"
+  },
+  {
+    "name": "Arceus-Water",
+    "base": "Arceus",
+    "form": "Water"
+  },
+  {
+    "name": "Articuno-Galar",
+    "base": "Articuno",
+    "form": "Galar"
+  },
+  {
+    "name": "Audino-Mega",
+    "base": "Audino",
+    "form": "Mega"
+  },
+  {
+    "name": "Avalugg-Hisui",
+    "base": "Avalugg",
+    "form": "Hisui"
+  },
+  {
+    "name": "Banette-Mega",
+    "base": "Banette",
+    "form": "Mega"
+  },
+  {
+    "name": "Basculegion-F",
+    "base": "Basculegion",
+    "form": "F"
+  },
+  {
+    "name": "Basculin-Blue-Striped",
+    "base": "Basculin",
+    "form": "Blue-Striped"
+  },
+  {
+    "name": "Basculin-White-Striped",
+    "base": "Basculin",
+    "form": "White-Striped"
+  },
+  {
+    "name": "Beedrill-Mega",
+    "base": "Beedrill",
+    "form": "Mega"
+  },
+  {
+    "name": "Blastoise-Gmax",
+    "base": "Blastoise",
+    "form": "Gmax"
+  },
+  {
+    "name": "Blastoise-Mega",
+    "base": "Blastoise",
+    "form": "Mega"
+  },
+  {
+    "name": "Blaziken-Mega",
+    "base": "Blaziken",
+    "form": "Mega"
+  },
+  {
+    "name": "Braviary-Hisui",
+    "base": "Braviary",
+    "form": "Hisui"
+  },
+  {
+    "name": "Burmy-Sandy",
+    "base": "Burmy",
+    "form": "Sandy"
+  },
+  {
+    "name": "Burmy-Trash",
+    "base": "Burmy",
+    "form": "Trash"
+  },
+  {
+    "name": "Butterfree-Gmax",
+    "base": "Butterfree",
+    "form": "Gmax"
+  },
+  {
+    "name": "Calyrex-Ice",
+    "base": "Calyrex",
+    "form": "Ice"
+  },
+  {
+    "name": "Calyrex-Shadow",
+    "base": "Calyrex",
+    "form": "Shadow"
+  },
+  {
+    "name": "Camerupt-Mega",
+    "base": "Camerupt",
+    "form": "Mega"
+  },
+  {
+    "name": "Castform-Rainy",
+    "base": "Castform",
+    "form": "Rainy"
+  },
+  {
+    "name": "Castform-Snowy",
+    "base": "Castform",
+    "form": "Snowy"
+  },
+  {
+    "name": "Castform-Sunny",
+    "base": "Castform",
+    "form": "Sunny"
+  },
+  {
+    "name": "Centiskorch-Gmax",
+    "base": "Centiskorch",
+    "form": "Gmax"
+  },
+  {
+    "name": "Charizard-Gmax",
+    "base": "Charizard",
+    "form": "Gmax"
+  },
+  {
+    "name": "Charizard-Mega-X",
+    "base": "Charizard",
+    "form": "Mega-X"
+  },
+  {
+    "name": "Charizard-Mega-Y",
+    "base": "Charizard",
+    "form": "Mega-Y"
+  },
+  {
+    "name": "Cherrim-Sunshine",
+    "base": "Cherrim",
+    "form": "Sunshine"
+  },
+  {
+    "name": "Cinderace-Gmax",
+    "base": "Cinderace",
+    "form": "Gmax"
+  },
+  {
+    "name": "Coalossal-Gmax",
+    "base": "Coalossal",
+    "form": "Gmax"
+  },
+  {
+    "name": "Copperajah-Gmax",
+    "base": "Copperajah",
+    "form": "Gmax"
+  },
+  {
+    "name": "Corsola-Galar",
+    "base": "Corsola",
+    "form": "Galar"
+  },
+  {
+    "name": "Corviknight-Gmax",
+    "base": "Corviknight",
+    "form": "Gmax"
+  },
+  {
+    "name": "Cramorant-Gorging",
+    "base": "Cramorant",
+    "form": "Gorging"
+  },
+  {
+    "name": "Cramorant-Gulping",
+    "base": "Cramorant",
+    "form": "Gulping"
+  },
+  {
+    "name": "Cubone-Alola-Bias",
+    "base": "Cubone",
+    "form": "Alola-Bias"
+  },
+  {
+    "name": "Cyndaquil-Hisui-Bias",
+    "base": "Cyndaquil",
+    "form": "Hisui-Bias"
+  },
+  {
+    "name": "Darmanitan-Galar",
+    "base": "Darmanitan",
+    "form": "Galar"
+  },
+  {
+    "name": "Darmanitan-Galar-Zen",
+    "base": "Darmanitan",
+    "form": "Galar-Zen"
+  },
+  {
+    "name": "Darmanitan-Zen",
+    "base": "Darmanitan",
+    "form": "Zen"
+  },
+  {
+    "name": "Dartrix-Hisui-Bias",
+    "base": "Dartrix",
+    "form": "Hisui-Bias"
+  },
+  {
+    "name": "Darumaka-Galar",
+    "base": "Darumaka",
+    "form": "Galar"
+  },
+  {
+    "name": "Decidueye-Hisui",
+    "base": "Decidueye",
+    "form": "Hisui"
+  },
+  {
+    "name": "Deerling-Autumn",
+    "base": "Deerling",
+    "form": "Autumn"
+  },
+  {
+    "name": "Deerling-Summer",
+    "base": "Deerling",
+    "form": "Summer"
+  },
+  {
+    "name": "Deerling-Winter",
+    "base": "Deerling",
+    "form": "Winter"
+  },
+  {
+    "name": "Deoxys-Attack",
+    "base": "Deoxys",
+    "form": "Attack"
+  },
+  {
+    "name": "Deoxys-Defense",
+    "base": "Deoxys",
+    "form": "Defense"
+  },
+  {
+    "name": "Deoxys-Speed",
+    "base": "Deoxys",
+    "form": "Speed"
+  },
+  {
+    "name": "Dewott-Hisui-Bias",
+    "base": "Dewott",
+    "form": "Hisui-Bias"
+  },
+  {
+    "name": "Dialga-Origin",
+    "base": "Dialga",
+    "form": "Origin"
+  },
+  {
+    "name": "Diancie-Mega",
+    "base": "Diancie",
+    "form": "Mega"
+  },
+  {
+    "name": "Diglett-Alola",
+    "base": "Diglett",
+    "form": "Alola"
+  },
+  {
+    "name": "Drednaw-Gmax",
+    "base": "Drednaw",
+    "form": "Gmax"
+  },
+  {
+    "name": "Dudunsparce-Three-Segment",
+    "base": "Dudunsparce",
+    "form": "Three-Segment"
+  },
+  {
+    "name": "Dugtrio-Alola",
+    "base": "Dugtrio",
+    "form": "Alola"
+  },
+  {
+    "name": "Duraludon-Gmax",
+    "base": "Duraludon",
+    "form": "Gmax"
+  },
+  {
+    "name": "Eevee-Gmax",
+    "base": "Eevee",
+    "form": "Gmax"
+  },
+  {
+    "name": "Eiscue-Noice-Face",
+    "base": "Eiscue",
+    "form": "Noice-Face"
+  },
+  {
+    "name": "Electrode-Hisui",
+    "base": "Electrode",
+    "form": "Hisui"
+  },
+  {
+    "name": "Enamorus-Therian",
+    "base": "Enamorus",
+    "form": "Therian"
+  },
+  {
+    "name": "Eternatus-Eternamax",
+    "base": "Eternatus",
+    "form": "Eternamax"
+  },
+  {
+    "name": "Exeggcute-Alola-Bias",
+    "base": "Exeggcute",
+    "form": "Alola-Bias"
+  },
+  {
+    "name": "Exeggutor-Alola",
+    "base": "Exeggutor",
+    "form": "Alola"
+  },
+  {
+    "name": "Farfetch’d-Galar",
+    "base": "Farfetch’d",
+    "form": "Galar"
+  },
+  {
+    "name": "Flabebe-Blue",
+    "base": "Flabebe",
+    "form": "Blue"
+  },
+  {
+    "name": "Flabebe-Orange",
+    "base": "Flabebe",
+    "form": "Orange"
+  },
+  {
+    "name": "Flabebe-White",
+    "base": "Flabebe",
+    "form": "White"
+  },
+  {
+    "name": "Flabebe-Yellow",
+    "base": "Flabebe",
+    "form": "Yellow"
+  },
+  {
+    "name": "Flapple-Gmax",
+    "base": "Flapple",
+    "form": "Gmax"
+  },
+  {
+    "name": "Floette-Blue",
+    "base": "Floette",
+    "form": "Blue"
+  },
+  {
+    "name": "Floette-Eternal",
+    "base": "Floette",
+    "form": "Eternal"
+  },
+  {
+    "name": "Floette-Orange",
+    "base": "Floette",
+    "form": "Orange"
+  },
+  {
+    "name": "Floette-White",
+    "base": "Floette",
+    "form": "White"
+  },
+  {
+    "name": "Floette-Yellow",
+    "base": "Floette",
+    "form": "Yellow"
+  },
+  {
+    "name": "Florges-Blue",
+    "base": "Florges",
+    "form": "Blue"
+  },
+  {
+    "name": "Florges-Orange",
+    "base": "Florges",
+    "form": "Orange"
+  },
+  {
+    "name": "Florges-White",
+    "base": "Florges",
+    "form": "White"
+  },
+  {
+    "name": "Florges-Yellow",
+    "base": "Florges",
+    "form": "Yellow"
+  },
+  {
+    "name": "Furfrou-Cinnamon",
+    "base": "Furfrou",
+    "form": "Cinnamon"
+  },
+  {
+    "name": "Furfrou-Crusader",
+    "base": "Furfrou",
+    "form": "Crusader"
+  },
+  {
+    "name": "Furfrou-Dandy",
+    "base": "Furfrou",
+    "form": "Dandy"
+  },
+  {
+    "name": "Furfrou-Debutante",
+    "base": "Furfrou",
+    "form": "Debutante"
+  },
+  {
+    "name": "Furfrou-Diamond",
+    "base": "Furfrou",
+    "form": "Diamond"
+  },
+  {
+    "name": "Furfrou-Heart",
+    "base": "Furfrou",
+    "form": "Heart"
+  },
+  {
+    "name": "Furfrou-Kabuki",
+    "base": "Furfrou",
+    "form": "Kabuki"
+  },
+  {
+    "name": "Furfrou-La-Reine",
+    "base": "Furfrou",
+    "form": "La-Reine"
+  },
+  {
+    "name": "Furfrou-Lavender",
+    "base": "Furfrou",
+    "form": "Lavender"
+  },
+  {
+    "name": "Furfrou-Matcha",
+    "base": "Furfrou",
+    "form": "Matcha"
+  },
+  {
+    "name": "Furfrou-Matron",
+    "base": "Furfrou",
+    "form": "Matron"
+  },
+  {
+    "name": "Furfrou-Mourner",
+    "base": "Furfrou",
+    "form": "Mourner"
+  },
+  {
+    "name": "Furfrou-Pharaoh",
+    "base": "Furfrou",
+    "form": "Pharaoh"
+  },
+  {
+    "name": "Furfrou-Rocker",
+    "base": "Furfrou",
+    "form": "Rocker"
+  },
+  {
+    "name": "Furfrou-Star",
+    "base": "Furfrou",
+    "form": "Star"
+  },
+  {
+    "name": "Gallade-Mega",
+    "base": "Gallade",
+    "form": "Mega"
+  },
+  {
+    "name": "Garbodor-Gmax",
+    "base": "Garbodor",
+    "form": "Gmax"
+  },
+  {
+    "name": "Garchomp-Mega",
+    "base": "Garchomp",
+    "form": "Mega"
+  },
+  {
+    "name": "Gardevoir-Mega",
+    "base": "Gardevoir",
+    "form": "Mega"
+  },
+  {
+    "name": "Gastrodon-East",
+    "base": "Gastrodon",
+    "form": "East"
+  },
+  {
+    "name": "Genesect-Burn",
+    "base": "Genesect",
+    "form": "Burn"
+  },
+  {
+    "name": "Genesect-Chill",
+    "base": "Genesect",
+    "form": "Chill"
+  },
+  {
+    "name": "Genesect-Douse",
+    "base": "Genesect",
+    "form": "Douse"
+  },
+  {
+    "name": "Genesect-Shock",
+    "base": "Genesect",
+    "form": "Shock"
+  },
+  {
+    "name": "Gengar-Gmax",
+    "base": "Gengar",
+    "form": "Gmax"
+  },
+  {
+    "name": "Gengar-Mega",
+    "base": "Gengar",
+    "form": "Mega"
+  },
+  {
+    "name": "Geodude-Alola",
+    "base": "Geodude",
+    "form": "Alola"
+  },
+  {
+    "name": "Gimmighoul-Roaming",
+    "base": "Gimmighoul",
+    "form": "Roaming"
+  },
+  {
+    "name": "Giratina-Origin",
+    "base": "Giratina",
+    "form": "Origin"
+  },
+  {
+    "name": "Glalie-Mega",
+    "base": "Glalie",
+    "form": "Mega"
+  },
+  {
+    "name": "Golem-Alola",
+    "base": "Golem",
+    "form": "Alola"
+  },
+  {
+    "name": "Goodra-Hisui",
+    "base": "Goodra",
+    "form": "Hisui"
+  },
+  {
+    "name": "Goomy-Hisui-Bias",
+    "base": "Goomy",
+    "form": "Hisui-Bias"
+  },
+  {
+    "name": "Gourgeist-Large",
+    "base": "Gourgeist",
+    "form": "Large"
+  },
+  {
+    "name": "Gourgeist-Small",
+    "base": "Gourgeist",
+    "form": "Small"
+  },
+  {
+    "name": "Gourgeist-Super",
+    "base": "Gourgeist",
+    "form": "Super"
+  },
+  {
+    "name": "Graveler-Alola",
+    "base": "Graveler",
+    "form": "Alola"
+  },
+  {
+    "name": "Greninja-Ash",
+    "base": "Greninja",
+    "form": "Ash"
+  },
+  {
+    "name": "Greninja-Bond",
+    "base": "Greninja",
+    "form": "Bond"
+  },
+  {
+    "name": "Grimer-Alola",
+    "base": "Grimer",
+    "form": "Alola"
+  },
+  {
+    "name": "Grimmsnarl-Gmax",
+    "base": "Grimmsnarl",
+    "form": "Gmax"
+  },
+  {
+    "name": "Groudon-Primal",
+    "base": "Groudon",
+    "form": "Primal"
+  },
+  {
+    "name": "Growlithe-Hisui",
+    "base": "Growlithe",
+    "form": "Hisui"
+  },
+  {
+    "name": "Gyarados-Mega",
+    "base": "Gyarados",
+    "form": "Mega"
+  },
+  {
+    "name": "Hatterene-Gmax",
+    "base": "Hatterene",
+    "form": "Gmax"
+  },
+  {
+    "name": "Heracross-Mega",
+    "base": "Heracross",
+    "form": "Mega"
+  },
+  {
+    "name": "Hoopa-Unbound",
+    "base": "Hoopa",
+    "form": "Unbound"
+  },
+  {
+    "name": "Houndoom-Mega",
+    "base": "Houndoom",
+    "form": "Mega"
+  },
+  {
+    "name": "Indeedee-F",
+    "base": "Indeedee",
+    "form": "F"
+  },
+  {
+    "name": "Inteleon-Gmax",
+    "base": "Inteleon",
+    "form": "Gmax"
+  },
+  {
+    "name": "Kangaskhan-Mega",
+    "base": "Kangaskhan",
+    "form": "Mega"
+  },
+  {
+    "name": "Keldeo-Resolute",
+    "base": "Keldeo",
+    "form": "Resolute"
+  },
+  {
+    "name": "Kingler-Gmax",
+    "base": "Kingler",
+    "form": "Gmax"
+  },
+  {
+    "name": "Koffing-Galar-Bias",
+    "base": "Koffing",
+    "form": "Galar-Bias"
+  },
+  {
+    "name": "Kyogre-Primal",
+    "base": "Kyogre",
+    "form": "Primal"
+  },
+  {
+    "name": "Kyurem-Black",
+    "base": "Kyurem",
+    "form": "Black"
+  },
+  {
+    "name": "Kyurem-White",
+    "base": "Kyurem",
+    "form": "White"
+  },
+  {
+    "name": "Landorus-Therian",
+    "base": "Landorus",
+    "form": "Therian"
+  },
+  {
+    "name": "Lapras-Gmax",
+    "base": "Lapras",
+    "form": "Gmax"
+  },
+  {
+    "name": "Latias-Mega",
+    "base": "Latias",
+    "form": "Mega"
+  },
+  {
+    "name": "Latios-Mega",
+    "base": "Latios",
+    "form": "Mega"
+  },
+  {
+    "name": "Lilligant-Hisui",
+    "base": "Lilligant",
+    "form": "Hisui"
+  },
+  {
+    "name": "Linoone-Galar",
+    "base": "Linoone",
+    "form": "Galar"
+  },
+  {
+    "name": "Lopunny-Mega",
+    "base": "Lopunny",
+    "form": "Mega"
+  },
+  {
+    "name": "Lucario-Mega",
+    "base": "Lucario",
+    "form": "Mega"
+  },
+  {
+    "name": "Lycanroc-Dusk",
+    "base": "Lycanroc",
+    "form": "Dusk"
+  },
+  {
+    "name": "Lycanroc-Midnight",
+    "base": "Lycanroc",
+    "form": "Midnight"
+  },
+  {
+    "name": "Machamp-Gmax",
+    "base": "Machamp",
+    "form": "Gmax"
+  },
+  {
+    "name": "Magearna-Original",
+    "base": "Magearna",
+    "form": "Original"
+  },
+  {
+    "name": "Manectric-Mega",
+    "base": "Manectric",
+    "form": "Mega"
+  },
+  {
+    "name": "Marowak-Alola",
+    "base": "Marowak",
+    "form": "Alola"
+  },
+  {
+    "name": "Maushold-Four",
+    "base": "Maushold",
+    "form": "Four"
+  },
+  {
+    "name": "Mawile-Mega",
+    "base": "Mawile",
+    "form": "Mega"
+  },
+  {
+    "name": "Medicham-Mega",
+    "base": "Medicham",
+    "form": "Mega"
+  },
+  {
+    "name": "Melmetal-Gmax",
+    "base": "Melmetal",
+    "form": "Gmax"
+  },
+  {
+    "name": "Meloetta-Pirouette",
+    "base": "Meloetta",
+    "form": "Pirouette"
+  },
+  {
+    "name": "Meowstic-F",
+    "base": "Meowstic",
+    "form": "F"
+  },
+  {
+    "name": "Meowth-Alola",
+    "base": "Meowth",
+    "form": "Alola"
+  },
+  {
+    "name": "Meowth-Galar",
+    "base": "Meowth",
+    "form": "Galar"
+  },
+  {
+    "name": "Meowth-Gmax",
+    "base": "Meowth",
+    "form": "Gmax"
+  },
+  {
+    "name": "Metagross-Mega",
+    "base": "Metagross",
+    "form": "Mega"
+  },
+  {
+    "name": "Mewtwo-Mega-X",
+    "base": "Mewtwo",
+    "form": "Mega-X"
+  },
+  {
+    "name": "Mewtwo-Mega-Y",
+    "base": "Mewtwo",
+    "form": "Mega-Y"
+  },
+  {
+    "name": "Mime Jr.-Galar-Bias",
+    "base": "Mime Jr.",
+    "form": "Galar-Bias"
+  },
+  {
+    "name": "Mimikyu-Busted",
+    "base": "Mimikyu",
+    "form": "Busted"
+  },
+  {
+    "name": "Minior-Meteor",
+    "base": "Minior",
+    "form": "Meteor"
+  },
+  {
+    "name": "Moltres-Galar",
+    "base": "Moltres",
+    "form": "Galar"
+  },
+  {
+    "name": "Morpeko-Hangry",
+    "base": "Morpeko",
+    "form": "Hangry"
+  },
+  {
+    "name": "Mr. Mime-Galar",
+    "base": "Mr. Mime",
+    "form": "Galar"
+  },
+  {
+    "name": "Muk-Alola",
+    "base": "Muk",
+    "form": "Alola"
+  },
+  {
+    "name": "Necrozma-Dawn-Wings",
+    "base": "Necrozma",
+    "form": "Dawn-Wings"
+  },
+  {
+    "name": "Necrozma-Dusk-Mane",
+    "base": "Necrozma",
+    "form": "Dusk-Mane"
+  },
+  {
+    "name": "Necrozma-Ultra",
+    "base": "Necrozma",
+    "form": "Ultra"
+  },
+  {
+    "name": "Ninetales-Alola",
+    "base": "Ninetales",
+    "form": "Alola"
+  },
+  {
+    "name": "Ogerpon-Cornerstone",
+    "base": "Ogerpon",
+    "form": "Cornerstone"
+  },
+  {
+    "name": "Ogerpon-Cornerstone-Tera",
+    "base": "Ogerpon",
+    "form": "Cornerstone-Tera"
+  },
+  {
+    "name": "Ogerpon-Hearthflame",
+    "base": "Ogerpon",
+    "form": "Hearthflame"
+  },
+  {
+    "name": "Ogerpon-Hearthflame-Tera",
+    "base": "Ogerpon",
+    "form": "Hearthflame-Tera"
+  },
+  {
+    "name": "Ogerpon-Teal-Tera",
+    "base": "Ogerpon",
+    "form": "Teal-Tera"
+  },
+  {
+    "name": "Ogerpon-Wellspring",
+    "base": "Ogerpon",
+    "form": "Wellspring"
+  },
+  {
+    "name": "Ogerpon-Wellspring-Tera",
+    "base": "Ogerpon",
+    "form": "Wellspring-Tera"
+  },
+  {
+    "name": "Oinkologne-F",
+    "base": "Oinkologne",
+    "form": "F"
+  },
+  {
+    "name": "Orbeetle-Gmax",
+    "base": "Orbeetle",
+    "form": "Gmax"
+  },
+  {
+    "name": "Oricorio-Pa'u",
+    "base": "Oricorio",
+    "form": "Pa'u"
+  },
+  {
+    "name": "Oricorio-Pom-Pom",
+    "base": "Oricorio",
+    "form": "Pom-Pom"
+  },
+  {
+    "name": "Oricorio-Sensu",
+    "base": "Oricorio",
+    "form": "Sensu"
+  },
+  {
+    "name": "Oshawott-Hisui-Bias",
+    "base": "Oshawott",
+    "form": "Hisui-Bias"
+  },
+  {
+    "name": "Palafin-Hero",
+    "base": "Palafin",
+    "form": "Hero"
+  },
+  {
+    "name": "Palkia-Origin",
+    "base": "Palkia",
+    "form": "Origin"
+  },
+  {
+    "name": "Persian-Alola",
+    "base": "Persian",
+    "form": "Alola"
+  },
+  {
+    "name": "Petilil-Hisui-Bias",
+    "base": "Petilil",
+    "form": "Hisui-Bias"
+  },
+  {
+    "name": "Pichu-Alola-Bias",
+    "base": "Pichu",
+    "form": "Alola-Bias"
+  },
+  {
+    "name": "Pidgeot-Mega",
+    "base": "Pidgeot",
+    "form": "Mega"
+  },
+  {
+    "name": "Pikachu-Alola-Bias",
+    "base": "Pikachu",
+    "form": "Alola-Bias"
+  },
+  {
+    "name": "Pikachu-Gmax",
+    "base": "Pikachu",
+    "form": "Gmax"
+  },
+  {
+    "name": "Pikachu-Partner",
+    "base": "Pikachu",
+    "form": "Partner"
+  },
+  {
+    "name": "Pinsir-Mega",
+    "base": "Pinsir",
+    "form": "Mega"
+  },
+  {
+    "name": "Poltchageist-Artisan",
+    "base": "Poltchageist",
+    "form": "Artisan"
+  },
+  {
+    "name": "Polteageist-Antique",
+    "base": "Polteageist",
+    "form": "Antique"
+  },
+  {
+    "name": "Ponyta-Galar",
+    "base": "Ponyta",
+    "form": "Galar"
+  },
+  {
+    "name": "Pumpkaboo-Large",
+    "base": "Pumpkaboo",
+    "form": "Large"
+  },
+  {
+    "name": "Pumpkaboo-Small",
+    "base": "Pumpkaboo",
+    "form": "Small"
+  },
+  {
+    "name": "Pumpkaboo-Super",
+    "base": "Pumpkaboo",
+    "form": "Super"
+  },
+  {
+    "name": "Quilava-Hisui-Bias",
+    "base": "Quilava",
+    "form": "Hisui-Bias"
+  },
+  {
+    "name": "Qwilfish-Hisui",
+    "base": "Qwilfish",
+    "form": "Hisui"
+  },
+  {
+    "name": "Raichu-Alola",
+    "base": "Raichu",
+    "form": "Alola"
+  },
+  {
+    "name": "Rapidash-Galar",
+    "base": "Rapidash",
+    "form": "Galar"
+  },
+  {
+    "name": "Raticate-Alola",
+    "base": "Raticate",
+    "form": "Alola"
+  },
+  {
+    "name": "Rattata-Alola",
+    "base": "Rattata",
+    "form": "Alola"
+  },
+  {
+    "name": "Rayquaza-Mega",
+    "base": "Rayquaza",
+    "form": "Mega"
+  },
+  {
+    "name": "Rillaboom-Gmax",
+    "base": "Rillaboom",
+    "form": "Gmax"
+  },
+  {
+    "name": "Rockruff-Dusk",
+    "base": "Rockruff",
+    "form": "Dusk"
+  },
+  {
+    "name": "Rotom-Fan",
+    "base": "Rotom",
+    "form": "Fan"
+  },
+  {
+    "name": "Rotom-Frost",
+    "base": "Rotom",
+    "form": "Frost"
+  },
+  {
+    "name": "Rotom-Heat",
+    "base": "Rotom",
+    "form": "Heat"
+  },
+  {
+    "name": "Rotom-Mow",
+    "base": "Rotom",
+    "form": "Mow"
+  },
+  {
+    "name": "Rotom-Wash",
+    "base": "Rotom",
+    "form": "Wash"
+  },
+  {
+    "name": "Rowlet-Hisui-Bias",
+    "base": "Rowlet",
+    "form": "Hisui-Bias"
+  },
+  {
+    "name": "Rufflet-Hisui-Bias",
+    "base": "Rufflet",
+    "form": "Hisui-Bias"
+  },
+  {
+    "name": "Sableye-Mega",
+    "base": "Sableye",
+    "form": "Mega"
+  },
+  {
+    "name": "Salamence-Mega",
+    "base": "Salamence",
+    "form": "Mega"
+  },
+  {
+    "name": "Samurott-Hisui",
+    "base": "Samurott",
+    "form": "Hisui"
+  },
+  {
+    "name": "Sandaconda-Gmax",
+    "base": "Sandaconda",
+    "form": "Gmax"
+  },
+  {
+    "name": "Sandshrew-Alola",
+    "base": "Sandshrew",
+    "form": "Alola"
+  },
+  {
+    "name": "Sandslash-Alola",
+    "base": "Sandslash",
+    "form": "Alola"
+  },
+  {
+    "name": "Sawsbuck-Autumn",
+    "base": "Sawsbuck",
+    "form": "Autumn"
+  },
+  {
+    "name": "Sawsbuck-Summer",
+    "base": "Sawsbuck",
+    "form": "Summer"
+  },
+  {
+    "name": "Sawsbuck-Winter",
+    "base": "Sawsbuck",
+    "form": "Winter"
+  },
+  {
+    "name": "Sceptile-Mega",
+    "base": "Sceptile",
+    "form": "Mega"
+  },
+  {
+    "name": "Scizor-Mega",
+    "base": "Scizor",
+    "form": "Mega"
+  },
+  {
+    "name": "Sharpedo-Mega",
+    "base": "Sharpedo",
+    "form": "Mega"
+  },
+  {
+    "name": "Shaymin-Sky",
+    "base": "Shaymin",
+    "form": "Sky"
+  },
+  {
+    "name": "Shellos-East",
+    "base": "Shellos",
+    "form": "East"
+  },
+  {
+    "name": "Silvally-Bug",
+    "base": "Silvally",
+    "form": "Bug"
+  },
+  {
+    "name": "Silvally-Dark",
+    "base": "Silvally",
+    "form": "Dark"
+  },
+  {
+    "name": "Silvally-Dragon",
+    "base": "Silvally",
+    "form": "Dragon"
+  },
+  {
+    "name": "Silvally-Electric",
+    "base": "Silvally",
+    "form": "Electric"
+  },
+  {
+    "name": "Silvally-Fairy",
+    "base": "Silvally",
+    "form": "Fairy"
+  },
+  {
+    "name": "Silvally-Fighting",
+    "base": "Silvally",
+    "form": "Fighting"
+  },
+  {
+    "name": "Silvally-Fire",
+    "base": "Silvally",
+    "form": "Fire"
+  },
+  {
+    "name": "Silvally-Flying",
+    "base": "Silvally",
+    "form": "Flying"
+  },
+  {
+    "name": "Silvally-Ghost",
+    "base": "Silvally",
+    "form": "Ghost"
+  },
+  {
+    "name": "Silvally-Grass",
+    "base": "Silvally",
+    "form": "Grass"
+  },
+  {
+    "name": "Silvally-Ground",
+    "base": "Silvally",
+    "form": "Ground"
+  },
+  {
+    "name": "Silvally-Ice",
+    "base": "Silvally",
+    "form": "Ice"
+  },
+  {
+    "name": "Silvally-Poison",
+    "base": "Silvally",
+    "form": "Poison"
+  },
+  {
+    "name": "Silvally-Psychic",
+    "base": "Silvally",
+    "form": "Psychic"
+  },
+  {
+    "name": "Silvally-Rock",
+    "base": "Silvally",
+    "form": "Rock"
+  },
+  {
+    "name": "Silvally-Steel",
+    "base": "Silvally",
+    "form": "Steel"
+  },
+  {
+    "name": "Silvally-Water",
+    "base": "Silvally",
+    "form": "Water"
+  },
+  {
+    "name": "Sinistcha-Masterpiece",
+    "base": "Sinistcha",
+    "form": "Masterpiece"
+  },
+  {
+    "name": "Sinistea-Antique",
+    "base": "Sinistea",
+    "form": "Antique"
+  },
+  {
+    "name": "Sliggoo-Hisui",
+    "base": "Sliggoo",
+    "form": "Hisui"
+  },
+  {
+    "name": "Slowbro-Galar",
+    "base": "Slowbro",
+    "form": "Galar"
+  },
+  {
+    "name": "Slowbro-Mega",
+    "base": "Slowbro",
+    "form": "Mega"
+  },
+  {
+    "name": "Slowking-Galar",
+    "base": "Slowking",
+    "form": "Galar"
+  },
+  {
+    "name": "Slowpoke-Galar",
+    "base": "Slowpoke",
+    "form": "Galar"
+  },
+  {
+    "name": "Sneasel-Hisui",
+    "base": "Sneasel",
+    "form": "Hisui"
+  },
+  {
+    "name": "Snorlax-Gmax",
+    "base": "Snorlax",
+    "form": "Gmax"
+  },
+  {
+    "name": "Squawkabilly-Blue",
+    "base": "Squawkabilly",
+    "form": "Blue"
+  },
+  {
+    "name": "Squawkabilly-White",
+    "base": "Squawkabilly",
+    "form": "White"
+  },
+  {
+    "name": "Squawkabilly-Yellow",
+    "base": "Squawkabilly",
+    "form": "Yellow"
+  },
+  {
+    "name": "Steelix-Mega",
+    "base": "Steelix",
+    "form": "Mega"
+  },
+  {
+    "name": "Stunfisk-Galar",
+    "base": "Stunfisk",
+    "form": "Galar"
+  },
+  {
+    "name": "Swampert-Mega",
+    "base": "Swampert",
+    "form": "Mega"
+  },
+  {
+    "name": "Tatsugiri-Droopy",
+    "base": "Tatsugiri",
+    "form": "Droopy"
+  },
+  {
+    "name": "Tatsugiri-Stretchy",
+    "base": "Tatsugiri",
+    "form": "Stretchy"
+  },
+  {
+    "name": "Tauros-Paldea-Aqua",
+    "base": "Tauros",
+    "form": "Paldea-Aqua"
+  },
+  {
+    "name": "Tauros-Paldea-Blaze",
+    "base": "Tauros",
+    "form": "Paldea-Blaze"
+  },
+  {
+    "name": "Tauros-Paldea-Combat",
+    "base": "Tauros",
+    "form": "Paldea-Combat"
+  },
+  {
+    "name": "Terapagos-Stellar",
+    "base": "Terapagos",
+    "form": "Stellar"
+  },
+  {
+    "name": "Terapagos-Terastal",
+    "base": "Terapagos",
+    "form": "Terastal"
+  },
+  {
+    "name": "Thundurus-Therian",
+    "base": "Thundurus",
+    "form": "Therian"
+  },
+  {
+    "name": "Tornadus-Therian",
+    "base": "Tornadus",
+    "form": "Therian"
+  },
+  {
+    "name": "Toxtricity-Gmax",
+    "base": "Toxtricity",
+    "form": "Gmax"
+  },
+  {
+    "name": "Toxtricity-Low-Key",
+    "base": "Toxtricity",
+    "form": "Low-Key"
+  },
+  {
+    "name": "Toxtricity-Low-Key-Gmax",
+    "base": "Toxtricity",
+    "form": "Low-Key-Gmax"
+  },
+  {
+    "name": "Typhlosion-Hisui",
+    "base": "Typhlosion",
+    "form": "Hisui"
+  },
+  {
+    "name": "Tyranitar-Mega",
+    "base": "Tyranitar",
+    "form": "Mega"
+  },
+  {
+    "name": "Unown-!",
+    "base": "Unown",
+    "form": "!"
+  },
+  {
+    "name": "Unown-?",
+    "base": "Unown",
+    "form": "?"
+  },
+  {
+    "name": "Unown-B",
+    "base": "Unown",
+    "form": "B"
+  },
+  {
+    "name": "Unown-C",
+    "base": "Unown",
+    "form": "C"
+  },
+  {
+    "name": "Unown-D",
+    "base": "Unown",
+    "form": "D"
+  },
+  {
+    "name": "Unown-E",
+    "base": "Unown",
+    "form": "E"
+  },
+  {
+    "name": "Unown-F",
+    "base": "Unown",
+    "form": "F"
+  },
+  {
+    "name": "Unown-G",
+    "base": "Unown",
+    "form": "G"
+  },
+  {
+    "name": "Unown-H",
+    "base": "Unown",
+    "form": "H"
+  },
+  {
+    "name": "Unown-I",
+    "base": "Unown",
+    "form": "I"
+  },
+  {
+    "name": "Unown-J",
+    "base": "Unown",
+    "form": "J"
+  },
+  {
+    "name": "Unown-K",
+    "base": "Unown",
+    "form": "K"
+  },
+  {
+    "name": "Unown-L",
+    "base": "Unown",
+    "form": "L"
+  },
+  {
+    "name": "Unown-M",
+    "base": "Unown",
+    "form": "M"
+  },
+  {
+    "name": "Unown-N",
+    "base": "Unown",
+    "form": "N"
+  },
+  {
+    "name": "Unown-O",
+    "base": "Unown",
+    "form": "O"
+  },
+  {
+    "name": "Unown-P",
+    "base": "Unown",
+    "form": "P"
+  },
+  {
+    "name": "Unown-Q",
+    "base": "Unown",
+    "form": "Q"
+  },
+  {
+    "name": "Unown-R",
+    "base": "Unown",
+    "form": "R"
+  },
+  {
+    "name": "Unown-S",
+    "base": "Unown",
+    "form": "S"
+  },
+  {
+    "name": "Unown-T",
+    "base": "Unown",
+    "form": "T"
+  },
+  {
+    "name": "Unown-U",
+    "base": "Unown",
+    "form": "U"
+  },
+  {
+    "name": "Unown-V",
+    "base": "Unown",
+    "form": "V"
+  },
+  {
+    "name": "Unown-W",
+    "base": "Unown",
+    "form": "W"
+  },
+  {
+    "name": "Unown-X",
+    "base": "Unown",
+    "form": "X"
+  },
+  {
+    "name": "Unown-Y",
+    "base": "Unown",
+    "form": "Y"
+  },
+  {
+    "name": "Unown-Z",
+    "base": "Unown",
+    "form": "Z"
+  },
+  {
+    "name": "Ursaluna-Bloodmoon",
+    "base": "Ursaluna",
+    "form": "Bloodmoon"
+  },
+  {
+    "name": "Urshifu-Gmax",
+    "base": "Urshifu",
+    "form": "Gmax"
+  },
+  {
+    "name": "Urshifu-Rapid-Strike",
+    "base": "Urshifu",
+    "form": "Rapid-Strike"
+  },
+  {
+    "name": "Urshifu-Rapid-Strike-Gmax",
+    "base": "Urshifu",
+    "form": "Rapid-Strike-Gmax"
+  },
+  {
+    "name": "Venusaur-Gmax",
+    "base": "Venusaur",
+    "form": "Gmax"
+  },
+  {
+    "name": "Venusaur-Mega",
+    "base": "Venusaur",
+    "form": "Mega"
+  },
+  {
+    "name": "Vivillon-Pokeball",
+    "base": "Vivillon",
+    "form": "Pokeball"
+  },
+  {
+    "name": "Voltorb-Hisui",
+    "base": "Voltorb",
+    "form": "Hisui"
+  },
+  {
+    "name": "Vulpix-Alola",
+    "base": "Vulpix",
+    "form": "Alola"
+  },
+  {
+    "name": "Weezing-Galar",
+    "base": "Weezing",
+    "form": "Galar"
+  },
+  {
+    "name": "Wishiwashi-School",
+    "base": "Wishiwashi",
+    "form": "School"
+  },
+  {
+    "name": "Wooper-Paldea",
+    "base": "Wooper",
+    "form": "Paldea"
+  },
+  {
+    "name": "Wormadam-Sandy",
+    "base": "Wormadam",
+    "form": "Sandy"
+  },
+  {
+    "name": "Wormadam-Trash",
+    "base": "Wormadam",
+    "form": "Trash"
+  },
+  {
+    "name": "Xerneas-Active",
+    "base": "Xerneas",
+    "form": "Active"
+  },
+  {
+    "name": "Yamask-Galar",
+    "base": "Yamask",
+    "form": "Galar"
+  },
+  {
+    "name": "Zacian-Crowned",
+    "base": "Zacian",
+    "form": "Crowned"
+  },
+  {
+    "name": "Zamazenta-Crowned",
+    "base": "Zamazenta",
+    "form": "Crowned"
+  },
+  {
+    "name": "Zapdos-Galar",
+    "base": "Zapdos",
+    "form": "Galar"
+  },
+  {
+    "name": "Zarude-Dada",
+    "base": "Zarude",
+    "form": "Dada"
+  },
+  {
+    "name": "Zigzagoon-Galar",
+    "base": "Zigzagoon",
+    "form": "Galar"
+  },
+  {
+    "name": "Zoroark-Hisui",
+    "base": "Zoroark",
+    "form": "Hisui"
+  },
+  {
+    "name": "Zorua-Hisui",
+    "base": "Zorua",
+    "form": "Hisui"
+  },
+  {
+    "name": "Zygarde-10%",
+    "base": "Zygarde",
+    "form": "10%"
+  },
+  {
+    "name": "Zygarde-10%-C",
+    "base": "Zygarde",
+    "form": "10%-C"
+  },
+  {
+    "name": "Zygarde-50%-C",
+    "base": "Zygarde",
+    "form": "50%-C"
+  },
+  {
+    "name": "Zygarde-Complete",
+    "base": "Zygarde",
+    "form": "Complete"
+  }
+]

@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "id": "league_battle_recorder",
+  "version": "1.2.0",
+  "name": "League Battle Recorder",
+  "description": "Records two-player Cobblemon arena battles to local XLSX files.",
+  "environment": "server",
+  "entrypoints": {"main": ["ai.league.recorder.LeagueRecorder"]},
+  "mixins": ["league-battle-recorder.mixins.json"],
+  "depends": {
+    "fabricloader": ">=0.18.4",
+    "fabric-api": "*",
+    "minecraft": "1.21.1",
+    "java": ">=21",
+    "cobblemon": "1.7.3+1.21.1"
+  }
+}

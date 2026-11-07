@@ -1,0 +1,939 @@
+[
+  {
+    "id": "intermediate-01",
+    "name": "메인파티",
+    "pokemon": [
+      {
+        "species": "clodsire",
+        "aspects": "",
+        "nature": "careful",
+        "ability": "waterabsorb",
+        "heldItem": "cobblemon:black_sludge",
+        "moves": [
+          "earthquake",
+          "recover",
+          "toxic",
+          "protect"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          252,
+          0,
+          4,
+          0,
+          252,
+          0
+        ],
+        "features": {}
+      },
+      {
+        "species": "dondozo",
+        "aspects": "",
+        "nature": "impish",
+        "ability": "unaware",
+        "heldItem": "cobblemon:leftovers",
+        "moves": [
+          "fissure",
+          "wavecrash",
+          "yawn",
+          "rest"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          252,
+          0,
+          252,
+          0,
+          4,
+          0
+        ],
+        "features": {}
+      },
+      {
+        "species": "salamence",
+        "aspects": "",
+        "nature": "adamant",
+        "ability": "intimidate",
+        "heldItem": "mega_showdown:salamencite",
+        "moves": [
+          "dragondance",
+          "earthquake",
+          "doubleedge",
+          "roost"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          0,
+          252,
+          4,
+          0,
+          0,
+          252
+        ],
+        "features": {}
+      },
+      {
+        "species": "ursaluna",
+        "aspects": "",
+        "nature": "adamant",
+        "ability": "guts",
+        "heldItem": "cobblemon:flame_orb",
+        "moves": [
+          "facade",
+          "playrough",
+          "icepunch",
+          "earthquake"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          252,
+          252,
+          4,
+          0,
+          0,
+          0
+        ],
+        "features": {}
+      },
+      {
+        "species": "volcarona",
+        "aspects": "",
+        "nature": "modest",
+        "ability": "flamebody",
+        "heldItem": "cobblemon:focus_sash",
+        "moves": [
+          "morningsun",
+          "quiverdance",
+          "fierydance",
+          "bugbuzz"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          0,
+          0,
+          4,
+          252,
+          0,
+          252
+        ],
+        "features": {}
+      },
+      {
+        "species": "gholdengo",
+        "aspects": "",
+        "nature": "timid",
+        "ability": "goodasgold",
+        "heldItem": "cobblemon:choice_scarf",
+        "moves": [
+          "makeitrain",
+          "thunderbolt",
+          "shadowball",
+          "powergem"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          4,
+          0,
+          0,
+          252,
+          0,
+          252
+        ],
+        "features": {}
+      }
+    ]
+  },
+  {
+    "id": "intermediate-02",
+    "name": "서브파티",
+    "pokemon": [
+      {
+        "species": "kingambit",
+        "aspects": "",
+        "nature": "adamant",
+        "ability": "supremeoverlord",
+        "heldItem": "cobblemon:black_glasses",
+        "moves": [
+          "kowtowcleave",
+          "suckerpunch",
+          "ironhead",
+          "swordsdance"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          252,
+          252,
+          4,
+          0,
+          0,
+          0
+        ],
+        "features": {}
+      },
+      {
+        "species": "ceruledge",
+        "aspects": "",
+        "nature": "jolly",
+        "ability": "flashfire",
+        "heldItem": "cobblemon:focus_sash",
+        "moves": [
+          "bitterblade",
+          "shadowsneak",
+          "closecombat",
+          "swordsdance"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          0,
+          252,
+          4,
+          0,
+          0,
+          252
+        ],
+        "features": {}
+      },
+      {
+        "species": "golisopod",
+        "aspects": "",
+        "nature": "adamant",
+        "ability": "emergencyexit",
+        "heldItem": "zamega:golisopite",
+        "moves": [
+          "firstimpression",
+          "liquidation",
+          "bulkup",
+          "leechlife"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          252,
+          252,
+          4,
+          0,
+          0,
+          0
+        ],
+        "features": {}
+      },
+      {
+        "species": "goodra",
+        "aspects": "",
+        "nature": "bold",
+        "ability": "sapsipper",
+        "heldItem": "cobblemon:leftovers",
+        "moves": [
+          "dragonpulse",
+          "bodypress",
+          "acidarmor",
+          "lifedew"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          252,
+          0,
+          252,
+          0,
+          4,
+          0
+        ],
+        "features": {}
+      },
+      {
+        "species": "gardevoir",
+        "aspects": "",
+        "nature": "timid",
+        "ability": "trace",
+        "heldItem": "cobblemon:choice_scarf",
+        "moves": [
+          "moonblast",
+          "psyshock",
+          "mysticalfire",
+          "trick"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          0,
+          0,
+          4,
+          252,
+          0,
+          252
+        ],
+        "features": {}
+      },
+      {
+        "species": "corviknight",
+        "aspects": "",
+        "nature": "impish",
+        "ability": "mirrorarmor",
+        "heldItem": "cobblemon:rocky_helmet",
+        "moves": [
+          "bravebird",
+          "irondefense",
+          "bodypress",
+          "roost"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          252,
+          0,
+          252,
+          0,
+          4,
+          0
+        ],
+        "features": {}
+      }
+    ]
+  },
+  {
+    "id": "intermediate-03",
+    "name": "서브파티2",
+    "pokemon": [
+      {
+        "species": "swampert",
+        "aspects": "",
+        "nature": "adamant",
+        "ability": "swiftswim",
+        "heldItem": "mega_showdown:swampertite",
+        "moves": [
+          "waterfall",
+          "earthquake",
+          "icepunch",
+          "protect"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          4,
+          252,
+          0,
+          0,
+          0,
+          252
+        ],
+        "features": {}
+      },
+      {
+        "species": "dracovish",
+        "aspects": "",
+        "nature": "jolly",
+        "ability": "strongjaw",
+        "heldItem": "cobblemon:choice_band",
+        "moves": [
+          "fishiousrend",
+          "psychicfangs",
+          "icefang",
+          "crunch"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          0,
+          252,
+          4,
+          0,
+          0,
+          252
+        ],
+        "features": {}
+      },
+      {
+        "species": "pelipper",
+        "aspects": "",
+        "nature": "modest",
+        "ability": "drizzle",
+        "heldItem": "cobblemon:damp_rock",
+        "moves": [
+          "hurricane",
+          "surf",
+          "uturn",
+          "tailwind"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          252,
+          0,
+          4,
+          252,
+          0,
+          0
+        ],
+        "features": {}
+      },
+      {
+        "species": "ferrothorn",
+        "aspects": "",
+        "nature": "relaxed",
+        "ability": "ironbarbs",
+        "heldItem": "cobblemon:leftovers",
+        "moves": [
+          "powerwhip",
+          "gyroball",
+          "leechseed",
+          "stealthrock"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          252,
+          0,
+          252,
+          0,
+          4,
+          0
+        ],
+        "features": {}
+      },
+      {
+        "species": "rotom",
+        "aspects": "",
+        "nature": "timid",
+        "ability": "levitate",
+        "heldItem": "cobblemon:choice_specs",
+        "moves": [
+          "leafstorm",
+          "thunderbolt",
+          "voltswitch",
+          "trick"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          4,
+          0,
+          0,
+          252,
+          0,
+          252
+        ],
+        "features": {
+          "appliance": "mow"
+        },
+        "expectedForm": "mow"
+      },
+      {
+        "species": "dragapult",
+        "aspects": "",
+        "nature": "naive",
+        "ability": "infiltrator",
+        "heldItem": "cobblemon:life_orb",
+        "moves": [
+          "shadowball",
+          "dracometeor",
+          "thunder",
+          "uturn"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          0,
+          4,
+          0,
+          252,
+          0,
+          252
+        ],
+        "features": {}
+      }
+    ]
+  },
+  {
+    "id": "intermediate-04",
+    "name": "즐겜 카지노 파티",
+    "pokemon": [
+      {
+        "species": "cloyster",
+        "aspects": "",
+        "nature": "adamant",
+        "ability": "skilllink",
+        "heldItem": "cobblemon:focus_sash",
+        "moves": [
+          "shellsmash",
+          "iciclespear",
+          "rockblast",
+          "iceshard"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          4,
+          252,
+          0,
+          0,
+          0,
+          252
+        ],
+        "features": {}
+      },
+      {
+        "species": "heracross",
+        "aspects": "",
+        "nature": "jolly",
+        "ability": "skilllink",
+        "heldItem": "mega_showdown:heracronite",
+        "moves": [
+          "pinmissile",
+          "rockblast",
+          "bulletseed",
+          "closecombat"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          0,
+          252,
+          4,
+          0,
+          0,
+          252
+        ],
+        "features": {}
+      },
+      {
+        "species": "cinccino",
+        "aspects": "",
+        "nature": "jolly",
+        "ability": "skilllink",
+        "heldItem": "cobblemon:kings_rock",
+        "moves": [
+          "tailslap",
+          "bulletseed",
+          "rockblast",
+          "uturn"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          0,
+          252,
+          4,
+          0,
+          0,
+          252
+        ],
+        "features": {}
+      },
+      {
+        "species": "grimmsnarl",
+        "aspects": "",
+        "nature": "careful",
+        "ability": "prankster",
+        "heldItem": "cobblemon:light_clay",
+        "moves": [
+          "reflect",
+          "lightscreen",
+          "taunt",
+          "partingshot"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          252,
+          0,
+          4,
+          0,
+          252,
+          0
+        ],
+        "features": {}
+      },
+      {
+        "species": "gholdengo",
+        "aspects": "",
+        "nature": "timid",
+        "ability": "goodasgold",
+        "heldItem": "cobblemon:choice_scarf",
+        "moves": [
+          "makeitrain",
+          "shadowball",
+          "nastyplot",
+          "trick"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          4,
+          0,
+          0,
+          252,
+          0,
+          252
+        ],
+        "features": {}
+      },
+      {
+        "species": "greninja",
+        "aspects": "",
+        "nature": "timid",
+        "ability": "battlebond",
+        "heldItem": "cobblemon:life_orb",
+        "moves": [
+          "watershuriken",
+          "darkpulse",
+          "icebeam",
+          "uturn"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          0,
+          0,
+          4,
+          252,
+          0,
+          252
+        ],
+        "features": {
+          "battle_bond": "bond",
+          "friendship": "255"
+        },
+        "expectedForm": "bond"
+      }
+    ]
+  },
+  {
+    "id": "intermediate-05",
+    "name": "즐겜 일격기 파티",
+    "pokemon": [
+      {
+        "species": "lapras",
+        "aspects": "",
+        "nature": "calm",
+        "ability": "waterabsorb",
+        "heldItem": "cobblemon:assault_vest",
+        "moves": [
+          "sheercold",
+          "freezedry",
+          "surf",
+          "iceshard"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          252,
+          0,
+          4,
+          0,
+          252,
+          0
+        ],
+        "features": {}
+      },
+      {
+        "species": "excadrill",
+        "aspects": "",
+        "nature": "jolly",
+        "ability": "moldbreaker",
+        "heldItem": "cobblemon:focus_sash",
+        "moves": [
+          "horndrill",
+          "earthquake",
+          "ironhead",
+          "rocktomb"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          0,
+          252,
+          4,
+          0,
+          0,
+          252
+        ],
+        "features": {}
+      },
+      {
+        "species": "dondozo",
+        "aspects": "",
+        "nature": "impish",
+        "ability": "unaware",
+        "heldItem": "cobblemon:leftovers",
+        "moves": [
+          "fissure",
+          "wavecrash",
+          "yawn",
+          "rest"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          252,
+          0,
+          252,
+          0,
+          4,
+          0
+        ],
+        "features": {}
+      },
+      {
+        "species": "gliscor",
+        "aspects": "",
+        "nature": "careful",
+        "ability": "poisonheal",
+        "heldItem": "cobblemon:toxic_orb",
+        "moves": [
+          "guillotine",
+          "earthquake",
+          "protect",
+          "substitute"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          252,
+          0,
+          0,
+          0,
+          252,
+          4
+        ],
+        "features": {}
+      },
+      {
+        "species": "walrein",
+        "aspects": "",
+        "nature": "bold",
+        "ability": "thickfat",
+        "heldItem": "cobblemon:leftovers",
+        "moves": [
+          "sheercold",
+          "fissure",
+          "surf",
+          "toxic"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          252,
+          0,
+          252,
+          0,
+          4,
+          0
+        ],
+        "features": {}
+      },
+      {
+        "species": "garganacl",
+        "aspects": "",
+        "nature": "impish",
+        "ability": "purifyingsalt",
+        "heldItem": "cobblemon:rocky_helmet",
+        "moves": [
+          "fissure",
+          "saltcure",
+          "recover",
+          "irondefense"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          252,
+          0,
+          252,
+          0,
+          4,
+          0
+        ],
+        "features": {}
+      }
+    ]
+  }
+]

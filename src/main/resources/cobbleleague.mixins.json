@@ -1,0 +1,21 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "dev.cobbleleague.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "PCLinkManagerMixin",
+    "BattleRegistryMegaMixin",
+    "LeagueTrainerSpawnMixin",
+    "DraftPartyStoreMixin",
+    "DungeonHeldItemAccessor",
+    "DraftMoveGuardMixin",
+    "DraftPartySwapGuardMixin",
+    "DraftPartyMoveGuardMixin",
+    "RerollMarkerAccessor",
+    "CreepNpcAiMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

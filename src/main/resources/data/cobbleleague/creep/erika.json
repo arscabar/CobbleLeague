@@ -1,0 +1,125 @@
+{
+  "id": "creep_erika",
+  "pokemon": [
+    {
+      "species": "venusaur",
+      "aspects": "",
+      "nature": "modest",
+      "ability": "chlorophyll",
+      "heldItem": "cobblemon:sitrus_berry",
+      "moves": [
+        "gigadrain",
+        "sludgebomb",
+        "sleeppowder",
+        "sunnyday"
+      ],
+      "ivs": [
+        31,
+        31,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        252,
+        0,
+        4,
+        252,
+        0,
+        0
+      ],
+      "features": {}
+    },
+    {
+      "species": "vileplume",
+      "aspects": "",
+      "nature": "bold",
+      "ability": "chlorophyll",
+      "heldItem": "cobblemon:leftovers",
+      "moves": [
+        "gigadrain",
+        "sludgebomb",
+        "moonblast",
+        "strengthsap"
+      ],
+      "ivs": [
+        31,
+        31,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        252,
+        0,
+        4,
+        252,
+        0,
+        0
+      ],
+      "features": {}
+    },
+    {
+      "species": "tangrowth",
+      "aspects": "",
+      "nature": "impish",
+      "ability": "regenerator",
+      "heldItem": "cobblemon:sitrus_berry",
+      "moves": [
+        "powerwhip",
+        "knockoff",
+        "earthquake",
+        "sleeppowder"
+      ],
+      "ivs": [
+        31,
+        31,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        252,
+        252,
+        4,
+        0,
+        0,
+        0
+      ],
+      "features": {}
+    },
+    {
+      "species": "leafeon",
+      "aspects": "",
+      "nature": "jolly",
+      "ability": "chlorophyll",
+      "heldItem": "cobblemon:expert_belt",
+      "moves": [
+        "leafblade",
+        "knockoff",
+        "synthesis",
+        "swordsdance"
+      ],
+      "ivs": [
+        31,
+        31,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        4,
+        252,
+        0,
+        0,
+        0,
+        252
+      ],
+      "features": {}
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "startingHealth": 15,
+  "lossDamage": 1,
+  "selectionSeconds": 60,
+  "escalateFromGym": 4,
+  "maxLossDamage": 3,
+  "roundIncome": 1,
+  "lossBonus": 1,
+  "gymMoneyMin": 2,
+  "gymMoneyMax": 4
+}

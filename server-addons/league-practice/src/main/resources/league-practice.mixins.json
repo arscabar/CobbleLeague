@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "package": "ai.league.practice.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "PracticeDisconnectMixin",
+    "PracticeTieMixin",
+    "PracticeNpcAiMixin",
+    "PracticeBattleOutputMixin",
+    "PracticeHeldItemAccessor"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

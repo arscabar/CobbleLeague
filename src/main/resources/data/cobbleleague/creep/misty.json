@@ -1,0 +1,125 @@
+{
+  "id": "creep_misty",
+  "pokemon": [
+    {
+      "species": "starmie",
+      "aspects": "",
+      "nature": "timid",
+      "ability": "naturalcure",
+      "heldItem": "cobblemon:expert_belt",
+      "moves": [
+        "surf",
+        "psychic",
+        "icebeam",
+        "recover"
+      ],
+      "ivs": [
+        31,
+        31,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        4,
+        0,
+        0,
+        252,
+        0,
+        252
+      ],
+      "features": {}
+    },
+    {
+      "species": "gyarados",
+      "aspects": "",
+      "nature": "jolly",
+      "ability": "intimidate",
+      "heldItem": "cobblemon:expert_belt",
+      "moves": [
+        "waterfall",
+        "crunch",
+        "earthquake",
+        "dragondance"
+      ],
+      "ivs": [
+        31,
+        31,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        4,
+        252,
+        0,
+        0,
+        0,
+        252
+      ],
+      "features": {}
+    },
+    {
+      "species": "vaporeon",
+      "aspects": "",
+      "nature": "bold",
+      "ability": "waterabsorb",
+      "heldItem": "cobblemon:leftovers",
+      "moves": [
+        "surf",
+        "icebeam",
+        "wish",
+        "protect"
+      ],
+      "ivs": [
+        31,
+        31,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        252,
+        0,
+        4,
+        252,
+        0,
+        0
+      ],
+      "features": {}
+    },
+    {
+      "species": "lapras",
+      "aspects": "",
+      "nature": "modest",
+      "ability": "waterabsorb",
+      "heldItem": "cobblemon:sitrus_berry",
+      "moves": [
+        "surf",
+        "icebeam",
+        "thunderbolt",
+        "perishsong"
+      ],
+      "ivs": [
+        31,
+        31,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        252,
+        0,
+        4,
+        252,
+        0,
+        0
+      ],
+      "features": {}
+    }
+  ]
+}

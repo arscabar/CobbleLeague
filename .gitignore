@@ -1,0 +1,42 @@
+# Gradle and local tooling
+.gradle/
+**/.gradle/
+.kotlin/
+**/.kotlin/
+**/build/
+**/run/
+.idea/
+.vscode/
+*.iml
+*.log
+logs/
+dist/
+.test-tmp/
+local.properties
+
+# Credentials and live Minecraft data
+.env
+.env.*
+!.env.example
+server.properties
+ops.json
+whitelist.json
+usercache.json
+banned-*.json
+world/
+world_*/
+saves/
+backups/
+operation-logs/
+crash-reports/
+**/cobblemon_quick_teams_*.json
+*.dat
+*.dat_old
+*.dat.old
+
+# Distributions are generated, except the Gradle Wrapper required to build
+*.jar
+!**/gradle/wrapper/gradle-wrapper.jar
+*.zip
+.DS_Store
+Thumbs.db

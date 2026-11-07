@@ -1,0 +1,374 @@
+[
+  {
+    "id": "beginner-01",
+    "name": "기초 메인파티",
+    "pokemon": [
+      {
+        "species": "clodsire",
+        "aspects": "",
+        "nature": "careful",
+        "ability": "waterabsorb",
+        "heldItem": "",
+        "moves": [
+          "earthquake",
+          "recover",
+          "toxic",
+          "protect"
+        ],
+        "ivs": [
+          20,
+          20,
+          20,
+          20,
+          20,
+          20
+        ],
+        "evs": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "features": {}
+      },
+      {
+        "species": "dondozo",
+        "aspects": "",
+        "nature": "impish",
+        "ability": "unaware",
+        "heldItem": "",
+        "moves": [
+          "bodypress",
+          "wavecrash",
+          "yawn",
+          "rest"
+        ],
+        "ivs": [
+          20,
+          20,
+          20,
+          20,
+          20,
+          20
+        ],
+        "evs": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "features": {}
+      },
+      {
+        "species": "salamence",
+        "aspects": "",
+        "nature": "adamant",
+        "ability": "intimidate",
+        "heldItem": "",
+        "moves": [
+          "dragondance",
+          "earthquake",
+          "doubleedge",
+          "roost"
+        ],
+        "ivs": [
+          20,
+          20,
+          20,
+          20,
+          20,
+          20
+        ],
+        "evs": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "features": {}
+      },
+      {
+        "species": "ursaluna",
+        "aspects": "",
+        "nature": "adamant",
+        "ability": "guts",
+        "heldItem": "",
+        "moves": [
+          "facade",
+          "playrough",
+          "icepunch",
+          "earthquake"
+        ],
+        "ivs": [
+          20,
+          20,
+          20,
+          20,
+          20,
+          20
+        ],
+        "evs": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "features": {}
+      },
+      {
+        "species": "volcarona",
+        "aspects": "",
+        "nature": "modest",
+        "ability": "flamebody",
+        "heldItem": "",
+        "moves": [
+          "morningsun",
+          "quiverdance",
+          "fierydance",
+          "bugbuzz"
+        ],
+        "ivs": [
+          20,
+          20,
+          20,
+          20,
+          20,
+          20
+        ],
+        "evs": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "features": {}
+      },
+      {
+        "species": "gholdengo",
+        "aspects": "",
+        "nature": "timid",
+        "ability": "goodasgold",
+        "heldItem": "",
+        "moves": [
+          "makeitrain",
+          "thunderbolt",
+          "shadowball",
+          "powergem"
+        ],
+        "ivs": [
+          20,
+          20,
+          20,
+          20,
+          20,
+          20
+        ],
+        "evs": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "features": {}
+      }
+    ]
+  },
+  {
+    "id": "beginner-02",
+    "name": "기초 서브파티",
+    "pokemon": [
+      {
+        "species": "kingambit",
+        "aspects": "",
+        "nature": "adamant",
+        "ability": "supremeoverlord",
+        "heldItem": "",
+        "moves": [
+          "kowtowcleave",
+          "suckerpunch",
+          "ironhead",
+          "swordsdance"
+        ],
+        "ivs": [
+          20,
+          20,
+          20,
+          20,
+          20,
+          20
+        ],
+        "evs": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "features": {}
+      },
+      {
+        "species": "ceruledge",
+        "aspects": "",
+        "nature": "jolly",
+        "ability": "flashfire",
+        "heldItem": "",
+        "moves": [
+          "bitterblade",
+          "shadowsneak",
+          "closecombat",
+          "swordsdance"
+        ],
+        "ivs": [
+          20,
+          20,
+          20,
+          20,
+          20,
+          20
+        ],
+        "evs": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "features": {}
+      },
+      {
+        "species": "golisopod",
+        "aspects": "",
+        "nature": "adamant",
+        "ability": "emergencyexit",
+        "heldItem": "",
+        "moves": [
+          "firstimpression",
+          "liquidation",
+          "bulkup",
+          "leechlife"
+        ],
+        "ivs": [
+          20,
+          20,
+          20,
+          20,
+          20,
+          20
+        ],
+        "evs": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "features": {}
+      },
+      {
+        "species": "goodra",
+        "aspects": "",
+        "nature": "bold",
+        "ability": "sapsipper",
+        "heldItem": "",
+        "moves": [
+          "dragonpulse",
+          "bodypress",
+          "acidarmor",
+          "lifedew"
+        ],
+        "ivs": [
+          20,
+          20,
+          20,
+          20,
+          20,
+          20
+        ],
+        "evs": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "features": {}
+      },
+      {
+        "species": "gardevoir",
+        "aspects": "",
+        "nature": "timid",
+        "ability": "trace",
+        "heldItem": "",
+        "moves": [
+          "moonblast",
+          "psyshock",
+          "mysticalfire",
+          "trick"
+        ],
+        "ivs": [
+          20,
+          20,
+          20,
+          20,
+          20,
+          20
+        ],
+        "evs": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "features": {}
+      },
+      {
+        "species": "corviknight",
+        "aspects": "",
+        "nature": "impish",
+        "ability": "mirrorarmor",
+        "heldItem": "",
+        "moves": [
+          "bravebird",
+          "irondefense",
+          "bodypress",
+          "roost"
+        ],
+        "ivs": [
+          20,
+          20,
+          20,
+          20,
+          20,
+          20
+        ],
+        "evs": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "features": {}
+      }
+    ]
+  }
+]

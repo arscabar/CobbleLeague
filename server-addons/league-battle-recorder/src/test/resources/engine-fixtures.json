@@ -1,0 +1,1586 @@
+{
+  "engineVersion": 16,
+  "seed": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "cases": [
+    {
+      "caseName": "guaranteed-critical",
+      "formatid": "gen9customgame",
+      "party": [
+        {
+          "side": "p1",
+          "player": "Alice",
+          "slot": 1,
+          "uuid": "00000000-0000-0000-0000-000000000001",
+          "species": "Throh",
+          "nickname": "",
+          "level": 50,
+          "moves": "Storm Throw",
+          "hp": 195,
+          "maxHp": 195
+        },
+        {
+          "side": "p2",
+          "player": "Bob",
+          "slot": 1,
+          "uuid": "00000000-0000-0000-0000-000000000002",
+          "species": "Snorlax",
+          "nickname": "",
+          "level": 50,
+          "moves": "Splash",
+          "hp": 235,
+          "maxHp": 235
+        }
+      ],
+      "packets": [
+        "update\n|t:|1792976474\n|gametype|singles",
+        "update\n|player|p1|Alice||",
+        "sideupdate\np1\n|request|{\"teamPreview\":true,\"side\":{\"name\":\"Alice\",\"id\":\"p1\",\"pokemon\":[{\"ident\":\"p1: Throh\",\"details\":\"Throh, 00000000-0000-0000-0000-000000000001, L50, M\",\"condition\":\"195/195\",\"active\":true,\"stats\":{\"atk\":120,\"def\":105,\"spa\":50,\"spd\":105,\"spe\":65},\"moves\":[\"stormthrow\"],\"baseAbility\":\"moldbreaker\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Fighting\"],\"types\":[\"Fighting\"],\"ability\":\"moldbreaker\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Fighting\",\"terastallized\":\"\"}]}}",
+        "sideupdate\np2\n|request|{\"teamPreview\":true,\"side\":{\"name\":\"Bob\",\"id\":\"p2\",\"pokemon\":[{\"ident\":\"p2: Snorlax\",\"details\":\"Snorlax, 00000000-0000-0000-0000-000000000002, L50, M\",\"condition\":\"235/235\",\"active\":true,\"stats\":{\"atk\":130,\"def\":85,\"spa\":85,\"spd\":130,\"spe\":50},\"moves\":[\"splash\"],\"baseAbility\":\"immunity\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Normal\"],\"types\":[\"Normal\"],\"ability\":\"immunity\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Normal\",\"terastallized\":\"\"}]}}",
+        "update\n|player|p2|Bob||\n|teamsize|p1|1\n|teamsize|p2|1\n|gen|9\n|tier|[Gen 9] Custom Game\n|clearpoke\n|poke|p1|Throh, 00000000-0000-0000-0000-000000000001, L50, M|\n|poke|p2|Snorlax, 00000000-0000-0000-0000-000000000002, L50, M|\n|teampreview",
+        "sideupdate\np1\n|request|{\"active\":[{\"moves\":[{\"move\":\"Storm Throw\",\"id\":\"stormthrow\",\"pp\":40,\"maxpp\":40,\"target\":\"normal\",\"disabled\":false}],\"canTerastallize\":\"Fighting\"}],\"side\":{\"name\":\"Alice\",\"id\":\"p1\",\"pokemon\":[{\"ident\":\"p1: Throh\",\"details\":\"Throh, 00000000-0000-0000-0000-000000000001, L50, M\",\"condition\":\"195/195\",\"active\":true,\"stats\":{\"atk\":120,\"def\":105,\"spa\":50,\"spd\":105,\"spe\":65},\"moves\":[\"stormthrow\"],\"baseAbility\":\"moldbreaker\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Fighting\"],\"types\":[\"Fighting\"],\"ability\":\"moldbreaker\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Fighting\",\"terastallized\":\"\"}]}}",
+        "sideupdate\np2\n|request|{\"active\":[{\"moves\":[{\"move\":\"Splash\",\"id\":\"splash\",\"pp\":40,\"maxpp\":40,\"target\":\"self\",\"disabled\":false}],\"canTerastallize\":\"Normal\"}],\"side\":{\"name\":\"Bob\",\"id\":\"p2\",\"pokemon\":[{\"ident\":\"p2: Snorlax\",\"details\":\"Snorlax, 00000000-0000-0000-0000-000000000002, L50, M\",\"condition\":\"235/235\",\"active\":true,\"stats\":{\"atk\":130,\"def\":85,\"spa\":85,\"spd\":130,\"spe\":50},\"moves\":[\"splash\"],\"baseAbility\":\"immunity\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Normal\"],\"types\":[\"Normal\"],\"ability\":\"immunity\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Normal\",\"terastallized\":\"\"}]}}",
+        "update\n|\n|t:|1792976474\n|start\n|split|p1\n|switch|p1a: 00000000-0000-0000-0000-000000000001|Throh, 00000000-0000-0000-0000-000000000001, L50, M|195/195\n|switch|p1a: 00000000-0000-0000-0000-000000000001|Throh, 00000000-0000-0000-0000-000000000001, L50, M|195/195\n|split|p2\n|switch|p2a: 00000000-0000-0000-0000-000000000002|Snorlax, 00000000-0000-0000-0000-000000000002, L50, M|235/235\n|switch|p2a: 00000000-0000-0000-0000-000000000002|Snorlax, 00000000-0000-0000-0000-000000000002, L50, M|235/235\n|-ability|p1a: 00000000-0000-0000-0000-000000000001|Mold Breaker\n|turn|1\n|pp_update|p1: 00000000-0000-0000-0000-000000000001|stormthrow: 40\n|pp_update|p2: 00000000-0000-0000-0000-000000000002|splash: 40",
+        "sideupdate\np1\n|request|{\"active\":[{\"moves\":[{\"move\":\"Storm Throw\",\"id\":\"stormthrow\",\"pp\":39,\"maxpp\":40,\"target\":\"normal\",\"disabled\":false}],\"canTerastallize\":\"Fighting\"}],\"side\":{\"name\":\"Alice\",\"id\":\"p1\",\"pokemon\":[{\"ident\":\"p1: Throh\",\"details\":\"Throh, 00000000-0000-0000-0000-000000000001, L50, M\",\"condition\":\"195/195\",\"active\":true,\"stats\":{\"atk\":120,\"def\":105,\"spa\":50,\"spd\":105,\"spe\":65},\"moves\":[\"stormthrow\"],\"baseAbility\":\"moldbreaker\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Fighting\"],\"types\":[\"Fighting\"],\"ability\":\"moldbreaker\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Fighting\",\"terastallized\":\"\"}]}}",
+        "sideupdate\np2\n|request|{\"active\":[{\"moves\":[{\"move\":\"Splash\",\"id\":\"splash\",\"pp\":39,\"maxpp\":40,\"target\":\"self\",\"disabled\":false}],\"canTerastallize\":\"Normal\"}],\"side\":{\"name\":\"Bob\",\"id\":\"p2\",\"pokemon\":[{\"ident\":\"p2: Snorlax\",\"details\":\"Snorlax, 00000000-0000-0000-0000-000000000002, L50, M\",\"condition\":\"89/235\",\"active\":true,\"stats\":{\"atk\":130,\"def\":85,\"spa\":85,\"spd\":130,\"spe\":50},\"moves\":[\"splash\"],\"baseAbility\":\"immunity\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Normal\"],\"types\":[\"Normal\"],\"ability\":\"immunity\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Normal\",\"terastallized\":\"\"}]}}",
+        "update\n|\n|t:|1792976474\n|move|p1a: 00000000-0000-0000-0000-000000000001|Storm Throw|p2a: 00000000-0000-0000-0000-000000000002\n|-supereffective|p2a: 00000000-0000-0000-0000-000000000002\n|-crit|p2a: 00000000-0000-0000-0000-000000000002\n|split|p2\n|-damage|p2a: 00000000-0000-0000-0000-000000000002|89/235\n|-damage|p2a: 00000000-0000-0000-0000-000000000002|89/235\n|debug|Update handler suppressed by Mold Breaker\n|debug|Update handler suppressed by Mold Breaker\n|move|p2a: 00000000-0000-0000-0000-000000000002|Splash|p2a: 00000000-0000-0000-0000-000000000002\n|-nothing\n|\n|upkeep\n|turn|2\n|pp_update|p1: 00000000-0000-0000-0000-000000000001|stormthrow: 39\n|pp_update|p2: 00000000-0000-0000-0000-000000000002|splash: 39"
+      ],
+      "expected": {
+        "damage": [
+          {
+            "targetId": "00000000-0000-0000-0000-000000000002",
+            "sourceId": "00000000-0000-0000-0000-000000000001",
+            "amount": 146,
+            "requested": 146,
+            "hpBefore": 235,
+            "hpAfter": 89,
+            "maxHp": 235,
+            "effect": "Storm Throw"
+          }
+        ],
+        "healing": [],
+        "hpEvents": [
+          {
+            "tag": "switch",
+            "targetId": "00000000-0000-0000-0000-000000000001",
+            "hpBefore": 195,
+            "maxBefore": 195,
+            "hpAfter": 195,
+            "maxHp": 195
+          },
+          {
+            "tag": "switch",
+            "targetId": "00000000-0000-0000-0000-000000000002",
+            "hpBefore": 235,
+            "maxBefore": 235,
+            "hpAfter": 235,
+            "maxHp": 235
+          },
+          {
+            "tag": "-damage",
+            "targetId": "00000000-0000-0000-0000-000000000002",
+            "hpBefore": 235,
+            "maxBefore": 235,
+            "hpAfter": 89,
+            "maxHp": 235
+          }
+        ],
+        "criticalTargets": [
+          "00000000-0000-0000-0000-000000000002"
+        ],
+        "statusEvents": [],
+        "finalHp": [
+          {
+            "uuid": "00000000-0000-0000-0000-000000000001",
+            "hp": 195,
+            "maxHp": 195,
+            "status": "",
+            "substituteHp": null
+          },
+          {
+            "uuid": "00000000-0000-0000-0000-000000000002",
+            "hp": 89,
+            "maxHp": 235,
+            "status": "",
+            "substituteHp": null
+          }
+        ],
+        "unloggedHpChanges": []
+      }
+    },
+    {
+      "caseName": "toxic-two-residuals",
+      "formatid": "gen9customgame",
+      "party": [
+        {
+          "side": "p1",
+          "player": "Alice",
+          "slot": 1,
+          "uuid": "00000000-0000-0000-0000-000000000001",
+          "species": "Crobat",
+          "nickname": "",
+          "level": 50,
+          "moves": "Toxic, Splash",
+          "hp": 160,
+          "maxHp": 160
+        },
+        {
+          "side": "p2",
+          "player": "Bob",
+          "slot": 1,
+          "uuid": "00000000-0000-0000-0000-000000000002",
+          "species": "Blissey",
+          "nickname": "",
+          "level": 50,
+          "moves": "Splash",
+          "hp": 330,
+          "maxHp": 330
+        }
+      ],
+      "packets": [
+        "update\n|t:|1792976474\n|gametype|singles",
+        "update\n|player|p1|Alice||",
+        "sideupdate\np1\n|request|{\"teamPreview\":true,\"side\":{\"name\":\"Alice\",\"id\":\"p1\",\"pokemon\":[{\"ident\":\"p1: Crobat\",\"details\":\"Crobat, 00000000-0000-0000-0000-000000000001, L50, M\",\"condition\":\"160/160\",\"active\":true,\"stats\":{\"atk\":110,\"def\":100,\"spa\":90,\"spd\":100,\"spe\":150},\"moves\":[\"toxic\",\"splash\"],\"baseAbility\":\"innerfocus\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Poison\",\"Flying\"],\"types\":[\"Poison\",\"Flying\"],\"ability\":\"innerfocus\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Poison\",\"terastallized\":\"\"}]}}",
+        "sideupdate\np2\n|request|{\"teamPreview\":true,\"side\":{\"name\":\"Bob\",\"id\":\"p2\",\"pokemon\":[{\"ident\":\"p2: Blissey\",\"details\":\"Blissey, 00000000-0000-0000-0000-000000000002, L50, M\",\"condition\":\"330/330\",\"active\":true,\"stats\":{\"atk\":30,\"def\":30,\"spa\":95,\"spd\":155,\"spe\":75},\"moves\":[\"splash\"],\"baseAbility\":\"healer\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Normal\"],\"types\":[\"Normal\"],\"ability\":\"healer\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Normal\",\"terastallized\":\"\"}]}}",
+        "update\n|player|p2|Bob||\n|teamsize|p1|1\n|teamsize|p2|1\n|gen|9\n|tier|[Gen 9] Custom Game\n|clearpoke\n|poke|p1|Crobat, 00000000-0000-0000-0000-000000000001, L50, M|\n|poke|p2|Blissey, 00000000-0000-0000-0000-000000000002, L50, M|\n|teampreview",
+        "sideupdate\np1\n|request|{\"active\":[{\"moves\":[{\"move\":\"Toxic\",\"id\":\"toxic\",\"pp\":40,\"maxpp\":40,\"target\":\"normal\",\"disabled\":false},{\"move\":\"Splash\",\"id\":\"splash\",\"pp\":40,\"maxpp\":40,\"target\":\"self\",\"disabled\":false}],\"canTerastallize\":\"Poison\"}],\"side\":{\"name\":\"Alice\",\"id\":\"p1\",\"pokemon\":[{\"ident\":\"p1: Crobat\",\"details\":\"Crobat, 00000000-0000-0000-0000-000000000001, L50, M\",\"condition\":\"160/160\",\"active\":true,\"stats\":{\"atk\":110,\"def\":100,\"spa\":90,\"spd\":100,\"spe\":150},\"moves\":[\"toxic\",\"splash\"],\"baseAbility\":\"innerfocus\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Poison\",\"Flying\"],\"types\":[\"Poison\",\"Flying\"],\"ability\":\"innerfocus\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Poison\",\"terastallized\":\"\"}]}}",
+        "sideupdate\np2\n|request|{\"active\":[{\"moves\":[{\"move\":\"Splash\",\"id\":\"splash\",\"pp\":40,\"maxpp\":40,\"target\":\"self\",\"disabled\":false}],\"canTerastallize\":\"Normal\"}],\"side\":{\"name\":\"Bob\",\"id\":\"p2\",\"pokemon\":[{\"ident\":\"p2: Blissey\",\"details\":\"Blissey, 00000000-0000-0000-0000-000000000002, L50, M\",\"condition\":\"330/330\",\"active\":true,\"stats\":{\"atk\":30,\"def\":30,\"spa\":95,\"spd\":155,\"spe\":75},\"moves\":[\"splash\"],\"baseAbility\":\"healer\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Normal\"],\"types\":[\"Normal\"],\"ability\":\"healer\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Normal\",\"terastallized\":\"\"}]}}",
+        "update\n|\n|t:|1792976474\n|start\n|split|p1\n|switch|p1a: 00000000-0000-0000-0000-000000000001|Crobat, 00000000-0000-0000-0000-000000000001, L50, M|160/160\n|switch|p1a: 00000000-0000-0000-0000-000000000001|Crobat, 00000000-0000-0000-0000-000000000001, L50, M|160/160\n|split|p2\n|switch|p2a: 00000000-0000-0000-0000-000000000002|Blissey, 00000000-0000-0000-0000-000000000002, L50, M|330/330\n|switch|p2a: 00000000-0000-0000-0000-000000000002|Blissey, 00000000-0000-0000-0000-000000000002, L50, M|330/330\n|turn|1\n|pp_update|p1: 00000000-0000-0000-0000-000000000001|toxic: 40, splash: 40\n|pp_update|p2: 00000000-0000-0000-0000-000000000002|splash: 40",
+        "sideupdate\np1\n|request|{\"active\":[{\"moves\":[{\"move\":\"Toxic\",\"id\":\"toxic\",\"pp\":39,\"maxpp\":40,\"target\":\"normal\",\"disabled\":false},{\"move\":\"Splash\",\"id\":\"splash\",\"pp\":40,\"maxpp\":40,\"target\":\"self\",\"disabled\":false}],\"canTerastallize\":\"Poison\"}],\"side\":{\"name\":\"Alice\",\"id\":\"p1\",\"pokemon\":[{\"ident\":\"p1: Crobat\",\"details\":\"Crobat, 00000000-0000-0000-0000-000000000001, L50, M\",\"condition\":\"160/160\",\"active\":true,\"stats\":{\"atk\":110,\"def\":100,\"spa\":90,\"spd\":100,\"spe\":150},\"moves\":[\"toxic\",\"splash\"],\"baseAbility\":\"innerfocus\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Poison\",\"Flying\"],\"types\":[\"Poison\",\"Flying\"],\"ability\":\"innerfocus\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Poison\",\"terastallized\":\"\"}]}}",
+        "sideupdate\np2\n|request|{\"active\":[{\"moves\":[{\"move\":\"Splash\",\"id\":\"splash\",\"pp\":39,\"maxpp\":40,\"target\":\"self\",\"disabled\":false}],\"canTerastallize\":\"Normal\"}],\"side\":{\"name\":\"Bob\",\"id\":\"p2\",\"pokemon\":[{\"ident\":\"p2: Blissey\",\"details\":\"Blissey, 00000000-0000-0000-0000-000000000002, L50, M\",\"condition\":\"310/330 tox\",\"active\":true,\"stats\":{\"atk\":30,\"def\":30,\"spa\":95,\"spd\":155,\"spe\":75},\"moves\":[\"splash\"],\"baseAbility\":\"healer\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Normal\"],\"types\":[\"Normal\"],\"ability\":\"healer\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Normal\",\"terastallized\":\"\"}]}}",
+        "update\n|\n|t:|1792976474\n|move|p1a: 00000000-0000-0000-0000-000000000001|Toxic|p2a: 00000000-0000-0000-0000-000000000002\n|-status|p2a: 00000000-0000-0000-0000-000000000002|tox\n|move|p2a: 00000000-0000-0000-0000-000000000002|Splash|p2a: 00000000-0000-0000-0000-000000000002\n|-nothing\n|\n|split|p2\n|-damage|p2a: 00000000-0000-0000-0000-000000000002|310/330 tox|[from] psn\n|-damage|p2a: 00000000-0000-0000-0000-000000000002|310/330 tox|[from] psn\n|upkeep\n|turn|2\n|pp_update|p1: 00000000-0000-0000-0000-000000000001|toxic: 39, splash: 40\n|pp_update|p2: 00000000-0000-0000-0000-000000000002|splash: 39",
+        "sideupdate\np1\n|request|{\"active\":[{\"moves\":[{\"move\":\"Toxic\",\"id\":\"toxic\",\"pp\":39,\"maxpp\":40,\"target\":\"normal\",\"disabled\":false},{\"move\":\"Splash\",\"id\":\"splash\",\"pp\":39,\"maxpp\":40,\"target\":\"self\",\"disabled\":false}],\"canTerastallize\":\"Poison\"}],\"side\":{\"name\":\"Alice\",\"id\":\"p1\",\"pokemon\":[{\"ident\":\"p1: Crobat\",\"details\":\"Crobat, 00000000-0000-0000-0000-000000000001, L50, M\",\"condition\":\"160/160\",\"active\":true,\"stats\":{\"atk\":110,\"def\":100,\"spa\":90,\"spd\":100,\"spe\":150},\"moves\":[\"toxic\",\"splash\"],\"baseAbility\":\"innerfocus\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Poison\",\"Flying\"],\"types\":[\"Poison\",\"Flying\"],\"ability\":\"innerfocus\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Poison\",\"terastallized\":\"\"}]}}",
+        "sideupdate\np2\n|request|{\"active\":[{\"moves\":[{\"move\":\"Splash\",\"id\":\"splash\",\"pp\":38,\"maxpp\":40,\"target\":\"self\",\"disabled\":false}],\"canTerastallize\":\"Normal\"}],\"side\":{\"name\":\"Bob\",\"id\":\"p2\",\"pokemon\":[{\"ident\":\"p2: Blissey\",\"details\":\"Blissey, 00000000-0000-0000-0000-000000000002, L50, M\",\"condition\":\"270/330 tox\",\"active\":true,\"stats\":{\"atk\":30,\"def\":30,\"spa\":95,\"spd\":155,\"spe\":75},\"moves\":[\"splash\"],\"baseAbility\":\"healer\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Normal\"],\"types\":[\"Normal\"],\"ability\":\"healer\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Normal\",\"terastallized\":\"\"}]}}",
+        "update\n|\n|t:|1792976474\n|move|p1a: 00000000-0000-0000-0000-000000000001|Splash|p1a: 00000000-0000-0000-0000-000000000001\n|-nothing\n|move|p2a: 00000000-0000-0000-0000-000000000002|Splash|p2a: 00000000-0000-0000-0000-000000000002\n|-nothing\n|\n|split|p2\n|-damage|p2a: 00000000-0000-0000-0000-000000000002|270/330 tox|[from] psn\n|-damage|p2a: 00000000-0000-0000-0000-000000000002|270/330 tox|[from] psn\n|upkeep\n|turn|3\n|pp_update|p1: 00000000-0000-0000-0000-000000000001|toxic: 39, splash: 39\n|pp_update|p2: 00000000-0000-0000-0000-000000000002|splash: 38"
+      ],
+      "expected": {
+        "damage": [
+          {
+            "targetId": "00000000-0000-0000-0000-000000000002",
+            "sourceId": "",
+            "amount": 20,
+            "requested": 20,
+            "hpBefore": 330,
+            "hpAfter": 310,
+            "maxHp": 330,
+            "effect": "tox"
+          },
+          {
+            "targetId": "00000000-0000-0000-0000-000000000002",
+            "sourceId": "",
+            "amount": 40,
+            "requested": 40,
+            "hpBefore": 310,
+            "hpAfter": 270,
+            "maxHp": 330,
+            "effect": "tox"
+          }
+        ],
+        "healing": [],
+        "hpEvents": [
+          {
+            "tag": "switch",
+            "targetId": "00000000-0000-0000-0000-000000000001",
+            "hpBefore": 160,
+            "maxBefore": 160,
+            "hpAfter": 160,
+            "maxHp": 160
+          },
+          {
+            "tag": "switch",
+            "targetId": "00000000-0000-0000-0000-000000000002",
+            "hpBefore": 330,
+            "maxBefore": 330,
+            "hpAfter": 330,
+            "maxHp": 330
+          },
+          {
+            "tag": "-damage",
+            "targetId": "00000000-0000-0000-0000-000000000002",
+            "hpBefore": 330,
+            "maxBefore": 330,
+            "hpAfter": 310,
+            "maxHp": 330
+          },
+          {
+            "tag": "-damage",
+            "targetId": "00000000-0000-0000-0000-000000000002",
+            "hpBefore": 310,
+            "maxBefore": 330,
+            "hpAfter": 270,
+            "maxHp": 330
+          }
+        ],
+        "criticalTargets": [],
+        "statusEvents": [
+          {
+            "tag": "-status",
+            "targetId": "00000000-0000-0000-0000-000000000002",
+            "status": "tox"
+          }
+        ],
+        "finalHp": [
+          {
+            "uuid": "00000000-0000-0000-0000-000000000001",
+            "hp": 160,
+            "maxHp": 160,
+            "status": "",
+            "substituteHp": null
+          },
+          {
+            "uuid": "00000000-0000-0000-0000-000000000002",
+            "hp": 270,
+            "maxHp": 330,
+            "status": "tox",
+            "substituteHp": null
+          }
+        ],
+        "unloggedHpChanges": []
+      }
+    },
+    {
+      "caseName": "burn-residual",
+      "formatid": "gen9customgame",
+      "party": [
+        {
+          "side": "p1",
+          "player": "Alice",
+          "slot": 1,
+          "uuid": "00000000-0000-0000-0000-000000000001",
+          "species": "Sableye",
+          "nickname": "",
+          "level": 50,
+          "moves": "Will-O-Wisp",
+          "hp": 125,
+          "maxHp": 125
+        },
+        {
+          "side": "p2",
+          "player": "Bob",
+          "slot": 1,
+          "uuid": "00000000-0000-0000-0000-000000000002",
+          "species": "Snorlax",
+          "nickname": "",
+          "level": 50,
+          "moves": "Splash",
+          "hp": 235,
+          "maxHp": 235
+        }
+      ],
+      "packets": [
+        "update\n|t:|1792976474\n|gametype|singles",
+        "update\n|player|p1|Alice||",
+        "sideupdate\np1\n|request|{\"teamPreview\":true,\"side\":{\"name\":\"Alice\",\"id\":\"p1\",\"pokemon\":[{\"ident\":\"p1: Sableye\",\"details\":\"Sableye, 00000000-0000-0000-0000-000000000001, L50, M\",\"condition\":\"125/125\",\"active\":true,\"stats\":{\"atk\":95,\"def\":95,\"spa\":85,\"spd\":85,\"spe\":70},\"moves\":[\"willowisp\"],\"baseAbility\":\"prankster\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Dark\",\"Ghost\"],\"types\":[\"Dark\",\"Ghost\"],\"ability\":\"prankster\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Dark\",\"terastallized\":\"\"}]}}",
+        "sideupdate\np2\n|request|{\"teamPreview\":true,\"side\":{\"name\":\"Bob\",\"id\":\"p2\",\"pokemon\":[{\"ident\":\"p2: Snorlax\",\"details\":\"Snorlax, 00000000-0000-0000-0000-000000000002, L50, M\",\"condition\":\"235/235\",\"active\":true,\"stats\":{\"atk\":130,\"def\":85,\"spa\":85,\"spd\":130,\"spe\":50},\"moves\":[\"splash\"],\"baseAbility\":\"immunity\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Normal\"],\"types\":[\"Normal\"],\"ability\":\"immunity\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Normal\",\"terastallized\":\"\"}]}}",
+        "update\n|player|p2|Bob||\n|teamsize|p1|1\n|teamsize|p2|1\n|gen|9\n|tier|[Gen 9] Custom Game\n|clearpoke\n|poke|p1|Sableye, 00000000-0000-0000-0000-000000000001, L50, M|\n|poke|p2|Snorlax, 00000000-0000-0000-0000-000000000002, L50, M|\n|teampreview",
+        "sideupdate\np1\n|request|{\"active\":[{\"moves\":[{\"move\":\"Will-O-Wisp\",\"id\":\"willowisp\",\"pp\":40,\"maxpp\":40,\"target\":\"normal\",\"disabled\":false}],\"canTerastallize\":\"Dark\"}],\"side\":{\"name\":\"Alice\",\"id\":\"p1\",\"pokemon\":[{\"ident\":\"p1: Sableye\",\"details\":\"Sableye, 00000000-0000-0000-0000-000000000001, L50, M\",\"condition\":\"125/125\",\"active\":true,\"stats\":{\"atk\":95,\"def\":95,\"spa\":85,\"spd\":85,\"spe\":70},\"moves\":[\"willowisp\"],\"baseAbility\":\"prankster\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Dark\",\"Ghost\"],\"types\":[\"Dark\",\"Ghost\"],\"ability\":\"prankster\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Dark\",\"terastallized\":\"\"}]}}",
+        "sideupdate\np2\n|request|{\"active\":[{\"moves\":[{\"move\":\"Splash\",\"id\":\"splash\",\"pp\":40,\"maxpp\":40,\"target\":\"self\",\"disabled\":false}],\"canTerastallize\":\"Normal\"}],\"side\":{\"name\":\"Bob\",\"id\":\"p2\",\"pokemon\":[{\"ident\":\"p2: Snorlax\",\"details\":\"Snorlax, 00000000-0000-0000-0000-000000000002, L50, M\",\"condition\":\"235/235\",\"active\":true,\"stats\":{\"atk\":130,\"def\":85,\"spa\":85,\"spd\":130,\"spe\":50},\"moves\":[\"splash\"],\"baseAbility\":\"immunity\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Normal\"],\"types\":[\"Normal\"],\"ability\":\"immunity\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Normal\",\"terastallized\":\"\"}]}}",
+        "update\n|\n|t:|1792976474\n|start\n|split|p1\n|switch|p1a: 00000000-0000-0000-0000-000000000001|Sableye, 00000000-0000-0000-0000-000000000001, L50, M|125/125\n|switch|p1a: 00000000-0000-0000-0000-000000000001|Sableye, 00000000-0000-0000-0000-000000000001, L50, M|125/125\n|split|p2\n|switch|p2a: 00000000-0000-0000-0000-000000000002|Snorlax, 00000000-0000-0000-0000-000000000002, L50, M|235/235\n|switch|p2a: 00000000-0000-0000-0000-000000000002|Snorlax, 00000000-0000-0000-0000-000000000002, L50, M|235/235\n|turn|1\n|pp_update|p1: 00000000-0000-0000-0000-000000000001|willowisp: 40\n|pp_update|p2: 00000000-0000-0000-0000-000000000002|splash: 40",
+        "sideupdate\np1\n|request|{\"active\":[{\"moves\":[{\"move\":\"Will-O-Wisp\",\"id\":\"willowisp\",\"pp\":39,\"maxpp\":40,\"target\":\"normal\",\"disabled\":false}],\"canTerastallize\":\"Dark\"}],\"side\":{\"name\":\"Alice\",\"id\":\"p1\",\"pokemon\":[{\"ident\":\"p1: Sableye\",\"details\":\"Sableye, 00000000-0000-0000-0000-000000000001, L50, M\",\"condition\":\"125/125\",\"active\":true,\"stats\":{\"atk\":95,\"def\":95,\"spa\":85,\"spd\":85,\"spe\":70},\"moves\":[\"willowisp\"],\"baseAbility\":\"prankster\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Dark\",\"Ghost\"],\"types\":[\"Dark\",\"Ghost\"],\"ability\":\"prankster\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Dark\",\"terastallized\":\"\"}]}}",
+        "sideupdate\np2\n|request|{\"active\":[{\"moves\":[{\"move\":\"Splash\",\"id\":\"splash\",\"pp\":39,\"maxpp\":40,\"target\":\"self\",\"disabled\":false}],\"canTerastallize\":\"Normal\"}],\"side\":{\"name\":\"Bob\",\"id\":\"p2\",\"pokemon\":[{\"ident\":\"p2: Snorlax\",\"details\":\"Snorlax, 00000000-0000-0000-0000-000000000002, L50, M\",\"condition\":\"221/235 brn\",\"active\":true,\"stats\":{\"atk\":130,\"def\":85,\"spa\":85,\"spd\":130,\"spe\":50},\"moves\":[\"splash\"],\"baseAbility\":\"immunity\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Normal\"],\"types\":[\"Normal\"],\"ability\":\"immunity\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Normal\",\"terastallized\":\"\"}]}}",
+        "update\n|\n|t:|1792976474\n|move|p1a: 00000000-0000-0000-0000-000000000001|Will-O-Wisp|p2a: 00000000-0000-0000-0000-000000000002\n|-status|p2a: 00000000-0000-0000-0000-000000000002|brn\n|move|p2a: 00000000-0000-0000-0000-000000000002|Splash|p2a: 00000000-0000-0000-0000-000000000002\n|-nothing\n|\n|split|p2\n|-damage|p2a: 00000000-0000-0000-0000-000000000002|221/235 brn|[from] brn\n|-damage|p2a: 00000000-0000-0000-0000-000000000002|221/235 brn|[from] brn\n|upkeep\n|turn|2\n|pp_update|p1: 00000000-0000-0000-0000-000000000001|willowisp: 39\n|pp_update|p2: 00000000-0000-0000-0000-000000000002|splash: 39"
+      ],
+      "expected": {
+        "damage": [
+          {
+            "targetId": "00000000-0000-0000-0000-000000000002",
+            "sourceId": "",
+            "amount": 14,
+            "requested": 14,
+            "hpBefore": 235,
+            "hpAfter": 221,
+            "maxHp": 235,
+            "effect": "brn"
+          }
+        ],
+        "healing": [],
+        "hpEvents": [
+          {
+            "tag": "switch",
+            "targetId": "00000000-0000-0000-0000-000000000001",
+            "hpBefore": 125,
+            "maxBefore": 125,
+            "hpAfter": 125,
+            "maxHp": 125
+          },
+          {
+            "tag": "switch",
+            "targetId": "00000000-0000-0000-0000-000000000002",
+            "hpBefore": 235,
+            "maxBefore": 235,
+            "hpAfter": 235,
+            "maxHp": 235
+          },
+          {
+            "tag": "-damage",
+            "targetId": "00000000-0000-0000-0000-000000000002",
+            "hpBefore": 235,
+            "maxBefore": 235,
+            "hpAfter": 221,
+            "maxHp": 235
+          }
+        ],
+        "criticalTargets": [],
+        "statusEvents": [
+          {
+            "tag": "-status",
+            "targetId": "00000000-0000-0000-0000-000000000002",
+            "status": "brn"
+          }
+        ],
+        "finalHp": [
+          {
+            "uuid": "00000000-0000-0000-0000-000000000001",
+            "hp": 125,
+            "maxHp": 125,
+            "status": "",
+            "substituteHp": null
+          },
+          {
+            "uuid": "00000000-0000-0000-0000-000000000002",
+            "hp": 221,
+            "maxHp": 235,
+            "status": "brn",
+            "substituteHp": null
+          }
+        ],
+        "unloggedHpChanges": []
+      }
+    },
+    {
+      "caseName": "five-hit-skill-link",
+      "formatid": "gen9customgame",
+      "party": [
+        {
+          "side": "p1",
+          "player": "Alice",
+          "slot": 1,
+          "uuid": "00000000-0000-0000-0000-000000000001",
+          "species": "Cloyster",
+          "nickname": "",
+          "level": 50,
+          "moves": "Icicle Spear",
+          "hp": 125,
+          "maxHp": 125
+        },
+        {
+          "side": "p2",
+          "player": "Bob",
+          "slot": 1,
+          "uuid": "00000000-0000-0000-0000-000000000002",
+          "species": "Snorlax",
+          "nickname": "",
+          "level": 50,
+          "moves": "Splash",
+          "hp": 235,
+          "maxHp": 235
+        }
+      ],
+      "packets": [
+        "update\n|t:|1792976474\n|gametype|singles",
+        "update\n|player|p1|Alice||",
+        "sideupdate\np1\n|request|{\"teamPreview\":true,\"side\":{\"name\":\"Alice\",\"id\":\"p1\",\"pokemon\":[{\"ident\":\"p1: Cloyster\",\"details\":\"Cloyster, 00000000-0000-0000-0000-000000000001, L50, M\",\"condition\":\"125/125\",\"active\":true,\"stats\":{\"atk\":115,\"def\":200,\"spa\":105,\"spd\":65,\"spe\":90},\"moves\":[\"iciclespear\"],\"baseAbility\":\"skilllink\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Water\",\"Ice\"],\"types\":[\"Water\",\"Ice\"],\"ability\":\"skilllink\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Water\",\"terastallized\":\"\"}]}}",
+        "sideupdate\np2\n|request|{\"teamPreview\":true,\"side\":{\"name\":\"Bob\",\"id\":\"p2\",\"pokemon\":[{\"ident\":\"p2: Snorlax\",\"details\":\"Snorlax, 00000000-0000-0000-0000-000000000002, L50, M\",\"condition\":\"235/235\",\"active\":true,\"stats\":{\"atk\":130,\"def\":85,\"spa\":85,\"spd\":130,\"spe\":50},\"moves\":[\"splash\"],\"baseAbility\":\"immunity\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Normal\"],\"types\":[\"Normal\"],\"ability\":\"immunity\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Normal\",\"terastallized\":\"\"}]}}",
+        "update\n|player|p2|Bob||\n|teamsize|p1|1\n|teamsize|p2|1\n|gen|9\n|tier|[Gen 9] Custom Game\n|clearpoke\n|poke|p1|Cloyster, 00000000-0000-0000-0000-000000000001, L50, M|\n|poke|p2|Snorlax, 00000000-0000-0000-0000-000000000002, L50, M|\n|teampreview",
+        "sideupdate\np1\n|request|{\"active\":[{\"moves\":[{\"move\":\"Icicle Spear\",\"id\":\"iciclespear\",\"pp\":40,\"maxpp\":40,\"target\":\"normal\",\"disabled\":false}],\"canTerastallize\":\"Water\"}],\"side\":{\"name\":\"Alice\",\"id\":\"p1\",\"pokemon\":[{\"ident\":\"p1: Cloyster\",\"details\":\"Cloyster, 00000000-0000-0000-0000-000000000001, L50, M\",\"condition\":\"125/125\",\"active\":true,\"stats\":{\"atk\":115,\"def\":200,\"spa\":105,\"spd\":65,\"spe\":90},\"moves\":[\"iciclespear\"],\"baseAbility\":\"skilllink\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Water\",\"Ice\"],\"types\":[\"Water\",\"Ice\"],\"ability\":\"skilllink\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Water\",\"terastallized\":\"\"}]}}",
+        "sideupdate\np2\n|request|{\"active\":[{\"moves\":[{\"move\":\"Splash\",\"id\":\"splash\",\"pp\":40,\"maxpp\":40,\"target\":\"self\",\"disabled\":false}],\"canTerastallize\":\"Normal\"}],\"side\":{\"name\":\"Bob\",\"id\":\"p2\",\"pokemon\":[{\"ident\":\"p2: Snorlax\",\"details\":\"Snorlax, 00000000-0000-0000-0000-000000000002, L50, M\",\"condition\":\"235/235\",\"active\":true,\"stats\":{\"atk\":130,\"def\":85,\"spa\":85,\"spd\":130,\"spe\":50},\"moves\":[\"splash\"],\"baseAbility\":\"immunity\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Normal\"],\"types\":[\"Normal\"],\"ability\":\"immunity\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Normal\",\"terastallized\":\"\"}]}}",
+        "update\n|\n|t:|1792976474\n|start\n|split|p1\n|switch|p1a: 00000000-0000-0000-0000-000000000001|Cloyster, 00000000-0000-0000-0000-000000000001, L50, M|125/125\n|switch|p1a: 00000000-0000-0000-0000-000000000001|Cloyster, 00000000-0000-0000-0000-000000000001, L50, M|125/125\n|split|p2\n|switch|p2a: 00000000-0000-0000-0000-000000000002|Snorlax, 00000000-0000-0000-0000-000000000002, L50, M|235/235\n|switch|p2a: 00000000-0000-0000-0000-000000000002|Snorlax, 00000000-0000-0000-0000-000000000002, L50, M|235/235\n|turn|1\n|pp_update|p1: 00000000-0000-0000-0000-000000000001|iciclespear: 40\n|pp_update|p2: 00000000-0000-0000-0000-000000000002|splash: 40",
+        "sideupdate\np1\n|request|{\"active\":[{\"moves\":[{\"move\":\"Icicle Spear\",\"id\":\"iciclespear\",\"pp\":39,\"maxpp\":40,\"target\":\"normal\",\"disabled\":false}],\"canTerastallize\":\"Water\"}],\"side\":{\"name\":\"Alice\",\"id\":\"p1\",\"pokemon\":[{\"ident\":\"p1: Cloyster\",\"details\":\"Cloyster, 00000000-0000-0000-0000-000000000001, L50, M\",\"condition\":\"125/125\",\"active\":true,\"stats\":{\"atk\":115,\"def\":200,\"spa\":105,\"spd\":65,\"spe\":90},\"moves\":[\"iciclespear\"],\"baseAbility\":\"skilllink\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Water\",\"Ice\"],\"types\":[\"Water\",\"Ice\"],\"ability\":\"skilllink\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Water\",\"terastallized\":\"\"}]}}",
+        "sideupdate\np2\n|request|{\"active\":[{\"moves\":[{\"move\":\"Splash\",\"id\":\"splash\",\"pp\":39,\"maxpp\":40,\"target\":\"self\",\"disabled\":false}],\"canTerastallize\":\"Normal\"}],\"side\":{\"name\":\"Bob\",\"id\":\"p2\",\"pokemon\":[{\"ident\":\"p2: Snorlax\",\"details\":\"Snorlax, 00000000-0000-0000-0000-000000000002, L50, M\",\"condition\":\"133/235\",\"active\":true,\"stats\":{\"atk\":130,\"def\":85,\"spa\":85,\"spd\":130,\"spe\":50},\"moves\":[\"splash\"],\"baseAbility\":\"immunity\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Normal\"],\"types\":[\"Normal\"],\"ability\":\"immunity\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Normal\",\"terastallized\":\"\"}]}}",
+        "update\n|\n|t:|1792976474\n|move|p1a: 00000000-0000-0000-0000-000000000001|Icicle Spear|p2a: 00000000-0000-0000-0000-000000000002\n|split|p2\n|-damage|p2a: 00000000-0000-0000-0000-000000000002|214/235\n|-damage|p2a: 00000000-0000-0000-0000-000000000002|214/235\n|split|p2\n|-damage|p2a: 00000000-0000-0000-0000-000000000002|195/235\n|-damage|p2a: 00000000-0000-0000-0000-000000000002|195/235\n|split|p2\n|-damage|p2a: 00000000-0000-0000-0000-000000000002|176/235\n|-damage|p2a: 00000000-0000-0000-0000-000000000002|176/235\n|split|p2\n|-damage|p2a: 00000000-0000-0000-0000-000000000002|155/235\n|-damage|p2a: 00000000-0000-0000-0000-000000000002|155/235\n|split|p2\n|-damage|p2a: 00000000-0000-0000-0000-000000000002|133/235\n|-damage|p2a: 00000000-0000-0000-0000-000000000002|133/235\n|-hitcount|p2a: 00000000-0000-0000-0000-000000000002|5\n|move|p2a: 00000000-0000-0000-0000-000000000002|Splash|p2a: 00000000-0000-0000-0000-000000000002\n|-nothing\n|\n|upkeep\n|turn|2\n|pp_update|p1: 00000000-0000-0000-0000-000000000001|iciclespear: 39\n|pp_update|p2: 00000000-0000-0000-0000-000000000002|splash: 39"
+      ],
+      "expected": {
+        "damage": [
+          {
+            "targetId": "00000000-0000-0000-0000-000000000002",
+            "sourceId": "00000000-0000-0000-0000-000000000001",
+            "amount": 21,
+            "requested": 21,
+            "hpBefore": 235,
+            "hpAfter": 214,
+            "maxHp": 235,
+            "effect": "Icicle Spear"
+          },
+          {
+            "targetId": "00000000-0000-0000-0000-000000000002",
+            "sourceId": "00000000-0000-0000-0000-000000000001",
+            "amount": 19,
+            "requested": 19,
+            "hpBefore": 214,
+            "hpAfter": 195,
+            "maxHp": 235,
+            "effect": "Icicle Spear"
+          },
+          {
+            "targetId": "00000000-0000-0000-0000-000000000002",
+            "sourceId": "00000000-0000-0000-0000-000000000001",
+            "amount": 19,
+            "requested": 19,
+            "hpBefore": 195,
+            "hpAfter": 176,
+            "maxHp": 235,
+            "effect": "Icicle Spear"
+          },
+          {
+            "targetId": "00000000-0000-0000-0000-000000000002",
+            "sourceId": "00000000-0000-0000-0000-000000000001",
+            "amount": 21,
+            "requested": 21,
+            "hpBefore": 176,
+            "hpAfter": 155,
+            "maxHp": 235,
+            "effect": "Icicle Spear"
+          },
+          {
+            "targetId": "00000000-0000-0000-0000-000000000002",
+            "sourceId": "00000000-0000-0000-0000-000000000001",
+            "amount": 22,
+            "requested": 22,
+            "hpBefore": 155,
+            "hpAfter": 133,
+            "maxHp": 235,
+            "effect": "Icicle Spear"
+          }
+        ],
+        "healing": [],
+        "hpEvents": [
+          {
+            "tag": "switch",
+            "targetId": "00000000-0000-0000-0000-000000000001",
+            "hpBefore": 125,
+            "maxBefore": 125,
+            "hpAfter": 125,
+            "maxHp": 125
+          },
+          {
+            "tag": "switch",
+            "targetId": "00000000-0000-0000-0000-000000000002",
+            "hpBefore": 235,
+            "maxBefore": 235,
+            "hpAfter": 235,
+            "maxHp": 235
+          },
+          {
+            "tag": "-damage",
+            "targetId": "00000000-0000-0000-0000-000000000002",
+            "hpBefore": 235,
+            "maxBefore": 235,
+            "hpAfter": 214,
+            "maxHp": 235
+          },
+          {
+            "tag": "-damage",
+            "targetId": "00000000-0000-0000-0000-000000000002",
+            "hpBefore": 214,
+            "maxBefore": 235,
+            "hpAfter": 195,
+            "maxHp": 235
+          },
+          {
+            "tag": "-damage",
+            "targetId": "00000000-0000-0000-0000-000000000002",
+            "hpBefore": 195,
+            "maxBefore": 235,
+            "hpAfter": 176,
+            "maxHp": 235
+          },
+          {
+            "tag": "-damage",
+            "targetId": "00000000-0000-0000-0000-000000000002",
+            "hpBefore": 176,
+            "maxBefore": 235,
+            "hpAfter": 155,
+            "maxHp": 235
+          },
+          {
+            "tag": "-damage",
+            "targetId": "00000000-0000-0000-0000-000000000002",
+            "hpBefore": 155,
+            "maxBefore": 235,
+            "hpAfter": 133,
+            "maxHp": 235
+          }
+        ],
+        "criticalTargets": [],
+        "statusEvents": [],
+        "finalHp": [
+          {
+            "uuid": "00000000-0000-0000-0000-000000000001",
+            "hp": 125,
+            "maxHp": 125,
+            "status": "",
+            "substituteHp": null
+          },
+          {
+            "uuid": "00000000-0000-0000-0000-000000000002",
+            "hp": 133,
+            "maxHp": 235,
+            "status": "",
+            "substituteHp": null
+          }
+        ],
+        "unloggedHpChanges": []
+      }
+    },
+    {
+      "caseName": "recoil",
+      "formatid": "gen9customgame",
+      "party": [
+        {
+          "side": "p1",
+          "player": "Alice",
+          "slot": 1,
+          "uuid": "00000000-0000-0000-0000-000000000001",
+          "species": "Staraptor",
+          "nickname": "",
+          "level": 50,
+          "moves": "Brave Bird",
+          "hp": 160,
+          "maxHp": 160
+        },
+        {
+          "side": "p2",
+          "player": "Bob",
+          "slot": 1,
+          "uuid": "00000000-0000-0000-0000-000000000002",
+          "species": "Snorlax",
+          "nickname": "",
+          "level": 50,
+          "moves": "Splash",
+          "hp": 235,
+          "maxHp": 235
+        }
+      ],
+      "packets": [
+        "update\n|t:|1792976474\n|gametype|singles",
+        "update\n|player|p1|Alice||",
+        "sideupdate\np1\n|request|{\"teamPreview\":true,\"side\":{\"name\":\"Alice\",\"id\":\"p1\",\"pokemon\":[{\"ident\":\"p1: Staraptor\",\"details\":\"Staraptor, 00000000-0000-0000-0000-000000000001, L50, M\",\"condition\":\"160/160\",\"active\":true,\"stats\":{\"atk\":140,\"def\":90,\"spa\":70,\"spd\":80,\"spe\":120},\"moves\":[\"bravebird\"],\"baseAbility\":\"reckless\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Normal\",\"Flying\"],\"types\":[\"Normal\",\"Flying\"],\"ability\":\"reckless\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Normal\",\"terastallized\":\"\"}]}}",
+        "sideupdate\np2\n|request|{\"teamPreview\":true,\"side\":{\"name\":\"Bob\",\"id\":\"p2\",\"pokemon\":[{\"ident\":\"p2: Snorlax\",\"details\":\"Snorlax, 00000000-0000-0000-0000-000000000002, L50, M\",\"condition\":\"235/235\",\"active\":true,\"stats\":{\"atk\":130,\"def\":85,\"spa\":85,\"spd\":130,\"spe\":50},\"moves\":[\"splash\"],\"baseAbility\":\"immunity\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Normal\"],\"types\":[\"Normal\"],\"ability\":\"immunity\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Normal\",\"terastallized\":\"\"}]}}",
+        "update\n|player|p2|Bob||\n|teamsize|p1|1\n|teamsize|p2|1\n|gen|9\n|tier|[Gen 9] Custom Game\n|clearpoke\n|poke|p1|Staraptor, 00000000-0000-0000-0000-000000000001, L50, M|\n|poke|p2|Snorlax, 00000000-0000-0000-0000-000000000002, L50, M|\n|teampreview",
+        "sideupdate\np1\n|request|{\"active\":[{\"moves\":[{\"move\":\"Brave Bird\",\"id\":\"bravebird\",\"pp\":40,\"maxpp\":40,\"target\":\"any\",\"disabled\":false}],\"canTerastallize\":\"Normal\"}],\"side\":{\"name\":\"Alice\",\"id\":\"p1\",\"pokemon\":[{\"ident\":\"p1: Staraptor\",\"details\":\"Staraptor, 00000000-0000-0000-0000-000000000001, L50, M\",\"condition\":\"160/160\",\"active\":true,\"stats\":{\"atk\":140,\"def\":90,\"spa\":70,\"spd\":80,\"spe\":120},\"moves\":[\"bravebird\"],\"baseAbility\":\"reckless\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Normal\",\"Flying\"],\"types\":[\"Normal\",\"Flying\"],\"ability\":\"reckless\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Normal\",\"terastallized\":\"\"}]}}",
+        "sideupdate\np2\n|request|{\"active\":[{\"moves\":[{\"move\":\"Splash\",\"id\":\"splash\",\"pp\":40,\"maxpp\":40,\"target\":\"self\",\"disabled\":false}],\"canTerastallize\":\"Normal\"}],\"side\":{\"name\":\"Bob\",\"id\":\"p2\",\"pokemon\":[{\"ident\":\"p2: Snorlax\",\"details\":\"Snorlax, 00000000-0000-0000-0000-000000000002, L50, M\",\"condition\":\"235/235\",\"active\":true,\"stats\":{\"atk\":130,\"def\":85,\"spa\":85,\"spd\":130,\"spe\":50},\"moves\":[\"splash\"],\"baseAbility\":\"immunity\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Normal\"],\"types\":[\"Normal\"],\"ability\":\"immunity\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Normal\",\"terastallized\":\"\"}]}}",
+        "update\n|\n|t:|1792976474\n|start\n|split|p1\n|switch|p1a: 00000000-0000-0000-0000-000000000001|Staraptor, 00000000-0000-0000-0000-000000000001, L50, M|160/160\n|switch|p1a: 00000000-0000-0000-0000-000000000001|Staraptor, 00000000-0000-0000-0000-000000000001, L50, M|160/160\n|split|p2\n|switch|p2a: 00000000-0000-0000-0000-000000000002|Snorlax, 00000000-0000-0000-0000-000000000002, L50, M|235/235\n|switch|p2a: 00000000-0000-0000-0000-000000000002|Snorlax, 00000000-0000-0000-0000-000000000002, L50, M|235/235\n|turn|1\n|pp_update|p1: 00000000-0000-0000-0000-000000000001|bravebird: 40\n|pp_update|p2: 00000000-0000-0000-0000-000000000002|splash: 40",
+        "sideupdate\np1\n|request|{\"active\":[{\"moves\":[{\"move\":\"Brave Bird\",\"id\":\"bravebird\",\"pp\":39,\"maxpp\":40,\"target\":\"any\",\"disabled\":false}],\"canTerastallize\":\"Normal\"}],\"side\":{\"name\":\"Alice\",\"id\":\"p1\",\"pokemon\":[{\"ident\":\"p1: Staraptor\",\"details\":\"Staraptor, 00000000-0000-0000-0000-000000000001, L50, M\",\"condition\":\"113/160\",\"active\":true,\"stats\":{\"atk\":140,\"def\":90,\"spa\":70,\"spd\":80,\"spe\":120},\"moves\":[\"bravebird\"],\"baseAbility\":\"reckless\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Normal\",\"Flying\"],\"types\":[\"Normal\",\"Flying\"],\"ability\":\"reckless\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Normal\",\"terastallized\":\"\"}]}}",
+        "sideupdate\np2\n|request|{\"active\":[{\"moves\":[{\"move\":\"Splash\",\"id\":\"splash\",\"pp\":39,\"maxpp\":40,\"target\":\"self\",\"disabled\":false}],\"canTerastallize\":\"Normal\"}],\"side\":{\"name\":\"Bob\",\"id\":\"p2\",\"pokemon\":[{\"ident\":\"p2: Snorlax\",\"details\":\"Snorlax, 00000000-0000-0000-0000-000000000002, L50, M\",\"condition\":\"93/235\",\"active\":true,\"stats\":{\"atk\":130,\"def\":85,\"spa\":85,\"spd\":130,\"spe\":50},\"moves\":[\"splash\"],\"baseAbility\":\"immunity\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Normal\"],\"types\":[\"Normal\"],\"ability\":\"immunity\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Normal\",\"terastallized\":\"\"}]}}",
+        "update\n|\n|t:|1792976474\n|move|p1a: 00000000-0000-0000-0000-000000000001|Brave Bird|p2a: 00000000-0000-0000-0000-000000000002\n|debug|Reckless boost\n|split|p2\n|-damage|p2a: 00000000-0000-0000-0000-000000000002|93/235\n|-damage|p2a: 00000000-0000-0000-0000-000000000002|93/235\n|split|p1\n|-damage|p1a: 00000000-0000-0000-0000-000000000001|113/160|[from] Recoil\n|-damage|p1a: 00000000-0000-0000-0000-000000000001|113/160|[from] Recoil\n|move|p2a: 00000000-0000-0000-0000-000000000002|Splash|p2a: 00000000-0000-0000-0000-000000000002\n|-nothing\n|\n|upkeep\n|turn|2\n|pp_update|p1: 00000000-0000-0000-0000-000000000001|bravebird: 39\n|pp_update|p2: 00000000-0000-0000-0000-000000000002|splash: 39"
+      ],
+      "expected": {
+        "damage": [
+          {
+            "targetId": "00000000-0000-0000-0000-000000000002",
+            "sourceId": "00000000-0000-0000-0000-000000000001",
+            "amount": 142,
+            "requested": 142,
+            "hpBefore": 235,
+            "hpAfter": 93,
+            "maxHp": 235,
+            "effect": "Brave Bird"
+          },
+          {
+            "targetId": "00000000-0000-0000-0000-000000000001",
+            "sourceId": "00000000-0000-0000-0000-000000000001",
+            "amount": 47,
+            "requested": 47,
+            "hpBefore": 160,
+            "hpAfter": 113,
+            "maxHp": 160,
+            "effect": "Recoil"
+          }
+        ],
+        "healing": [],
+        "hpEvents": [
+          {
+            "tag": "switch",
+            "targetId": "00000000-0000-0000-0000-000000000001",
+            "hpBefore": 160,
+            "maxBefore": 160,
+            "hpAfter": 160,
+            "maxHp": 160
+          },
+          {
+            "tag": "switch",
+            "targetId": "00000000-0000-0000-0000-000000000002",
+            "hpBefore": 235,
+            "maxBefore": 235,
+            "hpAfter": 235,
+            "maxHp": 235
+          },
+          {
+            "tag": "-damage",
+            "targetId": "00000000-0000-0000-0000-000000000002",
+            "hpBefore": 235,
+            "maxBefore": 235,
+            "hpAfter": 93,
+            "maxHp": 235
+          },
+          {
+            "tag": "-damage",
+            "targetId": "00000000-0000-0000-0000-000000000001",
+            "hpBefore": 160,
+            "maxBefore": 160,
+            "hpAfter": 113,
+            "maxHp": 160
+          }
+        ],
+        "criticalTargets": [],
+        "statusEvents": [],
+        "finalHp": [
+          {
+            "uuid": "00000000-0000-0000-0000-000000000001",
+            "hp": 113,
+            "maxHp": 160,
+            "status": "",
+            "substituteHp": null
+          },
+          {
+            "uuid": "00000000-0000-0000-0000-000000000002",
+            "hp": 93,
+            "maxHp": 235,
+            "status": "",
+            "substituteHp": null
+          }
+        ],
+        "unloggedHpChanges": []
+      }
+    },
+    {
+      "caseName": "drain-and-heal",
+      "formatid": "gen9customgame",
+      "party": [
+        {
+          "side": "p1",
+          "player": "Alice",
+          "slot": 1,
+          "uuid": "00000000-0000-0000-0000-000000000001",
+          "species": "Breloom",
+          "nickname": "",
+          "level": 50,
+          "moves": "Drain Punch",
+          "hp": 40,
+          "maxHp": 135
+        },
+        {
+          "side": "p2",
+          "player": "Bob",
+          "slot": 1,
+          "uuid": "00000000-0000-0000-0000-000000000002",
+          "species": "Snorlax",
+          "nickname": "",
+          "level": 50,
+          "moves": "Splash",
+          "hp": 235,
+          "maxHp": 235
+        }
+      ],
+      "packets": [
+        "update\n|t:|1792976474\n|gametype|singles",
+        "update\n|player|p1|Alice||",
+        "sideupdate\np1\n|request|{\"teamPreview\":true,\"side\":{\"name\":\"Alice\",\"id\":\"p1\",\"pokemon\":[{\"ident\":\"p1: Breloom\",\"details\":\"Breloom, 00000000-0000-0000-0000-000000000001, L50, M\",\"condition\":\"40/135\",\"active\":true,\"stats\":{\"atk\":150,\"def\":100,\"spa\":80,\"spd\":80,\"spe\":90},\"moves\":[\"drainpunch\"],\"baseAbility\":\"effectspore\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Grass\",\"Fighting\"],\"types\":[\"Grass\",\"Fighting\"],\"ability\":\"effectspore\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Grass\",\"terastallized\":\"\"}]}}",
+        "sideupdate\np2\n|request|{\"teamPreview\":true,\"side\":{\"name\":\"Bob\",\"id\":\"p2\",\"pokemon\":[{\"ident\":\"p2: Snorlax\",\"details\":\"Snorlax, 00000000-0000-0000-0000-000000000002, L50, M\",\"condition\":\"235/235\",\"active\":true,\"stats\":{\"atk\":130,\"def\":85,\"spa\":85,\"spd\":130,\"spe\":50},\"moves\":[\"splash\"],\"baseAbility\":\"immunity\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Normal\"],\"types\":[\"Normal\"],\"ability\":\"immunity\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Normal\",\"terastallized\":\"\"}]}}",
+        "update\n|player|p2|Bob||\n|teamsize|p1|1\n|teamsize|p2|1\n|gen|9\n|tier|[Gen 9] Custom Game\n|clearpoke\n|poke|p1|Breloom, 00000000-0000-0000-0000-000000000001, L50, M|\n|poke|p2|Snorlax, 00000000-0000-0000-0000-000000000002, L50, M|\n|teampreview",
+        "sideupdate\np1\n|request|{\"active\":[{\"moves\":[{\"move\":\"Drain Punch\",\"id\":\"drainpunch\",\"pp\":40,\"maxpp\":40,\"target\":\"normal\",\"disabled\":false}],\"canTerastallize\":\"Grass\"}],\"side\":{\"name\":\"Alice\",\"id\":\"p1\",\"pokemon\":[{\"ident\":\"p1: Breloom\",\"details\":\"Breloom, 00000000-0000-0000-0000-000000000001, L50, M\",\"condition\":\"40/135\",\"active\":true,\"stats\":{\"atk\":150,\"def\":100,\"spa\":80,\"spd\":80,\"spe\":90},\"moves\":[\"drainpunch\"],\"baseAbility\":\"effectspore\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Grass\",\"Fighting\"],\"types\":[\"Grass\",\"Fighting\"],\"ability\":\"effectspore\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Grass\",\"terastallized\":\"\"}]}}",
+        "sideupdate\np2\n|request|{\"active\":[{\"moves\":[{\"move\":\"Splash\",\"id\":\"splash\",\"pp\":40,\"maxpp\":40,\"target\":\"self\",\"disabled\":false}],\"canTerastallize\":\"Normal\"}],\"side\":{\"name\":\"Bob\",\"id\":\"p2\",\"pokemon\":[{\"ident\":\"p2: Snorlax\",\"details\":\"Snorlax, 00000000-0000-0000-0000-000000000002, L50, M\",\"condition\":\"235/235\",\"active\":true,\"stats\":{\"atk\":130,\"def\":85,\"spa\":85,\"spd\":130,\"spe\":50},\"moves\":[\"splash\"],\"baseAbility\":\"immunity\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Normal\"],\"types\":[\"Normal\"],\"ability\":\"immunity\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Normal\",\"terastallized\":\"\"}]}}",
+        "update\n|\n|t:|1792976474\n|start\n|split|p1\n|switch|p1a: 00000000-0000-0000-0000-000000000001|Breloom, 00000000-0000-0000-0000-000000000001, L50, M|40/135\n|switch|p1a: 00000000-0000-0000-0000-000000000001|Breloom, 00000000-0000-0000-0000-000000000001, L50, M|40/135\n|split|p2\n|switch|p2a: 00000000-0000-0000-0000-000000000002|Snorlax, 00000000-0000-0000-0000-000000000002, L50, M|235/235\n|switch|p2a: 00000000-0000-0000-0000-000000000002|Snorlax, 00000000-0000-0000-0000-000000000002, L50, M|235/235\n|turn|1\n|pp_update|p1: 00000000-0000-0000-0000-000000000001|drainpunch: 40\n|pp_update|p2: 00000000-0000-0000-0000-000000000002|splash: 40",
+        "sideupdate\np1\n|request|{\"active\":[{\"moves\":[{\"move\":\"Drain Punch\",\"id\":\"drainpunch\",\"pp\":39,\"maxpp\":40,\"target\":\"normal\",\"disabled\":false}],\"canTerastallize\":\"Grass\"}],\"side\":{\"name\":\"Alice\",\"id\":\"p1\",\"pokemon\":[{\"ident\":\"p1: Breloom\",\"details\":\"Breloom, 00000000-0000-0000-0000-000000000001, L50, M\",\"condition\":\"121/135\",\"active\":true,\"stats\":{\"atk\":150,\"def\":100,\"spa\":80,\"spd\":80,\"spe\":90},\"moves\":[\"drainpunch\"],\"baseAbility\":\"effectspore\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Grass\",\"Fighting\"],\"types\":[\"Grass\",\"Fighting\"],\"ability\":\"effectspore\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Grass\",\"terastallized\":\"\"}]}}",
+        "sideupdate\np2\n|request|{\"active\":[{\"moves\":[{\"move\":\"Splash\",\"id\":\"splash\",\"pp\":39,\"maxpp\":40,\"target\":\"self\",\"disabled\":false}],\"canTerastallize\":\"Normal\"}],\"side\":{\"name\":\"Bob\",\"id\":\"p2\",\"pokemon\":[{\"ident\":\"p2: Snorlax\",\"details\":\"Snorlax, 00000000-0000-0000-0000-000000000002, L50, M\",\"condition\":\"73/235\",\"active\":true,\"stats\":{\"atk\":130,\"def\":85,\"spa\":85,\"spd\":130,\"spe\":50},\"moves\":[\"splash\"],\"baseAbility\":\"immunity\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Normal\"],\"types\":[\"Normal\"],\"ability\":\"immunity\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Normal\",\"terastallized\":\"\"}]}}",
+        "update\n|\n|t:|1792976474\n|move|p1a: 00000000-0000-0000-0000-000000000001|Drain Punch|p2a: 00000000-0000-0000-0000-000000000002\n|-supereffective|p2a: 00000000-0000-0000-0000-000000000002\n|split|p2\n|-damage|p2a: 00000000-0000-0000-0000-000000000002|73/235\n|-damage|p2a: 00000000-0000-0000-0000-000000000002|73/235\n|split|p1\n|-heal|p1a: 00000000-0000-0000-0000-000000000001|121/135|[from] drain|[of] p2a: 00000000-0000-0000-0000-000000000002\n|-heal|p1a: 00000000-0000-0000-0000-000000000001|121/135|[from] drain|[of] p2a: 00000000-0000-0000-0000-000000000002\n|move|p2a: 00000000-0000-0000-0000-000000000002|Splash|p2a: 00000000-0000-0000-0000-000000000002\n|-nothing\n|\n|upkeep\n|turn|2\n|pp_update|p1: 00000000-0000-0000-0000-000000000001|drainpunch: 39\n|pp_update|p2: 00000000-0000-0000-0000-000000000002|splash: 39"
+      ],
+      "expected": {
+        "damage": [
+          {
+            "targetId": "00000000-0000-0000-0000-000000000002",
+            "sourceId": "00000000-0000-0000-0000-000000000001",
+            "amount": 162,
+            "requested": 162,
+            "hpBefore": 235,
+            "hpAfter": 73,
+            "maxHp": 235,
+            "effect": "Drain Punch"
+          }
+        ],
+        "healing": [
+          {
+            "targetId": "00000000-0000-0000-0000-000000000001",
+            "sourceId": "00000000-0000-0000-0000-000000000002",
+            "amount": 81,
+            "requested": 81,
+            "hpBefore": 40,
+            "hpAfter": 121,
+            "maxHp": 135,
+            "effect": "Drain"
+          }
+        ],
+        "hpEvents": [
+          {
+            "tag": "switch",
+            "targetId": "00000000-0000-0000-0000-000000000001",
+            "hpBefore": 40,
+            "maxBefore": 135,
+            "hpAfter": 40,
+            "maxHp": 135
+          },
+          {
+            "tag": "switch",
+            "targetId": "00000000-0000-0000-0000-000000000002",
+            "hpBefore": 235,
+            "maxBefore": 235,
+            "hpAfter": 235,
+            "maxHp": 235
+          },
+          {
+            "tag": "-damage",
+            "targetId": "00000000-0000-0000-0000-000000000002",
+            "hpBefore": 235,
+            "maxBefore": 235,
+            "hpAfter": 73,
+            "maxHp": 235
+          },
+          {
+            "tag": "-heal",
+            "targetId": "00000000-0000-0000-0000-000000000001",
+            "hpBefore": 40,
+            "maxBefore": 135,
+            "hpAfter": 121,
+            "maxHp": 135
+          }
+        ],
+        "criticalTargets": [],
+        "statusEvents": [],
+        "finalHp": [
+          {
+            "uuid": "00000000-0000-0000-0000-000000000001",
+            "hp": 121,
+            "maxHp": 135,
+            "status": "",
+            "substituteHp": null
+          },
+          {
+            "uuid": "00000000-0000-0000-0000-000000000002",
+            "hp": 73,
+            "maxHp": 235,
+            "status": "",
+            "substituteHp": null
+          }
+        ],
+        "unloggedHpChanges": []
+      }
+    },
+    {
+      "caseName": "knockout-overkill",
+      "formatid": "gen9customgame",
+      "party": [
+        {
+          "side": "p1",
+          "player": "Alice",
+          "slot": 1,
+          "uuid": "00000000-0000-0000-0000-000000000001",
+          "species": "Machamp",
+          "nickname": "",
+          "level": 50,
+          "moves": "Dynamic Punch",
+          "hp": 165,
+          "maxHp": 165
+        },
+        {
+          "side": "p2",
+          "player": "Bob",
+          "slot": 1,
+          "uuid": "00000000-0000-0000-0000-000000000002",
+          "species": "Magikarp",
+          "nickname": "",
+          "level": 50,
+          "moves": "Splash",
+          "hp": 1,
+          "maxHp": 95
+        }
+      ],
+      "packets": [
+        "update\n|t:|1792976474\n|gametype|singles",
+        "update\n|player|p1|Alice||",
+        "sideupdate\np1\n|request|{\"teamPreview\":true,\"side\":{\"name\":\"Alice\",\"id\":\"p1\",\"pokemon\":[{\"ident\":\"p1: Machamp\",\"details\":\"Machamp, 00000000-0000-0000-0000-000000000001, L50, M\",\"condition\":\"165/165\",\"active\":true,\"stats\":{\"atk\":150,\"def\":100,\"spa\":85,\"spd\":105,\"spe\":75},\"moves\":[\"dynamicpunch\"],\"baseAbility\":\"noguard\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Fighting\"],\"types\":[\"Fighting\"],\"ability\":\"noguard\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Fighting\",\"terastallized\":\"\"}]}}",
+        "sideupdate\np2\n|request|{\"teamPreview\":true,\"side\":{\"name\":\"Bob\",\"id\":\"p2\",\"pokemon\":[{\"ident\":\"p2: Magikarp\",\"details\":\"Magikarp, 00000000-0000-0000-0000-000000000002, L50, M\",\"condition\":\"1/95\",\"active\":true,\"stats\":{\"atk\":30,\"def\":75,\"spa\":35,\"spd\":40,\"spe\":100},\"moves\":[\"splash\"],\"baseAbility\":\"swiftswim\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Water\"],\"types\":[\"Water\"],\"ability\":\"swiftswim\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Water\",\"terastallized\":\"\"}]}}",
+        "update\n|player|p2|Bob||\n|teamsize|p1|1\n|teamsize|p2|1\n|gen|9\n|tier|[Gen 9] Custom Game\n|clearpoke\n|poke|p1|Machamp, 00000000-0000-0000-0000-000000000001, L50, M|\n|poke|p2|Magikarp, 00000000-0000-0000-0000-000000000002, L50, M|\n|teampreview",
+        "sideupdate\np1\n|request|{\"active\":[{\"moves\":[{\"move\":\"Dynamic Punch\",\"id\":\"dynamicpunch\",\"pp\":40,\"maxpp\":40,\"target\":\"normal\",\"disabled\":false}],\"canTerastallize\":\"Fighting\"}],\"side\":{\"name\":\"Alice\",\"id\":\"p1\",\"pokemon\":[{\"ident\":\"p1: Machamp\",\"details\":\"Machamp, 00000000-0000-0000-0000-000000000001, L50, M\",\"condition\":\"165/165\",\"active\":true,\"stats\":{\"atk\":150,\"def\":100,\"spa\":85,\"spd\":105,\"spe\":75},\"moves\":[\"dynamicpunch\"],\"baseAbility\":\"noguard\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Fighting\"],\"types\":[\"Fighting\"],\"ability\":\"noguard\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Fighting\",\"terastallized\":\"\"}]}}",
+        "sideupdate\np2\n|request|{\"active\":[{\"moves\":[{\"move\":\"Splash\",\"id\":\"splash\",\"pp\":40,\"maxpp\":40,\"target\":\"self\",\"disabled\":false}],\"canTerastallize\":\"Water\"}],\"side\":{\"name\":\"Bob\",\"id\":\"p2\",\"pokemon\":[{\"ident\":\"p2: Magikarp\",\"details\":\"Magikarp, 00000000-0000-0000-0000-000000000002, L50, M\",\"condition\":\"1/95\",\"active\":true,\"stats\":{\"atk\":30,\"def\":75,\"spa\":35,\"spd\":40,\"spe\":100},\"moves\":[\"splash\"],\"baseAbility\":\"swiftswim\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Water\"],\"types\":[\"Water\"],\"ability\":\"swiftswim\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Water\",\"terastallized\":\"\"}]}}",
+        "update\n|\n|t:|1792976474\n|start\n|split|p1\n|switch|p1a: 00000000-0000-0000-0000-000000000001|Machamp, 00000000-0000-0000-0000-000000000001, L50, M|165/165\n|switch|p1a: 00000000-0000-0000-0000-000000000001|Machamp, 00000000-0000-0000-0000-000000000001, L50, M|165/165\n|split|p2\n|switch|p2a: 00000000-0000-0000-0000-000000000002|Magikarp, 00000000-0000-0000-0000-000000000002, L50, M|1/95\n|switch|p2a: 00000000-0000-0000-0000-000000000002|Magikarp, 00000000-0000-0000-0000-000000000002, L50, M|1/95\n|turn|1\n|pp_update|p1: 00000000-0000-0000-0000-000000000001|dynamicpunch: 40\n|pp_update|p2: 00000000-0000-0000-0000-000000000002|splash: 40",
+        "update\n|\n|t:|1792976474\n|move|p2a: 00000000-0000-0000-0000-000000000002|Splash|p2a: 00000000-0000-0000-0000-000000000002\n|-nothing\n|move|p1a: 00000000-0000-0000-0000-000000000001|Dynamic Punch|p2a: 00000000-0000-0000-0000-000000000002\n|split|p2\n|-damage|p2a: 00000000-0000-0000-0000-000000000002|0 fnt\n|-damage|p2a: 00000000-0000-0000-0000-000000000002|0 fnt\n|debug|move failed because it did nothing\n|faint|p2a: 00000000-0000-0000-0000-000000000002\n|\n|win|Alice\n|pp_update|p1: 00000000-0000-0000-0000-000000000001|dynamicpunch: 39\n|pp_update|p2: 00000000-0000-0000-0000-000000000002|splash: 39",
+        "end\n{\"winner\":\"Alice\",\"seed\":[1,2,3,4],\"turns\":1,\"p1\":\"Alice\",\"p2\":\"Bob\",\"p1team\":[{\"species\":\"Machamp\",\"moves\":[\"dynamicpunch\"],\"ability\":\"noguard\",\"name\":\"Machamp\",\"gender\":\"M\",\"level\":50,\"uuid\":\"00000000-0000-0000-0000-000000000001\",\"movesInfo\":[{\"pp\":40,\"maxPp\":40}],\"evs\":{\"hp\":0,\"atk\":0,\"def\":0,\"spa\":0,\"spd\":0,\"spe\":0},\"ivs\":{\"hp\":31,\"atk\":31,\"def\":31,\"spa\":31,\"spd\":31,\"spe\":31}}],\"p2team\":[{\"species\":\"Magikarp\",\"moves\":[\"splash\"],\"ability\":\"swiftswim\",\"currentHealth\":1,\"name\":\"Magikarp\",\"gender\":\"M\",\"level\":50,\"uuid\":\"00000000-0000-0000-0000-000000000002\",\"movesInfo\":[{\"pp\":40,\"maxPp\":40}],\"evs\":{\"hp\":0,\"atk\":0,\"def\":0,\"spa\":0,\"spd\":0,\"spe\":0},\"ivs\":{\"hp\":31,\"atk\":31,\"def\":31,\"spa\":31,\"spd\":31,\"spe\":31}}],\"score\":[1,0],\"inputLog\":[\">start {\\\"formatid\\\":\\\"gen9customgame\\\",\\\"seed\\\":[1,2,3,4]}\",\">player p1 {\\\"name\\\":\\\"Alice\\\",\\\"team\\\":\\\"Machamp|||noguard|dynamicpunch|||M|||50|\\\"}\",\">player p2 {\\\"name\\\":\\\"Bob\\\",\\\"team\\\":\\\"Magikarp|||swiftswim|splash|||M|||50|\\\"}\",\">p1 team 1\",\">p2 team 1\",\">p1 move dynamicpunch\",\">p2 move splash\"]}"
+      ],
+      "expected": {
+        "damage": [
+          {
+            "targetId": "00000000-0000-0000-0000-000000000002",
+            "sourceId": "00000000-0000-0000-0000-000000000001",
+            "amount": 1,
+            "requested": 115,
+            "hpBefore": 1,
+            "hpAfter": 0,
+            "maxHp": 95,
+            "effect": "Dynamic Punch"
+          }
+        ],
+        "healing": [],
+        "hpEvents": [
+          {
+            "tag": "switch",
+            "targetId": "00000000-0000-0000-0000-000000000001",
+            "hpBefore": 165,
+            "maxBefore": 165,
+            "hpAfter": 165,
+            "maxHp": 165
+          },
+          {
+            "tag": "switch",
+            "targetId": "00000000-0000-0000-0000-000000000002",
+            "hpBefore": 1,
+            "maxBefore": 95,
+            "hpAfter": 1,
+            "maxHp": 95
+          },
+          {
+            "tag": "-damage",
+            "targetId": "00000000-0000-0000-0000-000000000002",
+            "hpBefore": 1,
+            "maxBefore": 95,
+            "hpAfter": 0,
+            "maxHp": 95
+          }
+        ],
+        "criticalTargets": [],
+        "statusEvents": [],
+        "finalHp": [
+          {
+            "uuid": "00000000-0000-0000-0000-000000000001",
+            "hp": 165,
+            "maxHp": 165,
+            "status": "",
+            "substituteHp": null
+          },
+          {
+            "uuid": "00000000-0000-0000-0000-000000000002",
+            "hp": 0,
+            "maxHp": 95,
+            "status": "",
+            "substituteHp": null
+          }
+        ],
+        "unloggedHpChanges": []
+      }
+    },
+    {
+      "caseName": "dynamax-scaling",
+      "formatid": "gen8customgame",
+      "party": [
+        {
+          "side": "p1",
+          "player": "Alice",
+          "slot": 1,
+          "uuid": "00000000-0000-0000-0000-000000000001",
+          "species": "Blissey",
+          "nickname": "",
+          "level": 50,
+          "moves": "Splash",
+          "hp": 100,
+          "maxHp": 330
+        },
+        {
+          "side": "p2",
+          "player": "Bob",
+          "slot": 1,
+          "uuid": "00000000-0000-0000-0000-000000000002",
+          "species": "Snorlax",
+          "nickname": "",
+          "level": 50,
+          "moves": "Splash",
+          "hp": 235,
+          "maxHp": 235
+        }
+      ],
+      "packets": [
+        "update\n|t:|1792976474\n|gametype|singles",
+        "update\n|player|p1|Alice||",
+        "sideupdate\np1\n|request|{\"teamPreview\":true,\"side\":{\"name\":\"Alice\",\"id\":\"p1\",\"pokemon\":[{\"ident\":\"p1: Blissey\",\"details\":\"Blissey, 00000000-0000-0000-0000-000000000001, L50, M\",\"condition\":\"100/330\",\"active\":true,\"stats\":{\"atk\":30,\"def\":30,\"spa\":95,\"spd\":155,\"spe\":75},\"moves\":[\"splash\"],\"baseAbility\":\"healer\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Normal\"],\"types\":[\"Normal\"],\"ability\":\"healer\"}]}}",
+        "sideupdate\np2\n|request|{\"teamPreview\":true,\"side\":{\"name\":\"Bob\",\"id\":\"p2\",\"pokemon\":[{\"ident\":\"p2: Snorlax\",\"details\":\"Snorlax, 00000000-0000-0000-0000-000000000002, L50, M\",\"condition\":\"235/235\",\"active\":true,\"stats\":{\"atk\":130,\"def\":85,\"spa\":85,\"spd\":130,\"spe\":50},\"moves\":[\"splash\"],\"baseAbility\":\"immunity\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Normal\"],\"types\":[\"Normal\"],\"ability\":\"immunity\"}]}}",
+        "update\n|player|p2|Bob||\n|teamsize|p1|1\n|teamsize|p2|1\n|gen|8\n|tier|[Gen 8] Custom Game\n|clearpoke\n|poke|p1|Blissey, 00000000-0000-0000-0000-000000000001, L50, M|\n|poke|p2|Snorlax, 00000000-0000-0000-0000-000000000002, L50, M|\n|teampreview",
+        "sideupdate\np1\n|request|{\"active\":[{\"moves\":[{\"move\":\"Splash\",\"id\":\"splash\",\"pp\":40,\"maxpp\":40,\"target\":\"self\",\"disabled\":false}],\"canDynamax\":true,\"maxMoves\":{\"maxMoves\":[{\"move\":\"maxguard\",\"target\":\"self\"}]}}],\"side\":{\"name\":\"Alice\",\"id\":\"p1\",\"pokemon\":[{\"ident\":\"p1: Blissey\",\"details\":\"Blissey, 00000000-0000-0000-0000-000000000001, L50, M\",\"condition\":\"100/330\",\"active\":true,\"stats\":{\"atk\":30,\"def\":30,\"spa\":95,\"spd\":155,\"spe\":75},\"moves\":[\"splash\"],\"baseAbility\":\"healer\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Normal\"],\"types\":[\"Normal\"],\"ability\":\"healer\"}]}}",
+        "sideupdate\np2\n|request|{\"active\":[{\"moves\":[{\"move\":\"Splash\",\"id\":\"splash\",\"pp\":40,\"maxpp\":40,\"target\":\"self\",\"disabled\":false}],\"canDynamax\":true,\"maxMoves\":{\"maxMoves\":[{\"move\":\"maxguard\",\"target\":\"self\"}],\"gigantamax\":\"G-Max Replenish\"}}],\"side\":{\"name\":\"Bob\",\"id\":\"p2\",\"pokemon\":[{\"ident\":\"p2: Snorlax\",\"details\":\"Snorlax, 00000000-0000-0000-0000-000000000002, L50, M\",\"condition\":\"235/235\",\"active\":true,\"stats\":{\"atk\":130,\"def\":85,\"spa\":85,\"spd\":130,\"spe\":50},\"moves\":[\"splash\"],\"baseAbility\":\"immunity\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Normal\"],\"types\":[\"Normal\"],\"ability\":\"immunity\"}]}}",
+        "update\n|\n|t:|1792976474\n|start\n|split|p1\n|switch|p1a: 00000000-0000-0000-0000-000000000001|Blissey, 00000000-0000-0000-0000-000000000001, L50, M|100/330\n|switch|p1a: 00000000-0000-0000-0000-000000000001|Blissey, 00000000-0000-0000-0000-000000000001, L50, M|100/330\n|split|p2\n|switch|p2a: 00000000-0000-0000-0000-000000000002|Snorlax, 00000000-0000-0000-0000-000000000002, L50, M|235/235\n|switch|p2a: 00000000-0000-0000-0000-000000000002|Snorlax, 00000000-0000-0000-0000-000000000002, L50, M|235/235\n|turn|1\n|pp_update|p1: 00000000-0000-0000-0000-000000000001|splash: 40\n|pp_update|p2: 00000000-0000-0000-0000-000000000002|splash: 40",
+        "sideupdate\np1\n|request|{\"active\":[{\"moves\":[{\"move\":\"Splash\",\"id\":\"splash\",\"pp\":39,\"maxpp\":40,\"target\":\"self\",\"disabled\":false}],\"maxMoves\":{\"maxMoves\":[{\"move\":\"maxguard\",\"target\":\"self\"}]}}],\"side\":{\"name\":\"Alice\",\"id\":\"p1\",\"pokemon\":[{\"ident\":\"p1: Blissey\",\"details\":\"Blissey, 00000000-0000-0000-0000-000000000001, L50, M\",\"condition\":\"200/660\",\"active\":true,\"stats\":{\"atk\":30,\"def\":30,\"spa\":95,\"spd\":155,\"spe\":75},\"moves\":[\"splash\"],\"baseAbility\":\"healer\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Normal\"],\"types\":[\"Normal\"],\"ability\":\"healer\"}]}}",
+        "sideupdate\np2\n|request|{\"active\":[{\"moves\":[{\"move\":\"Splash\",\"id\":\"splash\",\"pp\":39,\"maxpp\":40,\"target\":\"self\",\"disabled\":false}],\"canDynamax\":true,\"maxMoves\":{\"maxMoves\":[{\"move\":\"maxguard\",\"target\":\"self\"}],\"gigantamax\":\"G-Max Replenish\"}}],\"side\":{\"name\":\"Bob\",\"id\":\"p2\",\"pokemon\":[{\"ident\":\"p2: Snorlax\",\"details\":\"Snorlax, 00000000-0000-0000-0000-000000000002, L50, M\",\"condition\":\"235/235\",\"active\":true,\"stats\":{\"atk\":130,\"def\":85,\"spa\":85,\"spd\":130,\"spe\":50},\"moves\":[\"splash\"],\"baseAbility\":\"immunity\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Normal\"],\"types\":[\"Normal\"],\"ability\":\"immunity\"}]}}",
+        "update\n|\n|t:|1792976474\n|-start|p1a: 00000000-0000-0000-0000-000000000001|Dynamax|\n|split|p1\n|-heal|p1a: 00000000-0000-0000-0000-000000000001|200/660|[silent]\n|-heal|p1a: 00000000-0000-0000-0000-000000000001|200/660|[silent]\n|move|p1a: 00000000-0000-0000-0000-000000000001|Max Guard|p1a: 00000000-0000-0000-0000-000000000001\n|-singleturn|p1a: 00000000-0000-0000-0000-000000000001|Max Guard\n|move|p2a: 00000000-0000-0000-0000-000000000002|Splash|p2a: 00000000-0000-0000-0000-000000000002\n|-nothing\n|\n|upkeep\n|turn|2\n|pp_update|p1: 00000000-0000-0000-0000-000000000001|splash: 39\n|pp_update|p2: 00000000-0000-0000-0000-000000000002|splash: 39",
+        "sideupdate\np1\n|request|{\"active\":[{\"moves\":[{\"move\":\"Splash\",\"id\":\"splash\",\"pp\":38,\"maxpp\":40,\"target\":\"self\",\"disabled\":false}],\"maxMoves\":{\"maxMoves\":[{\"move\":\"maxguard\",\"target\":\"self\"}]}}],\"side\":{\"name\":\"Alice\",\"id\":\"p1\",\"pokemon\":[{\"ident\":\"p1: Blissey\",\"details\":\"Blissey, 00000000-0000-0000-0000-000000000001, L50, M\",\"condition\":\"200/660\",\"active\":true,\"stats\":{\"atk\":30,\"def\":30,\"spa\":95,\"spd\":155,\"spe\":75},\"moves\":[\"splash\"],\"baseAbility\":\"healer\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Normal\"],\"types\":[\"Normal\"],\"ability\":\"healer\"}]}}",
+        "sideupdate\np2\n|request|{\"active\":[{\"moves\":[{\"move\":\"Splash\",\"id\":\"splash\",\"pp\":38,\"maxpp\":40,\"target\":\"self\",\"disabled\":false}],\"canDynamax\":true,\"maxMoves\":{\"maxMoves\":[{\"move\":\"maxguard\",\"target\":\"self\"}],\"gigantamax\":\"G-Max Replenish\"}}],\"side\":{\"name\":\"Bob\",\"id\":\"p2\",\"pokemon\":[{\"ident\":\"p2: Snorlax\",\"details\":\"Snorlax, 00000000-0000-0000-0000-000000000002, L50, M\",\"condition\":\"235/235\",\"active\":true,\"stats\":{\"atk\":130,\"def\":85,\"spa\":85,\"spd\":130,\"spe\":50},\"moves\":[\"splash\"],\"baseAbility\":\"immunity\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Normal\"],\"types\":[\"Normal\"],\"ability\":\"immunity\"}]}}",
+        "update\n|\n|t:|1792976474\n|move|p1a: 00000000-0000-0000-0000-000000000001|Max Guard||[still]\n|debug|Success chance: 33%\n|-fail|p1a: 00000000-0000-0000-0000-000000000001\n|move|p2a: 00000000-0000-0000-0000-000000000002|Splash|p2a: 00000000-0000-0000-0000-000000000002\n|-nothing\n|\n|upkeep\n|turn|3\n|pp_update|p1: 00000000-0000-0000-0000-000000000001|splash: 38\n|pp_update|p2: 00000000-0000-0000-0000-000000000002|splash: 38",
+        "sideupdate\np1\n|request|{\"active\":[{\"moves\":[{\"move\":\"Splash\",\"id\":\"splash\",\"pp\":37,\"maxpp\":40,\"target\":\"self\",\"disabled\":false}]}],\"side\":{\"name\":\"Alice\",\"id\":\"p1\",\"pokemon\":[{\"ident\":\"p1: Blissey\",\"details\":\"Blissey, 00000000-0000-0000-0000-000000000001, L50, M\",\"condition\":\"100/330\",\"active\":true,\"stats\":{\"atk\":30,\"def\":30,\"spa\":95,\"spd\":155,\"spe\":75},\"moves\":[\"splash\"],\"baseAbility\":\"healer\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Normal\"],\"types\":[\"Normal\"],\"ability\":\"healer\"}]}}",
+        "sideupdate\np2\n|request|{\"active\":[{\"moves\":[{\"move\":\"Splash\",\"id\":\"splash\",\"pp\":37,\"maxpp\":40,\"target\":\"self\",\"disabled\":false}],\"canDynamax\":true,\"maxMoves\":{\"maxMoves\":[{\"move\":\"maxguard\",\"target\":\"self\"}],\"gigantamax\":\"G-Max Replenish\"}}],\"side\":{\"name\":\"Bob\",\"id\":\"p2\",\"pokemon\":[{\"ident\":\"p2: Snorlax\",\"details\":\"Snorlax, 00000000-0000-0000-0000-000000000002, L50, M\",\"condition\":\"235/235\",\"active\":true,\"stats\":{\"atk\":130,\"def\":85,\"spa\":85,\"spd\":130,\"spe\":50},\"moves\":[\"splash\"],\"baseAbility\":\"immunity\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Normal\"],\"types\":[\"Normal\"],\"ability\":\"immunity\"}]}}",
+        "update\n|\n|t:|1792976474\n|move|p1a: 00000000-0000-0000-0000-000000000001|Max Guard|p1a: 00000000-0000-0000-0000-000000000001\n|-singleturn|p1a: 00000000-0000-0000-0000-000000000001|Max Guard\n|move|p2a: 00000000-0000-0000-0000-000000000002|Splash|p2a: 00000000-0000-0000-0000-000000000002\n|-nothing\n|\n|upkeep\n|-end|p1a: 00000000-0000-0000-0000-000000000001|Dynamax\n|split|p1\n|-heal|p1a: 00000000-0000-0000-0000-000000000001|100/330|[silent]\n|-heal|p1a: 00000000-0000-0000-0000-000000000001|100/330|[silent]\n|turn|4\n|pp_update|p1: 00000000-0000-0000-0000-000000000001|splash: 37\n|pp_update|p2: 00000000-0000-0000-0000-000000000002|splash: 37"
+      ],
+      "expected": {
+        "damage": [],
+        "healing": [],
+        "hpEvents": [
+          {
+            "tag": "switch",
+            "targetId": "00000000-0000-0000-0000-000000000001",
+            "hpBefore": 100,
+            "maxBefore": 330,
+            "hpAfter": 100,
+            "maxHp": 330
+          },
+          {
+            "tag": "switch",
+            "targetId": "00000000-0000-0000-0000-000000000002",
+            "hpBefore": 235,
+            "maxBefore": 235,
+            "hpAfter": 235,
+            "maxHp": 235
+          },
+          {
+            "tag": "-heal",
+            "targetId": "00000000-0000-0000-0000-000000000001",
+            "hpBefore": 100,
+            "maxBefore": 330,
+            "hpAfter": 200,
+            "maxHp": 660
+          },
+          {
+            "tag": "-heal",
+            "targetId": "00000000-0000-0000-0000-000000000001",
+            "hpBefore": 200,
+            "maxBefore": 660,
+            "hpAfter": 100,
+            "maxHp": 330
+          }
+        ],
+        "criticalTargets": [],
+        "statusEvents": [],
+        "finalHp": [
+          {
+            "uuid": "00000000-0000-0000-0000-000000000001",
+            "hp": 100,
+            "maxHp": 330,
+            "status": "",
+            "substituteHp": null
+          },
+          {
+            "uuid": "00000000-0000-0000-0000-000000000002",
+            "hp": 235,
+            "maxHp": 235,
+            "status": "",
+            "substituteHp": null
+          }
+        ],
+        "unloggedHpChanges": []
+      }
+    },
+    {
+      "caseName": "powder-fire-backfire",
+      "formatid": "gen9customgame",
+      "party": [
+        {
+          "side": "p1",
+          "player": "Alice",
+          "slot": 1,
+          "uuid": "00000000-0000-0000-0000-000000000001",
+          "species": "Vivillon",
+          "nickname": "",
+          "level": 50,
+          "moves": "Powder",
+          "hp": 155,
+          "maxHp": 155
+        },
+        {
+          "side": "p2",
+          "player": "Bob",
+          "slot": 1,
+          "uuid": "00000000-0000-0000-0000-000000000002",
+          "species": "Charizard",
+          "nickname": "",
+          "level": 50,
+          "moves": "Flamethrower",
+          "hp": 153,
+          "maxHp": 153
+        }
+      ],
+      "packets": [
+        "update\n|t:|1792976474\n|gametype|singles",
+        "update\n|player|p1|Alice||",
+        "sideupdate\np1\n|request|{\"teamPreview\":true,\"side\":{\"name\":\"Alice\",\"id\":\"p1\",\"pokemon\":[{\"ident\":\"p1: Vivillon\",\"details\":\"Vivillon, 00000000-0000-0000-0000-000000000001, L50, M\",\"condition\":\"155/155\",\"active\":true,\"stats\":{\"atk\":72,\"def\":70,\"spa\":110,\"spd\":70,\"spe\":109},\"moves\":[\"powder\"],\"baseAbility\":\"compoundeyes\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Bug\",\"Flying\"],\"types\":[\"Bug\",\"Flying\"],\"ability\":\"compoundeyes\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Bug\",\"terastallized\":\"\"}]}}",
+        "sideupdate\np2\n|request|{\"teamPreview\":true,\"side\":{\"name\":\"Bob\",\"id\":\"p2\",\"pokemon\":[{\"ident\":\"p2: Charizard\",\"details\":\"Charizard, 00000000-0000-0000-0000-000000000002, L50, M\",\"condition\":\"153/153\",\"active\":true,\"stats\":{\"atk\":104,\"def\":98,\"spa\":129,\"spd\":105,\"spe\":120},\"moves\":[\"flamethrower\"],\"baseAbility\":\"blaze\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Fire\",\"Flying\"],\"types\":[\"Fire\",\"Flying\"],\"ability\":\"blaze\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Fire\",\"terastallized\":\"\"}]}}",
+        "update\n|player|p2|Bob||\n|teamsize|p1|1\n|teamsize|p2|1\n|gen|9\n|tier|[Gen 9] Custom Game\n|clearpoke\n|poke|p1|Vivillon, 00000000-0000-0000-0000-000000000001, L50, M|\n|poke|p2|Charizard, 00000000-0000-0000-0000-000000000002, L50, M|\n|teampreview",
+        "sideupdate\np1\n|request|{\"active\":[{\"moves\":[{\"move\":\"Powder\",\"id\":\"powder\",\"pp\":40,\"maxpp\":40,\"target\":\"normal\",\"disabled\":false}],\"canTerastallize\":\"Bug\"}],\"side\":{\"name\":\"Alice\",\"id\":\"p1\",\"pokemon\":[{\"ident\":\"p1: Vivillon\",\"details\":\"Vivillon, 00000000-0000-0000-0000-000000000001, L50, M\",\"condition\":\"155/155\",\"active\":true,\"stats\":{\"atk\":72,\"def\":70,\"spa\":110,\"spd\":70,\"spe\":109},\"moves\":[\"powder\"],\"baseAbility\":\"compoundeyes\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Bug\",\"Flying\"],\"types\":[\"Bug\",\"Flying\"],\"ability\":\"compoundeyes\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Bug\",\"terastallized\":\"\"}]}}",
+        "sideupdate\np2\n|request|{\"active\":[{\"moves\":[{\"move\":\"Flamethrower\",\"id\":\"flamethrower\",\"pp\":40,\"maxpp\":40,\"target\":\"normal\",\"disabled\":false}],\"canTerastallize\":\"Fire\"}],\"side\":{\"name\":\"Bob\",\"id\":\"p2\",\"pokemon\":[{\"ident\":\"p2: Charizard\",\"details\":\"Charizard, 00000000-0000-0000-0000-000000000002, L50, M\",\"condition\":\"153/153\",\"active\":true,\"stats\":{\"atk\":104,\"def\":98,\"spa\":129,\"spd\":105,\"spe\":120},\"moves\":[\"flamethrower\"],\"baseAbility\":\"blaze\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Fire\",\"Flying\"],\"types\":[\"Fire\",\"Flying\"],\"ability\":\"blaze\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Fire\",\"terastallized\":\"\"}]}}",
+        "update\n|\n|t:|1792976474\n|start\n|split|p1\n|switch|p1a: 00000000-0000-0000-0000-000000000001|Vivillon, 00000000-0000-0000-0000-000000000001, L50, M|155/155\n|switch|p1a: 00000000-0000-0000-0000-000000000001|Vivillon, 00000000-0000-0000-0000-000000000001, L50, M|155/155\n|split|p2\n|switch|p2a: 00000000-0000-0000-0000-000000000002|Charizard, 00000000-0000-0000-0000-000000000002, L50, M|153/153\n|switch|p2a: 00000000-0000-0000-0000-000000000002|Charizard, 00000000-0000-0000-0000-000000000002, L50, M|153/153\n|turn|1\n|pp_update|p1: 00000000-0000-0000-0000-000000000001|powder: 40\n|pp_update|p2: 00000000-0000-0000-0000-000000000002|flamethrower: 40",
+        "sideupdate\np1\n|request|{\"active\":[{\"moves\":[{\"move\":\"Powder\",\"id\":\"powder\",\"pp\":39,\"maxpp\":40,\"target\":\"normal\",\"disabled\":false}],\"canTerastallize\":\"Bug\"}],\"side\":{\"name\":\"Alice\",\"id\":\"p1\",\"pokemon\":[{\"ident\":\"p1: Vivillon\",\"details\":\"Vivillon, 00000000-0000-0000-0000-000000000001, L50, M\",\"condition\":\"155/155\",\"active\":true,\"stats\":{\"atk\":72,\"def\":70,\"spa\":110,\"spd\":70,\"spe\":109},\"moves\":[\"powder\"],\"baseAbility\":\"compoundeyes\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Bug\",\"Flying\"],\"types\":[\"Bug\",\"Flying\"],\"ability\":\"compoundeyes\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Bug\",\"terastallized\":\"\"}]}}",
+        "sideupdate\np2\n|request|{\"active\":[{\"moves\":[{\"move\":\"Flamethrower\",\"id\":\"flamethrower\",\"pp\":39,\"maxpp\":40,\"target\":\"normal\",\"disabled\":false}],\"canTerastallize\":\"Fire\"}],\"side\":{\"name\":\"Bob\",\"id\":\"p2\",\"pokemon\":[{\"ident\":\"p2: Charizard\",\"details\":\"Charizard, 00000000-0000-0000-0000-000000000002, L50, M\",\"condition\":\"115/153\",\"active\":true,\"stats\":{\"atk\":104,\"def\":98,\"spa\":129,\"spd\":105,\"spe\":120},\"moves\":[\"flamethrower\"],\"baseAbility\":\"blaze\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Fire\",\"Flying\"],\"types\":[\"Fire\",\"Flying\"],\"ability\":\"blaze\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Fire\",\"terastallized\":\"\"}]}}",
+        "update\n|\n|t:|1792976474\n|move|p1a: 00000000-0000-0000-0000-000000000001|Powder|p2a: 00000000-0000-0000-0000-000000000002\n|debug|compoundeyes - enhancing accuracy\n|-singleturn|p2a: 00000000-0000-0000-0000-000000000002|Powder\n|move|p2a: 00000000-0000-0000-0000-000000000002|Flamethrower||[still]\n|-activate|p2a: 00000000-0000-0000-0000-000000000002|move: Powder\n|split|p2\n|-damage|p2a: 00000000-0000-0000-0000-000000000002|115/153|[silent]\n|-damage|p2a: 00000000-0000-0000-0000-000000000002|115/153|[silent]\n|\n|upkeep\n|turn|2\n|pp_update|p1: 00000000-0000-0000-0000-000000000001|powder: 39\n|pp_update|p2: 00000000-0000-0000-0000-000000000002|flamethrower: 39"
+      ],
+      "expected": {
+        "damage": [
+          {
+            "targetId": "00000000-0000-0000-0000-000000000002",
+            "sourceId": "00000000-0000-0000-0000-000000000001",
+            "amount": 38,
+            "requested": 38,
+            "hpBefore": 153,
+            "hpAfter": 115,
+            "maxHp": 153,
+            "effect": "Powder"
+          }
+        ],
+        "healing": [],
+        "hpEvents": [
+          {
+            "tag": "switch",
+            "targetId": "00000000-0000-0000-0000-000000000001",
+            "hpBefore": 155,
+            "maxBefore": 155,
+            "hpAfter": 155,
+            "maxHp": 155
+          },
+          {
+            "tag": "switch",
+            "targetId": "00000000-0000-0000-0000-000000000002",
+            "hpBefore": 153,
+            "maxBefore": 153,
+            "hpAfter": 153,
+            "maxHp": 153
+          },
+          {
+            "tag": "-damage",
+            "targetId": "00000000-0000-0000-0000-000000000002",
+            "hpBefore": 153,
+            "maxBefore": 153,
+            "hpAfter": 115,
+            "maxHp": 153
+          }
+        ],
+        "criticalTargets": [],
+        "statusEvents": [],
+        "finalHp": [
+          {
+            "uuid": "00000000-0000-0000-0000-000000000001",
+            "hp": 155,
+            "maxHp": 155,
+            "status": "",
+            "substituteHp": null
+          },
+          {
+            "uuid": "00000000-0000-0000-0000-000000000002",
+            "hp": 115,
+            "maxHp": 153,
+            "status": "",
+            "substituteHp": null
+          }
+        ],
+        "unloggedHpChanges": []
+      }
+    },
+    {
+      "caseName": "substitute-shield",
+      "formatid": "gen9customgame",
+      "party": [
+        {
+          "side": "p1",
+          "player": "Alice",
+          "slot": 1,
+          "uuid": "00000000-0000-0000-0000-000000000001",
+          "species": "Vaporeon",
+          "nickname": "",
+          "level": 50,
+          "moves": "Substitute, Splash",
+          "hp": 205,
+          "maxHp": 205
+        },
+        {
+          "side": "p2",
+          "player": "Bob",
+          "slot": 1,
+          "uuid": "00000000-0000-0000-0000-000000000002",
+          "species": "Snorlax",
+          "nickname": "",
+          "level": 50,
+          "moves": "Tackle",
+          "hp": 235,
+          "maxHp": 235
+        }
+      ],
+      "packets": [
+        "update\n|t:|1792976474\n|gametype|singles",
+        "update\n|player|p1|Alice||",
+        "sideupdate\np1\n|request|{\"teamPreview\":true,\"side\":{\"name\":\"Alice\",\"id\":\"p1\",\"pokemon\":[{\"ident\":\"p1: Vaporeon\",\"details\":\"Vaporeon, 00000000-0000-0000-0000-000000000001, L50, M\",\"condition\":\"205/205\",\"active\":true,\"stats\":{\"atk\":85,\"def\":80,\"spa\":130,\"spd\":115,\"spe\":85},\"moves\":[\"substitute\",\"splash\"],\"baseAbility\":\"waterabsorb\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Water\"],\"types\":[\"Water\"],\"ability\":\"waterabsorb\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Water\",\"terastallized\":\"\"}]}}",
+        "sideupdate\np2\n|request|{\"teamPreview\":true,\"side\":{\"name\":\"Bob\",\"id\":\"p2\",\"pokemon\":[{\"ident\":\"p2: Snorlax\",\"details\":\"Snorlax, 00000000-0000-0000-0000-000000000002, L50, M\",\"condition\":\"235/235\",\"active\":true,\"stats\":{\"atk\":130,\"def\":85,\"spa\":85,\"spd\":130,\"spe\":50},\"moves\":[\"tackle\"],\"baseAbility\":\"immunity\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Normal\"],\"types\":[\"Normal\"],\"ability\":\"immunity\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Normal\",\"terastallized\":\"\"}]}}",
+        "update\n|player|p2|Bob||\n|teamsize|p1|1\n|teamsize|p2|1\n|gen|9\n|tier|[Gen 9] Custom Game\n|clearpoke\n|poke|p1|Vaporeon, 00000000-0000-0000-0000-000000000001, L50, M|\n|poke|p2|Snorlax, 00000000-0000-0000-0000-000000000002, L50, M|\n|teampreview",
+        "sideupdate\np1\n|request|{\"active\":[{\"moves\":[{\"move\":\"Substitute\",\"id\":\"substitute\",\"pp\":40,\"maxpp\":40,\"target\":\"self\",\"disabled\":false},{\"move\":\"Splash\",\"id\":\"splash\",\"pp\":40,\"maxpp\":40,\"target\":\"self\",\"disabled\":false}],\"canTerastallize\":\"Water\"}],\"side\":{\"name\":\"Alice\",\"id\":\"p1\",\"pokemon\":[{\"ident\":\"p1: Vaporeon\",\"details\":\"Vaporeon, 00000000-0000-0000-0000-000000000001, L50, M\",\"condition\":\"205/205\",\"active\":true,\"stats\":{\"atk\":85,\"def\":80,\"spa\":130,\"spd\":115,\"spe\":85},\"moves\":[\"substitute\",\"splash\"],\"baseAbility\":\"waterabsorb\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Water\"],\"types\":[\"Water\"],\"ability\":\"waterabsorb\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Water\",\"terastallized\":\"\"}]}}",
+        "sideupdate\np2\n|request|{\"active\":[{\"moves\":[{\"move\":\"Tackle\",\"id\":\"tackle\",\"pp\":40,\"maxpp\":40,\"target\":\"normal\",\"disabled\":false}],\"canTerastallize\":\"Normal\"}],\"side\":{\"name\":\"Bob\",\"id\":\"p2\",\"pokemon\":[{\"ident\":\"p2: Snorlax\",\"details\":\"Snorlax, 00000000-0000-0000-0000-000000000002, L50, M\",\"condition\":\"235/235\",\"active\":true,\"stats\":{\"atk\":130,\"def\":85,\"spa\":85,\"spd\":130,\"spe\":50},\"moves\":[\"tackle\"],\"baseAbility\":\"immunity\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Normal\"],\"types\":[\"Normal\"],\"ability\":\"immunity\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Normal\",\"terastallized\":\"\"}]}}",
+        "update\n|\n|t:|1792976474\n|start\n|split|p1\n|switch|p1a: 00000000-0000-0000-0000-000000000001|Vaporeon, 00000000-0000-0000-0000-000000000001, L50, M|205/205\n|switch|p1a: 00000000-0000-0000-0000-000000000001|Vaporeon, 00000000-0000-0000-0000-000000000001, L50, M|205/205\n|split|p2\n|switch|p2a: 00000000-0000-0000-0000-000000000002|Snorlax, 00000000-0000-0000-0000-000000000002, L50, M|235/235\n|switch|p2a: 00000000-0000-0000-0000-000000000002|Snorlax, 00000000-0000-0000-0000-000000000002, L50, M|235/235\n|turn|1\n|pp_update|p1: 00000000-0000-0000-0000-000000000001|substitute: 40, splash: 40\n|pp_update|p2: 00000000-0000-0000-0000-000000000002|tackle: 40",
+        "sideupdate\np1\n|request|{\"active\":[{\"moves\":[{\"move\":\"Substitute\",\"id\":\"substitute\",\"pp\":39,\"maxpp\":40,\"target\":\"self\",\"disabled\":false},{\"move\":\"Splash\",\"id\":\"splash\",\"pp\":40,\"maxpp\":40,\"target\":\"self\",\"disabled\":false}],\"canTerastallize\":\"Water\"}],\"side\":{\"name\":\"Alice\",\"id\":\"p1\",\"pokemon\":[{\"ident\":\"p1: Vaporeon\",\"details\":\"Vaporeon, 00000000-0000-0000-0000-000000000001, L50, M\",\"condition\":\"154/205\",\"active\":true,\"stats\":{\"atk\":85,\"def\":80,\"spa\":130,\"spd\":115,\"spe\":85},\"moves\":[\"substitute\",\"splash\"],\"baseAbility\":\"waterabsorb\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Water\"],\"types\":[\"Water\"],\"ability\":\"waterabsorb\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Water\",\"terastallized\":\"\"}]}}",
+        "sideupdate\np2\n|request|{\"active\":[{\"moves\":[{\"move\":\"Tackle\",\"id\":\"tackle\",\"pp\":39,\"maxpp\":40,\"target\":\"normal\",\"disabled\":false}],\"canTerastallize\":\"Normal\"}],\"side\":{\"name\":\"Bob\",\"id\":\"p2\",\"pokemon\":[{\"ident\":\"p2: Snorlax\",\"details\":\"Snorlax, 00000000-0000-0000-0000-000000000002, L50, M\",\"condition\":\"235/235\",\"active\":true,\"stats\":{\"atk\":130,\"def\":85,\"spa\":85,\"spd\":130,\"spe\":50},\"moves\":[\"tackle\"],\"baseAbility\":\"immunity\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Normal\"],\"types\":[\"Normal\"],\"ability\":\"immunity\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Normal\",\"terastallized\":\"\"}]}}",
+        "update\n|\n|t:|1792976474\n|move|p1a: 00000000-0000-0000-0000-000000000001|Substitute|p1a: 00000000-0000-0000-0000-000000000001\n|-start|p1a: 00000000-0000-0000-0000-000000000001|Substitute\n|split|p1\n|-damage|p1a: 00000000-0000-0000-0000-000000000001|154/205\n|-damage|p1a: 00000000-0000-0000-0000-000000000001|154/205\n|move|p2a: 00000000-0000-0000-0000-000000000002|Tackle|p1a: 00000000-0000-0000-0000-000000000001\n|-activate|p1a: 00000000-0000-0000-0000-000000000001|move: Substitute|[damage]\n|\n|upkeep\n|turn|2\n|pp_update|p1: 00000000-0000-0000-0000-000000000001|substitute: 39, splash: 40\n|pp_update|p2: 00000000-0000-0000-0000-000000000002|tackle: 39",
+        "sideupdate\np1\n|request|{\"active\":[{\"moves\":[{\"move\":\"Substitute\",\"id\":\"substitute\",\"pp\":39,\"maxpp\":40,\"target\":\"self\",\"disabled\":false},{\"move\":\"Splash\",\"id\":\"splash\",\"pp\":39,\"maxpp\":40,\"target\":\"self\",\"disabled\":false}],\"canTerastallize\":\"Water\"}],\"side\":{\"name\":\"Alice\",\"id\":\"p1\",\"pokemon\":[{\"ident\":\"p1: Vaporeon\",\"details\":\"Vaporeon, 00000000-0000-0000-0000-000000000001, L50, M\",\"condition\":\"154/205\",\"active\":true,\"stats\":{\"atk\":85,\"def\":80,\"spa\":130,\"spd\":115,\"spe\":85},\"moves\":[\"substitute\",\"splash\"],\"baseAbility\":\"waterabsorb\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Water\"],\"types\":[\"Water\"],\"ability\":\"waterabsorb\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Water\",\"terastallized\":\"\"}]}}",
+        "sideupdate\np2\n|request|{\"active\":[{\"moves\":[{\"move\":\"Tackle\",\"id\":\"tackle\",\"pp\":38,\"maxpp\":40,\"target\":\"normal\",\"disabled\":false}],\"canTerastallize\":\"Normal\"}],\"side\":{\"name\":\"Bob\",\"id\":\"p2\",\"pokemon\":[{\"ident\":\"p2: Snorlax\",\"details\":\"Snorlax, 00000000-0000-0000-0000-000000000002, L50, M\",\"condition\":\"235/235\",\"active\":true,\"stats\":{\"atk\":130,\"def\":85,\"spa\":85,\"spd\":130,\"spe\":50},\"moves\":[\"tackle\"],\"baseAbility\":\"immunity\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Normal\"],\"types\":[\"Normal\"],\"ability\":\"immunity\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Normal\",\"terastallized\":\"\"}]}}",
+        "update\n|\n|t:|1792976474\n|move|p1a: 00000000-0000-0000-0000-000000000001|Splash|p1a: 00000000-0000-0000-0000-000000000001\n|-nothing\n|move|p2a: 00000000-0000-0000-0000-000000000002|Tackle|p1a: 00000000-0000-0000-0000-000000000001\n|-end|p1a: 00000000-0000-0000-0000-000000000001|Substitute\n|\n|upkeep\n|turn|3\n|pp_update|p1: 00000000-0000-0000-0000-000000000001|substitute: 39, splash: 39\n|pp_update|p2: 00000000-0000-0000-0000-000000000002|tackle: 38"
+      ],
+      "expected": {
+        "damage": [
+          {
+            "targetId": "00000000-0000-0000-0000-000000000001",
+            "sourceId": "00000000-0000-0000-0000-000000000001",
+            "amount": 51,
+            "requested": 51,
+            "hpBefore": 205,
+            "hpAfter": 154,
+            "maxHp": 205,
+            "effect": "Substitute"
+          }
+        ],
+        "healing": [],
+        "hpEvents": [
+          {
+            "tag": "switch",
+            "targetId": "00000000-0000-0000-0000-000000000001",
+            "hpBefore": 205,
+            "maxBefore": 205,
+            "hpAfter": 205,
+            "maxHp": 205
+          },
+          {
+            "tag": "switch",
+            "targetId": "00000000-0000-0000-0000-000000000002",
+            "hpBefore": 235,
+            "maxBefore": 235,
+            "hpAfter": 235,
+            "maxHp": 235
+          },
+          {
+            "tag": "-damage",
+            "targetId": "00000000-0000-0000-0000-000000000001",
+            "hpBefore": 205,
+            "maxBefore": 205,
+            "hpAfter": 154,
+            "maxHp": 205
+          }
+        ],
+        "criticalTargets": [],
+        "statusEvents": [],
+        "finalHp": [
+          {
+            "uuid": "00000000-0000-0000-0000-000000000001",
+            "hp": 154,
+            "maxHp": 205,
+            "status": "",
+            "substituteHp": null
+          },
+          {
+            "uuid": "00000000-0000-0000-0000-000000000002",
+            "hp": 235,
+            "maxHp": 235,
+            "status": "",
+            "substituteHp": null
+          }
+        ],
+        "unloggedHpChanges": []
+      }
+    },
+    {
+      "caseName": "entry-hazard-after-switch",
+      "formatid": "gen9customgame",
+      "party": [
+        {
+          "side": "p1",
+          "player": "Alice",
+          "slot": 1,
+          "uuid": "00000000-0000-0000-0000-000000000001",
+          "species": "Ferrothorn",
+          "nickname": "",
+          "level": 50,
+          "moves": "Stealth Rock, Splash",
+          "hp": 149,
+          "maxHp": 149
+        },
+        {
+          "side": "p2",
+          "player": "Bob",
+          "slot": 1,
+          "uuid": "00000000-0000-0000-0000-000000000002",
+          "species": "Snorlax",
+          "nickname": "",
+          "level": 50,
+          "moves": "Splash",
+          "hp": 235,
+          "maxHp": 235
+        },
+        {
+          "side": "p2",
+          "player": "Bob",
+          "slot": 2,
+          "uuid": "00000000-0000-0000-0000-000000000003",
+          "species": "Blissey",
+          "nickname": "",
+          "level": 50,
+          "moves": "Splash",
+          "hp": 330,
+          "maxHp": 330
+        }
+      ],
+      "packets": [
+        "update\n|t:|1792976474\n|gametype|singles",
+        "update\n|player|p1|Alice||",
+        "sideupdate\np1\n|request|{\"teamPreview\":true,\"side\":{\"name\":\"Alice\",\"id\":\"p1\",\"pokemon\":[{\"ident\":\"p1: Ferrothorn\",\"details\":\"Ferrothorn, 00000000-0000-0000-0000-000000000001, L50, M\",\"condition\":\"149/149\",\"active\":true,\"stats\":{\"atk\":114,\"def\":151,\"spa\":74,\"spd\":136,\"spe\":40},\"moves\":[\"stealthrock\",\"splash\"],\"baseAbility\":\"ironbarbs\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Grass\",\"Steel\"],\"types\":[\"Grass\",\"Steel\"],\"ability\":\"ironbarbs\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Grass\",\"terastallized\":\"\"}]}}",
+        "sideupdate\np2\n|request|{\"teamPreview\":true,\"side\":{\"name\":\"Bob\",\"id\":\"p2\",\"pokemon\":[{\"ident\":\"p2: Snorlax\",\"details\":\"Snorlax, 00000000-0000-0000-0000-000000000002, L50, M\",\"condition\":\"235/235\",\"active\":true,\"stats\":{\"atk\":130,\"def\":85,\"spa\":85,\"spd\":130,\"spe\":50},\"moves\":[\"splash\"],\"baseAbility\":\"immunity\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Normal\"],\"types\":[\"Normal\"],\"ability\":\"immunity\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Normal\",\"terastallized\":\"\"},{\"ident\":\"p2: Blissey\",\"details\":\"Blissey, 00000000-0000-0000-0000-000000000003, L50, M\",\"condition\":\"330/330\",\"active\":false,\"stats\":{\"atk\":30,\"def\":30,\"spa\":95,\"spd\":155,\"spe\":75},\"moves\":[\"splash\"],\"baseAbility\":\"healer\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Normal\"],\"types\":[\"Normal\"],\"ability\":\"healer\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Normal\",\"terastallized\":\"\"}]}}",
+        "update\n|player|p2|Bob||\n|teamsize|p1|1\n|teamsize|p2|2\n|gen|9\n|tier|[Gen 9] Custom Game\n|clearpoke\n|poke|p1|Ferrothorn, 00000000-0000-0000-0000-000000000001, L50, M|\n|poke|p2|Snorlax, 00000000-0000-0000-0000-000000000002, L50, M|\n|poke|p2|Blissey, 00000000-0000-0000-0000-000000000003, L50, M|\n|teampreview",
+        "sideupdate\np1\n|request|{\"active\":[{\"moves\":[{\"move\":\"Stealth Rock\",\"id\":\"stealthrock\",\"pp\":40,\"maxpp\":40,\"target\":\"foeSide\",\"disabled\":false},{\"move\":\"Splash\",\"id\":\"splash\",\"pp\":40,\"maxpp\":40,\"target\":\"self\",\"disabled\":false}],\"canTerastallize\":\"Grass\"}],\"side\":{\"name\":\"Alice\",\"id\":\"p1\",\"pokemon\":[{\"ident\":\"p1: Ferrothorn\",\"details\":\"Ferrothorn, 00000000-0000-0000-0000-000000000001, L50, M\",\"condition\":\"149/149\",\"active\":true,\"stats\":{\"atk\":114,\"def\":151,\"spa\":74,\"spd\":136,\"spe\":40},\"moves\":[\"stealthrock\",\"splash\"],\"baseAbility\":\"ironbarbs\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Grass\",\"Steel\"],\"types\":[\"Grass\",\"Steel\"],\"ability\":\"ironbarbs\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Grass\",\"terastallized\":\"\"}]}}",
+        "sideupdate\np2\n|request|{\"active\":[{\"moves\":[{\"move\":\"Splash\",\"id\":\"splash\",\"pp\":40,\"maxpp\":40,\"target\":\"self\",\"disabled\":false}],\"canTerastallize\":\"Normal\"}],\"side\":{\"name\":\"Bob\",\"id\":\"p2\",\"pokemon\":[{\"ident\":\"p2: Snorlax\",\"details\":\"Snorlax, 00000000-0000-0000-0000-000000000002, L50, M\",\"condition\":\"235/235\",\"active\":true,\"stats\":{\"atk\":130,\"def\":85,\"spa\":85,\"spd\":130,\"spe\":50},\"moves\":[\"splash\"],\"baseAbility\":\"immunity\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Normal\"],\"types\":[\"Normal\"],\"ability\":\"immunity\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Normal\",\"terastallized\":\"\"},{\"ident\":\"p2: Blissey\",\"details\":\"Blissey, 00000000-0000-0000-0000-000000000003, L50, M\",\"condition\":\"330/330\",\"active\":false,\"stats\":{\"atk\":30,\"def\":30,\"spa\":95,\"spd\":155,\"spe\":75},\"moves\":[\"splash\"],\"baseAbility\":\"healer\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Normal\"],\"types\":[\"Normal\"],\"ability\":\"healer\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Normal\",\"terastallized\":\"\"}]}}",
+        "update\n|\n|t:|1792976474\n|start\n|split|p1\n|switch|p1a: 00000000-0000-0000-0000-000000000001|Ferrothorn, 00000000-0000-0000-0000-000000000001, L50, M|149/149\n|switch|p1a: 00000000-0000-0000-0000-000000000001|Ferrothorn, 00000000-0000-0000-0000-000000000001, L50, M|149/149\n|split|p2\n|switch|p2a: 00000000-0000-0000-0000-000000000002|Snorlax, 00000000-0000-0000-0000-000000000002, L50, M|235/235\n|switch|p2a: 00000000-0000-0000-0000-000000000002|Snorlax, 00000000-0000-0000-0000-000000000002, L50, M|235/235\n|turn|1\n|pp_update|p1: 00000000-0000-0000-0000-000000000001|stealthrock: 40, splash: 40\n|pp_update|p2: 00000000-0000-0000-0000-000000000002|splash: 40\n|pp_update|p2: 00000000-0000-0000-0000-000000000003|splash: 40",
+        "sideupdate\np1\n|request|{\"active\":[{\"moves\":[{\"move\":\"Stealth Rock\",\"id\":\"stealthrock\",\"pp\":39,\"maxpp\":40,\"target\":\"foeSide\",\"disabled\":false},{\"move\":\"Splash\",\"id\":\"splash\",\"pp\":40,\"maxpp\":40,\"target\":\"self\",\"disabled\":false}],\"canTerastallize\":\"Grass\"}],\"side\":{\"name\":\"Alice\",\"id\":\"p1\",\"pokemon\":[{\"ident\":\"p1: Ferrothorn\",\"details\":\"Ferrothorn, 00000000-0000-0000-0000-000000000001, L50, M\",\"condition\":\"149/149\",\"active\":true,\"stats\":{\"atk\":114,\"def\":151,\"spa\":74,\"spd\":136,\"spe\":40},\"moves\":[\"stealthrock\",\"splash\"],\"baseAbility\":\"ironbarbs\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Grass\",\"Steel\"],\"types\":[\"Grass\",\"Steel\"],\"ability\":\"ironbarbs\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Grass\",\"terastallized\":\"\"}]}}",
+        "sideupdate\np2\n|request|{\"active\":[{\"moves\":[{\"move\":\"Splash\",\"id\":\"splash\",\"pp\":39,\"maxpp\":40,\"target\":\"self\",\"disabled\":false}],\"canTerastallize\":\"Normal\"}],\"side\":{\"name\":\"Bob\",\"id\":\"p2\",\"pokemon\":[{\"ident\":\"p2: Snorlax\",\"details\":\"Snorlax, 00000000-0000-0000-0000-000000000002, L50, M\",\"condition\":\"235/235\",\"active\":true,\"stats\":{\"atk\":130,\"def\":85,\"spa\":85,\"spd\":130,\"spe\":50},\"moves\":[\"splash\"],\"baseAbility\":\"immunity\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Normal\"],\"types\":[\"Normal\"],\"ability\":\"immunity\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Normal\",\"terastallized\":\"\"},{\"ident\":\"p2: Blissey\",\"details\":\"Blissey, 00000000-0000-0000-0000-000000000003, L50, M\",\"condition\":\"330/330\",\"active\":false,\"stats\":{\"atk\":30,\"def\":30,\"spa\":95,\"spd\":155,\"spe\":75},\"moves\":[\"splash\"],\"baseAbility\":\"healer\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Normal\"],\"types\":[\"Normal\"],\"ability\":\"healer\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Normal\",\"terastallized\":\"\"}]}}",
+        "update\n|\n|t:|1792976474\n|move|p2a: 00000000-0000-0000-0000-000000000002|Splash|p2a: 00000000-0000-0000-0000-000000000002\n|-nothing\n|move|p1a: 00000000-0000-0000-0000-000000000001|Stealth Rock|p2a: 00000000-0000-0000-0000-000000000002\n|-sidestart|p2: Bob|move: Stealth Rock\n|\n|upkeep\n|turn|2\n|pp_update|p1: 00000000-0000-0000-0000-000000000001|stealthrock: 39, splash: 40\n|pp_update|p2: 00000000-0000-0000-0000-000000000002|splash: 39\n|pp_update|p2: 00000000-0000-0000-0000-000000000003|splash: 40",
+        "sideupdate\np1\n|request|{\"active\":[{\"moves\":[{\"move\":\"Stealth Rock\",\"id\":\"stealthrock\",\"pp\":39,\"maxpp\":40,\"target\":\"foeSide\",\"disabled\":false},{\"move\":\"Splash\",\"id\":\"splash\",\"pp\":39,\"maxpp\":40,\"target\":\"self\",\"disabled\":false}],\"canTerastallize\":\"Grass\"}],\"side\":{\"name\":\"Alice\",\"id\":\"p1\",\"pokemon\":[{\"ident\":\"p1: Ferrothorn\",\"details\":\"Ferrothorn, 00000000-0000-0000-0000-000000000001, L50, M\",\"condition\":\"149/149\",\"active\":true,\"stats\":{\"atk\":114,\"def\":151,\"spa\":74,\"spd\":136,\"spe\":40},\"moves\":[\"stealthrock\",\"splash\"],\"baseAbility\":\"ironbarbs\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Grass\",\"Steel\"],\"types\":[\"Grass\",\"Steel\"],\"ability\":\"ironbarbs\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Grass\",\"terastallized\":\"\"}]}}",
+        "sideupdate\np2\n|request|{\"active\":[{\"moves\":[{\"move\":\"Splash\",\"id\":\"splash\",\"pp\":40,\"maxpp\":40,\"target\":\"self\",\"disabled\":false}],\"canTerastallize\":\"Normal\"}],\"side\":{\"name\":\"Bob\",\"id\":\"p2\",\"pokemon\":[{\"ident\":\"p2: Blissey\",\"details\":\"Blissey, 00000000-0000-0000-0000-000000000003, L50, M\",\"condition\":\"289/330\",\"active\":true,\"stats\":{\"atk\":30,\"def\":30,\"spa\":95,\"spd\":155,\"spe\":75},\"moves\":[\"splash\"],\"baseAbility\":\"healer\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Normal\"],\"types\":[\"Normal\"],\"ability\":\"healer\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Normal\",\"terastallized\":\"\"},{\"ident\":\"p2: Snorlax\",\"details\":\"Snorlax, 00000000-0000-0000-0000-000000000002, L50, M\",\"condition\":\"235/235\",\"active\":false,\"stats\":{\"atk\":130,\"def\":85,\"spa\":85,\"spd\":130,\"spe\":50},\"moves\":[\"splash\"],\"baseAbility\":\"immunity\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Normal\"],\"types\":[\"Normal\"],\"ability\":\"immunity\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Normal\",\"terastallized\":\"\"}]}}",
+        "update\n|\n|t:|1792976474\n|split|p2\n|switch|p2a: 00000000-0000-0000-0000-000000000003|Blissey, 00000000-0000-0000-0000-000000000003, L50, M|330/330\n|switch|p2a: 00000000-0000-0000-0000-000000000003|Blissey, 00000000-0000-0000-0000-000000000003, L50, M|330/330\n|split|p2\n|-damage|p2a: 00000000-0000-0000-0000-000000000003|289/330|[from] Stealth Rock\n|-damage|p2a: 00000000-0000-0000-0000-000000000003|289/330|[from] Stealth Rock\n|move|p1a: 00000000-0000-0000-0000-000000000001|Splash|p1a: 00000000-0000-0000-0000-000000000001\n|-nothing\n|\n|upkeep\n|turn|3\n|pp_update|p1: 00000000-0000-0000-0000-000000000001|stealthrock: 39, splash: 39\n|pp_update|p2: 00000000-0000-0000-0000-000000000003|splash: 40\n|pp_update|p2: 00000000-0000-0000-0000-000000000002|splash: 39"
+      ],
+      "expected": {
+        "damage": [
+          {
+            "targetId": "00000000-0000-0000-0000-000000000003",
+            "sourceId": "",
+            "amount": 41,
+            "requested": 41,
+            "hpBefore": 330,
+            "hpAfter": 289,
+            "maxHp": 330,
+            "effect": "Stealth Rock"
+          }
+        ],
+        "healing": [],
+        "hpEvents": [
+          {
+            "tag": "switch",
+            "targetId": "00000000-0000-0000-0000-000000000001",
+            "hpBefore": 149,
+            "maxBefore": 149,
+            "hpAfter": 149,
+            "maxHp": 149
+          },
+          {
+            "tag": "switch",
+            "targetId": "00000000-0000-0000-0000-000000000002",
+            "hpBefore": 235,
+            "maxBefore": 235,
+            "hpAfter": 235,
+            "maxHp": 235
+          },
+          {
+            "tag": "switch",
+            "targetId": "00000000-0000-0000-0000-000000000003",
+            "hpBefore": 330,
+            "maxBefore": 330,
+            "hpAfter": 330,
+            "maxHp": 330
+          },
+          {
+            "tag": "-damage",
+            "targetId": "00000000-0000-0000-0000-000000000003",
+            "hpBefore": 330,
+            "maxBefore": 330,
+            "hpAfter": 289,
+            "maxHp": 330
+          }
+        ],
+        "criticalTargets": [],
+        "statusEvents": [],
+        "finalHp": [
+          {
+            "uuid": "00000000-0000-0000-0000-000000000001",
+            "hp": 149,
+            "maxHp": 149,
+            "status": "",
+            "substituteHp": null
+          },
+          {
+            "uuid": "00000000-0000-0000-0000-000000000003",
+            "hp": 289,
+            "maxHp": 330,
+            "status": "",
+            "substituteHp": null
+          },
+          {
+            "uuid": "00000000-0000-0000-0000-000000000002",
+            "hp": 235,
+            "maxHp": 235,
+            "status": "",
+            "substituteHp": null
+          }
+        ],
+        "unloggedHpChanges": []
+      }
+    },
+    {
+      "caseName": "regenerator-bench",
+      "formatid": "gen9customgame",
+      "party": [
+        {
+          "side": "p1",
+          "player": "Alice",
+          "slot": 1,
+          "uuid": "00000000-0000-0000-0000-000000000001",
+          "species": "Toxapex",
+          "nickname": "",
+          "level": 50,
+          "moves": "Splash",
+          "hp": 40,
+          "maxHp": 125
+        },
+        {
+          "side": "p1",
+          "player": "Alice",
+          "slot": 2,
+          "uuid": "00000000-0000-0000-0000-000000000002",
+          "species": "Blissey",
+          "nickname": "",
+          "level": 50,
+          "moves": "Splash",
+          "hp": 330,
+          "maxHp": 330
+        },
+        {
+          "side": "p2",
+          "player": "Bob",
+          "slot": 1,
+          "uuid": "00000000-0000-0000-0000-000000000003",
+          "species": "Snorlax",
+          "nickname": "",
+          "level": 50,
+          "moves": "Splash",
+          "hp": 235,
+          "maxHp": 235
+        }
+      ],
+      "packets": [
+        "update\n|t:|1792976474\n|gametype|singles",
+        "update\n|player|p1|Alice||",
+        "sideupdate\np1\n|request|{\"teamPreview\":true,\"side\":{\"name\":\"Alice\",\"id\":\"p1\",\"pokemon\":[{\"ident\":\"p1: Toxapex\",\"details\":\"Toxapex, 00000000-0000-0000-0000-000000000001, L50, M\",\"condition\":\"40/125\",\"active\":true,\"stats\":{\"atk\":83,\"def\":172,\"spa\":73,\"spd\":162,\"spe\":55},\"moves\":[\"splash\"],\"baseAbility\":\"regenerator\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Poison\",\"Water\"],\"types\":[\"Poison\",\"Water\"],\"ability\":\"regenerator\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Poison\",\"terastallized\":\"\"},{\"ident\":\"p1: Blissey\",\"details\":\"Blissey, 00000000-0000-0000-0000-000000000002, L50, M\",\"condition\":\"330/330\",\"active\":false,\"stats\":{\"atk\":30,\"def\":30,\"spa\":95,\"spd\":155,\"spe\":75},\"moves\":[\"splash\"],\"baseAbility\":\"healer\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Normal\"],\"types\":[\"Normal\"],\"ability\":\"healer\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Normal\",\"terastallized\":\"\"}]}}",
+        "sideupdate\np2\n|request|{\"teamPreview\":true,\"side\":{\"name\":\"Bob\",\"id\":\"p2\",\"pokemon\":[{\"ident\":\"p2: Snorlax\",\"details\":\"Snorlax, 00000000-0000-0000-0000-000000000003, L50, M\",\"condition\":\"235/235\",\"active\":true,\"stats\":{\"atk\":130,\"def\":85,\"spa\":85,\"spd\":130,\"spe\":50},\"moves\":[\"splash\"],\"baseAbility\":\"immunity\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Normal\"],\"types\":[\"Normal\"],\"ability\":\"immunity\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Normal\",\"terastallized\":\"\"}]}}",
+        "update\n|player|p2|Bob||\n|teamsize|p1|2\n|teamsize|p2|1\n|gen|9\n|tier|[Gen 9] Custom Game\n|clearpoke\n|poke|p1|Toxapex, 00000000-0000-0000-0000-000000000001, L50, M|\n|poke|p1|Blissey, 00000000-0000-0000-0000-000000000002, L50, M|\n|poke|p2|Snorlax, 00000000-0000-0000-0000-000000000003, L50, M|\n|teampreview",
+        "sideupdate\np1\n|request|{\"active\":[{\"moves\":[{\"move\":\"Splash\",\"id\":\"splash\",\"pp\":40,\"maxpp\":40,\"target\":\"self\",\"disabled\":false}],\"canTerastallize\":\"Poison\"}],\"side\":{\"name\":\"Alice\",\"id\":\"p1\",\"pokemon\":[{\"ident\":\"p1: Toxapex\",\"details\":\"Toxapex, 00000000-0000-0000-0000-000000000001, L50, M\",\"condition\":\"40/125\",\"active\":true,\"stats\":{\"atk\":83,\"def\":172,\"spa\":73,\"spd\":162,\"spe\":55},\"moves\":[\"splash\"],\"baseAbility\":\"regenerator\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Poison\",\"Water\"],\"types\":[\"Poison\",\"Water\"],\"ability\":\"regenerator\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Poison\",\"terastallized\":\"\"},{\"ident\":\"p1: Blissey\",\"details\":\"Blissey, 00000000-0000-0000-0000-000000000002, L50, M\",\"condition\":\"330/330\",\"active\":false,\"stats\":{\"atk\":30,\"def\":30,\"spa\":95,\"spd\":155,\"spe\":75},\"moves\":[\"splash\"],\"baseAbility\":\"healer\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Normal\"],\"types\":[\"Normal\"],\"ability\":\"healer\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Normal\",\"terastallized\":\"\"}]}}",
+        "sideupdate\np2\n|request|{\"active\":[{\"moves\":[{\"move\":\"Splash\",\"id\":\"splash\",\"pp\":40,\"maxpp\":40,\"target\":\"self\",\"disabled\":false}],\"canTerastallize\":\"Normal\"}],\"side\":{\"name\":\"Bob\",\"id\":\"p2\",\"pokemon\":[{\"ident\":\"p2: Snorlax\",\"details\":\"Snorlax, 00000000-0000-0000-0000-000000000003, L50, M\",\"condition\":\"235/235\",\"active\":true,\"stats\":{\"atk\":130,\"def\":85,\"spa\":85,\"spd\":130,\"spe\":50},\"moves\":[\"splash\"],\"baseAbility\":\"immunity\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Normal\"],\"types\":[\"Normal\"],\"ability\":\"immunity\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Normal\",\"terastallized\":\"\"}]}}",
+        "update\n|\n|t:|1792976474\n|start\n|split|p1\n|switch|p1a: 00000000-0000-0000-0000-000000000001|Toxapex, 00000000-0000-0000-0000-000000000001, L50, M|40/125\n|switch|p1a: 00000000-0000-0000-0000-000000000001|Toxapex, 00000000-0000-0000-0000-000000000001, L50, M|40/125\n|split|p2\n|switch|p2a: 00000000-0000-0000-0000-000000000003|Snorlax, 00000000-0000-0000-0000-000000000003, L50, M|235/235\n|switch|p2a: 00000000-0000-0000-0000-000000000003|Snorlax, 00000000-0000-0000-0000-000000000003, L50, M|235/235\n|turn|1\n|pp_update|p1: 00000000-0000-0000-0000-000000000001|splash: 40\n|pp_update|p1: 00000000-0000-0000-0000-000000000002|splash: 40\n|pp_update|p2: 00000000-0000-0000-0000-000000000003|splash: 40",
+        "sideupdate\np1\n|request|{\"active\":[{\"moves\":[{\"move\":\"Splash\",\"id\":\"splash\",\"pp\":40,\"maxpp\":40,\"target\":\"self\",\"disabled\":false}],\"canTerastallize\":\"Normal\"}],\"side\":{\"name\":\"Alice\",\"id\":\"p1\",\"pokemon\":[{\"ident\":\"p1: Blissey\",\"details\":\"Blissey, 00000000-0000-0000-0000-000000000002, L50, M\",\"condition\":\"330/330\",\"active\":true,\"stats\":{\"atk\":30,\"def\":30,\"spa\":95,\"spd\":155,\"spe\":75},\"moves\":[\"splash\"],\"baseAbility\":\"healer\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Normal\"],\"types\":[\"Normal\"],\"ability\":\"healer\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Normal\",\"terastallized\":\"\"},{\"ident\":\"p1: Toxapex\",\"details\":\"Toxapex, 00000000-0000-0000-0000-000000000001, L50, M\",\"condition\":\"81/125\",\"active\":false,\"stats\":{\"atk\":83,\"def\":172,\"spa\":73,\"spd\":162,\"spe\":55},\"moves\":[\"splash\"],\"baseAbility\":\"regenerator\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Poison\",\"Water\"],\"types\":[\"Poison\",\"Water\"],\"ability\":\"regenerator\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Poison\",\"terastallized\":\"\"}]}}",
+        "sideupdate\np2\n|request|{\"active\":[{\"moves\":[{\"move\":\"Splash\",\"id\":\"splash\",\"pp\":39,\"maxpp\":40,\"target\":\"self\",\"disabled\":false}],\"canTerastallize\":\"Normal\"}],\"side\":{\"name\":\"Bob\",\"id\":\"p2\",\"pokemon\":[{\"ident\":\"p2: Snorlax\",\"details\":\"Snorlax, 00000000-0000-0000-0000-000000000003, L50, M\",\"condition\":\"235/235\",\"active\":true,\"stats\":{\"atk\":130,\"def\":85,\"spa\":85,\"spd\":130,\"spe\":50},\"moves\":[\"splash\"],\"baseAbility\":\"immunity\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Normal\"],\"types\":[\"Normal\"],\"ability\":\"immunity\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Normal\",\"terastallized\":\"\"}]}}",
+        "update\n|\n|t:|1792976474\n|split|p1\n|switch|p1a: 00000000-0000-0000-0000-000000000002|Blissey, 00000000-0000-0000-0000-000000000002, L50, M|330/330\n|switch|p1a: 00000000-0000-0000-0000-000000000002|Blissey, 00000000-0000-0000-0000-000000000002, L50, M|330/330\n|move|p2a: 00000000-0000-0000-0000-000000000003|Splash|p2a: 00000000-0000-0000-0000-000000000003\n|-nothing\n|\n|upkeep\n|turn|2\n|pp_update|p1: 00000000-0000-0000-0000-000000000002|splash: 40\n|pp_update|p1: 00000000-0000-0000-0000-000000000001|splash: 40\n|pp_update|p2: 00000000-0000-0000-0000-000000000003|splash: 39"
+      ],
+      "expected": {
+        "damage": [],
+        "healing": [
+          {
+            "targetId": "00000000-0000-0000-0000-000000000001",
+            "sourceId": "",
+            "amount": 41,
+            "requested": 41.666666666666664,
+            "hpBefore": 40,
+            "hpAfter": 81,
+            "maxHp": 125,
+            "effect": ""
+          }
+        ],
+        "hpEvents": [
+          {
+            "tag": "switch",
+            "targetId": "00000000-0000-0000-0000-000000000001",
+            "hpBefore": 40,
+            "maxBefore": 125,
+            "hpAfter": 40,
+            "maxHp": 125
+          },
+          {
+            "tag": "switch",
+            "targetId": "00000000-0000-0000-0000-000000000003",
+            "hpBefore": 235,
+            "maxBefore": 235,
+            "hpAfter": 235,
+            "maxHp": 235
+          },
+          {
+            "tag": "switch",
+            "targetId": "00000000-0000-0000-0000-000000000002",
+            "hpBefore": 330,
+            "maxBefore": 330,
+            "hpAfter": 330,
+            "maxHp": 330
+          }
+        ],
+        "criticalTargets": [],
+        "statusEvents": [],
+        "finalHp": [
+          {
+            "uuid": "00000000-0000-0000-0000-000000000002",
+            "hp": 330,
+            "maxHp": 330,
+            "status": "",
+            "substituteHp": null
+          },
+          {
+            "uuid": "00000000-0000-0000-0000-000000000001",
+            "hp": 81,
+            "maxHp": 125,
+            "status": "",
+            "substituteHp": null
+          },
+          {
+            "uuid": "00000000-0000-0000-0000-000000000003",
+            "hp": 235,
+            "maxHp": 235,
+            "status": "",
+            "substituteHp": null
+          }
+        ],
+        "unloggedHpChanges": [
+          {
+            "targetId": "00000000-0000-0000-0000-000000000001",
+            "sourceId": "",
+            "amount": 41,
+            "requested": 41.666666666666664,
+            "hpBefore": 40,
+            "hpAfter": 81,
+            "maxHp": 125,
+            "effect": ""
+          }
+        ]
+      }
+    },
+    {
+      "caseName": "illusion-hp-less-replace",
+      "formatid": "gen9customgame",
+      "party": [
+        {
+          "side": "p1",
+          "player": "Alice",
+          "slot": 1,
+          "uuid": "00000000-0000-0000-0000-000000000001",
+          "species": "Zoroark",
+          "nickname": "",
+          "level": 50,
+          "moves": "Splash",
+          "hp": 135,
+          "maxHp": 135
+        },
+        {
+          "side": "p1",
+          "player": "Alice",
+          "slot": 2,
+          "uuid": "00000000-0000-0000-0000-000000000002",
+          "species": "Blissey",
+          "nickname": "",
+          "level": 50,
+          "moves": "Splash",
+          "hp": 330,
+          "maxHp": 330
+        },
+        {
+          "side": "p2",
+          "player": "Bob",
+          "slot": 1,
+          "uuid": "00000000-0000-0000-0000-000000000003",
+          "species": "Snorlax",
+          "nickname": "",
+          "level": 50,
+          "moves": "Tackle",
+          "hp": 235,
+          "maxHp": 235
+        }
+      ],
+      "packets": [
+        "update\n|t:|1792976474\n|gametype|singles",
+        "update\n|player|p1|Alice||",
+        "sideupdate\np1\n|request|{\"teamPreview\":true,\"side\":{\"name\":\"Alice\",\"id\":\"p1\",\"pokemon\":[{\"ident\":\"p1: Zoroark\",\"details\":\"Zoroark, 00000000-0000-0000-0000-000000000001, L50, M\",\"condition\":\"135/135\",\"active\":true,\"stats\":{\"atk\":125,\"def\":80,\"spa\":140,\"spd\":80,\"spe\":125},\"moves\":[\"splash\"],\"baseAbility\":\"illusion\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Dark\"],\"types\":[\"Dark\"],\"ability\":\"illusion\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Dark\",\"terastallized\":\"\"},{\"ident\":\"p1: Blissey\",\"details\":\"Blissey, 00000000-0000-0000-0000-000000000002, L50, M\",\"condition\":\"330/330\",\"active\":false,\"stats\":{\"atk\":30,\"def\":30,\"spa\":95,\"spd\":155,\"spe\":75},\"moves\":[\"splash\"],\"baseAbility\":\"healer\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Normal\"],\"types\":[\"Normal\"],\"ability\":\"healer\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Normal\",\"terastallized\":\"\"}]}}",
+        "sideupdate\np2\n|request|{\"teamPreview\":true,\"side\":{\"name\":\"Bob\",\"id\":\"p2\",\"pokemon\":[{\"ident\":\"p2: Snorlax\",\"details\":\"Snorlax, 00000000-0000-0000-0000-000000000003, L50, M\",\"condition\":\"235/235\",\"active\":true,\"stats\":{\"atk\":130,\"def\":85,\"spa\":85,\"spd\":130,\"spe\":50},\"moves\":[\"tackle\"],\"baseAbility\":\"immunity\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Normal\"],\"types\":[\"Normal\"],\"ability\":\"immunity\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Normal\",\"terastallized\":\"\"}]}}",
+        "update\n|player|p2|Bob||\n|teamsize|p1|2\n|teamsize|p2|1\n|gen|9\n|tier|[Gen 9] Custom Game\n|clearpoke\n|poke|p1|Zoroark, 00000000-0000-0000-0000-000000000001, L50, M|\n|poke|p1|Blissey, 00000000-0000-0000-0000-000000000002, L50, M|\n|poke|p2|Snorlax, 00000000-0000-0000-0000-000000000003, L50, M|\n|teampreview",
+        "sideupdate\np1\n|request|{\"active\":[{\"moves\":[{\"move\":\"Splash\",\"id\":\"splash\",\"pp\":40,\"maxpp\":40,\"target\":\"self\",\"disabled\":false}],\"canTerastallize\":\"Dark\"}],\"side\":{\"name\":\"Alice\",\"id\":\"p1\",\"pokemon\":[{\"ident\":\"p1: Zoroark\",\"details\":\"Zoroark, 00000000-0000-0000-0000-000000000001, L50, M\",\"condition\":\"135/135\",\"active\":true,\"stats\":{\"atk\":125,\"def\":80,\"spa\":140,\"spd\":80,\"spe\":125},\"moves\":[\"splash\"],\"baseAbility\":\"illusion\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Dark\"],\"types\":[\"Dark\"],\"ability\":\"illusion\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Dark\",\"terastallized\":\"\"},{\"ident\":\"p1: Blissey\",\"details\":\"Blissey, 00000000-0000-0000-0000-000000000002, L50, M\",\"condition\":\"330/330\",\"active\":false,\"stats\":{\"atk\":30,\"def\":30,\"spa\":95,\"spd\":155,\"spe\":75},\"moves\":[\"splash\"],\"baseAbility\":\"healer\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Normal\"],\"types\":[\"Normal\"],\"ability\":\"healer\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Normal\",\"terastallized\":\"\"}]}}",
+        "sideupdate\np2\n|request|{\"active\":[{\"moves\":[{\"move\":\"Tackle\",\"id\":\"tackle\",\"pp\":40,\"maxpp\":40,\"target\":\"normal\",\"disabled\":false}],\"canTerastallize\":\"Normal\"}],\"side\":{\"name\":\"Bob\",\"id\":\"p2\",\"pokemon\":[{\"ident\":\"p2: Snorlax\",\"details\":\"Snorlax, 00000000-0000-0000-0000-000000000003, L50, M\",\"condition\":\"235/235\",\"active\":true,\"stats\":{\"atk\":130,\"def\":85,\"spa\":85,\"spd\":130,\"spe\":50},\"moves\":[\"tackle\"],\"baseAbility\":\"immunity\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Normal\"],\"types\":[\"Normal\"],\"ability\":\"immunity\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Normal\",\"terastallized\":\"\"}]}}",
+        "update\n|\n|t:|1792976474\n|start\n|split|p1\n|switch|p1a: 00000000-0000-0000-0000-000000000001|Blissey,00000000-0000-0000-0000-000000000002, L50, M|135/135|[is] p1: 00000000-0000-0000-0000-000000000002\n|switch|p1a: 00000000-0000-0000-0000-000000000001|Blissey,00000000-0000-0000-0000-000000000002, L50, M|135/135|[is] p1: 00000000-0000-0000-0000-000000000002\n|split|p2\n|switch|p2a: 00000000-0000-0000-0000-000000000003|Snorlax, 00000000-0000-0000-0000-000000000003, L50, M|235/235\n|switch|p2a: 00000000-0000-0000-0000-000000000003|Snorlax, 00000000-0000-0000-0000-000000000003, L50, M|235/235\n|turn|1\n|pp_update|p1: 00000000-0000-0000-0000-000000000001|splash: 40\n|pp_update|p1: 00000000-0000-0000-0000-000000000002|splash: 40\n|pp_update|p2: 00000000-0000-0000-0000-000000000003|tackle: 40",
+        "sideupdate\np1\n|request|{\"active\":[{\"moves\":[{\"move\":\"Splash\",\"id\":\"splash\",\"pp\":39,\"maxpp\":40,\"target\":\"self\",\"disabled\":false}],\"canTerastallize\":\"Dark\"}],\"side\":{\"name\":\"Alice\",\"id\":\"p1\",\"pokemon\":[{\"ident\":\"p1: Zoroark\",\"details\":\"Zoroark, 00000000-0000-0000-0000-000000000001, L50, M\",\"condition\":\"95/135\",\"active\":true,\"stats\":{\"atk\":125,\"def\":80,\"spa\":140,\"spd\":80,\"spe\":125},\"moves\":[\"splash\"],\"baseAbility\":\"illusion\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Dark\"],\"types\":[\"Dark\"],\"ability\":\"illusion\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Dark\",\"terastallized\":\"\"},{\"ident\":\"p1: Blissey\",\"details\":\"Blissey, 00000000-0000-0000-0000-000000000002, L50, M\",\"condition\":\"330/330\",\"active\":false,\"stats\":{\"atk\":30,\"def\":30,\"spa\":95,\"spd\":155,\"spe\":75},\"moves\":[\"splash\"],\"baseAbility\":\"healer\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Normal\"],\"types\":[\"Normal\"],\"ability\":\"healer\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Normal\",\"terastallized\":\"\"}]}}",
+        "sideupdate\np2\n|request|{\"active\":[{\"moves\":[{\"move\":\"Tackle\",\"id\":\"tackle\",\"pp\":39,\"maxpp\":40,\"target\":\"normal\",\"disabled\":false}],\"canTerastallize\":\"Normal\"}],\"side\":{\"name\":\"Bob\",\"id\":\"p2\",\"pokemon\":[{\"ident\":\"p2: Snorlax\",\"details\":\"Snorlax, 00000000-0000-0000-0000-000000000003, L50, M\",\"condition\":\"235/235\",\"active\":true,\"stats\":{\"atk\":130,\"def\":85,\"spa\":85,\"spd\":130,\"spe\":50},\"moves\":[\"tackle\"],\"baseAbility\":\"immunity\",\"item\":\"\",\"pokeball\":\"pokeball\",\"baseTypes\":[\"Normal\"],\"types\":[\"Normal\"],\"ability\":\"immunity\",\"commanding\":false,\"reviving\":false,\"teraType\":\"Normal\",\"terastallized\":\"\"}]}}",
+        "update\n|\n|t:|1792976474\n|move|p1a: 00000000-0000-0000-0000-000000000001|Splash|p1a: 00000000-0000-0000-0000-000000000001\n|-nothing\n|move|p2a: 00000000-0000-0000-0000-000000000003|Tackle|p1a: 00000000-0000-0000-0000-000000000001\n|split|p1\n|-damage|p1a: 00000000-0000-0000-0000-000000000001|95/135\n|-damage|p1a: 00000000-0000-0000-0000-000000000001|95/135\n|debug|illusion cleared\n|replace|p1a: 00000000-0000-0000-0000-000000000001|Zoroark, L50, M\n|-end|p1a: 00000000-0000-0000-0000-000000000001|Illusion\n|\n|upkeep\n|turn|2\n|pp_update|p1: 00000000-0000-0000-0000-000000000001|splash: 39\n|pp_update|p1: 00000000-0000-0000-0000-000000000002|splash: 40\n|pp_update|p2: 00000000-0000-0000-0000-000000000003|tackle: 39"
+      ],
+      "expected": {
+        "damage": [
+          {
+            "targetId": "00000000-0000-0000-0000-000000000001",
+            "sourceId": "00000000-0000-0000-0000-000000000003",
+            "amount": 40,
+            "requested": 40,
+            "hpBefore": 135,
+            "hpAfter": 95,
+            "maxHp": 135,
+            "effect": "Tackle"
+          }
+        ],
+        "healing": [],
+        "hpEvents": [
+          {
+            "tag": "switch",
+            "targetId": "00000000-0000-0000-0000-000000000001",
+            "hpBefore": 135,
+            "maxBefore": 135,
+            "hpAfter": 135,
+            "maxHp": 135
+          },
+          {
+            "tag": "switch",
+            "targetId": "00000000-0000-0000-0000-000000000003",
+            "hpBefore": 235,
+            "maxBefore": 235,
+            "hpAfter": 235,
+            "maxHp": 235
+          },
+          {
+            "tag": "-damage",
+            "targetId": "00000000-0000-0000-0000-000000000001",
+            "hpBefore": 135,
+            "maxBefore": 135,
+            "hpAfter": 95,
+            "maxHp": 135
+          },
+          {
+            "tag": "replace",
+            "targetId": "00000000-0000-0000-0000-000000000001",
+            "hpBefore": 95,
+            "maxBefore": 135,
+            "hpAfter": 95,
+            "maxHp": 135
+          }
+        ],
+        "criticalTargets": [],
+        "statusEvents": [],
+        "finalHp": [
+          {
+            "uuid": "00000000-0000-0000-0000-000000000001",
+            "hp": 95,
+            "maxHp": 135,
+            "status": "",
+            "substituteHp": null
+          },
+          {
+            "uuid": "00000000-0000-0000-0000-000000000002",
+            "hp": 330,
+            "maxHp": 330,
+            "status": "",
+            "substituteHp": null
+          },
+          {
+            "uuid": "00000000-0000-0000-0000-000000000003",
+            "hp": 235,
+            "maxHp": 235,
+            "status": "",
+            "substituteHp": null
+          }
+        ],
+        "unloggedHpChanges": []
+      }
+    }
+  ]
+}

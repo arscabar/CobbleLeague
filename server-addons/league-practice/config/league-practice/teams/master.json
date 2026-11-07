@@ -1,0 +1,2114 @@
+[
+  {
+    "id": "master-01",
+    "name": "밸런스 & 초화력 올라운더",
+    "pokemon": [
+      {
+        "species": "eternatus",
+        "aspects": "",
+        "nature": "timid",
+        "ability": "pressure",
+        "heldItem": "cobblemon:black_sludge",
+        "moves": [
+          "dynamaxcannon",
+          "sludgewave",
+          "flamethrower",
+          "recover"
+        ],
+        "ivs": [
+          31,
+          0,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          252,
+          0,
+          4,
+          0,
+          0,
+          252
+        ],
+        "features": {
+          "tera_type": "cobblemon:poison",
+          "friendship": "255"
+        },
+        "expectedForm": "normal"
+      },
+      {
+        "species": "rayquaza",
+        "aspects": "",
+        "nature": "jolly",
+        "ability": "airlock",
+        "heldItem": "cobblemon:life_orb",
+        "moves": [
+          "dragonascent",
+          "extremespeed",
+          "earthquake",
+          "swordsdance"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          0,
+          252,
+          0,
+          0,
+          4,
+          252
+        ],
+        "features": {
+          "tera_type": "cobblemon:normal",
+          "friendship": "255"
+        },
+        "expectedForm": "normal"
+      },
+      {
+        "species": "urshifu",
+        "aspects": "",
+        "nature": "jolly",
+        "ability": "unseenfist",
+        "heldItem": "cobblemon:focus_sash",
+        "moves": [
+          "wickedblow",
+          "closecombat",
+          "suckerpunch",
+          "ironhead"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          0,
+          252,
+          0,
+          0,
+          4,
+          252
+        ],
+        "features": {
+          "wushu_style": "single_strike",
+          "gmax_factor": "true",
+          "dmax_level": "10",
+          "tera_type": "cobblemon:dark",
+          "friendship": "255"
+        },
+        "expectedForm": "normal"
+      },
+      {
+        "species": "calyrex",
+        "aspects": "",
+        "nature": "timid",
+        "ability": "asonespectrier",
+        "heldItem": "cobblemon:choice_scarf",
+        "moves": [
+          "astralbarrage",
+          "psyshock",
+          "drainingkiss",
+          "trick"
+        ],
+        "ivs": [
+          31,
+          0,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          0,
+          0,
+          0,
+          252,
+          4,
+          252
+        ],
+        "features": {
+          "king_steed": "shadow",
+          "tera_type": "cobblemon:normal",
+          "friendship": "255"
+        },
+        "expectedForm": "Shadow"
+      },
+      {
+        "species": "zacian",
+        "aspects": "",
+        "nature": "jolly",
+        "ability": "intrepidsword",
+        "heldItem": "mega_showdown:rusted_sword",
+        "moves": [
+          "behemothblade",
+          "playrough",
+          "closecombat",
+          "terablast"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          0,
+          252,
+          0,
+          0,
+          4,
+          252
+        ],
+        "features": {
+          "tera_type": "cobblemon:ground",
+          "friendship": "255"
+        },
+        "expectedForm": "normal"
+      },
+      {
+        "species": "groudon",
+        "aspects": "",
+        "nature": "adamant",
+        "ability": "drought",
+        "heldItem": "mega_showdown:red_orb",
+        "moves": [
+          "precipiceblades",
+          "heatcrash",
+          "stealthrock",
+          "swordsdance"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          252,
+          252,
+          0,
+          0,
+          4,
+          0
+        ],
+        "features": {
+          "tera_type": "cobblemon:fire",
+          "friendship": "255"
+        },
+        "expectedForm": "normal"
+      }
+    ]
+  },
+  {
+    "id": "master-02",
+    "name": "벽 사이클 & 상태이상",
+    "pokemon": [
+      {
+        "species": "eternatus",
+        "aspects": "",
+        "nature": "bold",
+        "ability": "pressure",
+        "heldItem": "cobblemon:black_sludge",
+        "moves": [
+          "eternabeam",
+          "dynamaxcannon",
+          "cosmicpower",
+          "recover"
+        ],
+        "ivs": [
+          31,
+          0,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          252,
+          0,
+          252,
+          0,
+          4,
+          0
+        ],
+        "features": {
+          "tera_type": "cobblemon:poison",
+          "friendship": "255"
+        },
+        "expectedForm": "normal"
+      },
+      {
+        "species": "sableye",
+        "aspects": "",
+        "nature": "impish",
+        "ability": "prankster",
+        "heldItem": "mega_showdown:sablenite",
+        "moves": [
+          "foulplay",
+          "willowisp",
+          "recover",
+          "knockoff"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          252,
+          0,
+          252,
+          0,
+          4,
+          0
+        ],
+        "features": {
+          "tera_type": "cobblemon:dark",
+          "friendship": "255"
+        },
+        "expectedForm": "normal"
+      },
+      {
+        "species": "yveltal",
+        "aspects": "",
+        "nature": "hasty",
+        "ability": "darkaura",
+        "heldItem": "cobblemon:life_orb",
+        "moves": [
+          "darkpulse",
+          "oblivionwing",
+          "suckerpunch",
+          "heatwave"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          0,
+          4,
+          0,
+          252,
+          0,
+          252
+        ],
+        "features": {
+          "tera_type": "cobblemon:dark",
+          "friendship": "255"
+        }
+      },
+      {
+        "species": "necrozma",
+        "aspects": "",
+        "nature": "adamant",
+        "ability": "prismarmor",
+        "heldItem": "cobblemon:weakness_policy",
+        "moves": [
+          "sunsteelstrike",
+          "earthquake",
+          "dragondance",
+          "morningsun"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          252,
+          252,
+          0,
+          0,
+          4,
+          0
+        ],
+        "features": {
+          "prism_fusion": "dusk",
+          "tera_type": "cobblemon:steel",
+          "friendship": "255"
+        },
+        "expectedForm": "Dusk-Mane"
+      },
+      {
+        "species": "zygarde",
+        "aspects": "",
+        "nature": "impish",
+        "ability": "powerconstruct",
+        "heldItem": "cobblemon:leftovers",
+        "moves": [
+          "thousandarrows",
+          "glare",
+          "coil",
+          "rest"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          252,
+          0,
+          252,
+          0,
+          4,
+          0
+        ],
+        "features": {
+          "percent_cells": "50",
+          "power-construct": "true",
+          "tera_type": "cobblemon:water",
+          "friendship": "255"
+        },
+        "expectedForm": "50%-C"
+      },
+      {
+        "species": "groudon",
+        "aspects": "",
+        "nature": "careful",
+        "ability": "drought",
+        "heldItem": "mega_showdown:red_orb",
+        "moves": [
+          "precipiceblades",
+          "lavaplume",
+          "stealthrock",
+          "thunderwave"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          252,
+          4,
+          0,
+          0,
+          252,
+          0
+        ],
+        "features": {
+          "tera_type": "cobblemon:ground",
+          "friendship": "255"
+        },
+        "expectedForm": "normal"
+      }
+    ]
+  },
+  {
+    "id": "master-03",
+    "name": "울트라버스트 & Z기술",
+    "pokemon": [
+      {
+        "species": "eternatus",
+        "aspects": "",
+        "nature": "modest",
+        "ability": "pressure",
+        "heldItem": "cobblemon:power_herb",
+        "moves": [
+          "meteorbeam",
+          "dynamaxcannon",
+          "sludgewave",
+          "fireblast"
+        ],
+        "ivs": [
+          31,
+          0,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          252,
+          0,
+          0,
+          252,
+          4,
+          0
+        ],
+        "features": {
+          "tera_type": "cobblemon:dragon",
+          "friendship": "255"
+        },
+        "expectedForm": "normal"
+      },
+      {
+        "species": "necrozma",
+        "aspects": "",
+        "nature": "timid",
+        "ability": "prismarmor",
+        "heldItem": "mega_showdown:ultranecrozium_z",
+        "moves": [
+          "photongeyser",
+          "moongeistbeam",
+          "earthpower",
+          "dragonpulse"
+        ],
+        "ivs": [
+          31,
+          0,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          0,
+          0,
+          0,
+          252,
+          4,
+          252
+        ],
+        "features": {
+          "prism_fusion": "dawn",
+          "tera_type": "cobblemon:psychic",
+          "friendship": "255"
+        },
+        "expectedForm": "Dawn-Wings"
+      },
+      {
+        "species": "gengar",
+        "aspects": "",
+        "nature": "timid",
+        "ability": "cursedbody",
+        "heldItem": "mega_showdown:gengarite",
+        "moves": [
+          "shadowball",
+          "sludgewave",
+          "focusblast",
+          "icywind"
+        ],
+        "ivs": [
+          31,
+          0,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          0,
+          0,
+          0,
+          252,
+          4,
+          252
+        ],
+        "features": {
+          "tera_type": "cobblemon:ghost",
+          "friendship": "255"
+        },
+        "expectedForm": "normal"
+      },
+      {
+        "species": "koraidon",
+        "aspects": "",
+        "nature": "jolly",
+        "ability": "orichalcumpulse",
+        "heldItem": "cobblemon:loaded_dice",
+        "moves": [
+          "collisioncourse",
+          "flareblitz",
+          "scaleshot",
+          "swordsdance"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          0,
+          252,
+          0,
+          0,
+          4,
+          252
+        ],
+        "features": {
+          "tera_type": "cobblemon:fire",
+          "friendship": "255"
+        }
+      },
+      {
+        "species": "hooh",
+        "aspects": "",
+        "nature": "adamant",
+        "ability": "regenerator",
+        "heldItem": "cobblemon:heavy_duty_boots",
+        "moves": [
+          "sacredfire",
+          "bravebird",
+          "earthquake",
+          "recover"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          248,
+          252,
+          0,
+          0,
+          8,
+          0
+        ],
+        "features": {
+          "tera_type": "cobblemon:flying",
+          "friendship": "255"
+        }
+      },
+      {
+        "species": "arceus",
+        "aspects": "",
+        "nature": "jolly",
+        "ability": "multitype",
+        "heldItem": "cobblemon:silk_scarf",
+        "moves": [
+          "extremespeed",
+          "swordsdance",
+          "shadowclaw",
+          "earthquake"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          0,
+          252,
+          0,
+          0,
+          4,
+          252
+        ],
+        "features": {
+          "tera_type": "cobblemon:normal",
+          "friendship": "255"
+        }
+      }
+    ]
+  },
+  {
+    "id": "master-04",
+    "name": "트릭룸",
+    "pokemon": [
+      {
+        "species": "eternatus",
+        "aspects": "",
+        "nature": "quiet",
+        "ability": "pressure",
+        "heldItem": "cobblemon:room_service",
+        "moves": [
+          "dynamaxcannon",
+          "sludgewave",
+          "flamethrower",
+          "recover"
+        ],
+        "ivs": [
+          31,
+          0,
+          31,
+          31,
+          31,
+          0
+        ],
+        "evs": [
+          252,
+          0,
+          0,
+          252,
+          4,
+          0
+        ],
+        "features": {
+          "tera_type": "cobblemon:poison",
+          "friendship": "255"
+        },
+        "expectedForm": "normal"
+      },
+      {
+        "species": "calyrex",
+        "aspects": "",
+        "nature": "brave",
+        "ability": "asoneglastrier",
+        "heldItem": "cobblemon:weakness_policy",
+        "moves": [
+          "glaciallance",
+          "highhorsepower",
+          "trickroom",
+          "swordsdance"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          0
+        ],
+        "evs": [
+          252,
+          252,
+          0,
+          0,
+          4,
+          0
+        ],
+        "features": {
+          "king_steed": "ice",
+          "tera_type": "cobblemon:fire",
+          "friendship": "255"
+        },
+        "expectedForm": "Ice"
+      },
+      {
+        "species": "dialga",
+        "aspects": "",
+        "nature": "quiet",
+        "ability": "pressure",
+        "heldItem": "mega_showdown:adamant_crystal",
+        "moves": [
+          "roaroftime",
+          "flashcannon",
+          "earthpower",
+          "trickroom"
+        ],
+        "ivs": [
+          31,
+          0,
+          31,
+          31,
+          31,
+          0
+        ],
+        "evs": [
+          252,
+          0,
+          0,
+          252,
+          4,
+          0
+        ],
+        "features": {
+          "orb_forme": "origin",
+          "tera_type": "cobblemon:steel",
+          "friendship": "255"
+        },
+        "expectedForm": "Origin"
+      },
+      {
+        "species": "mawile",
+        "aspects": "",
+        "nature": "brave",
+        "ability": "intimidate",
+        "heldItem": "mega_showdown:mawilite",
+        "moves": [
+          "playrough",
+          "ironhead",
+          "suckerpunch",
+          "swordsdance"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          0
+        ],
+        "evs": [
+          252,
+          252,
+          0,
+          0,
+          4,
+          0
+        ],
+        "features": {
+          "tera_type": "cobblemon:fairy",
+          "friendship": "255"
+        },
+        "expectedForm": "normal"
+      },
+      {
+        "species": "melmetal",
+        "aspects": "",
+        "nature": "brave",
+        "ability": "ironfist",
+        "heldItem": "cobblemon:choice_band",
+        "moves": [
+          "doubleironbash",
+          "superpower",
+          "thunderpunch",
+          "icepunch"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          0
+        ],
+        "evs": [
+          252,
+          252,
+          0,
+          0,
+          4,
+          0
+        ],
+        "features": {
+          "gmax_factor": "true",
+          "dmax_level": "10",
+          "tera_type": "cobblemon:steel",
+          "friendship": "255"
+        },
+        "expectedForm": "normal"
+      },
+      {
+        "species": "ursaluna",
+        "aspects": "",
+        "nature": "quiet",
+        "ability": "mindseye",
+        "heldItem": "cobblemon:life_orb",
+        "moves": [
+          "bloodmoon",
+          "earthpower",
+          "hypervoice",
+          "vacuumwave"
+        ],
+        "ivs": [
+          31,
+          0,
+          31,
+          31,
+          31,
+          0
+        ],
+        "evs": [
+          252,
+          0,
+          0,
+          252,
+          4,
+          0
+        ],
+        "features": {
+          "bloodmoon": "true",
+          "tera_type": "cobblemon:normal",
+          "friendship": "255"
+        },
+        "expectedForm": "Bloodmoon"
+      }
+    ]
+  },
+  {
+    "id": "master-05",
+    "name": "초고속 랭크업",
+    "pokemon": [
+      {
+        "species": "eternatus",
+        "aspects": "",
+        "nature": "modest",
+        "ability": "pressure",
+        "heldItem": "cobblemon:leftovers",
+        "moves": [
+          "dynamaxcannon",
+          "sludgewave",
+          "flamethrower",
+          "agility"
+        ],
+        "ivs": [
+          31,
+          0,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          252,
+          0,
+          0,
+          252,
+          4,
+          0
+        ],
+        "features": {
+          "tera_type": "cobblemon:fire",
+          "friendship": "255"
+        },
+        "expectedForm": "normal"
+      },
+      {
+        "species": "terapagos",
+        "aspects": "",
+        "nature": "modest",
+        "ability": "terashift",
+        "heldItem": "cobblemon:heavy_duty_boots",
+        "moves": [
+          "terastarstorm",
+          "earthpower",
+          "calmmind",
+          "rockpolish"
+        ],
+        "ivs": [
+          31,
+          0,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          252,
+          0,
+          0,
+          252,
+          4,
+          0
+        ],
+        "features": {
+          "tera_form": "normal",
+          "tera_type": "cobblemon:stellar",
+          "friendship": "255"
+        },
+        "expectedForm": "normal"
+      },
+      {
+        "species": "xerneas",
+        "aspects": "",
+        "nature": "timid",
+        "ability": "fairyaura",
+        "heldItem": "cobblemon:power_herb",
+        "moves": [
+          "geomancy",
+          "moonblast",
+          "thunder",
+          "focusblast"
+        ],
+        "ivs": [
+          31,
+          0,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          0,
+          0,
+          0,
+          252,
+          4,
+          252
+        ],
+        "features": {
+          "tera_type": "cobblemon:fairy",
+          "friendship": "255"
+        }
+      },
+      {
+        "species": "salamence",
+        "aspects": "",
+        "nature": "jolly",
+        "ability": "intimidate",
+        "heldItem": "mega_showdown:salamencite",
+        "moves": [
+          "doubleedge",
+          "earthquake",
+          "roost",
+          "dragondance"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          0,
+          252,
+          0,
+          0,
+          4,
+          252
+        ],
+        "features": {
+          "tera_type": "cobblemon:flying",
+          "friendship": "255"
+        },
+        "expectedForm": "normal"
+      },
+      {
+        "species": "kyurem",
+        "aspects": "",
+        "nature": "timid",
+        "ability": "turboblaze",
+        "heldItem": "cobblemon:choice_scarf",
+        "moves": [
+          "iceburn",
+          "freezedry",
+          "dracometeor",
+          "fusionflare"
+        ],
+        "ivs": [
+          31,
+          0,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          0,
+          0,
+          0,
+          252,
+          4,
+          252
+        ],
+        "features": {
+          "absofusion": "white",
+          "tera_type": "cobblemon:ice",
+          "friendship": "255"
+        },
+        "expectedForm": "White"
+      },
+      {
+        "species": "magearna",
+        "aspects": "",
+        "nature": "modest",
+        "ability": "soulheart",
+        "heldItem": "cobblemon:shuca_berry",
+        "moves": [
+          "fleurcannon",
+          "flashcannon",
+          "shiftgear",
+          "calmmind"
+        ],
+        "ivs": [
+          31,
+          0,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          252,
+          0,
+          0,
+          252,
+          4,
+          0
+        ],
+        "features": {
+          "tera_type": "cobblemon:water",
+          "friendship": "255"
+        }
+      }
+    ]
+  },
+  {
+    "id": "master-06",
+    "name": "배턴터치",
+    "pokemon": [
+      {
+        "species": "eternatus",
+        "aspects": "",
+        "nature": "modest",
+        "ability": "pressure",
+        "heldItem": "cobblemon:leftovers",
+        "moves": [
+          "dynamaxcannon",
+          "sludgewave",
+          "flamethrower",
+          "recover"
+        ],
+        "ivs": [
+          31,
+          0,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          252,
+          0,
+          0,
+          252,
+          4,
+          0
+        ],
+        "features": {
+          "tera_type": "cobblemon:fire",
+          "friendship": "255"
+        },
+        "expectedForm": "normal"
+      },
+      {
+        "species": "mewtwo",
+        "aspects": "",
+        "nature": "timid",
+        "ability": "pressure",
+        "heldItem": "mega_showdown:mewtwonite_y",
+        "moves": [
+          "psystrike",
+          "aurasphere",
+          "icebeam",
+          "shadowball"
+        ],
+        "ivs": [
+          31,
+          0,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          0,
+          0,
+          0,
+          252,
+          4,
+          252
+        ],
+        "features": {
+          "tera_type": "cobblemon:psychic",
+          "friendship": "255"
+        },
+        "expectedForm": "normal"
+      },
+      {
+        "species": "blaziken",
+        "aspects": "",
+        "nature": "jolly",
+        "ability": "speedboost",
+        "heldItem": "mega_showdown:blazikenite",
+        "moves": [
+          "flareblitz",
+          "closecombat",
+          "swordsdance",
+          "batonpass"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          0,
+          252,
+          0,
+          0,
+          4,
+          252
+        ],
+        "features": {
+          "tera_type": "cobblemon:fire",
+          "friendship": "255"
+        },
+        "expectedForm": "normal"
+      },
+      {
+        "species": "magearna",
+        "aspects": "",
+        "nature": "modest",
+        "ability": "soulheart",
+        "heldItem": "cobblemon:weakness_policy",
+        "moves": [
+          "fleurcannon",
+          "aurasphere",
+          "shiftgear",
+          "batonpass"
+        ],
+        "ivs": [
+          31,
+          0,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          252,
+          0,
+          0,
+          252,
+          4,
+          0
+        ],
+        "features": {
+          "tera_type": "cobblemon:flying",
+          "friendship": "255"
+        }
+      },
+      {
+        "species": "calyrex",
+        "aspects": "",
+        "nature": "timid",
+        "ability": "asonespectrier",
+        "heldItem": "cobblemon:focus_sash",
+        "moves": [
+          "astralbarrage",
+          "psyshock",
+          "nastyplot",
+          "batonpass"
+        ],
+        "ivs": [
+          31,
+          0,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          0,
+          0,
+          0,
+          252,
+          4,
+          252
+        ],
+        "features": {
+          "king_steed": "shadow",
+          "tera_type": "cobblemon:ghost",
+          "friendship": "255"
+        },
+        "expectedForm": "Shadow"
+      },
+      {
+        "species": "arceus",
+        "aspects": "",
+        "nature": "jolly",
+        "ability": "multitype",
+        "heldItem": "mega_showdown:earth_plate",
+        "moves": [
+          "earthquake",
+          "stoneedge",
+          "extremespeed",
+          "swordsdance"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          0,
+          252,
+          0,
+          0,
+          4,
+          252
+        ],
+        "features": {
+          "multitype": "ground",
+          "tera_type": "cobblemon:ground",
+          "friendship": "255"
+        },
+        "expectedForm": "Ground"
+      }
+    ]
+  },
+  {
+    "id": "master-07",
+    "name": "끈적끈적네트",
+    "pokemon": [
+      {
+        "species": "eternatus",
+        "aspects": "",
+        "nature": "timid",
+        "ability": "pressure",
+        "heldItem": "cobblemon:heavy_duty_boots",
+        "moves": [
+          "dynamaxcannon",
+          "sludgebomb",
+          "toxicspikes",
+          "recover"
+        ],
+        "ivs": [
+          31,
+          0,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          252,
+          0,
+          0,
+          4,
+          0,
+          252
+        ],
+        "features": {
+          "tera_type": "cobblemon:poison",
+          "friendship": "255"
+        },
+        "expectedForm": "normal"
+      },
+      {
+        "species": "ribombee",
+        "aspects": "",
+        "nature": "timid",
+        "ability": "shielddust",
+        "heldItem": "cobblemon:focus_sash",
+        "moves": [
+          "stickyweb",
+          "moonblast",
+          "stunspore",
+          "psychicnoise"
+        ],
+        "ivs": [
+          31,
+          0,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          0,
+          0,
+          0,
+          252,
+          4,
+          252
+        ],
+        "features": {
+          "tera_type": "cobblemon:ghost",
+          "friendship": "255"
+        }
+      },
+      {
+        "species": "kangaskhan",
+        "aspects": "",
+        "nature": "jolly",
+        "ability": "scrappy",
+        "heldItem": "mega_showdown:kangaskhanite",
+        "moves": [
+          "fakeout",
+          "bodyslam",
+          "poweruppunch",
+          "suckerpunch"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          0,
+          252,
+          0,
+          0,
+          4,
+          252
+        ],
+        "features": {
+          "tera_type": "cobblemon:normal",
+          "friendship": "255"
+        },
+        "expectedForm": "normal"
+      },
+      {
+        "species": "kyogre",
+        "aspects": "",
+        "nature": "modest",
+        "ability": "drizzle",
+        "heldItem": "mega_showdown:blue_orb",
+        "moves": [
+          "waterspout",
+          "originpulse",
+          "icebeam",
+          "thunder"
+        ],
+        "ivs": [
+          31,
+          0,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          0,
+          0,
+          4,
+          252,
+          0,
+          252
+        ],
+        "features": {
+          "tera_type": "cobblemon:water",
+          "friendship": "255"
+        },
+        "expectedForm": "normal"
+      },
+      {
+        "species": "charizard",
+        "aspects": "",
+        "nature": "timid",
+        "ability": "solarpower",
+        "heldItem": "cobblemon:life_orb",
+        "moves": [
+          "blastburn",
+          "hurricane",
+          "scorchingsands",
+          "ancientpower"
+        ],
+        "ivs": [
+          31,
+          0,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          0,
+          0,
+          0,
+          252,
+          4,
+          252
+        ],
+        "features": {
+          "gmax_factor": "true",
+          "dmax_level": "10",
+          "tera_type": "cobblemon:fire",
+          "friendship": "255"
+        },
+        "expectedForm": "normal"
+      },
+      {
+        "species": "giratina",
+        "aspects": "",
+        "nature": "adamant",
+        "ability": "levitate",
+        "heldItem": "mega_showdown:griseous_core",
+        "moves": [
+          "poltergeist",
+          "dragontail",
+          "shadowsneak",
+          "stoneedge"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          248,
+          252,
+          8,
+          0,
+          0,
+          0
+        ],
+        "features": {
+          "orb_forme": "origin",
+          "tera_type": "cobblemon:ghost",
+          "friendship": "255"
+        },
+        "expectedForm": "Origin"
+      }
+    ]
+  },
+  {
+    "id": "master-08",
+    "name": "원시가이오가 폭우 & 천진",
+    "pokemon": [
+      {
+        "species": "eternatus",
+        "aspects": "",
+        "nature": "bold",
+        "ability": "pressure",
+        "heldItem": "cobblemon:black_sludge",
+        "moves": [
+          "dynamaxcannon",
+          "toxic",
+          "cosmicpower",
+          "recover"
+        ],
+        "ivs": [
+          31,
+          0,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          252,
+          0,
+          252,
+          0,
+          4,
+          0
+        ],
+        "features": {
+          "tera_type": "cobblemon:dragon",
+          "friendship": "255"
+        },
+        "expectedForm": "normal"
+      },
+      {
+        "species": "kyogre",
+        "aspects": "",
+        "nature": "modest",
+        "ability": "drizzle",
+        "heldItem": "mega_showdown:blue_orb",
+        "moves": [
+          "originpulse",
+          "thunder",
+          "icebeam",
+          "calmmind"
+        ],
+        "ivs": [
+          31,
+          0,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          252,
+          0,
+          0,
+          252,
+          4,
+          0
+        ],
+        "features": {
+          "tera_type": "cobblemon:water",
+          "friendship": "255"
+        },
+        "expectedForm": "normal"
+      },
+      {
+        "species": "urshifu",
+        "aspects": "",
+        "nature": "jolly",
+        "ability": "unseenfist",
+        "heldItem": "cobblemon:choice_band",
+        "moves": [
+          "surgingstrikes",
+          "closecombat",
+          "aquajet",
+          "uturn"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          0,
+          252,
+          0,
+          0,
+          4,
+          252
+        ],
+        "features": {
+          "wushu_style": "rapid_strike",
+          "gmax_factor": "true",
+          "dmax_level": "10",
+          "tera_type": "cobblemon:water",
+          "friendship": "255"
+        },
+        "expectedForm": "Rapid-Strike"
+      },
+      {
+        "species": "swampert",
+        "aspects": "",
+        "nature": "adamant",
+        "ability": "damp",
+        "heldItem": "mega_showdown:swampertite",
+        "moves": [
+          "waterfall",
+          "earthquake",
+          "icepunch",
+          "flipturn"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          0,
+          252,
+          0,
+          0,
+          4,
+          252
+        ],
+        "features": {
+          "tera_type": "cobblemon:water",
+          "friendship": "255"
+        },
+        "expectedForm": "normal"
+      },
+      {
+        "species": "palkia",
+        "aspects": "",
+        "nature": "timid",
+        "ability": "pressure",
+        "heldItem": "mega_showdown:lustrous_globe",
+        "moves": [
+          "spacialrend",
+          "hydropump",
+          "thunder",
+          "fireblast"
+        ],
+        "ivs": [
+          31,
+          0,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          0,
+          0,
+          0,
+          252,
+          4,
+          252
+        ],
+        "features": {
+          "orb_forme": "origin",
+          "tera_type": "cobblemon:water",
+          "friendship": "255"
+        },
+        "expectedForm": "Origin"
+      },
+      {
+        "species": "dondozo",
+        "aspects": "",
+        "nature": "impish",
+        "ability": "unaware",
+        "heldItem": "cobblemon:leftovers",
+        "moves": [
+          "wavecrash",
+          "orderup",
+          "curse",
+          "rest"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          252,
+          0,
+          252,
+          0,
+          4,
+          0
+        ],
+        "features": {
+          "tera_type": "cobblemon:fairy",
+          "friendship": "255"
+        }
+      }
+    ]
+  },
+  {
+    "id": "master-09",
+    "name": "유턴·볼트체인지 사이클",
+    "pokemon": [
+      {
+        "species": "eternatus",
+        "aspects": "",
+        "nature": "modest",
+        "ability": "pressure",
+        "heldItem": "cobblemon:assault_vest",
+        "moves": [
+          "dynamaxcannon",
+          "sludgewave",
+          "flamethrower",
+          "shadowball"
+        ],
+        "ivs": [
+          31,
+          0,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          252,
+          0,
+          0,
+          252,
+          4,
+          0
+        ],
+        "features": {
+          "tera_type": "cobblemon:steel",
+          "friendship": "255"
+        },
+        "expectedForm": "normal"
+      },
+      {
+        "species": "rayquaza",
+        "aspects": "",
+        "nature": "jolly",
+        "ability": "airlock",
+        "heldItem": "cobblemon:choice_band",
+        "moves": [
+          "dragonascent",
+          "extremespeed",
+          "vcreate",
+          "uturn"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          0,
+          252,
+          0,
+          0,
+          4,
+          252
+        ],
+        "features": {
+          "tera_type": "cobblemon:flying",
+          "friendship": "255"
+        },
+        "expectedForm": "normal"
+      },
+      {
+        "species": "miraidon",
+        "aspects": "",
+        "nature": "timid",
+        "ability": "hadronengine",
+        "heldItem": "cobblemon:heavy_duty_boots",
+        "moves": [
+          "electrodrift",
+          "dracometeor",
+          "overheat",
+          "voltswitch"
+        ],
+        "ivs": [
+          31,
+          0,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          0,
+          0,
+          0,
+          252,
+          4,
+          252
+        ],
+        "features": {
+          "tera_type": "cobblemon:electric",
+          "friendship": "255"
+        }
+      },
+      {
+        "species": "koraidon",
+        "aspects": "",
+        "nature": "jolly",
+        "ability": "orichalcumpulse",
+        "heldItem": "cobblemon:choice_scarf",
+        "moves": [
+          "collisioncourse",
+          "flareblitz",
+          "outrage",
+          "uturn"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          0,
+          252,
+          0,
+          0,
+          4,
+          252
+        ],
+        "features": {
+          "tera_type": "cobblemon:fire",
+          "friendship": "255"
+        }
+      },
+      {
+        "species": "hooh",
+        "aspects": "",
+        "nature": "adamant",
+        "ability": "regenerator",
+        "heldItem": "cobblemon:heavy_duty_boots",
+        "moves": [
+          "sacredfire",
+          "bravebird",
+          "earthquake",
+          "recover"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          248,
+          252,
+          0,
+          0,
+          8,
+          0
+        ],
+        "features": {
+          "tera_type": "cobblemon:grass",
+          "friendship": "255"
+        }
+      },
+      {
+        "species": "palafin",
+        "aspects": "",
+        "nature": "adamant",
+        "ability": "zerotohero",
+        "heldItem": "cobblemon:mystic_water",
+        "moves": [
+          "jetpunch",
+          "wavecrash",
+          "closecombat",
+          "flipturn"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          252,
+          252,
+          0,
+          0,
+          4,
+          0
+        ],
+        "features": {
+          "tera_type": "cobblemon:water",
+          "friendship": "255"
+        },
+        "expectedForm": "normal"
+      }
+    ]
+  },
+  {
+    "id": "master-10",
+    "name": "선공 & 랭크업 강탈",
+    "pokemon": [
+      {
+        "species": "eternatus",
+        "aspects": "",
+        "nature": "calm",
+        "ability": "pressure",
+        "heldItem": "cobblemon:black_sludge",
+        "moves": [
+          "dynamaxcannon",
+          "sludgebomb",
+          "flamethrower",
+          "recover"
+        ],
+        "ivs": [
+          31,
+          0,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          252,
+          0,
+          4,
+          0,
+          252,
+          0
+        ],
+        "features": {
+          "tera_type": "cobblemon:fairy",
+          "friendship": "255"
+        },
+        "expectedForm": "normal"
+      },
+      {
+        "species": "mewtwo",
+        "aspects": "",
+        "nature": "jolly",
+        "ability": "pressure",
+        "heldItem": "mega_showdown:mewtwonite_x",
+        "moves": [
+          "lowkick",
+          "zenheadbutt",
+          "icepunch",
+          "stoneedge"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          0,
+          252,
+          0,
+          0,
+          4,
+          252
+        ],
+        "features": {
+          "tera_type": "cobblemon:fighting",
+          "friendship": "255"
+        },
+        "expectedForm": "normal"
+      },
+      {
+        "species": "zygarde",
+        "aspects": "",
+        "nature": "adamant",
+        "ability": "powerconstruct",
+        "heldItem": "cobblemon:leftovers",
+        "moves": [
+          "thousandarrows",
+          "coreenforcer",
+          "extremespeed",
+          "dragondance"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          252,
+          252,
+          0,
+          0,
+          4,
+          0
+        ],
+        "features": {
+          "percent_cells": "50",
+          "power-construct": "true",
+          "tera_type": "cobblemon:ground",
+          "friendship": "255"
+        },
+        "expectedForm": "50%-C"
+      },
+      {
+        "species": "marshadow",
+        "aspects": "",
+        "nature": "jolly",
+        "ability": "technician",
+        "heldItem": "cobblemon:life_orb",
+        "moves": [
+          "spectralthief",
+          "closecombat",
+          "shadowsneak",
+          "icepunch"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          0,
+          252,
+          0,
+          0,
+          4,
+          252
+        ],
+        "features": {
+          "tera_type": "cobblemon:ghost",
+          "friendship": "255"
+        }
+      },
+      {
+        "species": "yveltal",
+        "aspects": "",
+        "nature": "modest",
+        "ability": "darkaura",
+        "heldItem": "cobblemon:heavy_duty_boots",
+        "moves": [
+          "darkpulse",
+          "oblivionwing",
+          "suckerpunch",
+          "heatwave"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          252,
+          0,
+          0,
+          252,
+          4,
+          0
+        ],
+        "features": {
+          "tera_type": "cobblemon:dark",
+          "friendship": "255"
+        }
+      },
+      {
+        "species": "zacian",
+        "aspects": "",
+        "nature": "jolly",
+        "ability": "intrepidsword",
+        "heldItem": "mega_showdown:rusted_sword",
+        "moves": [
+          "behemothblade",
+          "playrough",
+          "closecombat",
+          "quickattack"
+        ],
+        "ivs": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31
+        ],
+        "evs": [
+          0,
+          252,
+          0,
+          0,
+          4,
+          252
+        ],
+        "features": {
+          "tera_type": "cobblemon:fighting",
+          "friendship": "255"
+        },
+        "expectedForm": "normal"
+      }
+    ]
+  }
+]

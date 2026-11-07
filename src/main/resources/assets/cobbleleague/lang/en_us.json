@@ -1,0 +1,11 @@
+{
+  "cobbleleague.menu": "Dungeon progress / League",
+  "cobblemon.challenge.rule.cobbleleague.borrow": "Borrow Teams",
+  "cobblemon.challenge.rule.cobbleleague.pick": "Choose Teams",
+  "cobblemon.challenge.rule.cobbleleague.draft": "Draft Dungeon",
+  "cobbleleague.rule.borrow.description": "Choose one of your opponent's Quick Teams saved teams to borrow.",
+  "cobbleleague.rule.pick.description": "Choose which Quick Teams saved team your opponent must use.",
+  "cobbleleague.rule.draft.description": "Join the F4 lobby. Two or more players start when everyone is ready. Zero health eliminates a player.",
+  "cobbleleague.rule.level50": "Additional modes: level 50. Use the original Challenge button.",
+  "key.cobbleleague.dungeon": "Dungeon lobby / preparation / shops"
+}
