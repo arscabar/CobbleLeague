@@ -351,7 +351,7 @@ class LeagueService(private val server: MinecraftServer) {
             r.preparation.unlockWaiting();r.opponent=null;r.room=-1
             battle?.actors?.filter{id in it.getPlayerUUIDs()}?.forEach{actor->actor.pokemonList.forEach{bm->
                 val original=r.party.firstOrNull{it.uuid==bm.originalPokemon.uuid}
-                if(original!=null&&DungeonShop.products.any{it.price==1&&it.id==BuiltInRegistries.ITEM.getKey(original.heldItem().item).toString()}&&bm.effectedPokemon.heldItem().isEmpty)
+                if(original!=null&&DungeonShop.products.any{it.consumable&&it.id==BuiltInRegistries.ITEM.getKey(original.heldItem().item).toString()}&&bm.effectedPokemon.heldItem().isEmpty)
                     (original as DungeonHeldItemAccessor).`cobbleleague$setVirtualItem`(ItemStack.EMPTY)
             }}
             if(g.model.standings.getValue(id).health==0)restoreLobbyMember(id,"보유 점수가 0점이 되어 탈락했습니다.",disconnected)
@@ -389,7 +389,7 @@ class LeagueService(private val server: MinecraftServer) {
         runs[id]?.let{r->
             match.battle.actors.filter{id in it.getPlayerUUIDs()}.forEach{actor->actor.pokemonList.forEach{bm->
                 val original=r.party.firstOrNull{it.uuid==bm.originalPokemon.uuid}
-                if(original!=null&&DungeonShop.products.any{it.price==1&&it.id==BuiltInRegistries.ITEM.getKey(original.heldItem().item).toString()}&&bm.effectedPokemon.heldItem().isEmpty)
+                if(original!=null&&DungeonShop.products.any{it.consumable&&it.id==BuiltInRegistries.ITEM.getKey(original.heldItem().item).toString()}&&bm.effectedPokemon.heldItem().isEmpty)
                     (original as DungeonHeldItemAccessor).`cobbleleague$setVirtualItem`(ItemStack.EMPTY)
             }}
             if(r.state.inBattle)r.state.finishRound(if(won)RoundOutcome.WIN else RoundOutcome.LOSS)
@@ -1259,13 +1259,14 @@ class LeagueService(private val server: MinecraftServer) {
         stopBattle(match)
     }
     private fun stopBattle(match: Match) {
+        BattleAnimationRecovery.forget(match.battle.battleId)
         if (!match.battle.ended) {
             attempt("stop battle ${match.id}") { match.battle.stop() }
             if (!match.battle.ended) attempt("end battle ${match.id}") { match.battle.end() }
         }
         match.battle.actors.forEach { actor -> actor.pokemonList.forEach { mon ->
             attempt("discard battle entity ${mon.uuid}") {
-                mon.entity?.discard()
+                mon.entity?.let { it.battleId=null; it.discard() }
                 mon.effectedPokemon.state = com.cobblemon.mod.common.pokemon.activestate.InactivePokemonState()
                 mon.originalPokemon.state = com.cobblemon.mod.common.pokemon.activestate.InactivePokemonState()
             }
@@ -1273,17 +1274,20 @@ class LeagueService(private val server: MinecraftServer) {
         match.players.mapNotNull(::player).forEach { p -> attempt("close battle client ${p.uuid}") {
             com.cobblemon.mod.common.net.messages.client.battle.BattleEndPacket().sendToPlayer(p)
         } }
+        attempt("unregister battle ${match.id}") { if(BattleRegistry.getBattle(match.battle.battleId)!=null)BattleRegistry.closeBattle(match.battle) }
     }
     fun surrender(p: ServerPlayer) {
         val match = matches.values.firstOrNull { p.uuid in it.players }
         if (match==null || match.battle.ended) { note(p,"항복할 수 있는 진행 중 대전이 없습니다."); return }
-        if (match.surrenderedBy!=null) { note(p,"이미 항복을 처리 중입니다."); return }
+        if (match.surrenderedBy!=null) { stopBattle(match); finish(match,true); return }
         try {
             val actor = requireNotNull(match.battle.getActor(p))
             require(actor.showdownId in setOf("p1","p2","p3","p4"))
             match.surrenderedBy=p.uuid; match.surrenderedAt=server.tickCount
             match.battle.writeShowdownAction(">forcelose ${actor.showdownId}")
             match.players.mapNotNull(::player).forEach { note(it,"${p.name.string}님이 이번 대전에 항복했습니다.") }
+            // Closing locally does not depend on the animation/Showdown output queue.
+            stopBattle(match); finish(match,true)
         } catch (e: Exception) {
             LeagueMod.LOGGER.error("Surrender failed for {}",match.id,e)
             abortParticipant(p.uuid,"항복 처리 중 전투 엔진 오류로 대전을 종료했습니다.")
@@ -1363,6 +1367,7 @@ class LeagueService(private val server: MinecraftServer) {
     fun shutdown() {
         lobbyGame?.let{finishLobbyGame(it,"서버 종료로 던전을 마쳤습니다.",true)}
         lobbyQueue.members().mapNotNull(::player).forEach{leaveLobby(it)}
+        BattleAnimationRecovery.prune(matches.values.map{it.battle.battleId}.toSet())
         matches.values.toList().forEach { match ->
             detachMatch(match)
             if (match.run == null) restorePvp(match)
@@ -1426,9 +1431,11 @@ class LeagueService(private val server: MinecraftServer) {
         challenges.values.filter { server.tickCount>it.expires }.toList().forEach { c ->
             removeChallenge(c.id); listOf(c.sender,c.receiver).mapNotNull(::player).forEach { note(it,"리그 대전 신청이 만료되었습니다.") }
         }
+        BattleAnimationRecovery.prune(matches.values.map{it.battle.battleId}.toSet())
         matches.values.toList().forEach { match ->
             if (match.id !in matches) return@forEach
             try {
+                BattleAnimationRecovery.tick(match.battle,server.tickCount)
                 val center = match.battleCenter ?: centers[match.arena]
                 val invalid = match.players.firstOrNull { id ->
                     val p = player(id)
@@ -1485,7 +1492,7 @@ class LeagueService(private val server: MinecraftServer) {
                 group.forEach { member ->
                     match.battle.actors.filter { member.player in it.getPlayerUUIDs() }.forEach { actor -> actor.pokemonList.forEach { battleMon ->
                         val original = member.party.firstOrNull { it.uuid == battleMon.originalPokemon.uuid }
-                        if (original != null && DungeonShop.products.any { it.price == 1 && it.id == BuiltInRegistries.ITEM.getKey(original.heldItem().item).toString() } &&
+                        if (original != null && DungeonShop.products.any { it.consumable && it.id == BuiltInRegistries.ITEM.getKey(original.heldItem().item).toString() } &&
                             battleMon.effectedPokemon.heldItem().isEmpty) (original as DungeonHeldItemAccessor).`cobbleleague$setVirtualItem`(ItemStack.EMPTY)
                     } }
                     val outcome = when {

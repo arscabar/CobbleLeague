@@ -13,7 +13,9 @@
     "DraftPartySwapGuardMixin",
     "DraftPartyMoveGuardMixin",
     "RerollMarkerAccessor",
-    "CreepNpcAiMixin"
+    "CreepNpcAiMixin",
+    "BattleSendOutMixin",
+    "BattleRecallMixin"
   ],
   "injectors": {
     "defaultRequire": 1
