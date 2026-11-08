@@ -57,8 +57,8 @@ object ClientReleaseUpdate {
             client.setScreen(UpdateRestartScreen(version,process,dir.resolve("handoff-$token.ready")))
         }catch(e:Exception){LeagueMod.LOGGER.error("Could not start client updater",e);client.setScreen(TitleScreen())}
     }}
-    private fun get(url:String):ByteArray {
-        val request=HttpRequest.newBuilder(URI.create(url)).timeout(Duration.ofSeconds(20)).header("User-Agent","CobbleLeague-client-updater").header("Accept","application/vnd.github+json").GET().build()
+    private fun get(url:String,accept:String="application/vnd.github+json"):ByteArray {
+        val request=HttpRequest.newBuilder(URI.create(url)).timeout(Duration.ofSeconds(20)).header("User-Agent","CobbleLeague-client-updater").header("Accept",accept).GET().build()
         val response=http.send(request,HttpResponse.BodyHandlers.ofByteArray())
         check(response.statusCode()==200){"HTTP ${response.statusCode()}"}
         check(response.body().size<=1_000_000){"Release manifest too large"}
@@ -68,9 +68,9 @@ object ClientReleaseUpdate {
         val release=JsonParser.parseString(String(get("https://api.github.com/repos/$repo/releases/latest"),Charsets.UTF_8)).asJsonObject
         if(release.get("draft")?.asBoolean==true||release.get("prerelease")?.asBoolean==true)return null
         val asset=release.getAsJsonArray("assets").singleOrNull{it.asJsonObject.get("name")?.asString=="client-release.json"}?.asJsonObject?:return null
-        val url=URI.create(asset.get("browser_download_url").asString)
-        check(url.scheme=="https"&&url.host=="github.com"&&url.path.startsWith("/$repo/releases/download/"))
-        val body=get(url.toASCIIString())
+        val url=URI.create(asset.get("url").asString)
+        check(url.scheme=="https"&&url.host=="api.github.com"&&url.path.lowercase().startsWith("/repos/${repo.lowercase()}/releases/assets/"))
+        val body=get(url.toASCIIString(),"application/octet-stream")
         val digest=asset.get("digest")?.takeUnless{it.isJsonNull}?.asString
         if(digest!=null)check(digest=="sha256:"+MessageDigest.getInstance("SHA-256").digest(body).joinToString(""){"%02x".format(it)})
         return selectUpdate(body)

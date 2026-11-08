@@ -28,7 +28,7 @@ function PickProfile{
  throw 'Modrinth COBBLEVERSE 프로필을 찾을 수 없습니다. -TargetPath로 지정하세요.'
 }
 function Download($url,$dest){
- $args=@{Uri=$url;OutFile=$dest;UseBasicParsing=$true;TimeoutSec=90;Headers=@{'User-Agent'='CobbleLeague-client-updater';Accept='application/vnd.github+json'}}
+ $args=@{Uri=$url;OutFile=$dest;UseBasicParsing=$true;TimeoutSec=90;Headers=@{'User-Agent'='CobbleLeague-client-updater';Accept='application/octet-stream'}}
  Invoke-WebRequest @args|Out-Null
 }
 function LaunchId($root){
@@ -124,7 +124,7 @@ try{
    if($asset.Count-ne 1){throw '최신 릴리스에 client-release.json이 없습니다. 배포자가 릴리스를 완성해야 합니다.'}
    $manifestTemp=Child $root ('.cobbleleague-release-'+[guid]::NewGuid().ToString('N')+'.tmp')
    try{
-    Download $asset[0].browser_download_url $manifestTemp
+    Download $asset[0].url $manifestTemp
     if($asset[0].digest -and $asset[0].digest -ne ('sha256:'+(Hash $manifestTemp))){throw '릴리스 설명 파일 검증 실패'}
     $manifest=ReadJson $manifestTemp;$remote=$true
    }finally{if(Test-Path -LiteralPath $manifestTemp){Remove-Item -LiteralPath $manifestTemp}}
@@ -140,8 +140,8 @@ try{
   if($remote){
    $asset=@($assets|Where-Object{$_.name-eq $entry.filename})
    if($asset.Count-ne 1){throw ('릴리스 파일 누락: '+$entry.filename)}
-   $url=[uri]$asset[0].browser_download_url
-   if($url.Scheme-ne 'https' -or $url.Host-ne 'github.com' -or -not $url.AbsolutePath.StartsWith('/'+$Repository+'/releases/download/',[StringComparison]::OrdinalIgnoreCase)){throw '지정한 저장소의 릴리스 파일만 다운로드합니다.'}
+   $url=[uri]$asset[0].url
+   if($url.Scheme-ne 'https' -or $url.Host-ne 'api.github.com' -or -not $url.AbsolutePath.StartsWith('/repos/'+$Repository+'/releases/assets/',[StringComparison]::OrdinalIgnoreCase)){throw '지정한 저장소의 릴리스 파일만 다운로드합니다.'}
    Download $url.AbsoluteUri $dest
   }else{Copy-Item -LiteralPath (Child ([IO.Path]::GetFullPath($BundleDirectory)) $entry.filename) -Destination $dest}
   if((Hash $dest)-ne $entry.sha256){throw ('다운로드 파일 검증 실패: '+$entry.filename)}
