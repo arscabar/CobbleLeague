@@ -1,0 +1,185 @@
+{
+  "id": "creep_lance",
+  "pokemon": [
+    {
+      "species": "aerodactyl",
+      "aspects": "",
+      "nature": "jolly",
+      "ability": "pressure",
+      "heldItem": "cobblemon:focus_sash",
+      "moves": [
+        "stealthrock",
+        "stoneedge",
+        "taunt",
+        "earthquake"
+      ],
+      "ivs": [
+        31,
+        31,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        4,
+        252,
+        0,
+        0,
+        0,
+        252
+      ],
+      "features": {}
+    },
+    {
+      "species": "dragonite",
+      "aspects": "",
+      "nature": "adamant",
+      "ability": "multiscale",
+      "heldItem": "cobblemon:heavy_duty_boots",
+      "moves": [
+        "dragondance",
+        "extremespeed",
+        "earthquake",
+        "firepunch"
+      ],
+      "ivs": [
+        31,
+        31,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        4,
+        252,
+        0,
+        0,
+        0,
+        252
+      ],
+      "features": {}
+    },
+    {
+      "species": "gyarados",
+      "aspects": "",
+      "nature": "jolly",
+      "ability": "intimidate",
+      "heldItem": "cobblemon:leftovers",
+      "moves": [
+        "waterfall",
+        "icefang",
+        "dragondance",
+        "taunt"
+      ],
+      "ivs": [
+        31,
+        31,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        4,
+        252,
+        0,
+        0,
+        0,
+        252
+      ],
+      "features": {}
+    },
+    {
+      "species": "charizard",
+      "aspects": "",
+      "nature": "timid",
+      "ability": "blaze",
+      "heldItem": "cobblemon:heavy_duty_boots",
+      "moves": [
+        "flamethrower",
+        "airslash",
+        "dragonpulse",
+        "roost"
+      ],
+      "ivs": [
+        31,
+        0,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        4,
+        0,
+        0,
+        252,
+        0,
+        252
+      ],
+      "features": {}
+    },
+    {
+      "species": "kingdra",
+      "aspects": "",
+      "nature": "modest",
+      "ability": "sniper",
+      "heldItem": "cobblemon:scope_lens",
+      "moves": [
+        "hydropump",
+        "dracometeor",
+        "focusenergy",
+        "flashcannon"
+      ],
+      "ivs": [
+        31,
+        0,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        4,
+        0,
+        0,
+        252,
+        0,
+        252
+      ],
+      "features": {}
+    },
+    {
+      "species": "haxorus",
+      "aspects": "",
+      "nature": "jolly",
+      "ability": "moldbreaker",
+      "heldItem": "cobblemon:lum_berry",
+      "moves": [
+        "dragondance",
+        "outrage",
+        "poisonjab",
+        "earthquake"
+      ],
+      "ivs": [
+        31,
+        31,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        4,
+        252,
+        0,
+        0,
+        0,
+        252
+      ],
+      "features": {}
+    }
+  ]
+}

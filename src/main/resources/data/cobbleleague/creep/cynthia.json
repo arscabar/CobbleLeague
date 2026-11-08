@@ -1,0 +1,185 @@
+{
+  "id": "creep_cynthia",
+  "pokemon": [
+    {
+      "species": "garchomp",
+      "aspects": "",
+      "nature": "jolly",
+      "ability": "roughskin",
+      "heldItem": "cobblemon:life_orb",
+      "moves": [
+        "earthquake",
+        "dragonclaw",
+        "stoneedge",
+        "swordsdance"
+      ],
+      "ivs": [
+        31,
+        31,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        4,
+        252,
+        0,
+        0,
+        0,
+        252
+      ],
+      "features": {}
+    },
+    {
+      "species": "spiritomb",
+      "aspects": "",
+      "nature": "calm",
+      "ability": "pressure",
+      "heldItem": "cobblemon:leftovers",
+      "moves": [
+        "willowisp",
+        "darkpulse",
+        "painsplit",
+        "snarl"
+      ],
+      "ivs": [
+        31,
+        0,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        252,
+        0,
+        4,
+        0,
+        252,
+        0
+      ],
+      "features": {}
+    },
+    {
+      "species": "milotic",
+      "aspects": "",
+      "nature": "bold",
+      "ability": "marvelscale",
+      "heldItem": "cobblemon:flame_orb",
+      "moves": [
+        "scald",
+        "recover",
+        "haze",
+        "icebeam"
+      ],
+      "ivs": [
+        31,
+        0,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        252,
+        0,
+        252,
+        0,
+        4,
+        0
+      ],
+      "features": {}
+    },
+    {
+      "species": "roserade",
+      "aspects": "",
+      "nature": "timid",
+      "ability": "naturalcure",
+      "heldItem": "cobblemon:focus_sash",
+      "moves": [
+        "leafstorm",
+        "sludgebomb",
+        "spikes",
+        "sleeppowder"
+      ],
+      "ivs": [
+        31,
+        0,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        4,
+        0,
+        0,
+        252,
+        0,
+        252
+      ],
+      "features": {}
+    },
+    {
+      "species": "lucario",
+      "aspects": "",
+      "nature": "jolly",
+      "ability": "innerfocus",
+      "heldItem": "cobblemon:life_orb",
+      "moves": [
+        "closecombat",
+        "extremespeed",
+        "meteormash",
+        "swordsdance"
+      ],
+      "ivs": [
+        31,
+        31,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        4,
+        252,
+        0,
+        0,
+        0,
+        252
+      ],
+      "features": {}
+    },
+    {
+      "species": "togekiss",
+      "aspects": "",
+      "nature": "timid",
+      "ability": "serenegrace",
+      "heldItem": "cobblemon:heavy_duty_boots",
+      "moves": [
+        "airslash",
+        "dazzlinggleam",
+        "thunderwave",
+        "roost"
+      ],
+      "ivs": [
+        31,
+        0,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        4,
+        0,
+        0,
+        252,
+        0,
+        252
+      ],
+      "features": {}
+    }
+  ]
+}

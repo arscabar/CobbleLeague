@@ -62,8 +62,8 @@ class DungeonItemShopScreen(data:JsonObject):DungeonCatalogScreen(data) {
     private fun goods()=data.getAsJsonArray("products")?.map{it.asJsonObject}?.filter{category==0&&it.number("price")>0||category in 1..3&&it.number("price")==category||category==4&&it.number("owned")>0||category==5&&it.text("choice").isNotBlank()}.orEmpty()
     override fun init(){
         buildHeader()
-        val labels=listOf("전체","1원","2원","3원","보관함","선택권","확률");val w=(pw-28)/7
-        labels.forEachIndexed{i,label->button(px+12+i*w,py+94,w-2,if(category==i)"[$label]" else label){if(i==6)action("odds")else{category=i;scroll.reset();rebuildWidgets()}}}
+        val labels=listOf("전체","1원","2원","3원","보관함","선택권","확률","테라피스");val w=(pw-28)/8
+        labels.forEachIndexed{i,label->button(px+12+i*w,py+94,w-2,if(category==i)"[$label]" else label){if(i==6)action("odds")else if(i==7)action("tera")else{category=i;scroll.reset();rebuildWidgets()}}}
     }
     override fun drawContent(g:GuiGraphics,mx:Int,my:Int,delta:Float){
         drawHeader(g);val rows=goods();val total=((rows.size+2)/3)*cellH;scroll.clamp(total,gridH)

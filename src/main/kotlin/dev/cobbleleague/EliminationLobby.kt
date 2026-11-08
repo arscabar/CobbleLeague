@@ -59,9 +59,10 @@ class EliminationGame(players:List<UUID>,val startingHealth:Int=10,val lossDamag
         }
     }
     fun damageAt(number:Int):Int {
-        if(DungeonRoundKind.at(number)!=DungeonRoundKind.PVP)return 1
-        val increases=(1 until number).count{it>=escalateFromGym && DungeonRoundKind.at(it)!=DungeonRoundKind.PVP}
-        return (lossDamage+increases).coerceAtMost(maxOf(lossDamage,maxLossDamage))
+        val completed=(number.toLong().coerceAtLeast(1)-1)/4
+        val first=(escalateFromGym.toLong()+3)/4
+        val increases=(completed-first+1).coerceAtLeast(0).coerceAtMost(Int.MAX_VALUE.toLong()).toInt()
+        return (lossDamage.toLong()+increases).coerceAtMost(maxOf(lossDamage,maxLossDamage).toLong()).toInt()
     }
     private fun loseHealth(id:UUID){
         val row=standings.getValue(id);if(row.health<=0)return

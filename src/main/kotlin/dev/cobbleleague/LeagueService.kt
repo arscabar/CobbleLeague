@@ -416,7 +416,7 @@ class LeagueService(private val server: MinecraftServer) {
                 player(id)?.let{note(it,"관장전 승리 · 전원 전투 종료 후 F4에서 보상 하나를 선택하세요. 선택 전에는 지급되지 않습니다.")}
             }
             if(g.model.standings.getValue(id).health<=0)restoreLobbyMember(id,"관장전에서 0점이 되어 탈락했습니다.")
-            else player(id)?.let{p->r.party.forEach{it.heal()};moveRoom(p,r);syncVisibleParty(p,r.party);sendRun(p,r,false);if(!won)note(p,"관장전 패배 · 점수 1점 차감 · ${lobbyBalance.lossBonus}원 지급")}
+            else player(id)?.let{p->r.party.forEach{it.heal()};moveRoom(p,r);syncVisibleParty(p,r.party);sendRun(p,r,false);if(!won)note(p,"관장전 패배 · 점수 ${g.model.damageAt(g.model.plan?.number?:g.model.round)}점 차감 · ${lobbyBalance.lossBonus}원 지급")}
         }
         g.model.alive.mapNotNull(::player).forEach{p->runs[p.uuid]?.let{sendRun(p,it,false)}}
         player(id)?.let{sendCreepProgress(it,g,true)}
@@ -547,6 +547,7 @@ class LeagueService(private val server: MinecraftServer) {
             "watch_list" -> sendWatchList(p)
             "watch_battle" -> {watchBattle(p,UUID.fromString(json.text("battleId")))}
             "watch_stop" -> {note(p,stopWatching(p));menu(p)}
+            "tera" -> shop(p,JsonObject().apply{addProperty("view","tera")})
             "equipment" -> shop(p,JsonObject().apply{addProperty("view","equipment")})
             "sync_party" -> runs[p.uuid]?.let{syncVisibleParty(p,it.party);sendRun(p,it,false)}
             "lobby_join" -> lobby(p)
@@ -1073,6 +1074,8 @@ class LeagueService(private val server: MinecraftServer) {
                 }
             })
             val learnable = DungeonLearnset.entries(mon)
+            addProperty("teraPrice",DungeonTera.PRICE)
+            add("teraTypes",JsonArray().also{a->DungeonTera.types.forEach{t->a.add(JsonObject().apply{addProperty("id",t.id.toString());addProperty("type",t.id.path)})}})
             add("tms", JsonArray().also { a -> learnable.keys.forEach { a.add(it.name) } })
             add("moveSources", JsonObject().also { obj -> learnable.forEach { (move, sources) -> obj.addProperty(move.name, sources.joinToString(" · ")) } })
         })
@@ -1101,6 +1104,13 @@ class LeagueService(private val server: MinecraftServer) {
         checkGymIntermission(run)
         val revision = json.number("revision", -1); val now = System.currentTimeMillis()
         when (json.text("operation")) {
+            "tera" -> {
+                val id=json.text("tera")
+                require(DungeonTera.types.any{it.id.toString()==id}){"사용할 수 없는 테라타입입니다."}
+                require(mon.teraType.id.toString()!=id){"이미 같은 테라타입입니다."}
+                run.preparation.pay(DungeonTera.PRICE,revision,now){DungeonTera.apply(mon,id)}
+                note(p,"테라피스 사용 완료 · 이번 던전의 테라타입을 변경했습니다.")
+            }
             "tm" -> {
                 val template = requireNotNull(DungeonLearnset.entries(mon).keys.firstOrNull { it.name == json.text("move") }) { "이 포켓몬의 현재 폼이 배울 수 없는 기술입니다." }
                 require(mon.moveSet.none { it.name == template.name }) { "이미 알고 있는 기술입니다." }

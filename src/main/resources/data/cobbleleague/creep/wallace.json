@@ -1,0 +1,185 @@
+{
+  "id": "creep_wallace",
+  "pokemon": [
+    {
+      "species": "pelipper",
+      "aspects": "",
+      "nature": "bold",
+      "ability": "drizzle",
+      "heldItem": "cobblemon:damp_rock",
+      "moves": [
+        "hurricane",
+        "surf",
+        "uturn",
+        "roost"
+      ],
+      "ivs": [
+        31,
+        0,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        252,
+        0,
+        252,
+        0,
+        4,
+        0
+      ],
+      "features": {}
+    },
+    {
+      "species": "swampert",
+      "aspects": "",
+      "nature": "impish",
+      "ability": "torrent",
+      "heldItem": "cobblemon:leftovers",
+      "moves": [
+        "stealthrock",
+        "earthquake",
+        "waterfall",
+        "icepunch"
+      ],
+      "ivs": [
+        31,
+        31,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        252,
+        0,
+        252,
+        0,
+        4,
+        0
+      ],
+      "features": {}
+    },
+    {
+      "species": "milotic",
+      "aspects": "",
+      "nature": "bold",
+      "ability": "marvelscale",
+      "heldItem": "cobblemon:leftovers",
+      "moves": [
+        "scald",
+        "recover",
+        "icebeam",
+        "mirrorcoat"
+      ],
+      "ivs": [
+        31,
+        0,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        252,
+        0,
+        252,
+        0,
+        4,
+        0
+      ],
+      "features": {}
+    },
+    {
+      "species": "ludicolo",
+      "aspects": "",
+      "nature": "modest",
+      "ability": "swiftswim",
+      "heldItem": "cobblemon:life_orb",
+      "moves": [
+        "hydropump",
+        "gigadrain",
+        "icebeam",
+        "raindance"
+      ],
+      "ivs": [
+        31,
+        0,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        4,
+        0,
+        0,
+        252,
+        0,
+        252
+      ],
+      "features": {}
+    },
+    {
+      "species": "gyarados",
+      "aspects": "",
+      "nature": "jolly",
+      "ability": "intimidate",
+      "heldItem": "cobblemon:lum_berry",
+      "moves": [
+        "waterfall",
+        "earthquake",
+        "icefang",
+        "dragondance"
+      ],
+      "ivs": [
+        31,
+        31,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        4,
+        252,
+        0,
+        0,
+        0,
+        252
+      ],
+      "features": {}
+    },
+    {
+      "species": "tentacruel",
+      "aspects": "",
+      "nature": "calm",
+      "ability": "liquidooze",
+      "heldItem": "cobblemon:black_sludge",
+      "moves": [
+        "sludgebomb",
+        "scald",
+        "rapidspin",
+        "toxicspikes"
+      ],
+      "ivs": [
+        31,
+        0,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        252,
+        0,
+        4,
+        0,
+        252,
+        0
+      ],
+      "features": {}
+    }
+  ]
+}

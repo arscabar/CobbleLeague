@@ -22,7 +22,7 @@ class EliminationLobbyTest {
         assertTrue(byes.zipWithNext().none{it.first==it.second});assertEquals(setOf(3),byes.groupingBy{it}.eachCount().values.toSet())
     }
     @Test fun `five players rotate fairly and each plays at most once`() {
-        val game=EliminationGame(players(5),100,1);repeat(12){val p=game.beginRound();if(p.kind==DungeonRoundKind.PVP){val fighting=p.duels.flatMap{listOf(it.first,it.second)};assertEquals(4,fighting.distinct().size);assertFalse(p.bye in fighting);p.duels.forEach{game.complete(it,null)}}else p.players.forEach{game.completeCreep(it,true)};game.closeRound()};assertTrue(game.standings.values.all{it.byes==2})
+        val game=EliminationGame(players(5),100,1);repeat(12){val p=game.beginRound();if(p.kind==DungeonRoundKind.PVP){val fighting=p.duels.flatMap{listOf(it.first,it.second)};assertEquals(4,fighting.distinct().size);assertFalse(p.bye in fighting);p.duels.forEach{game.complete(it,null)}}else p.players.forEach{game.completeCreep(it,true)};game.closeRound()};assertEquals(9,game.standings.values.sumOf{it.byes});assertTrue(game.standings.values.maxOf{it.byes}-game.standings.values.minOf{it.byes}<=1)
     }
     @Test fun `only loser loses health and duplicate result cannot debit again`() {
         val p=players(2);val game=EliminationGame(p,4,2);val d=game.beginRound().duels.single();game.complete(d,p[0]);assertEquals(4,game.standings.getValue(p[0]).health);assertEquals(2,game.standings.getValue(p[1]).health)

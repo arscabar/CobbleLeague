@@ -1,0 +1,185 @@
+{
+  "id": "creep_steven",
+  "pokemon": [
+    {
+      "species": "metagross",
+      "aspects": "",
+      "nature": "adamant",
+      "ability": "clearbody",
+      "heldItem": "cobblemon:assault_vest",
+      "moves": [
+        "meteormash",
+        "zenheadbutt",
+        "bulletpunch",
+        "earthquake"
+      ],
+      "ivs": [
+        31,
+        31,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        252,
+        252,
+        0,
+        0,
+        4,
+        0
+      ],
+      "features": {}
+    },
+    {
+      "species": "skarmory",
+      "aspects": "",
+      "nature": "impish",
+      "ability": "sturdy",
+      "heldItem": "cobblemon:rocky_helmet",
+      "moves": [
+        "spikes",
+        "roost",
+        "bodypress",
+        "whirlwind"
+      ],
+      "ivs": [
+        31,
+        31,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        252,
+        0,
+        252,
+        0,
+        4,
+        0
+      ],
+      "features": {}
+    },
+    {
+      "species": "aggron",
+      "aspects": "",
+      "nature": "adamant",
+      "ability": "rockhead",
+      "heldItem": "cobblemon:choice_band",
+      "moves": [
+        "headsmash",
+        "heavyslam",
+        "earthquake",
+        "superpower"
+      ],
+      "ivs": [
+        31,
+        31,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        252,
+        252,
+        0,
+        0,
+        4,
+        0
+      ],
+      "features": {}
+    },
+    {
+      "species": "cradily",
+      "aspects": "",
+      "nature": "calm",
+      "ability": "stormdrain",
+      "heldItem": "cobblemon:leftovers",
+      "moves": [
+        "gigadrain",
+        "ancientpower",
+        "recover",
+        "toxic"
+      ],
+      "ivs": [
+        31,
+        0,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        252,
+        0,
+        4,
+        0,
+        252,
+        0
+      ],
+      "features": {}
+    },
+    {
+      "species": "magnezone",
+      "aspects": "",
+      "nature": "modest",
+      "ability": "magnetpull",
+      "heldItem": "cobblemon:choice_specs",
+      "moves": [
+        "thunderbolt",
+        "flashcannon",
+        "voltswitch",
+        "bodypress"
+      ],
+      "ivs": [
+        31,
+        0,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        4,
+        0,
+        0,
+        252,
+        0,
+        252
+      ],
+      "features": {}
+    },
+    {
+      "species": "excadrill",
+      "aspects": "",
+      "nature": "jolly",
+      "ability": "moldbreaker",
+      "heldItem": "cobblemon:focus_sash",
+      "moves": [
+        "earthquake",
+        "ironhead",
+        "rapidspin",
+        "swordsdance"
+      ],
+      "ivs": [
+        31,
+        31,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        4,
+        252,
+        0,
+        0,
+        0,
+        252
+      ],
+      "features": {}
+    }
+  ]
+}

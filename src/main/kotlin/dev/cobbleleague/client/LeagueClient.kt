@@ -86,7 +86,7 @@ class LeagueClient : ClientModInitializer {
                             val previous=(context.client().screen as? CatalogSource)?.catalogScreen
                             if(previous!=null&&previous.view==data.text("view","items")&&previous.targetId==data.text("selected")) {
                                 previous.acceptShop(data);previous
-                            } else if(data.text("view")=="tms") DungeonTmShopScreen(data) else if(data.text("view")=="equipment") DungeonEquipmentScreen(data) else DungeonItemShopScreen(data)
+                            } else if(data.text("view")=="tms") DungeonTmShopScreen(data) else if(data.text("view")=="tera") DungeonTeraScreen(data) else if(data.text("view")=="equipment") DungeonEquipmentScreen(data) else DungeonItemShopScreen(data)
                         }
                         else -> LeagueScreen(data)
                     }

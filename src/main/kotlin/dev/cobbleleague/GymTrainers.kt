@@ -14,7 +14,14 @@ object GymTrainers {
         GymTrainer("round8","비주기",DungeonRoundKind.GYM8),
         GymTrainer("sabrina","초련",DungeonRoundKind.GYM8),
         GymTrainer("blaine","강연",DungeonRoundKind.GYM8),
-        GymTrainer("koga","독수",DungeonRoundKind.GYM8)
+        GymTrainer("koga","독수",DungeonRoundKind.GYM8),
+        GymTrainer("clair","이향",DungeonRoundKind.GYM12),
+        GymTrainer("wallace","윤진",DungeonRoundKind.GYM12),
+        GymTrainer("lance","목호",DungeonRoundKind.GYM12),
+        GymTrainer("diantha","카르네",DungeonRoundKind.GYM12),
+        GymTrainer("cynthia","난천",DungeonRoundKind.GYM16),
+        GymTrainer("steven","성호",DungeonRoundKind.GYM16),
+        GymTrainer("leon","단델",DungeonRoundKind.GYM16)
     )
     fun pool(kind:DungeonRoundKind)=all.filter{it.kind==kind}
     fun draw(kind:DungeonRoundKind,random:Random=Random.Default)=pool(kind).random(random)

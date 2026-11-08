@@ -1,0 +1,185 @@
+{
+  "id": "creep_clair",
+  "pokemon": [
+    {
+      "species": "kingdra",
+      "aspects": "",
+      "nature": "modest",
+      "ability": "sniper",
+      "heldItem": "cobblemon:scope_lens",
+      "moves": [
+        "hydropump",
+        "dracometeor",
+        "focusenergy",
+        "flashcannon"
+      ],
+      "ivs": [
+        31,
+        0,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        4,
+        0,
+        0,
+        252,
+        0,
+        252
+      ],
+      "features": {}
+    },
+    {
+      "species": "dragonite",
+      "aspects": "",
+      "nature": "adamant",
+      "ability": "multiscale",
+      "heldItem": "cobblemon:heavy_duty_boots",
+      "moves": [
+        "dragondance",
+        "extremespeed",
+        "earthquake",
+        "dragonclaw"
+      ],
+      "ivs": [
+        31,
+        31,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        4,
+        252,
+        0,
+        0,
+        0,
+        252
+      ],
+      "features": {}
+    },
+    {
+      "species": "gyarados",
+      "aspects": "",
+      "nature": "jolly",
+      "ability": "intimidate",
+      "heldItem": "cobblemon:lum_berry",
+      "moves": [
+        "waterfall",
+        "icefang",
+        "dragondance",
+        "taunt"
+      ],
+      "ivs": [
+        31,
+        31,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        4,
+        252,
+        0,
+        0,
+        0,
+        252
+      ],
+      "features": {}
+    },
+    {
+      "species": "salamence",
+      "aspects": "",
+      "nature": "jolly",
+      "ability": "intimidate",
+      "heldItem": "cobblemon:life_orb",
+      "moves": [
+        "dragondance",
+        "dualwingbeat",
+        "earthquake",
+        "dragonclaw"
+      ],
+      "ivs": [
+        31,
+        31,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        4,
+        252,
+        0,
+        0,
+        0,
+        252
+      ],
+      "features": {}
+    },
+    {
+      "species": "haxorus",
+      "aspects": "",
+      "nature": "jolly",
+      "ability": "moldbreaker",
+      "heldItem": "cobblemon:focus_sash",
+      "moves": [
+        "dragondance",
+        "outrage",
+        "earthquake",
+        "poisonjab"
+      ],
+      "ivs": [
+        31,
+        31,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        4,
+        252,
+        0,
+        0,
+        0,
+        252
+      ],
+      "features": {}
+    },
+    {
+      "species": "druddigon",
+      "aspects": "",
+      "nature": "adamant",
+      "ability": "roughskin",
+      "heldItem": "cobblemon:rocky_helmet",
+      "moves": [
+        "dragonclaw",
+        "glare",
+        "firepunch",
+        "suckerpunch"
+      ],
+      "ivs": [
+        31,
+        31,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        252,
+        252,
+        0,
+        0,
+        4,
+        0
+      ],
+      "features": {}
+    }
+  ]
+}

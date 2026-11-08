@@ -4,17 +4,18 @@ import org.junit.jupiter.api.Test
 import java.util.UUID
 
 class CreepRewardsTest {
-    @Test fun `only fourth and eighth rounds replace PVP`() {
+    @Test fun `every fourth round replaces PVP through champion tiers`() {
         assertEquals(DungeonRoundKind.GYM4,DungeonRoundKind.at(4));assertEquals(4,DungeonRoundKind.at(4).teamSize)
         assertEquals(DungeonRoundKind.GYM8,DungeonRoundKind.at(8));assertEquals(6,DungeonRoundKind.at(8).teamSize)
-        listOf(1,3,5,7,9,12).forEach{assertEquals(DungeonRoundKind.PVP,DungeonRoundKind.at(it))}
+        assertEquals(DungeonRoundKind.GYM12,DungeonRoundKind.at(12));listOf(16,20,24,100).forEach{assertEquals(DungeonRoundKind.GYM16,DungeonRoundKind.at(it))}
+        listOf(1,3,5,7,9,11,13,17).forEach{assertEquals(DungeonRoundKind.PVP,DungeonRoundKind.at(it))}
     }
     @Test fun `milestone has no PVP pairing or bye and waits for every NPC result`() {
         val ids=List(3){UUID.randomUUID()};val g=EliminationGame(ids,100,2)
         repeat(3){val p=g.beginRound();p.duels.forEach{g.complete(it,null)};g.closeRound()}
         val p=g.beginRound();assertEquals(DungeonRoundKind.GYM4,p.kind);assertNull(p.bye);assertTrue(p.duels.isEmpty())
         g.completeCreep(ids[0],true);assertFalse(g.roundComplete)
-        g.completeCreep(ids[1],false);assertEquals(99,g.standings.getValue(ids[1]).health)
+        g.completeCreep(ids[1],false);assertEquals(98,g.standings.getValue(ids[1]).health)
         assertThrows(IllegalArgumentException::class.java){g.completeCreep(ids[1],false)}
         g.completeCreep(ids[2],true);assertTrue(g.roundComplete);g.closeRound();assertEquals(4,g.round)
     }

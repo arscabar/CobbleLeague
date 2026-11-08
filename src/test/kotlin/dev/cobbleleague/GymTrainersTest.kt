@@ -6,8 +6,8 @@ import kotlin.random.Random
 
 class GymTrainersTest {
     @Test fun `trainer pools are separate and randomness covers every candidate`() {
-        for(kind in listOf(DungeonRoundKind.GYM4,DungeonRoundKind.GYM8)){
-            val pool=GymTrainers.pool(kind);assertEquals(4,pool.size);assertEquals(4,pool.map{it.name}.distinct().size)
+        for(kind in DungeonRoundKind.entries.filter{it!=DungeonRoundKind.PVP}){
+            val pool=GymTrainers.pool(kind);assertTrue(pool.size>=3);assertEquals(pool.size,pool.map{it.name}.distinct().size)
             val random=Random(418);assertEquals(pool.toSet(),(1..100).map{GymTrainers.draw(kind,random)}.toSet())
             pool.forEach{assertNotNull(javaClass.getResource(it.resource))}
         }

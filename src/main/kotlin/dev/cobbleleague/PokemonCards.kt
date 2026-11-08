@@ -7,6 +7,7 @@ import net.minecraft.core.registries.BuiltInRegistries
 import com.cobblemon.mod.common.api.pokemon.stats.Stats
 
 fun pokemonCard(mon: Pokemon) = JsonObject().apply {
+    addProperty("tera",mon.teraType.id.toString())
     addProperty("uuid", mon.uuid.toString())
     addProperty("species", mon.species.resourceIdentifier.toString())
     addProperty("nickname", mon.nickname?.string.orEmpty())

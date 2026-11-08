@@ -42,11 +42,11 @@ class DrawOddsTest {
         val base=DrawOdds();val old=DrawOddsBoosts(base);old.buy(DrawCategory.MEGA,3)
         val next=DrawOddsBoosts(base);assertEquals(100,next.odds.values[DrawCategory.MEGA]);assertTrue(next.available(1));assertEquals(100,base.values[DrawCategory.MEGA])
     }
-    @Test fun `PVP damage increases after gyms and gym damage remains one`() {
+    @Test fun `all battles use the same escalating damage`() {
         val game=EliminationGame(List(2){java.util.UUID.randomUUID()},10,1,4,3)
-        assertEquals(listOf(1,1,1,1,2,2,2,1,3,3),(1..10).map(game::damageAt))
+        assertEquals(listOf(1,1,1,1,2,2,2,2,3,3),(1..10).map(game::damageAt))
     }
     @Test fun `configured default damage is one from ten starting points`() {
-        val settings=LobbyBalance();assertEquals(10,settings.startingHealth);assertEquals(1,settings.lossDamage)
+        val settings=LobbyBalance();assertEquals(15,settings.startingHealth);assertEquals(1,settings.lossDamage)
     }
 }

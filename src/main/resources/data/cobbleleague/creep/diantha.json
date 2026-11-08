@@ -1,0 +1,185 @@
+{
+  "id": "creep_diantha",
+  "pokemon": [
+    {
+      "species": "gardevoir",
+      "aspects": "",
+      "nature": "timid",
+      "ability": "trace",
+      "heldItem": "cobblemon:choice_scarf",
+      "moves": [
+        "moonblast",
+        "psychic",
+        "mysticalfire",
+        "trick"
+      ],
+      "ivs": [
+        31,
+        0,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        4,
+        0,
+        0,
+        252,
+        0,
+        252
+      ],
+      "features": {}
+    },
+    {
+      "species": "hawlucha",
+      "aspects": "",
+      "nature": "adamant",
+      "ability": "unburden",
+      "heldItem": "cobblemon:white_herb",
+      "moves": [
+        "closecombat",
+        "acrobatics",
+        "swordsdance",
+        "roost"
+      ],
+      "ivs": [
+        31,
+        31,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        4,
+        252,
+        0,
+        0,
+        0,
+        252
+      ],
+      "features": {}
+    },
+    {
+      "species": "tyrantrum",
+      "aspects": "",
+      "nature": "jolly",
+      "ability": "rockhead",
+      "heldItem": "cobblemon:choice_band",
+      "moves": [
+        "headsmash",
+        "dragonclaw",
+        "earthquake",
+        "closecombat"
+      ],
+      "ivs": [
+        31,
+        31,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        4,
+        252,
+        0,
+        0,
+        0,
+        252
+      ],
+      "features": {}
+    },
+    {
+      "species": "aurorus",
+      "aspects": "",
+      "nature": "modest",
+      "ability": "snowwarning",
+      "heldItem": "cobblemon:light_clay",
+      "moves": [
+        "auroraveil",
+        "freezedry",
+        "earthpower",
+        "stealthrock"
+      ],
+      "ivs": [
+        31,
+        0,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        4,
+        0,
+        0,
+        252,
+        0,
+        252
+      ],
+      "features": {}
+    },
+    {
+      "species": "goodra",
+      "aspects": "",
+      "nature": "modest",
+      "ability": "sapsipper",
+      "heldItem": "cobblemon:assault_vest",
+      "moves": [
+        "dracometeor",
+        "flamethrower",
+        "sludgebomb",
+        "thunderbolt"
+      ],
+      "ivs": [
+        31,
+        0,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        252,
+        0,
+        0,
+        252,
+        4,
+        0
+      ],
+      "features": {}
+    },
+    {
+      "species": "gourgeist",
+      "aspects": "",
+      "nature": "impish",
+      "ability": "frisk",
+      "heldItem": "cobblemon:leftovers",
+      "moves": [
+        "willowisp",
+        "leechseed",
+        "shadowsneak",
+        "seedbomb"
+      ],
+      "ivs": [
+        31,
+        31,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        252,
+        0,
+        252,
+        0,
+        4,
+        0
+      ],
+      "features": {}
+    }
+  ]
+}

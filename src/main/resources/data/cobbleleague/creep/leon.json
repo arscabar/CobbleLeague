@@ -1,0 +1,185 @@
+{
+  "id": "creep_leon",
+  "pokemon": [
+    {
+      "species": "charizard",
+      "aspects": "",
+      "nature": "timid",
+      "ability": "solarpower",
+      "heldItem": "cobblemon:heavy_duty_boots",
+      "moves": [
+        "flamethrower",
+        "hurricane",
+        "roost",
+        "scorchingsands"
+      ],
+      "ivs": [
+        31,
+        0,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        4,
+        0,
+        0,
+        252,
+        0,
+        252
+      ],
+      "features": {}
+    },
+    {
+      "species": "dragapult",
+      "aspects": "",
+      "nature": "timid",
+      "ability": "infiltrator",
+      "heldItem": "cobblemon:choice_specs",
+      "moves": [
+        "dracometeor",
+        "shadowball",
+        "flamethrower",
+        "uturn"
+      ],
+      "ivs": [
+        31,
+        0,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        4,
+        0,
+        0,
+        252,
+        0,
+        252
+      ],
+      "features": {}
+    },
+    {
+      "species": "aegislash",
+      "aspects": "",
+      "nature": "modest",
+      "ability": "stancechange",
+      "heldItem": "cobblemon:weakness_policy",
+      "moves": [
+        "shadowball",
+        "flashcannon",
+        "kingsshield",
+        "shadowsneak"
+      ],
+      "ivs": [
+        31,
+        0,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        252,
+        0,
+        0,
+        252,
+        4,
+        0
+      ],
+      "features": {}
+    },
+    {
+      "species": "haxorus",
+      "aspects": "",
+      "nature": "jolly",
+      "ability": "moldbreaker",
+      "heldItem": "cobblemon:lum_berry",
+      "moves": [
+        "outrage",
+        "earthquake",
+        "poisonjab",
+        "dragondance"
+      ],
+      "ivs": [
+        31,
+        31,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        4,
+        252,
+        0,
+        0,
+        0,
+        252
+      ],
+      "features": {}
+    },
+    {
+      "species": "rillaboom",
+      "aspects": "",
+      "nature": "adamant",
+      "ability": "grassysurge",
+      "heldItem": "cobblemon:assault_vest",
+      "moves": [
+        "grassyglide",
+        "woodhammer",
+        "knockoff",
+        "uturn"
+      ],
+      "ivs": [
+        31,
+        31,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        252,
+        252,
+        0,
+        0,
+        4,
+        0
+      ],
+      "features": {}
+    },
+    {
+      "species": "cinderace",
+      "aspects": "",
+      "nature": "jolly",
+      "ability": "libero",
+      "heldItem": "cobblemon:heavy_duty_boots",
+      "moves": [
+        "pyroball",
+        "highjumpkick",
+        "suckerpunch",
+        "uturn"
+      ],
+      "ivs": [
+        31,
+        31,
+        31,
+        31,
+        31,
+        31
+      ],
+      "evs": [
+        4,
+        252,
+        0,
+        0,
+        0,
+        252
+      ],
+      "features": {}
+    }
+  ]
+}

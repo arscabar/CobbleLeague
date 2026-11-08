@@ -12,6 +12,7 @@ class DungeonEquipmentScreen(data:JsonObject):DungeonCatalogScreen(data) {
     private val rh get()=((ph-102)/3).coerceAtMost(58)
     private fun empty(c:JsonObject)=c.text("item").let{it.isBlank()||it=="minecraft:air"}
     override fun init(){
+        button(px+pw-88,py+7,76,"테라피스"){action("shop"){addProperty("view","tera");addProperty("pokemon",targetId)}}
         cards().take(6).forEachIndexed{i,c->val x=px+12+i%2*(cw+6);val y=py+48+i/2*rh
             button(x+cw-89,y+rh-23,41,"해제",editable()&&!empty(c)){
                 action("buy"){addProperty("operation","unequip");addProperty("pokemon",c.text("uuid"));addProperty("view",view)}

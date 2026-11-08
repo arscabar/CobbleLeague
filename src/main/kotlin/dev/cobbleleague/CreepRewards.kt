@@ -7,8 +7,9 @@ enum class CreepRewardKind(val id:String,val label:String) {
     companion object { fun parse(id:String)=entries.firstOrNull{it.id==id}?:error("잘못된 뽑기권입니다.") }
 }
 enum class DungeonRoundKind(val label:String,val teamSize:Int,val reward:CreepRewardKind?) {
-    PVP("플레이어 대전",0,null), GYM4("웅 관장전",4,CreepRewardKind.MYTHICAL), GYM8("비주기 관장전",6,CreepRewardKind.LEGENDARY);
-    companion object { fun at(number:Int)=when(number){4->GYM4;8->GYM8;else->PVP} }
+    PVP("플레이어 대전",0,null), GYM4("일반 관장전",4,CreepRewardKind.MYTHICAL), GYM8("상급 관장전",6,CreepRewardKind.LEGENDARY),
+    GYM12("상위 관장·하위 챔피언전",6,CreepRewardKind.LEGENDARY), GYM16("최상위 챔피언전",6,CreepRewardKind.LEGENDARY);
+    companion object { fun at(number:Int)=when{number<=0||number%4!=0->PVP;number==4->GYM4;number==8->GYM8;number==12->GYM12;else->GYM16} }
 }
 data class PendingReward(val token:String,val kind:CreepRewardKind,val candidate:String)
 

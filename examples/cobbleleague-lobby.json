@@ -3,7 +3,7 @@
   "lossDamage": 1,
   "selectionSeconds": 60,
   "escalateFromGym": 4,
-  "maxLossDamage": 3,
+  "maxLossDamage": 15,
   "roundIncome": 1,
   "lossBonus": 1,
   "gymMoneyMin": 2,
