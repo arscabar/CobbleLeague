@@ -21,6 +21,8 @@ public final class LeagueConvenienceChecks {
   var store=Cobblemon.INSTANCE.getStorage().getParty(p);Object r=run(service,p),prep=call(r,"getPreparation");
   @SuppressWarnings("unchecked") var stash=(Map<String,Integer>)field(r,"equipment");var before=new HashMap<>(stash);var mons=store.toGappyList().stream().filter(Objects::nonNull).toList();var held=mons.stream().map(m->m.heldItem().copy()).toList();int cash=(int)call(prep,"getMoney");
   try{
+   var method=Arrays.stream(service.getClass().getDeclaredMethods()).filter(m->m.getName().equals("draftOwnershipCounts")).findFirst().orElse(null);
+   if(method!=null){method.setAccessible(true);@SuppressWarnings("unchecked") var counts=(Map<String,Integer>)method.invoke(service,r);int total=0;for(Object other:((Map<?,?>)field(service,"runs")).values())if(Objects.equals(call(other,"getLobbyGame"),call(r,"getLobbyGame")))total+=(int)((List<?>)call(call(other,"getParty"),"toGappyList")).stream().filter(Objects::nonNull).count();check.accept("ownership-counts-include-other-participant-party",counts.values().stream().mapToInt(Integer::intValue).sum()==total&&total>mons.size());}
    call(prep,"credit",10);var a=mons.get(0);var b=mons.get(1);
    action(service,p,"buy",a.getUuid(),"cobblemon:air_balloon",prep);action(service,p,"buy",b.getUuid(),"cobblemon:muscle_band",prep);
    int afterBuy=(int)call(prep,"getMoney");var inventory=new HashMap<>(stash);action(service,p,"swap",a.getUuid(),b.getUuid().toString(),prep);

@@ -44,6 +44,7 @@ private class Run(val player: UUID, val format: LeagueFormat, val returnPoint: R
     var originalParty: PlayerPartyStore? = null
     var originalIds = emptyList<UUID?>()
     var choices: List<String> = emptyList()
+    val recentOffers=ArrayDeque<List<String>>()
     var room = -1
     var replacementSlot = -1
     var pendingPick:String?=null
@@ -87,6 +88,7 @@ private class LobbyGameRuntime(val id:UUID,val model:EliminationGame,val names:M
     val creepOutcomes=mutableMapOf<UUID,String>()
     val creepDefeated=mutableMapOf<UUID,Int>()
     val history=RankHistory().also{it.record(0,model.standings.mapValues{it.value.health})}
+    val offeredThisRound=mutableSetOf<String>()
     var rewardRound=0
     val rewardReady=mutableSetOf<UUID>()
 }
@@ -316,6 +318,7 @@ class LeagueService(private val server: MinecraftServer) {
     }
     private fun beginLobbyRound(g:LobbyGameRuntime) {
         watchVisits.keys.toList().mapNotNull(::player).forEach{stopWatching(it)}
+        g.offeredThisRound.clear()
         val plan=g.model.beginRound();g.phase=LobbyGamePhase.BUILDING;g.current=null
         g.selections.clear();g.selections.addAll(plan.players);g.selectionEnds.clear();g.duels.clear();g.duels.addAll(plan.duels)
         g.creepQueue.clear();if(plan.kind!=DungeonRoundKind.PVP)g.creepQueue.addAll(plan.players)
@@ -787,9 +790,21 @@ class LeagueService(private val server: MinecraftServer) {
         run.displayMegaForms.clear()
         old.forEach { (entity, _) -> displayIds.remove(entity.uuid); attempt("discard display ${entity.uuid}") { entity.discard() } }
     }
+    private fun draftOwnershipCounts(run:Run):Map<String,Int> {
+        val game=lobbyGame?.takeIf{it.id==run.lobbyGame}
+        val members=if(game!=null)runs.values.filter{it.lobbyGame==game.id}else runs.values.filter{it.pairId==run.pairId}
+        return members.flatMap{it.party.toList()}.groupingBy{it.species.resourceIdentifier.toString()}.eachCount()
+    }
     private fun offer(run: Run, excluded: Set<String> = emptySet()) {
         clearDisplays(run)
-        run.choices = roster.choose(3, excluded,run.drawOdds.odds).map { it.key }; run.armed = false
+        val game=lobbyGame?.takeIf{it.id==run.lobbyGame}
+        val shared=game?.offeredThisRound?:runs.values.filter{it.pairId==run.pairId&&it!==run}.flatMap{it.choices}.map{it.substringBefore('|')}.toSet()
+        val recent=run.recentOffers.flatten().toSet()
+        val partyCounts=draftOwnershipCounts(run)
+        run.choices=roster.chooseDiverse(3,excluded,run.drawOdds.odds,shared,recent,partyCounts).map{it.key};run.armed=false
+        val offered=run.choices.map{it.substringBefore('|')}
+        game?.offeredThisRound?.addAll(offered)
+        run.recentOffers.addLast(offered);while(run.recentOffers.size>4)run.recentOffers.removeFirst()
         val room = rooms[run.room]
         val world = requireNotNull(server.getLevel(dimension))
         DungeonRerollControl.ensure(world,room,run.room,run.preparation.rerolls)

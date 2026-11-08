@@ -27,6 +27,7 @@ class RandomRoster {
                 it.forcedAspects = form.aspects.toSet()
                 it.form = form
                 it.initializeMoveset(preferLatest = true)
+                DungeonRandomMoves.apply(it)
                 it.heal()
             }
         }
@@ -55,16 +56,20 @@ class RandomRoster {
     fun category(candidate:Candidate)=DrawCategory.classify(candidate.species.labels+candidate.form.labels,candidate.isMega)
     fun poolAudit():Map<String,Int>{val candidates=all();return DrawCategory.entries.associate{kind->kind.id to candidates.filter{category(it)==kind}.map{it.species.resourceIdentifier}.distinct().size}}
     fun megaBasesPresent():Boolean{val candidates=all();return candidates.filter{it.isMega}.all{m->candidates.any{it.species==m.species&&it.form==m.species.standardForm&&!it.isMega}}}
-    fun choose(count:Int,excluded:Set<String> = emptySet(),odds:DrawOdds=baseOdds):List<Candidate>{
-        val excludedSpecies=excluded.map{it.substringBefore('|')}.toSet()
-        val candidates=all().filter{it.species.resourceIdentifier.toString() !in excludedSpecies}
+    fun choose(count:Int,excluded:Set<String> = emptySet(),odds:DrawOdds=baseOdds):List<Candidate> =
+        chooseDiverse(count,excluded,odds,emptySet(),emptySet(),emptyMap())
+    fun chooseDiverse(count:Int,excluded:Set<String>,odds:DrawOdds,roundAvoid:Set<String>,recent:Set<String>,partyCounts:Map<String,Int>):List<Candidate>{
+        val candidates=all();val previous=excluded.map{it.substringBefore('|')}.toSet()
         require(candidates.map{it.species.resourceIdentifier}.distinct().size>=count){"등록된 최종진화체 데이터가 부족합니다."}
         val selected=mutableSetOf<String>()
         return List(count){
             val kind=odds.category(Random.nextInt(10000))
             val available=candidates.filter{it.species.resourceIdentifier.toString() !in selected}
             val group=available.filter{category(it)==kind}.ifEmpty{available.filter{category(it)==DrawCategory.NORMAL}.ifEmpty{available}}
-            val perSpecies=group.groupBy{it.species.resourceIdentifier};val choice=perSpecies.values.random().random()
+            val fresh=DraftDiversity.preferred(group,{it.species.resourceIdentifier.toString()},listOf(previous))
+            val perSpecies=fresh.groupBy{it.species.resourceIdentifier.toString()}
+            val species=DraftSpeciesWeight.pick(perSpecies.keys.toList(),{id->DraftSpeciesWeight.value(partyCounts[id]?:0,id in roundAvoid,id in recent)})
+            val choice=perSpecies.getValue(species).random()
             selected.add(choice.species.resourceIdentifier.toString());choice
         }
     }
