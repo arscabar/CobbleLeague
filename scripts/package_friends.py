@@ -31,7 +31,7 @@ shutil.copy2(ROOT/'LICENSE',package/'LICENSE-CobbleLeague.txt')
 shutil.copy2(ROOT/'server-addons/cobble-synergy/UPSTREAM.md',package/'CobbleSynergy-UPSTREAM.md')
 for name,args in [('설치.bat','-InstallLauncher'),('INSTALL.bat','-InstallLauncher'),('되돌리기.bat','-Restore'),('RESTORE.bat','-Restore'),('UPDATE-AND-PLAY.bat','-WaitForExit -Launch')]:
     (package/name).write_bytes(('@echo off\r\npowershell.exe -NoProfile -ExecutionPolicy Bypass -File "%~dp0client-updater.ps1" '+args+'\r\nif errorlevel 1 pause\r\n').encode('ascii'))
-(package/'사용방법.txt').write_text(f'CobbleLeague {version} + CobbleSynergy {synergy_version}\n\n게임을 종료하고 전체 ZIP을 풀어 설치.bat를 실행합니다.\n바탕화면 CobbleLeague-PLAY.bat를 누르면 최신 GitHub 릴리스를 확인하고 두 애드온을 함께 업데이트한 뒤 Modrinth 게임을 실행합니다.\n모드린스의 기존 Play 버튼으로 직접 실행하면 이 업데이트 확인을 거치지 않습니다.\n실행 중인 게임은 강제로 종료하지 않으며 종료 후에만 파일을 바꿉니다.\n네트워크 연결이 없으면 포함된 마지막 검증 버전을 확인합니다. 더 높은 설치 버전으로부터 자동으로 낮추지는 않습니다.\n복구는 게임 종료 후 되돌리기.bat입니다.\nF4: 장비 관리·관전, U: 시너지 도감.\n',encoding='utf-8-sig')
+(package/'사용방법.txt').write_text(f'CobbleLeague {version} + CobbleSynergy {synergy_version}\n\n게임을 종료하고 전체 ZIP을 풀어 설치.bat를 실행합니다.\n바탕화면 CobbleLeague-PLAY.bat를 누르면 최신 GitHub 릴리스를 확인하고 두 애드온을 함께 업데이트한 뒤 Modrinth 게임을 실행합니다.\n처음 설치한 이후에는 Modrinth의 원래 Play 버튼으로 켜도 메인 메뉴에서 업데이트를 확인하고 필요하면 같은 프로필로 다시 실행합니다.\n실행 중인 게임은 강제로 종료하지 않으며 종료 후에만 파일을 바꿉니다.\n네트워크 연결이 없으면 포함된 마지막 검증 버전을 확인합니다. 더 높은 설치 버전으로부터 자동으로 낮추지는 않습니다.\n복구는 게임 종료 후 되돌리기.bat입니다.\nF4: 장비 관리·관전, U: 시너지 도감.\n',encoding='utf-8-sig')
 output=dist/f'CobbleLeague-friends-{version}.zip'
 with ZipFile(output,'w',ZIP_DEFLATED) as z:
     for p in sorted(package.rglob('*')):
