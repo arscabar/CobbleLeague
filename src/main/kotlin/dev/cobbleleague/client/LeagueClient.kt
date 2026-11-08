@@ -21,11 +21,12 @@ class LeagueClient : ClientModInitializer {
         RarityGlow.register()
         DraftHud.register()
         LobbyHud.register()
+        ClientReleaseUpdate.register()
         DungeonMenuKey.register()
         DraftPartyBinding.register()
         ClientPlayConnectionEvents.JOIN.register { _, _, _ ->
             RoundGraphSkin.reset(); ClientStorageLock.reset(); DraftHud.data=null;LobbyHud.data=null; hasLeagueBattle=false; NativeBattleRules.reset(); NativeBattleInvites.clear()
-            if (ClientPlayNetworking.canSend(LeaguePayload.TYPE)) send(JsonObject().apply { addProperty("action","hello"); addProperty("protocol",10) })
+            if (ClientPlayNetworking.canSend(LeaguePayload.TYPE)) send(JsonObject().apply { addProperty("action","hello"); addProperty("protocol",11) })
         }
         ClientPlayConnectionEvents.DISCONNECT.register { _, _ -> RoundGraphSkin.reset(); ClientStorageLock.reset(); DraftHud.data=null;LobbyHud.data=null; hasLeagueBattle=false; NativeBattleRules.reset(); NativeBattleInvites.clear() }
         ClientPlayNetworking.registerGlobalReceiver(LeaguePayload.TYPE) { payload, context ->
@@ -47,9 +48,11 @@ class LeagueClient : ClientModInitializer {
                 } else if (data.text("kind") == "challenge_removed") {
                     NativeBattleInvites.remove(java.util.UUID.fromString(data.text("id")))
                     (context.client().screen as? DeckSelectScreen)?.takeIf { it.belongsToChallenge(data.text("id")) }?.let { context.client().setScreen(null) }
-                } else if (data.text("kind") == "battle_started") {
+                } else if (data.text("kind") == "battle_started" || data.text("kind")=="watch_started") {
                     NativeBattleInvites.clear()
                     hasLeagueBattle=true; context.client().setScreen(null)
+                } else if(data.text("kind")=="watch_stopped"){
+                    hasLeagueBattle=false;context.client().setScreen(null)
                 } else if (data.text("kind") == "close") {
                     DraftHud.data=null;LobbyHud.data=null; hasLeagueBattle=false; context.client().setScreen(null)
                 } else if(data.text("kind")=="lobby_update") {
@@ -71,6 +74,7 @@ class LeagueClient : ClientModInitializer {
                     else if(data.text("kind")=="lobby")LobbyHud.update(data)
                     val screen=when(data.text("kind")) {
                         "run" -> if(data.text("stage")=="rewards") GymRewardsScreen(data) else DungeonPrepareScreen(data)
+                        "watch_list" -> SpectatorScreen(data)
                         "battle_control" -> BattleControlScreen(data)
                         "lobby" -> LobbyScreen(data)
                         "round_result" -> ScoreboardScreen(data)
@@ -82,7 +86,7 @@ class LeagueClient : ClientModInitializer {
                             val previous=(context.client().screen as? CatalogSource)?.catalogScreen
                             if(previous!=null&&previous.view==data.text("view","items")&&previous.targetId==data.text("selected")) {
                                 previous.acceptShop(data);previous
-                            } else if(data.text("view")=="tms") DungeonTmShopScreen(data) else DungeonItemShopScreen(data)
+                            } else if(data.text("view")=="tms") DungeonTmShopScreen(data) else if(data.text("view")=="equipment") DungeonEquipmentScreen(data) else DungeonItemShopScreen(data)
                         }
                         else -> LeagueScreen(data)
                     }

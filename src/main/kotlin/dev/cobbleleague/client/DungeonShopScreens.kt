@@ -20,11 +20,12 @@ abstract class DungeonCatalogScreen(data:JsonObject):LeaguePane(data),CatalogSou
     val targetId get()=data.text("selected")
     protected fun target()=cards().firstOrNull {it.text("uuid")==targetId} ?: cards().firstOrNull()
     fun selectTarget(id:String){action("shop") {addProperty("view",view);addProperty("pokemon",id)}}
-    fun purchase(operation:String,product:String="",move:String="",slot:Int=-1,ability:String=""){
-        action("buy"){addProperty("view",view);addProperty("pokemon",targetId);addProperty("operation",operation);addProperty("product",product);addProperty("move",move);addProperty("slot",slot);addProperty("ability",ability)}
+    fun purchase(operation:String,product:String="",move:String="",slot:Int=-1,ability:String="",other:String=""){
+        action("buy"){addProperty("view",view);addProperty("pokemon",targetId);addProperty("operation",operation);addProperty("product",product);addProperty("move",move);addProperty("slot",slot);addProperty("ability",ability);addProperty("other",other)}
     }
     open fun acceptShop(update:JsonObject){data=update;rebuildWidgets()}
     protected fun buildHeader(){
+        button(px+pw-89,py+7,77,"장비 관리"){action("equipment")}
         button(px+12,py+42,pw-24,"대상: ${target()?.let(LeagueCards::name).orEmpty()} Lv.${target()?.number("level") ?: 0} · 변경") {minecraft?.setScreen(DungeonTargetScreen(this))}
         button(px+12,py+ph-29,pw-24,"던전 준비로 돌아가기"){action("status")}
     }
@@ -52,7 +53,7 @@ abstract class DungeonCatalogScreen(data:JsonObject):LeaguePane(data),CatalogSou
 class DungeonItemShopScreen(data:JsonObject):DungeonCatalogScreen(data) {
     override val caption="아이템 상점"
     override val view="items"
-    private var category=0
+    private var category=data.number("category",0)
     private val scroll=PaneScroll()
     private val gridY get()=py+if(category==5)132 else 118
     private val gridH get()=(ph-(gridY-py)-37).coerceAtLeast(20)

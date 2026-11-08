@@ -1,13 +1,14 @@
 # CobbleLeague
 
-Minecraft 1.21.1 / Fabric / Cobblemon 1.7.3 기반의 대여전, 덱 결정전, 라운드형 던전 모드입니다. 현재 본체 버전은 **0.7.3**, 통신 프로토콜은 **10**입니다.
+Minecraft 1.21.1 / Fabric / Cobblemon 1.7.3 기반의 대여전, 덱 결정전, 라운드형 던전 모드입니다. 현재 본체 버전은 **0.7.4**, 통신 프로토콜은 **11**입니다.
 
 ## 구성
 
 | 경로 | 내용 | 설치 위치 |
 | --- | --- | --- |
-| 저장소 루트 | CobbleLeague 0.7.3 본체와 클라이언트 UI | 서버와 참가자 클라이언트 |
+| 저장소 루트 | CobbleLeague 0.7.4 본체와 클라이언트 UI | 서버와 참가자 클라이언트 |
 | `server-addons/league-practice` | 연습장, 전체 파티 분석 전술 AI 1.1.0, 관장전 지원 | 서버 |
+| `server-addons/cobble-synergy` | CobbleSynergy 0.3.0 타입 시너지 | 서버와 참가자 클라이언트 |
 | `server-addons/league-battle-recorder` | 배틀 기록과 XLSX 내보내기 1.2.0 | 서버 |
 | `installer` | Windows 친구용 설치·백업·복원 스크립트 | 배포 패키지 |
 | `scripts/package_friends.py` | 빌드한 본체로 친구용 ZIP 생성 | 개발 환경 |
@@ -24,12 +25,32 @@ Minecraft 1.21.1 / Fabric / Cobblemon 1.7.3 기반의 대여전, 덱 결정전, 
 - 아이템 상점, 학습 가능한 기술 검색, 개체값·특성 육성, 분류별 뽑기 확률 강화를 제공합니다. 구매 전 변경 결과와 잔액을 확인합니다.
 - 관장 승리 보상에 환상권, 전설 후보 공개, 돈, Z크리스탈, 고급 도구와 무료 기술 학습이 포함됩니다.
 
+## 0.7.4 변경점
+
+- F4의 **장비·상점**에서 파티 6마리의 장착 도구를 한 번에 확인합니다. 개별 해제·전체 해제·두 포켓몬의 도구 맞교환, 선택 대상의 보관 도구 장착을 제공합니다. 해제한 도구는 해당 던전 보관함으로 돌아갑니다.
+- F4 **경기 관전**에서 같은 던전의 진행 중 경기를 고릅니다. 2인 관장전에서도 먼저 전투를 마친 참가자가 상대 방의 관전석으로 이동할 수 있습니다. 자기 경기 중에는 관전할 수 없으며, 관전 종료·대상 경기 종료·다음 라운드·본인 경기 시작 시 복귀합니다.
+- CobbleSynergy 0.3.0은 공개 관전 API를 사용합니다. 페어리의 경제 혜택은 제한 시간 명중률 방어와 미스트필드로 교체했습니다. 단계별 설명은 시너지 README와 U 도감에서 확인합니다.
+
+## 플레이어 자동 업데이트
+
+처음 한 번 최신 친구용 ZIP을 풀고 `설치.bat`로 사용할 Modrinth 프로필에 설치합니다. 코블리그와 시너지의 호환 버전, 업데이트 보조 파일이 함께 설치됩니다.
+
+이후에는 **Modrinth의 원래 Play 버튼으로 실행해도** 메인 메뉴에서 GitHub의 최신 안정 릴리스를 확인합니다. 새 버전이 있으면 게임을 정상 종료하고 두 애드온을 함께 검증·백업·교체한 뒤 **같은 Modrinth 프로필로 자동 재실행**합니다. 월드나 서버에서 플레이하는 도중에는 이 재시작을 시작하지 않습니다. `.cobbleleague-updater/auto-update.json`의 `enabled`로 자동 확인을 끌 수 있습니다.
+
+바탕화면 `CobbleLeague-PLAY.bat`는 게임 실행 전에 먼저 업데이트를 확인하는 별도 실행 경로입니다. JAR만 수동 복사한 경우에는 자동 업데이트 보조 파일이 없으므로 처음 한 번 친구용 설치기를 사용해야 합니다. 모드팩 본체 업데이트는 별도이며, 대상은 Minecraft 1.21.1 / Cobblemon 1.7.3입니다.
+
+배포 채널은 **이 저장소의 통합 GitHub Release 하나**입니다. `client-release.json`과 두 JAR을 함께 배포하며, 파일 해시와 실제 모드 ID·버전·의존성 조합을 검증합니다. 임시 다운로드가 실패하면 기존 설치를 보존합니다. 백업과 되돌리기는 프로필 안에서 관리합니다. 서버 자동 업데이트 기능은 포함하지 않습니다.
+
+릴리스 제작자는 본체와 `server-addons/cobble-synergy`를 빌드한 뒤 `python scripts/package_friends.py`를 실행합니다. `v0.7.4`처럼 본체 버전과 같은 태그를 올리면 `.github/workflows/release.yml`이 두 모드와 친구 ZIP을 빌드하고, 필요한 자산이 모두 올라온 후 릴리스를 공개합니다. 별도 Synergy 저장소 수정은 통합 사본에도 반영한 뒤 통합 릴리스로 배포합니다.
+
+참조: [GitHub Releases API](https://docs.github.com/en/rest/releases/releases), [Modrinth 실행 링크 처리](https://github.com/modrinth/code/blob/main/packages/app-lib/src/api/handler.rs). 최신 Modrinth의 고유 인스턴스 ID는 로컬 인스턴스 DB에서 읽어 같은 프로필을 실행합니다.
+
 ## 0.7.3 변경점
 
 - 관장전 승리 시 **돈 + 무작위 보상 2개**를 제시하고 하나만 지급합니다. 창을 다시 열어도 후보가 유지되며 선택하지 않은 보상은 받지 않습니다. 선택 전에는 보상 확인 완료를 누를 수 없습니다.
 - F4의 **현재 대전만 무효 후 다시 시작**으로 멈춘 전투를 다시 시작할 수 있습니다. 관장전은 본인 전투만, PvP는 해당 전투의 두 참가자가 모두 동의하면 재시작합니다. 다른 방의 전투·라운드·HP·보상에는 영향을 주지 않습니다. `/league restart`로도 같은 요청을 보낼 수 있습니다.
 - 전투 시작 후 5초부터 요청할 수 있습니다. 끝난 전투는 대상이 아니며, 무효 처리한 시도는 승패·돈·보상으로 정산하지 않습니다.
-- 던전 참가자는 보상 선택 UI가 있는 0.7.3(프로토콜 10)으로 업데이트해야 합니다.
+- 던전 참가자는 보상 선택 UI가 있는 0.7.4(프로토콜 10)으로 업데이트해야 합니다.
 
 ## 0.7.2 변경점
 
@@ -49,6 +70,7 @@ Windows PowerShell에서 실행합니다.
 .\gradlew.bat --no-daemon test build
 .\gradlew.bat -p server-addons/league-practice --no-daemon test build
 .\gradlew.bat -p server-addons/league-battle-recorder --no-daemon test build
+.\gradlew.bat -p server-addons/cobble-synergy "-Pcobbleleague_jar=../../build/libs/cobbleleague-0.7.4.jar" --no-daemon test build
 ```
 
 Linux와 macOS에서는 같은 명령의 실행 파일을 `./gradlew`로 바꿉니다. 각 프로젝트의 `build/libs/`에 배포용 JAR과 소스 JAR이 생성됩니다. 설치할 때에는 소스 JAR을 제외한 모드 JAR을 사용합니다.
@@ -93,7 +115,7 @@ python scripts/package_friends.py
 python tests/test_installer.py
 ```
 
-`dist/CobbleLeague-friends-0.7.3.zip`이 생성됩니다. 받은 사람은 게임을 완전히 종료하고 ZIP을 압축 해제한 뒤 `설치.bat`를 실행해 Modrinth의 COBBLEVERSE 프로필을 선택합니다. `되돌리기.bat`로 설치 전 백업을 복원합니다.
+`dist/CobbleLeague-friends-0.7.4.zip`이 생성됩니다. 받은 사람은 게임을 완전히 종료하고 ZIP을 압축 해제한 뒤 `설치.bat`를 실행해 Modrinth의 COBBLEVERSE 프로필을 선택합니다. `되돌리기.bat`로 설치 전 백업을 복원합니다.
 
 ## 검증
 

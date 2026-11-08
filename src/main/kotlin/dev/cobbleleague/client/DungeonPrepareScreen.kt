@@ -18,10 +18,10 @@ class DungeonPrepareScreen(data:JsonObject):LeaguePane(data) {
         val preparation=data.text("mode")!="elimination"||data.text("stage")=="preparation"
         if(data.text("trainer").isNotBlank()&&data.text("stage")=="battles")button(px+pw-87,py+7,75,"전투 현황") {action("creep_status")}
         else button(px+pw-87,py+7,75,"HP 변화") {minecraft?.setScreen(ScoreboardScreen(data,this))}
-        button(x,y,shopWidth,"아이템 상점",cards().isNotEmpty()&&!inBattle&&!confirmed&&canShop) { action("shop") { addProperty("view","items") } }
+        button(x,y,shopWidth,"장비·상점",cards().isNotEmpty()&&!inBattle&&!confirmed&&canShop) { action("equipment") }
         button(x+shopWidth+gap,y,shopWidth,"기술 학습",cards().isNotEmpty()&&!inBattle&&!confirmed&&canShop) { action("shop") { addProperty("view","tms") } }
         button(x+2*(shopWidth+gap),y,shopWidth,"뽑기 확률",!inBattle&&!confirmed){action("odds")}
-        if(hasRewards()&&!inBattle){
+        if(hasRewards()&&!inBattle&&data.number("watchCount")==0&&data.get("watching")?.asBoolean!=true){
             for((index,kind) in listOf(CreepRewardKind.MYTHICAL,CreepRewardKind.LEGENDARY).withIndex()){
                 val pending=data.text("pendingReward");val count=data.number(if(kind==CreepRewardKind.MYTHICAL)"mythicalTickets" else "legendaryTickets")
                 val label=if(pending==kind.id)if(index==0)"환상 뽑기 결과" else "전설 후보 보기" else if(index==0)"환상권 ${count}개" else "전설권 ${count}개"
@@ -31,6 +31,7 @@ class DungeonPrepareScreen(data:JsonObject):LeaguePane(data) {
             }
         }
         if(data.get("canSkipPick")?.asBoolean==true)button(x,if(hasRewards())y+50 else y+25,pw-24,"영입 건너뛰기 · 파티 유지"){action("pick_skip"){addProperty("version",data.text("version"))}}
+        if(data.number("watchCount")>0||data.get("watching")?.asBoolean==true)button(x,y+25,pw-24,if(data.get("watching")?.asBoolean==true)"관전 중 · 경기 선택 / 종료" else "경기 관전 ${data.number("watchCount")}개"){action("watch_list")}
         if(inBattle)button(x,y+25,pw-24,if(data.get("restartVoted")?.asBoolean==true)"재시작 동의 대기 · ${data.number("restartVotes")}/${data.number("battleParticipants")}명" else "현재 대전만 무효 후 다시 시작",data.get("restartVoted")?.asBoolean!=true){
             action("battle_restart"){addProperty("battleId",data.text("battleId"))}
         }
@@ -41,7 +42,7 @@ class DungeonPrepareScreen(data:JsonObject):LeaguePane(data) {
         button(x+bw+gap,py+ph-31,bw,"맵으로 돌아가기") { onClose() }
     }
     override fun updateProgress(update:JsonObject) {
-        val changed=data.number("revision")!=update.number("revision") || data.getAsJsonArray("cards")!=update.getAsJsonArray("cards") || data.text("stage")!=update.text("stage") || data["inBattle"]!=update["inBattle"] || data["ready"]!=update["ready"] || data["canSkipPick"]!=update["canSkipPick"] || data["canShop"]!=update["canShop"] || data["restartVotes"]!=update["restartVotes"] || data["battleId"]!=update["battleId"]
+        val changed=data.number("revision")!=update.number("revision") || data.getAsJsonArray("cards")!=update.getAsJsonArray("cards") || data.text("stage")!=update.text("stage") || data["inBattle"]!=update["inBattle"] || data["ready"]!=update["ready"] || data["canSkipPick"]!=update["canSkipPick"] || data["canShop"]!=update["canShop"] || data["restartVotes"]!=update["restartVotes"] || data["battleId"]!=update["battleId"] || data["watchCount"]!=update["watchCount"] || data["watching"]!=update["watching"]
         data=update.deepCopy().apply { addProperty("kind","run") }
         if(changed)rebuildWidgets()
     }

@@ -41,7 +41,7 @@ public final class CreepRoundSmoke implements ModInitializer {
   p.setNoGravity(true);p.setInvulnerable(true);p.teleportTo(server.overworld(),1304+i*3,76,1083,0,0);
   var data=Cobblemon.INSTANCE.getPlayerDataManager().getGenericData(p);data.setStarterSelected(true);data.setStarterPrompted(true);
   var store=Cobblemon.INSTANCE.getStorage().getParty(p);String[] mons={"venusaur","blastoise","dragonite","snorlax","rotom","scizor"};for(int n=0;n<6;n++)store.set(n,PokemonProperties.Companion.parse(mons[n]+" level=50").create());Cobblemon.INSTANCE.getStorage().getPC(p).add(PokemonProperties.Companion.parse("gengar level=50").create());
-  originals.put(p.getUUID(),party(p));pcs.put(p.getUUID(),pc(p));Object addon=((NetworkHandlerExtensions)(Object)p.connection).getAddon();((Set<ResourceLocation>)f(addon,"sendableChannels")).add(ResourceLocation.parse("cobbleleague:message"));action(p,"hello","protocol",10);
+  originals.put(p.getUUID(),party(p));pcs.put(p.getUUID(),pc(p));Object addon=((NetworkHandlerExtensions)(Object)p.connection).getAddon();((Set<ResourceLocation>)f(addon,"sendableChannels")).add(ResourceLocation.parse("cobbleleague:message"));action(p,"hello","protocol",11);
  }
  @Override public void onInitialize(){CommandRegistrationCallback.EVENT.register((d,r,e)->d.register(Commands.literal("creepsmoke").requires(s->s.hasPermission(4)).then(Commands.literal("start").executes(c->{if(!Boolean.getBoolean("league.smoke.enabled"))return 0;server=c.getSource().getServer();phase=0;active=true;report.clear();answered.clear();handled.clear();labelsChecked=false;labelRefs.clear();oddsStage=0;repairId=null;repairChecked=false;deadline=server.getTickCount()+24000;return 1;}))));
   ServerTickEvents.END_SERVER_TICK.register(s->{if(!active)return;try{capture();if(s.getTickCount()>deadline)throw new IllegalStateException("Timeout phase "+phase);if(s.getTickCount()<nextTick)return;nextTick=s.getTickCount()+10;step();}catch(Throwable error){active=false;try{record("failure",false,error+" / "+error.getCause());}catch(Exception ignored){}error.printStackTrace();for(var p:people)if(p!=null)try{call(service,"leave",p);}catch(Exception ignored){}}});}
@@ -134,6 +134,7 @@ public final class CreepRoundSmoke implements ModInitializer {
    phase=7;return;
   }
   if(phase==7){Object g=game();if(!f(g,"phase").toString().equals("PREPARATION"))return;int round=(int)call(call(f(g,"model"),"getPlan"),"getNumber");
+   if(round==3)LeagueConvenienceChecks.equipment(service,people[0],(name,ok)->{try{record(name,ok,"equipment native transaction");}catch(Exception e){throw new RuntimeException(e);}});
    if(round==4||round==8){record("milestone-replaces-pvp",((List<?>)call(call(f(g,"model"),"getPlan"),"getDuels")).isEmpty(),"round="+round);
     for(var p:people)for(var mon:Cobblemon.INSTANCE.getStorage().getParty(p)){mon.getMoveSet().clear();mon.getMoveSet().add(Moves.getByName("protect").create());((Map<UUID,List<String>>)f(run(p),"authorizedMoves")).put(mon.getUuid(),List.of("protect"));}
    }
@@ -188,6 +189,7 @@ if(b!=null&&b.getStarted()&&!b.getEnded()&&handled.add(b.getBattleId())){if(roun
      Method progress=Arrays.stream(service.getClass().getDeclaredMethods()).filter(m->m.getName().equals("creepProgress")).findFirst().orElseThrow();progress.setAccessible(true);JsonArray rows=(JsonArray)progress.invoke(service,g);
      record("finished-player-sees-remaining-battle",rows.size()==2&&rows.asList().stream().anyMatch(e->e.getAsJsonObject().get("status").getAsString().equals("win"))&&rows.asList().stream().anyMatch(e->e.getAsJsonObject().get("status").getAsString().equals("battling")),rows);
      record("gym-round-stays-shared-while-another-player-fights",f(g,"phase").toString().equals("BATTLES")&&(int)call(plan,"getNumber")==round,"winner still in the same global round");
+     if(round==4)LeagueConvenienceChecks.spectate(service,people[0],people[1],(name,ok)->{try{record(name,ok,"two-player simultaneous gym battles");}catch(Exception e){throw new RuntimeException(e);}});
      boolean shopBlocked=false;
      try{action(people[0],"shop","view","tms");}catch(InvocationTargetException e){shopBlocked=e.getCause().getMessage().contains("관장전과 보상");}
      record("winner-cannot-open-shop-before-other-battle-finishes",shopBlocked,"shop waits for the shared intermission");
@@ -199,7 +201,7 @@ if(b!=null&&b.getStarted()&&!b.getEnded()&&handled.add(b.getBattleId())){if(roun
    return;
   }
   if(phase==9){Object g=game();if(f(g,"phase").toString().equals("BUILDING")||f(g,"phase").toString().equals("SELECTION"))phase=6;return;}
-  if(phase==40){if(!f(game(),"phase").toString().equals("REWARDS"))return;record("completed-round-rank-history",((List<?>)call(f(game(),"history"),"getRounds")).size()==5,"start plus four complete round snapshots");
+  if(phase==40){if(!f(game(),"phase").toString().equals("REWARDS"))return;LeagueConvenienceChecks.afterSpectate(service,people[0],(name,ok)->{try{record(name,ok,"observer restored after target battle");}catch(Exception e){throw new RuntimeException(e);}});record("completed-round-rank-history",((List<?>)call(f(game(),"history"),"getRounds")).size()==5,"start plus four complete round snapshots");
    Object wa=wallet(people[0]),wb=wallet(people[1]);Class<?> kind=Class.forName("dev.cobbleleague.CreepRewardKind");Object myth=Arrays.stream(kind.getEnumConstants()).filter(x->x.toString().equals("MYTHICAL")).findFirst().orElseThrow();
    Object offer=f(run(people[0]),"gymReward"),choice=call(offer,"getChoice");var options=(List<?>)call(choice,"getOptions");
    record("money-fixed-plus-two-distinct-random-options",options.size()==3&&options.stream().distinct().count()==3&&options.getFirst().toString().equals("MONEY"),options);

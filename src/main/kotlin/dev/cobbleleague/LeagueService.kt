@@ -71,6 +71,7 @@ private data class Match(
     val creepKind:DungeonRoundKind?=null, val battleCenter:Pair<Int,Int>?=null,
     val restartVotes:BattleRestartVote=BattleRestartVote(players.toSet()),val restartFailed:Boolean=false
 )
+private data class WatchVisit(val battle:UUID,val origin:ReturnPoint,val anchor:Vec3,val invulnerable:Boolean)
 private enum class LobbyGamePhase { BUILDING, SELECTION, PREPARATION, BATTLES, RESULTS, REWARDS }
 private data class ActiveCreep(val player:UUID,val matchId:UUID,val trainer:GymTrainer,val handle:CreepNpcHandle)
 private class LobbyGameRuntime(val id:UUID,val model:EliminationGame,val names:Map<UUID,String>) {
@@ -101,6 +102,7 @@ class LeagueService(private val server: MinecraftServer) {
     private val runs = mutableMapOf<UUID, Run>()
     private val matches = mutableMapOf<UUID, Match>()
     private val lastRequest = mutableMapOf<UUID, Long>()
+    private val watchVisits=mutableMapOf<UUID,WatchVisit>()
     private val clientProtocols = mutableMapOf<UUID, Int>()
     private val displayIds = mutableSetOf<UUID>()
     private val lastPcNotice = mutableMapOf<UUID, Int>()
@@ -129,7 +131,7 @@ class LeagueService(private val server: MinecraftServer) {
     fun isDraftPokemon(mon: Pokemon) = runs.values.any { run -> run.party.any { it.uuid == mon.uuid } }
     fun protectedSelectionArea(p:ServerPlayer)=p.level().dimension()==dimension&&(0..7).any{privateRooms.contains(it,p.x,p.y,p.z)}
     private fun participantInside(p:ServerPlayer,run:Run):Boolean =
-        p.level().dimension()==dimension&&(insideLeague(true,p.x,p.y,p.z)||run.lobbyGame!=null&&privateRooms.contains(lobbyGame?.model?.standings?.keys?.indexOf(p.uuid)?:-100,p.x,p.y,p.z))
+        p.level().dimension()==dimension&&(watchVisits.containsKey(p.uuid)||insideLeague(true,p.x,p.y,p.z)||run.lobbyGame!=null&&privateRooms.contains(lobbyGame?.model?.standings?.keys?.indexOf(p.uuid)?:-100,p.x,p.y,p.z))
     fun useRerollControl(p:ServerPlayer,pos:BlockPos):net.minecraft.world.InteractionResult? {
         if(p.level().dimension()!=dimension || rooms.none{DungeonRerollControl.position(it)==pos})return null
         val run=runs[p.uuid]
@@ -233,7 +235,7 @@ class LeagueService(private val server: MinecraftServer) {
         }
     }
     fun lobby(p: ServerPlayer) {
-        require((clientProtocols[p.uuid]?:0)>=10){"친구용 CobbleLeague 0.7.3으로 업데이트하세요."}
+        require((clientProtocols[p.uuid]?:0)>=11){"친구용 CobbleLeague 0.7.3으로 업데이트하세요."}
         if (p.uuid in runs) surrenderGame(p)
         available(p); ensureMap()
         if (p.level().dimension() != dimension) remember(mapOf(p.uuid to point(p)))
@@ -275,7 +277,7 @@ class LeagueService(private val server: MinecraftServer) {
     }
     private fun broadcastCreepProgress(g:LobbyGameRuntime){g.model.standings.keys.mapNotNull(::player).forEach{sendCreepProgress(it,g)}}
     private fun sendLobby(p:ServerPlayer,open:Boolean=true) {
-        require((clientProtocols[p.uuid]?:0)>=10){"친구용 CobbleLeague 0.7.3으로 업데이트하세요."}
+        require((clientProtocols[p.uuid]?:0)>=11){"친구용 CobbleLeague 0.7.3으로 업데이트하세요."}
         LeagueMod.send(p,packet(if(open)"lobby" else "lobby_update"){
             addProperty("joined",p.uuid in lobbyQueue.members());addProperty("ready",lobbyQueue.isReady(p.uuid))
             addProperty("busy",lobbyGame!=null||runs.isNotEmpty()||matches.isNotEmpty())
@@ -313,6 +315,7 @@ class LeagueService(private val server: MinecraftServer) {
         teleport(p,-7.5+(index%8)*2.0,-100.5)
     }
     private fun beginLobbyRound(g:LobbyGameRuntime) {
+        watchVisits.keys.toList().mapNotNull(::player).forEach{stopWatching(it)}
         val plan=g.model.beginRound();g.phase=LobbyGamePhase.BUILDING;g.current=null
         g.selections.clear();g.selections.addAll(plan.players);g.selectionEnds.clear();g.duels.clear();g.duels.addAll(plan.duels)
         g.creepQueue.clear();if(plan.kind!=DungeonRoundKind.PVP)g.creepQueue.addAll(plan.players)
@@ -324,6 +327,7 @@ class LeagueService(private val server: MinecraftServer) {
         }}
     }
     private fun restoreLobbyMember(id:UUID,message:String,disconnected:UUID?=null) {
+        player(id)?.let{stopWatching(it)}
         val r=runs[id]?:return;r.opponent=null;r.pairId=r.id;lobbyOptOut.add(id)
         endRunGroup(id,message,disconnected)
     }
@@ -363,7 +367,7 @@ class LeagueService(private val server: MinecraftServer) {
     }
     private fun unfinishedCreepRound(g:LobbyGameRuntime):Boolean = g.model.plan?.let{it.kind!=DungeonRoundKind.PVP&&!g.model.roundComplete}?:false
     private fun startCreepBattle(g:LobbyGameRuntime,id:UUID,kind:DungeonRoundKind) {
-        val p=requireNotNull(player(id));val r=runs.getValue(id);available(p)
+        val p=requireNotNull(player(id));stopWatching(p);val r=runs.getValue(id);available(p)
         val center=privateRooms.center(g.model.standings.keys.indexOf(id))
         val trainer=requireNotNull(g.trainer);require(trainer.kind==kind)
         val matchId=UUID.randomUUID()
@@ -437,7 +441,7 @@ class LeagueService(private val server: MinecraftServer) {
         val inArea=server.playerList.players.filter{inLobby(it)}
         lobbyOptOut.retainAll(inArea.map{it.uuid}.toSet())
         lobbyQueue.members().toList().forEach{id->val p=player(id);if(p==null||!p.isAlive||!inLobby(p))lobbyQueue.leave(id)}
-        inArea.filter{it.uuid !in runs&&it.uuid !in lobbyOptOut&&(clientProtocols[it.uuid]?:0)>=10&&it.isAlive&&!it.isSpectator}.forEach{p->
+        inArea.filter{it.uuid !in runs&&it.uuid !in lobbyOptOut&&(clientProtocols[it.uuid]?:0)>=11&&it.isAlive&&!it.isSpectator}.forEach{p->
             if(p.uuid !in lobbyQueue.members())runCatching{lobbyQueue.join(p.uuid);sendLobby(p)}
         }
         val g=lobbyGame
@@ -540,6 +544,10 @@ class LeagueService(private val server: MinecraftServer) {
                 } else g.rewardReady.remove(p.uuid)
                 runs[p.uuid]?.let{r->r.preparation.changed();sendRun(p,r)}
             }
+            "watch_list" -> sendWatchList(p)
+            "watch_battle" -> {watchBattle(p,UUID.fromString(json.text("battleId")))}
+            "watch_stop" -> {note(p,stopWatching(p));menu(p)}
+            "equipment" -> shop(p,JsonObject().apply{addProperty("view","equipment")})
             "sync_party" -> runs[p.uuid]?.let{syncVisibleParty(p,it.party);sendRun(p,it,false)}
             "lobby_join" -> lobby(p)
             "lobby_ready" -> {
@@ -860,6 +868,7 @@ class LeagueService(private val server: MinecraftServer) {
             addProperty("revision", run.preparation.revision)
             addProperty("freeLessons",run.preparation.freeLessons)
             addProperty("canShop",canUseGymIntermission(run))
+            addProperty("watching",p.uuid in watchVisits);addProperty("watchCount",watchableMatches(p.uuid).size)
             addProperty("zChoices",run.equipment[DungeonTraining.Z_CHOICE]?:0)
             addProperty("megaChoices",run.equipment[DungeonTraining.MEGA_CHOICE]?:0)
             run.gymReward?.let{reward->add("gymReward",JsonObject().apply{
@@ -1030,7 +1039,8 @@ class LeagueService(private val server: MinecraftServer) {
         checkGymIntermission(run)
         val mon = run.party.firstOrNull { it.uuid.toString() == json.text("pokemon") } ?: run.party.first()
         LeagueMod.send(p, packet("shop") {
-            addProperty("view", json.text("view", "items")); addProperty("selected", mon.uuid.toString()); addProperty("money", run.preparation.money)
+            addProperty("view", json.text("view", "items"))
+            addProperty("category",json.number("category",0)); addProperty("selected", mon.uuid.toString()); addProperty("money", run.preparation.money)
             addProperty("rerolls", run.preparation.rerolls); addProperty("revision", run.preparation.revision)
             addProperty("remainingSeconds", run.preparation.seconds(System.currentTimeMillis()))
             addProperty("confirmed", run.preparation.confirmed)
@@ -1100,6 +1110,20 @@ class LeagueService(private val server: MinecraftServer) {
                     run.authorizedMoves[mon.uuid] = mon.moveSet.map { it.name }
                 }
                 note(p, "기술머신 사용 완료 · 해당 기술 한 칸을 교체했습니다.")
+            }
+            "unequip_all" -> {
+                run.preparation.check(revision,now)
+                require(run.party.any{!it.heldItem().isEmpty}){"장착 중인 도구가 없습니다."}
+                run.party.filter{!it.heldItem().isEmpty}.forEach{equipVirtual(run,it,ItemStack.EMPTY)}
+                run.preparation.changed()
+            }
+            "swap" -> {
+                run.preparation.check(revision,now)
+                val other=requireNotNull(run.party.firstOrNull{it.uuid.toString()==json.text("other")&&it!==mon})
+                val held=mon.heldItem().copy();val second=other.heldItem().copy()
+                (mon as DungeonHeldItemAccessor).`cobbleleague$setVirtualItem`(second)
+                (other as DungeonHeldItemAccessor).`cobbleleague$setVirtualItem`(held)
+                run.preparation.changed()
             }
             "unequip" -> {
                 run.preparation.check(revision, now); require(!mon.heldItem().isEmpty)
@@ -1241,6 +1265,7 @@ class LeagueService(private val server: MinecraftServer) {
             protectDraftMoves(run); protectDraftMoves(opponentRun)
             run.party.forEach { it.recall() }; opponentRun.party.forEach { it.recall() }
             for (member in listOf(run,opponentRun)) member.party.forEach { mon -> member.partyMegaForms[mon.uuid]?.enforceMega(mon) }
+            stopWatching(p);stopWatching(other)
             teleport(p, center.first - 20.5, center.second + 0.5, -90f)
             teleport(other, center.first + 20.5, center.second + 0.5, 90f)
             // Native level-adjusted battle stores keep send-out ownership separate from
@@ -1285,6 +1310,7 @@ class LeagueService(private val server: MinecraftServer) {
         stopBattle(match)
     }
     private fun stopBattle(match: Match) {
+        watchVisits.filterValues{it.battle==match.battle.battleId}.keys.toList().mapNotNull(::player).forEach{stopWatching(it)}
         BattleAnimationRecovery.forget(match.battle.battleId)
         if (!match.battle.ended) {
             attempt("stop battle ${match.id}") { match.battle.stop() }
@@ -1301,6 +1327,68 @@ class LeagueService(private val server: MinecraftServer) {
             com.cobblemon.mod.common.net.messages.client.battle.BattleEndPacket().sendToPlayer(p)
         } }
         attempt("unregister battle ${match.id}") { if(BattleRegistry.getBattle(match.battle.battleId)!=null)BattleRegistry.closeBattle(match.battle) }
+    }
+    /** Spectator access is scoped to this lobby; no game-mode or persistent-party changes. */
+    fun spectatorParticipants():Set<UUID> = lobbyGame?.model?.alive?.toSet().orEmpty()
+    private fun watchableMatches(id:UUID):List<Match> {
+        val r=runs[id]?:return emptyList();val g=lobbyGame?:return emptyList()
+        if(r.lobbyGame!=g.id||g.phase!=LobbyGamePhase.BATTLES||r.state.inBattle)return emptyList()
+        return matches.values.filter{m->!m.battle.ended&&!m.restartFailed&&id !in m.players&&m.players.any{runs[it]?.lobbyGame==g.id}}
+    }
+    fun isWatching(id:UUID)=id in watchVisits
+    fun canSpectate(id:UUID)=watchableMatches(id).isNotEmpty()
+    fun watchNextBattle(p:ServerPlayer):String {
+        val list=watchableMatches(p.uuid);require(list.isNotEmpty()){"관전할 경기가 없습니다. 자기 전투를 마치거나 대기 중일 때 사용할 수 있습니다."}
+        val current=watchVisits[p.uuid]?.battle;val next=list[(list.indexOfFirst{it.battle.battleId==current}+1)%list.size]
+        return watchBattle(p,next.battle.battleId)
+    }
+    fun openWatchMenu(p:ServerPlayer)=sendWatchList(p)
+    private fun sendWatchList(p:ServerPlayer) {
+        LeagueMod.send(p,packet("watch_list"){
+            addProperty("watching",p.uuid in watchVisits)
+            add("battles",JsonArray().also{a->watchableMatches(p.uuid).forEach{m->a.add(JsonObject().apply{
+                addProperty("id",m.battle.battleId.toString());addProperty("label",m.battle.actors.joinToString(" vs "){it.getName().string})
+                addProperty("kind",if(m.creepKind!=null)"관장전" else "플레이어전")
+            })}})
+        })
+    }
+    fun watchBattle(p:ServerPlayer,id:UUID):String {
+        val m=requireNotNull(watchableMatches(p.uuid).firstOrNull{it.battle.battleId==id}){"참여 중인 같은 던전의 다른 진행 중 경기만 관전할 수 있습니다."}
+        require(com.cobblemon.mod.common.battles.BattleRegistry.getBattleByParticipatingPlayer(p)==null){"자기 전투 중에는 관전할 수 없습니다."}
+        val origin=watchVisits[p.uuid]?.origin?:point(p);val invulnerable=watchVisits[p.uuid]?.invulnerable?:p.isInvulnerable
+        stopWatching(p)
+        val center=m.battleCenter?:centers[m.arena];val world=requireNotNull(server.getLevel(dimension))
+        // A small observation platform is separate from Pokemon/player send-out positions.
+        for(x in -1..1)for(z in -1..1){val pos=BlockPos(center.first+x,70,center.second+17+z);if(world.getBlockState(pos).isAir)world.setBlock(pos,Blocks.GLASS.defaultBlockState(),3)}
+        val anchor=Vec3(center.first+0.5,71.0,center.second+17.5)
+        watchVisits[p.uuid]=WatchVisit(id,origin,anchor,invulnerable);p.isInvulnerable=true
+        p.teleportTo(world,anchor.x,anchor.y,anchor.z,180f,20f)
+        m.battle.spectators.add(p.uuid)
+        LeagueMod.send(p,packet("watch_started"))
+        com.cobblemon.mod.common.net.messages.client.battle.BattleInitializePacket(m.battle,m.battle.side1).sendToPlayer(p)
+        com.cobblemon.mod.common.net.messages.client.battle.BattleMessagePacket(m.battle.chatLog).sendToPlayer(p)
+        return "관전 중 · "+m.battle.actors.joinToString(" vs "){it.getName().string}+" · F4에서 관전 종료"
+    }
+    fun stopWatching(p:ServerPlayer):String {
+        val visit=watchVisits.remove(p.uuid)?:return "관전 중이 아닙니다."
+        BattleRegistry.getBattle(visit.battle)?.spectators?.remove(p.uuid)
+        p.isInvulnerable=visit.invulnerable
+        val own=BattleRegistry.getBattleByParticipatingPlayer(p)
+        if(own==null){
+            com.cobblemon.mod.common.net.messages.client.battle.BattleEndPacket().sendToPlayer(p)
+            val world=server.allLevels.firstOrNull{it.dimension().location().toString()==visit.origin.dimension}
+            if(world!=null)p.teleportTo(world,visit.origin.x,visit.origin.y,visit.origin.z,visit.origin.yaw,visit.origin.pitch)
+            LeagueMod.send(p,packet("watch_stopped"))
+        }
+        return "관전을 종료하고 원래 위치로 돌아왔습니다."
+    }
+    private fun tickSpectators() {
+        watchVisits.toMap().forEach{(id,visit)->
+            val p=player(id)
+            if(p==null){BattleRegistry.getBattle(visit.battle)?.spectators?.remove(id);watchVisits.remove(id);return@forEach}
+            if(watchableMatches(id).none{it.battle.battleId==visit.battle}||!p.isAlive||p.level().dimension()!=dimension){stopWatching(p);return@forEach}
+            if(p.position().distanceToSqr(visit.anchor)>16||p.y<70.5)p.teleportTo(p.serverLevel(),visit.anchor.x,visit.anchor.y,visit.anchor.z,180f,20f)
+        }
     }
     private fun sendBattleControls(p:ServerPlayer,match:Match) {
         LeagueMod.send(p,packet("battle_control"){
@@ -1438,12 +1526,15 @@ class LeagueService(private val server: MinecraftServer) {
         syncStorageLock(p,isStorageLocked(p.uuid)); LeagueMod.send(p,packet("close"))
     }
     fun disconnect(id: UUID) {
+        player(id)?.let{stopWatching(it)}
+        player(id)?.let{stopWatching(it)}
         lobbyQueue.leave(id);lobbyOptOut.remove(id)
         clientProtocols.remove(id)
         abortParticipant(id,"상대가 접속을 종료하여 도전을 마쳤습니다.",id)
         lastRequest.remove(id); lastPcNotice.remove(id)
     }
     fun shutdown() {
+        watchVisits.keys.toList().mapNotNull(::player).forEach{stopWatching(it)}
         lobbyGame?.let{finishLobbyGame(it,"서버 종료로 던전을 마쳤습니다.",true)}
         lobbyQueue.members().mapNotNull(::player).forEach{leaveLobby(it)}
         BattleAnimationRecovery.prune(matches.values.map{it.battle.battleId}.toSet())
@@ -1455,6 +1546,7 @@ class LeagueService(private val server: MinecraftServer) {
         challenges.keys.toList().forEach(::removeChallenge); lastPcNotice.clear()
     }
     fun tick() {
+        tickSpectators()
         runs.values.toList().forEach { run ->
             if (run.player !in runs) return@forEach
             try {

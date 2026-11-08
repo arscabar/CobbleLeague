@@ -51,21 +51,22 @@ class LeagueMod : ModInitializer {
             else if ("cobbleleague_display" in entity.tags && service?.ownsDisplay(entity.uuid) != true) entity.discard()
         }
         UseEntityCallback.EVENT.register { player, _, hand, entity, _ ->
-            if ("cobbleleague_display" in entity.tags ||
+            if (player is ServerPlayer && service?.isWatching(player.uuid)==true || "cobbleleague_display" in entity.tags ||
                 entity is com.cobblemon.mod.common.entity.pokemon.PokemonEntity && service?.isDraftPokemon(entity.pokemon) == true && !player.getItemInHand(hand).isEmpty)
                 InteractionResult.FAIL else InteractionResult.PASS
         }
-        AttackEntityCallback.EVENT.register { _, _, _, entity, _ ->
-            if ("cobbleleague_display" in entity.tags) InteractionResult.FAIL else InteractionResult.PASS
+        AttackEntityCallback.EVENT.register { player, _, _, entity, _ ->
+            if (player is ServerPlayer && service?.isWatching(player.uuid)==true || "cobbleleague_display" in entity.tags) InteractionResult.FAIL else InteractionResult.PASS
         }
         UseBlockCallback.EVENT.register { player, world, hand, hit ->
             if(world.isClientSide || player !is ServerPlayer) InteractionResult.PASS
             else {
+                if(service?.isWatching(player.uuid)==true)return@register InteractionResult.FAIL
                 val control=if(hand==net.minecraft.world.InteractionHand.MAIN_HAND)service?.useRerollControl(player,hit.blockPos)else null
                 control ?: if(service?.protectedSelectionArea(player)==true&&player.getItemInHand(hand).item is net.minecraft.world.item.BlockItem)InteractionResult.FAIL else InteractionResult.PASS
             }
         }
-        PlayerBlockBreakEvents.BEFORE.register { _,player,_,_,_ -> player !is ServerPlayer || service?.protectedSelectionArea(player)!=true }
+        PlayerBlockBreakEvents.BEFORE.register { _,player,_,_,_ -> player !is ServerPlayer || (service?.protectedSelectionArea(player)!=true&&service?.isWatching(player.uuid)!=true) }
         UseItemCallback.EVENT.register { player,world,hand ->
             val stack=player.getItemInHand(hand)
             if(!world.isClientSide&&player is ServerPlayer&&service?.protectedSelectionArea(player)==true&&
