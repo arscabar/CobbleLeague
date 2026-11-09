@@ -5,6 +5,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import java.util.*;
 public class Draft080Checks {
+ public static class Stash {private final Map<String,Integer> equipment=new HashMap<>();}
  public static List<Map<String,Object>> run()throws Exception {
   var rows=new ArrayList<Map<String,Object>>();
   Object roster=Class.forName("dev.cobbleleague.RandomRoster").getConstructor().newInstance();
@@ -36,6 +37,18 @@ public class Draft080Checks {
   for(var method:Class.forName("com.github.yajatkaul.mega_showdown.utils.AccessoriesUtils").getDeclaredMethods())accessory|=method.getName().contains("temporaryAccess");
   for(var method:Class.forName("com.github.yajatkaul.mega_showdown.utils.PlayerUtils").getDeclaredMethods())power|=method.getName().contains("temporaryPowerSpot");
   rows.add(Map.of("check","optional-native-accessory-hooks-applied","passed",accessory&&power));
+  Object brain=Class.forName("dev.cobblesynergy.BotBrain").getField("INSTANCE").get(null);
+  double megaValue=((Number)LeagueConvenienceChecks.call(brain,"itemValue",charizard,"mega_showdown:charizardite_x")).doubleValue();
+  double wrongValue=((Number)LeagueConvenienceChecks.call(brain,"itemValue",zacian,"mega_showdown:charizardite_x")).doubleValue();
+  rows.add(Map.of("check","ai-values-only-compatible-native-mega-stones","passed",megaValue>0&&wrongValue==0));
+  var urshifu=PokemonProperties.Companion.parse("urshifu level=50 moves=surgingstrikes,closecombat").create();
+  double glove=((Number)LeagueConvenienceChecks.call(brain,"itemValue",urshifu,"cobblemon:punching_glove")).doubleValue();
+  rows.add(Map.of("check","ai-glove-works-without-iron-fist","passed",glove>=40&&!urshifu.getAbility().getName().equals("ironfist")));
+  Object bot=Class.forName("dev.cobblesynergy.DungeonBot").getField("INSTANCE").get(null);
+  var method=bot.getClass().getDeclaredMethod("offers",Object.class,List.class);method.setAccessible(true);
+  var offers=(List<?>)method.invoke(bot,new Stash(),List.of(charizard));boolean includes=false,bad=false;
+  for(Object offer:offers){String id=(String)LeagueConvenienceChecks.call(offer,"getItem");includes|=id.equals("mega_showdown:charizardite_x")&&((Number)LeagueConvenienceChecks.call(offer,"getPrice")).intValue()==3;bad|=id.equals("mega_showdown:venusaurite");}
+  rows.add(Map.of("check","ai-purchase-offers-include-native-mega-catalogue","passed",includes&&!bad));
   return rows;
  }
 }

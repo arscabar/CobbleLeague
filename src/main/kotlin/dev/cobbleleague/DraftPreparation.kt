@@ -89,5 +89,18 @@ object DungeonShop {
         DungeonProduct("cobblemon:rocky_helmet", 3, "고급 장비"),
         DungeonProduct("cobblemon:heavy_duty_boots", 3, "고급 장비")
     )
+    /** Shared catalogue for the UI and external AI; native eligibility is authoritative. */
+    fun productsFor(mon:com.cobblemon.mod.common.pokemon.Pokemon):List<DungeonProduct> =
+        (products+DungeonForms.products(mon)).distinctBy{it.id}.filter{p->
+            val id=net.minecraft.resources.ResourceLocation.parse(p.id)
+            net.minecraft.core.registries.BuiltInRegistries.ITEM.containsKey(id) &&
+                DungeonForms.eligible(net.minecraft.core.registries.BuiltInRegistries.ITEM.get(id),mon) && DungeonForms.trainingEligible(p.id,mon)
+        }
+    fun equipmentKind(mon:com.cobblemon.mod.common.pokemon.Pokemon,id:String):String? {
+        val item=net.minecraft.core.registries.BuiltInRegistries.ITEM.get(net.minecraft.resources.ResourceLocation.parse(id))
+        if(!DungeonForms.special(item))return null
+        if(!DungeonForms.eligible(item,mon)||DungeonForms.consumable(item))return "unusable"
+        return if(DungeonForms.isMegaStone(item))"mega" else "form"
+    }
     const val TM_PRICE = 1
 }

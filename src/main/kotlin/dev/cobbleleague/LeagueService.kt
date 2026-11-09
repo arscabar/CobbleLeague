@@ -1099,7 +1099,7 @@ class LeagueService(private val server: MinecraftServer) {
             lobbyGame?.takeIf{it.id==run.lobbyGame}?.let{g->addProperty("mode","elimination");addProperty("stage",g.phase.name.lowercase());addProperty("health",g.model.standings[run.player]?.health?:0)}
             add("products", JsonArray().also { products ->
                 val selectable=rewardSelections(run)
-                val catalog=(DungeonShop.products + DungeonForms.products(mon) + (run.equipment.keys+selectable.keys).filter { ':' in it }
+                val catalog=(DungeonShop.productsFor(mon) + (run.equipment.keys+selectable.keys).filter { ':' in it }
                     .map { DungeonProduct(it,0,"관장 보상") }).distinctBy { it.id }
                 catalog.forEach { product ->
                     if(BuiltInRegistries.ITEM.containsKey(ResourceLocation.parse(product.id)) && DungeonForms.eligible(BuiltInRegistries.ITEM.get(ResourceLocation.parse(product.id)),mon) && DungeonForms.trainingEligible(product.id,mon)) products.add(JsonObject().apply {
@@ -1212,7 +1212,7 @@ class LeagueService(private val server: MinecraftServer) {
                 run.preparation.changed()
             }
             else -> {
-                val product = requireNotNull((DungeonShop.products+DungeonForms.products(mon)).firstOrNull { it.id == json.text("product") })
+                val product = requireNotNull(DungeonShop.productsFor(mon).firstOrNull { it.id == json.text("product") })
                 val item = BuiltInRegistries.ITEM.get(ResourceLocation.parse(product.id)); require(item != net.minecraft.world.item.Items.AIR)
                 run.preparation.pay(product.price, revision, now) { applyShopItem(run,mon,product.id,ItemStack(item),json.text("ability")) }
             }
