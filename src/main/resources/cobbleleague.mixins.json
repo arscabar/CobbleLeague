@@ -15,7 +15,9 @@
     "RerollMarkerAccessor",
     "CreepNpcAiMixin",
     "BattleSendOutMixin",
-    "BattleRecallMixin"
+    "BattleRecallMixin",
+    "DungeonAccessoriesMixin",
+    "DungeonPowerSpotMixin"
   ],
   "injectors": {
     "defaultRequire": 1

@@ -16,8 +16,7 @@ class DungeonPrepareScreen(data:JsonObject):LeaguePane(data) {
         val canShop=data.get("canShop")?.asBoolean!=false
         val picked=data.get("ready")?.asBoolean==true
         val preparation=data.text("mode")!="elimination"||data.text("stage")=="preparation"
-        if(data.text("trainer").isNotBlank()&&data.text("stage")=="battles")button(px+pw-87,py+7,75,"전투 현황") {action("creep_status")}
-        else button(px+pw-87,py+7,75,"HP 변화") {minecraft?.setScreen(ScoreboardScreen(data,this))}
+        button(px+pw-87,py+7,75,"진행·리롤"){minecraft?.setScreen(DungeonQuickScreen(data,this))}
         button(x,y,shopWidth,"장비·상점",cards().isNotEmpty()&&!inBattle&&!confirmed&&canShop) { action("equipment") }
         button(x+shopWidth+gap,y,shopWidth,"기술 학습",cards().isNotEmpty()&&!inBattle&&!confirmed&&canShop) { action("shop") { addProperty("view","tms") } }
         button(x+2*(shopWidth+gap),y,shopWidth,"뽑기 확률",!inBattle&&!confirmed){action("odds")}

@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-/** Apply drafted Mega forms immediately before Cobblemon packs its engine team data. */
+/** Compatibility hook; drafted Pokemon now use native held-item transformation rules. */
 @Mixin(value = BattleRegistry.class, remap = false)
 public abstract class BattleRegistryMegaMixin {
     @Inject(method = "startShowdown", at = @At("HEAD"))

@@ -8,7 +8,7 @@ import net.minecraft.commands.Commands;
 import java.nio.file.*;
 import java.util.*;
 public class DraftVariationSmoke implements ModInitializer {
- @Override public void onInitialize(){CommandRegistrationCallback.EVENT.register((d,r,e)->d.register(Commands.literal("draftvariationtest").requires(s->s.hasPermission(4)).executes(c->{if(!Boolean.getBoolean("league.smoke.enabled"))return 0;try{run();return 1;}catch(Exception ex){throw new RuntimeException(ex);}})));}
+ @Override public void onInitialize(){CommandRegistrationCallback.EVENT.register((d,r,e)->d.register(Commands.literal("draftvariationtest").requires(s->s.hasPermission(4)).executes(c->{if(!Boolean.getBoolean("league.smoke.enabled"))return 0;try{run();return 1;}catch(Exception ex){ex.printStackTrace();throw new RuntimeException(ex);}})));}
  static void run()throws Exception{
   Object moves=Class.forName("dev.cobbleleague.DungeonRandomMoves").getField("INSTANCE").get(null),learn=Class.forName("dev.cobbleleague.DungeonLearnset").getField("INSTANCE").get(null);List<Map<String,Object>> rows=new ArrayList<>();
   for(String species:List.of("charizard","garchomp","milotic","gardevoir","ditto")){
@@ -24,6 +24,7 @@ public class DraftVariationSmoke implements ModInitializer {
    }
    boolean ok=legal&&unique&&offense&&(expected<4||samples.size()>1);rows.add(Map.of("species",species,"passed",ok,"distinctSets",samples.size(),"moveSlots",expected));
   }
+  rows.addAll(Draft080Checks.run());
   Files.writeString(Path.of("draft-variation-results.json"),new GsonBuilder().setPrettyPrinting().create().toJson(rows));if(rows.stream().anyMatch(row->!Boolean.TRUE.equals(row.get("passed"))))throw new IllegalStateException(rows.toString());
   System.out.println("[DRAFT-VARIATION] registry legality, distinct sets and offense PASS "+rows);
  }

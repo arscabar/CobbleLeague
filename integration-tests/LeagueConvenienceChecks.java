@@ -12,6 +12,7 @@ import java.util.function.BiConsumer;
 public final class LeagueConvenienceChecks {
  static Object field(Object o,String n)throws Exception{var f=o.getClass().getDeclaredField(n);f.setAccessible(true);return f.get(o);}
  static Object call(Object o,String n,Object... args)throws Exception{for(var m:o.getClass().getMethods())if(m.getName().equals(n)&&m.getParameterCount()==args.length){m.setAccessible(true);return m.invoke(o,args);}throw new NoSuchMethodException(n);}
+ static Object callPrivate(Object o,String name)throws Exception{var m=o.getClass().getDeclaredMethod(name);m.setAccessible(true);return m.invoke(o);}
  static Object run(Object s,ServerPlayer p)throws Exception{return ((Map<?,?>)field(s,"runs")).get(p.getUUID());}
  static void action(Object s,ServerPlayer p,String operation,UUID pokemon,String other,Object prep)throws Exception{
   ((Map<?,?>)field(s,"lastRequest")).remove(p.getUUID());var j=new JsonObject();j.addProperty("action","buy");j.addProperty("operation",operation);j.addProperty("pokemon",pokemon.toString());j.addProperty("revision",(int)call(prep,"getRevision"));j.addProperty("view","equipment");
@@ -23,6 +24,19 @@ public final class LeagueConvenienceChecks {
   try{
    var method=Arrays.stream(service.getClass().getDeclaredMethods()).filter(m->m.getName().equals("draftOwnershipCounts")).findFirst().orElse(null);
    if(method!=null){method.setAccessible(true);@SuppressWarnings("unchecked") var counts=(Map<String,Integer>)method.invoke(service,r);int total=0;for(Object other:((Map<?,?>)field(service,"runs")).values())if(Objects.equals(call(other,"getLobbyGame"),call(r,"getLobbyGame")))total+=(int)((List<?>)call(call(other,"getParty"),"toGappyList")).stream().filter(Objects::nonNull).count();check.accept("ownership-counts-include-other-participant-party",counts.values().stream().mapToInt(Integer::intValue).sum()==total&&total>mons.size());}
+   boolean same=true;call(service,"lobby",p);same=run(service,p)==r;
+   ((Map<?,?>)field(service,"lastRequest")).remove(p.getUUID());var close=new JsonObject();close.addProperty("action","ui_close");call(service,"handle",p,close);
+   check.accept("reopen-and-close-menu-preserve-same-dungeon-run",same&&run(service,p)==r);
+   float hp=p.getHealth();boolean hit=p.hurt(p.damageSources().magic(),5f);
+   check.accept("league-player-damage-cancelled",!hit&&p.getHealth()==hp);
+   boolean breaking=net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents.BEFORE.invoker().beforeBlockBreak(p.serverLevel(),p,p.blockPosition().below(),p.serverLevel().getBlockState(p.blockPosition().below()),null);
+   check.accept("league-block-break-cancelled",!breaking);
+   Object rows=callPrivate(service,"readyRows");check.accept("ready-labels-contain-session-participants",((com.google.gson.JsonArray)rows).size()>=2);
+   var members=(com.google.gson.JsonArray)rows;
+   var peer=members.asList().stream().map(e->e.getAsJsonObject().get("id").getAsString()).filter(id->!id.equals(p.getUUID().toString())).findFirst().orElseThrow();
+   var ping=new JsonObject();ping.addProperty("action","ping");ping.addProperty("target",peer);((Map<?,?>)field(service,"lastRequest")).remove(p.getUUID());call(service,"handle",p,ping);
+   boolean cooldown=false;try{((Map<?,?>)field(service,"lastRequest")).remove(p.getUUID());call(service,"handle",p,ping);}catch(InvocationTargetException e){cooldown=true;}
+   check.accept("participant-ping-rate-limited",cooldown);
    call(prep,"credit",10);var a=mons.get(0);var b=mons.get(1);
    action(service,p,"buy",a.getUuid(),"cobblemon:air_balloon",prep);action(service,p,"buy",b.getUuid(),"cobblemon:muscle_band",prep);
    int afterBuy=(int)call(prep,"getMoney");var inventory=new HashMap<>(stash);action(service,p,"swap",a.getUuid(),b.getUuid().toString(),prep);

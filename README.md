@@ -1,14 +1,14 @@
 # CobbleLeague
 
-Minecraft 1.21.1 / Fabric / Cobblemon 1.7.3 기반의 대여전, 덱 결정전, 라운드형 던전 모드입니다. 현재 본체 버전은 **0.7.7**, 통신 프로토콜은 **11**입니다.
+Minecraft 1.21.1 / Fabric / Cobblemon 1.7.3 기반의 대여전, 덱 결정전, 라운드형 던전 모드입니다. 현재 본체 버전은 **0.8.0**, 통신 프로토콜은 **11**입니다.
 
 ## 구성
 
 | 경로 | 내용 | 설치 위치 |
 | --- | --- | --- |
-| 저장소 루트 | CobbleLeague 0.7.7 본체와 클라이언트 UI | 서버와 참가자 클라이언트 |
+| 저장소 루트 | CobbleLeague 0.8.0 본체와 클라이언트 UI | 서버와 참가자 클라이언트 |
 | `server-addons/league-practice` | 연습장, 전체 파티 분석 전술 AI 1.1.0, 관장전 지원 | 서버 |
-| `server-addons/cobble-synergy` | CobbleSynergy 0.3.3 타입 시너지 | 서버와 참가자 클라이언트 |
+| `server-addons/cobble-synergy` | CobbleSynergy 0.4.0 타입 시너지 | 서버와 참가자 클라이언트 |
 | `server-addons/league-battle-recorder` | 배틀 기록과 XLSX 내보내기 1.2.0 | 서버 |
 | `installer` | Windows 친구용 설치·백업·복원 스크립트 | 배포 패키지 |
 | `scripts/package_friends.py` | 빌드한 본체로 친구용 ZIP 생성 | 개발 환경 |
@@ -24,6 +24,18 @@ Minecraft 1.21.1 / Fabric / Cobblemon 1.7.3 기반의 대여전, 덱 결정전, 
 - 4·8라운드는 참가자 모두 같은 관장·파티를 상대로 각자의 방에서 레벨 50 싱글배틀을 진행합니다. 모든 전투와 전원의 보상 확인이 끝나면 다음 라운드가 함께 시작됩니다.
 - 아이템 상점, 학습 가능한 기술 검색, 개체값·특성 육성, 분류별 뽑기 확률 강화를 제공합니다. 구매 전 변경 결과와 잔액을 확인합니다.
 - 관장 승리 보상에 환상권, 전설 후보 공개, 돈, Z크리스탈, 고급 도구와 무료 기술 학습이 포함됩니다.
+
+## 0.8.0 변경점
+
+- 준비·대기 상태를 게임 화면 오른쪽의 참가자별 라벨로 표시합니다. F4 → 진행·리롤 → 준비 상태에서 해당 참가자에게 짧은 화면 알림과 작은 소리의 핑을 보냅니다. 같은 던전 안에서만, 2초 간격으로 전송합니다.
+- 로비 창의 닫기와 F4 재열기는 참가·준비 상태를 유지합니다. 나가기는 별도 버튼입니다.
+- 리그 차원 전체에서 플레이어 공격·피해·사망·블록 파괴·설치를 막습니다. 추락 시 안전 위치로 복귀합니다. 일반 월드와 포켓몬 배틀 피해에는 적용하지 않습니다.
+- 타입별 리롤 창을 추가했습니다. 기존 리롤 1회를 소비하고 선택한 타입을 우선 추첨하며, 해당 타입의 종이 부족하면 남은 칸만 다른 타입으로 채웁니다.
+- 첫 라운드는 실제 설치 데이터에 메가진화가 있는 스타팅의 최종 진화 기본 폼만 추첨합니다. 3마리 후보는 서로 다른 종입니다.
+- 메가 후보도 기본 폼으로 시작합니다. 상점에서 해당 종과 호환되는 메가스톤을 장착하고 배틀의 정상 메가진화 기능을 사용합니다. 기존 무료 강제 메가 폼 적용은 제거했습니다.
+- 선택한 포켓몬에게 쓸 수 있는 메가스톤·폼 변경 도구를 3원에 판매합니다. 다이맥스 사탕 2원, 거다이스프 3원이며 사용 조건을 만족할 때만 표시합니다. 녹슨검 등은 설치된 모드의 본래 폼 변경·해제 동작을 사용합니다. 던전 장비 교환에도 종 호환성을 확인합니다.
+- 임시 메가 팔찌·다이맥스 접근은 해당 던전 전투에만 부여하며 원래 모드의 활성화 설정과 전투당 횟수 제한을 유지합니다.
+- 이번 버전은 기존 6마리전을 유지합니다. 상대 6마리를 보고 3마리를 고르는 방식은 추후 작업입니다.
 
 ## 0.7.7 변경점
 
@@ -61,7 +73,7 @@ GitHub 일반 다운로드 경로의 장애를 피하도록 공식 릴리스 자
 
 배포 채널은 **이 저장소의 통합 GitHub Release 하나**입니다. `client-release.json`과 두 JAR을 함께 배포하며, 파일 해시와 실제 모드 ID·버전·의존성 조합을 검증합니다. 임시 다운로드가 실패하면 기존 설치를 보존합니다. 백업과 되돌리기는 프로필 안에서 관리합니다. 서버 자동 업데이트 기능은 포함하지 않습니다.
 
-릴리스 제작자는 본체와 `server-addons/cobble-synergy`를 빌드한 뒤 `python scripts/package_friends.py`를 실행합니다. `v0.7.7`처럼 본체 버전과 같은 태그를 올리면 `.github/workflows/release.yml`이 두 모드와 친구 ZIP을 빌드하고, 필요한 자산이 모두 올라온 후 릴리스를 공개합니다. 별도 Synergy 저장소 수정은 통합 사본에도 반영한 뒤 통합 릴리스로 배포합니다.
+릴리스 제작자는 본체와 `server-addons/cobble-synergy`를 빌드한 뒤 `python scripts/package_friends.py`를 실행합니다. `v0.8.0`처럼 본체 버전과 같은 태그를 올리면 `.github/workflows/release.yml`이 두 모드와 친구 ZIP을 빌드하고, 필요한 자산이 모두 올라온 후 릴리스를 공개합니다. 별도 Synergy 저장소 수정은 통합 사본에도 반영한 뒤 통합 릴리스로 배포합니다.
 
 참조: [GitHub Releases API](https://docs.github.com/en/rest/releases/releases), [Modrinth 실행 링크 처리](https://github.com/modrinth/code/blob/main/packages/app-lib/src/api/handler.rs). 최신 Modrinth의 고유 인스턴스 ID는 로컬 인스턴스 DB에서 읽어 같은 프로필을 실행합니다.
 
@@ -90,7 +102,7 @@ Windows PowerShell에서 실행합니다.
 .\gradlew.bat --no-daemon test build
 .\gradlew.bat -p server-addons/league-practice --no-daemon test build
 .\gradlew.bat -p server-addons/league-battle-recorder --no-daemon test build
-.\gradlew.bat -p server-addons/cobble-synergy "-Pcobbleleague_jar=../../build/libs/cobbleleague-0.7.7.jar" --no-daemon test build
+.\gradlew.bat -p server-addons/cobble-synergy "-Pcobbleleague_jar=../../build/libs/cobbleleague-0.8.0.jar" --no-daemon test build
 ```
 
 Linux와 macOS에서는 같은 명령의 실행 파일을 `./gradlew`로 바꿉니다. 각 프로젝트의 `build/libs/`에 배포용 JAR과 소스 JAR이 생성됩니다. 설치할 때에는 소스 JAR을 제외한 모드 JAR을 사용합니다.
@@ -135,7 +147,7 @@ python scripts/package_friends.py
 python tests/test_installer.py
 ```
 
-`dist/CobbleLeague-friends-0.7.7.zip`이 생성됩니다. 받은 사람은 게임을 완전히 종료하고 ZIP을 압축 해제한 뒤 `설치.bat`를 실행해 Modrinth의 COBBLEVERSE 프로필을 선택합니다. `되돌리기.bat`로 설치 전 백업을 복원합니다.
+`dist/CobbleLeague-friends-0.8.0.zip`이 생성됩니다. 받은 사람은 게임을 완전히 종료하고 ZIP을 압축 해제한 뒤 `설치.bat`를 실행해 Modrinth의 COBBLEVERSE 프로필을 선택합니다. `되돌리기.bat`로 설치 전 백업을 복원합니다.
 
 ## 검증
 

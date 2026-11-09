@@ -16,16 +16,11 @@ class RandomRoster {
         val rarity get() = Rarity.fromLabels(species.labels + form.labels)
         val name get() = species.translatedName.string + if (form == species.standardForm) "" else " (${form.name})"
         val isMega get() = "mega" in form.labels || form.name.startsWith("Mega",true) || form.aspects.any { it.startsWith("mega") }
-        fun enforceMega(pokemon: Pokemon) {
-            if (!isMega) return
-            val expected = pokemon.forcedAspects.filterNot { it.startsWith("mega") }.toSet() + form.aspects
-            if (pokemon.forcedAspects != expected) pokemon.forcedAspects = expected
-            if (pokemon.form != form) pokemon.form = form
-        }
         fun create(): Pokemon {
             return PokemonProperties.parse("${species.resourceIdentifier} level=50").create().also {
-                it.forcedAspects = form.aspects.toSet()
-                it.form = form
+                val initial=if(isMega)species.standardForm else form
+                it.forcedAspects = initial.aspects.toSet()
+                it.form = initial
                 it.initializeMoveset(preferLatest = true)
                 DungeonRandomMoves.apply(it)
                 it.heal()
@@ -58,14 +53,19 @@ class RandomRoster {
     fun megaBasesPresent():Boolean{val candidates=all();return candidates.filter{it.isMega}.all{m->candidates.any{it.species==m.species&&it.form==m.species.standardForm&&!it.isMega}}}
     fun choose(count:Int,excluded:Set<String> = emptySet(),odds:DrawOdds=baseOdds):List<Candidate> =
         chooseDiverse(count,excluded,odds,emptySet(),emptySet(),emptyMap())
-    fun chooseDiverse(count:Int,excluded:Set<String>,odds:DrawOdds,roundAvoid:Set<String>,recent:Set<String>,partyCounts:Map<String,Int>):List<Candidate>{
-        val candidates=all();val previous=excluded.map{it.substringBefore('|')}.toSet()
+    fun availableDraftTypes(starters:Boolean):Set<String> = draftPool(starters).flatMap{(if(it.isMega)it.species.standardForm else it.form).types.map{t->t.name}}.toSet()
+    private val starterIds=setOf("venusaur","charizard","blastoise","meganium","typhlosion","feraligatr","sceptile","blaziken","swampert","torterra","infernape","empoleon","serperior","emboar","samurott","chesnaught","delphox","greninja","decidueye","incineroar","primarina","rillaboom","cinderace","inteleon","meowscarada","skeledirge","quaquaval")
+    fun starterPool():List<Candidate> = all().filter{it.species.resourceIdentifier.path in starterIds&&it.form==it.species.standardForm&&it.species.forms.any(::mega)}.distinctBy{it.species.resourceIdentifier}
+    private fun draftPool(starters:Boolean)=if(starters)starterPool().also{require(it.size>=3){"메가 스타팅 데이터가 부족합니다."}}else all()
+    fun chooseDiverse(count:Int,excluded:Set<String>,odds:DrawOdds,roundAvoid:Set<String>,recent:Set<String>,partyCounts:Map<String,Int>,starters:Boolean=false,type:String=""):List<Candidate>{
+        val candidates=draftPool(starters);val previous=excluded.map{it.substringBefore('|')}.toSet()
         require(candidates.map{it.species.resourceIdentifier}.distinct().size>=count){"등록된 최종진화체 데이터가 부족합니다."}
         val selected=mutableSetOf<String>()
         return List(count){
-            val kind=odds.category(Random.nextInt(10000))
+            val kind=if(starters)DrawCategory.NORMAL else odds.category(Random.nextInt(10000))
             val available=candidates.filter{it.species.resourceIdentifier.toString() !in selected}
-            val group=available.filter{category(it)==kind}.ifEmpty{available.filter{category(it)==DrawCategory.NORMAL}.ifEmpty{available}}
+            val typed=if(type.isBlank())available else available.filter{c->(if(c.isMega)c.species.standardForm else c.form).types.any{it.name==type}}.ifEmpty{available}
+            val group=typed.filter{category(it)==kind}.ifEmpty{typed.filter{category(it)==DrawCategory.NORMAL}.ifEmpty{typed}}
             val fresh=DraftDiversity.preferred(group,{it.species.resourceIdentifier.toString()},listOf(previous))
             val perSpecies=fresh.groupBy{it.species.resourceIdentifier.toString()}
             val species=DraftSpeciesWeight.pick(perSpecies.keys.toList(),{id->DraftSpeciesWeight.value(partyCounts[id]?:0,id in roundAvoid,id in recent)})

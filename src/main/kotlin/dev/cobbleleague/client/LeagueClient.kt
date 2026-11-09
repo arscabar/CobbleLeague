@@ -21,18 +21,21 @@ class LeagueClient : ClientModInitializer {
         RarityGlow.register()
         DraftHud.register()
         LobbyHud.register()
+        ReadyStatusHud.register()
         ClientReleaseUpdate.register()
         DungeonMenuKey.register()
         DraftPartyBinding.register()
         ClientPlayConnectionEvents.JOIN.register { _, _, _ ->
-            RoundGraphSkin.reset(); ClientStorageLock.reset(); DraftHud.data=null;LobbyHud.data=null; hasLeagueBattle=false; NativeBattleRules.reset(); NativeBattleInvites.clear()
+            ReadyStatusHud.reset(); RoundGraphSkin.reset(); ClientStorageLock.reset(); DraftHud.data=null;LobbyHud.data=null; hasLeagueBattle=false; NativeBattleRules.reset(); NativeBattleInvites.clear()
             if (ClientPlayNetworking.canSend(LeaguePayload.TYPE)) send(JsonObject().apply { addProperty("action","hello"); addProperty("protocol",11) })
         }
-        ClientPlayConnectionEvents.DISCONNECT.register { _, _ -> RoundGraphSkin.reset(); ClientStorageLock.reset(); DraftHud.data=null;LobbyHud.data=null; hasLeagueBattle=false; NativeBattleRules.reset(); NativeBattleInvites.clear() }
+        ClientPlayConnectionEvents.DISCONNECT.register { _, _ -> ReadyStatusHud.reset(); RoundGraphSkin.reset(); ClientStorageLock.reset(); DraftHud.data=null;LobbyHud.data=null; hasLeagueBattle=false; NativeBattleRules.reset(); NativeBattleInvites.clear() }
         ClientPlayNetworking.registerGlobalReceiver(LeaguePayload.TYPE) { payload, context ->
             context.client().execute {
                 val data = JsonParser.parseString(payload.json).asJsonObject
-                if (data.text("kind") == "storage_lock") {
+                if(data.text("kind")=="ping") {
+                    ReadyStatusHud.ping(data.text("sender"))
+                } else if (data.text("kind") == "storage_lock") {
                     ClientStorageLock.setLocked(data.get("locked")?.asBoolean == true)
                 } else if (data.text("kind") == "pc_denied") {
                     ClientStorageLock.setLocked(true); ClientStorageLock.notifyBlocked()
@@ -57,6 +60,7 @@ class LeagueClient : ClientModInitializer {
                     DraftHud.data=null;LobbyHud.data=null; hasLeagueBattle=false; context.client().setScreen(null)
                 } else if(data.text("kind")=="lobby_update") {
                     LobbyHud.update(data);(context.client().screen as? LobbyScreen)?.accept(data)
+                    data.getAsJsonArray("players")?.let{(context.client().screen as? ReadyStatusScreen)?.accept(it)}
                 } else if(data.text("kind")=="creep_progress") {
                     if(data.get("open")?.asBoolean==true){
                         hasLeagueBattle=data.get("inBattle")?.asBoolean==true
@@ -74,6 +78,7 @@ class LeagueClient : ClientModInitializer {
                     else if(data.text("kind")=="lobby")LobbyHud.update(data)
                     val screen=when(data.text("kind")) {
                         "run" -> if(data.text("stage")=="rewards") GymRewardsScreen(data) else DungeonPrepareScreen(data)
+                        "ready_status" -> ReadyStatusScreen(data)
                         "watch_list" -> SpectatorScreen(data)
                         "battle_control" -> BattleControlScreen(data)
                         "lobby" -> LobbyScreen(data)

@@ -105,6 +105,7 @@ class LeagueService(private val server: MinecraftServer) {
     private val matches = mutableMapOf<UUID, Match>()
     private val lastRequest = mutableMapOf<UUID, Long>()
     private val watchVisits=mutableMapOf<UUID,WatchVisit>()
+    private val pingTimes=mutableMapOf<UUID,Int>()
     private val clientProtocols = mutableMapOf<UUID, Int>()
     private val displayIds = mutableSetOf<UUID>()
     private val lastPcNotice = mutableMapOf<UUID, Int>()
@@ -131,6 +132,21 @@ class LeagueService(private val server: MinecraftServer) {
     }
     fun rejectDraftMoveChange(p: ServerPlayer) { note(p, "던전 기술은 상점에서 구매한 기술머신으로만 교체할 수 있습니다."); runs[p.uuid]?.party?.let { syncVisibleParty(p, it) } }
     fun isDraftPokemon(mon: Pokemon) = runs.values.any { run -> run.party.any { it.uuid == mon.uuid } }
+    fun battleAccessory(p:ServerPlayer,tag:String):Boolean {
+        val run=runs[p.uuid]?:return false
+        if(!leagueArea(p)||!run.state.inBattle)return false
+        return when(tag){
+            "mega_bracelet"->run.party.any{!it.heldItem().isEmpty&&DungeonForms.isMegaStone(it.heldItem().item)&&DungeonForms.eligible(it.heldItem().item,it)}
+            "dynamax_band","power_spot"->run.party.any{it.dmaxLevel>0||it.gmaxFactor}
+            else->false
+        }
+    }
+    fun leagueArea(p:ServerPlayer)=p.level().dimension()==dimension
+    fun rescueLeaguePlayer(p:ServerPlayer){
+        val m=matches.values.firstOrNull{p.uuid in it.players}
+        val center=m?.let{it.battleCenter?:centers[it.arena]} ?: runs[p.uuid]?.let{rooms.getOrNull(it.room)} ?: (0 to -100)
+        teleport(p,center.first+0.5,center.second+0.5)
+    }
     fun protectedSelectionArea(p:ServerPlayer)=p.level().dimension()==dimension&&(0..7).any{privateRooms.contains(it,p.x,p.y,p.z)}
     private fun participantInside(p:ServerPlayer,run:Run):Boolean =
         p.level().dimension()==dimension&&(watchVisits.containsKey(p.uuid)||insideLeague(true,p.x,p.y,p.z)||run.lobbyGame!=null&&privateRooms.contains(lobbyGame?.model?.standings?.keys?.indexOf(p.uuid)?:-100,p.x,p.y,p.z))
@@ -150,14 +166,7 @@ class LeagueService(private val server: MinecraftServer) {
             net.minecraft.world.InteractionResult.PASS
         } catch(e:IllegalArgumentException) {note(p,e.message?:"지금은 리롤할 수 없습니다.");net.minecraft.world.InteractionResult.FAIL}
     }
-    fun prepareBattleForms(battle: com.cobblemon.mod.common.api.battles.model.PokemonBattle) {
-        battle.actors.forEach { actor -> actor.getPlayerUUIDs().mapNotNull { runs[it] }.forEach { run ->
-            actor.pokemonList.forEach { mon ->
-                val expected = run.partyMegaForms[mon.originalPokemon.uuid] ?: run.partyMegaForms[mon.effectedPokemon.uuid]
-                expected?.enforceMega(mon.originalPokemon); expected?.enforceMega(mon.effectedPokemon)
-            }
-        } }
-    }
+    fun prepareBattleForms(battle:com.cobblemon.mod.common.api.battles.model.PokemonBattle) { /* Held stones and native battle limits determine transformations. */ }
     fun isStorageLocked(id: UUID) = id in runs || id in duelOriginalParties
     private fun syncStorageLock(p: ServerPlayer, locked: Boolean) {
         if (locked) PCLinkManager.removeLink(p.uuid)
@@ -237,8 +246,8 @@ class LeagueService(private val server: MinecraftServer) {
         }
     }
     fun lobby(p: ServerPlayer) {
-        require((clientProtocols[p.uuid]?:0)>=11){"친구용 CobbleLeague 0.7.3으로 업데이트하세요."}
-        if (p.uuid in runs) surrenderGame(p)
+        require((clientProtocols[p.uuid]?:0)>=11){"친구용 CobbleLeague 0.8.0으로 업데이트하세요."}
+        runs[p.uuid]?.let { sendRun(p,it); return }
         available(p); ensureMap()
         if (p.level().dimension() != dimension) remember(mapOf(p.uuid to point(p)))
         teleport(p, 0.5, -100.5)
@@ -279,13 +288,13 @@ class LeagueService(private val server: MinecraftServer) {
     }
     private fun broadcastCreepProgress(g:LobbyGameRuntime){g.model.standings.keys.mapNotNull(::player).forEach{sendCreepProgress(it,g)}}
     private fun sendLobby(p:ServerPlayer,open:Boolean=true) {
-        require((clientProtocols[p.uuid]?:0)>=11){"친구용 CobbleLeague 0.7.3으로 업데이트하세요."}
+        require((clientProtocols[p.uuid]?:0)>=11){"친구용 CobbleLeague 0.8.0으로 업데이트하세요."}
         LeagueMod.send(p,packet(if(open)"lobby" else "lobby_update"){
             addProperty("joined",p.uuid in lobbyQueue.members());addProperty("ready",lobbyQueue.isReady(p.uuid))
             addProperty("busy",lobbyGame!=null||runs.isNotEmpty()||matches.isNotEmpty())
             addProperty("startingHealth",lobbyBalance.startingHealth);addProperty("lossDamage",lobbyBalance.lossDamage)
             add("players",JsonArray().also{a->lobbyQueue.members().forEach{id->a.add(JsonObject().apply{
-                addProperty("name",player(id)?.name?.string?:"플레이어");addProperty("ready",lobbyQueue.isReady(id))
+                addProperty("id",id.toString());addProperty("name",player(id)?.name?.string?:"플레이어");addProperty("ready",lobbyQueue.isReady(id))
             })}})
             lobbyGame?.let{add("scores",standings(it))}
         })
@@ -443,7 +452,7 @@ class LeagueService(private val server: MinecraftServer) {
     private fun tickLobby() {
         val inArea=server.playerList.players.filter{inLobby(it)}
         lobbyOptOut.retainAll(inArea.map{it.uuid}.toSet())
-        lobbyQueue.members().toList().forEach{id->val p=player(id);if(p==null||!p.isAlive||!inLobby(p))lobbyQueue.leave(id)}
+        lobbyQueue.members().toList().forEach{id->val p=player(id);if(p==null||!p.isAlive||p.level().dimension()!=dimension)lobbyQueue.leave(id)}
         inArea.filter{it.uuid !in runs&&it.uuid !in lobbyOptOut&&(clientProtocols[it.uuid]?:0)>=11&&it.isAlive&&!it.isSpectator}.forEach{p->
             if(p.uuid !in lobbyQueue.members())runCatching{lobbyQueue.join(p.uuid);sendLobby(p)}
         }
@@ -514,6 +523,21 @@ class LeagueService(private val server: MinecraftServer) {
             LobbyGamePhase.REWARDS->if(g.model.alive.all{it in g.rewardReady})beginLobbyRound(g)
         }
     }
+    private fun readyRows():JsonArray=JsonArray().also{a->
+        val g=lobbyGame
+        if(g!=null)g.model.alive.forEach{id->runs[id]?.let{run->a.add(JsonObject().apply{
+            addProperty("id",id.toString());addProperty("name",player(id)?.name?.string?:"플레이어")
+            val ready=run.state.ready&&run.preparation.ready(System.currentTimeMillis())
+            addProperty("ready",ready);addProperty("status",if(run.state.inBattle)"전투 중" else if(!run.state.ready)"선택 중" else if(ready)"준비 완료" else "준비 중")
+        })}}else lobbyQueue.members().forEach{id->a.add(JsonObject().apply{addProperty("id",id.toString());addProperty("name",player(id)?.name?.string?:"플레이어");addProperty("ready",lobbyQueue.isReady(id));addProperty("status",if(lobbyQueue.isReady(id))"대기 완료" else "준비 중")})}
+    }
+    private fun sendReadyPanel(p:ServerPlayer){require(p.uuid in runs||p.uuid in lobbyQueue.members());LeagueMod.send(p,packet("ready_status"){add("players",readyRows())})}
+    private fun ping(p:ServerPlayer,target:String){
+        require(server.tickCount-(pingTimes[p.uuid]?:-100)>40){"핑은 2초 간격으로 보낼 수 있습니다."}
+        val ids=readyRows().map{it.asJsonObject.text("id")};require(p.uuid.toString() in ids&&target in ids){"같은 던전 참가자에게만 보낼 수 있습니다."}
+        val recipient=requireNotNull(player(UUID.fromString(target)));pingTimes[p.uuid]=server.tickCount
+        LeagueMod.send(recipient,packet("ping"){addProperty("sender",p.name.string)})
+    }
     fun menu(p: ServerPlayer) {
         runs[p.uuid]?.let { sendRun(p, it); return }
         matches.values.firstOrNull{p.uuid in it.players}?.let{sendBattleControls(p,it);return}
@@ -530,6 +554,9 @@ class LeagueService(private val server: MinecraftServer) {
         lastRequest[p.uuid] = now
         when (json.text("action")) {
             "lobby_status" -> sendLobby(p)
+            "ui_close" -> { /* Screen close never withdraws or clears ready state. */ }
+            "ready_status" -> sendReadyPanel(p)
+            "ping" -> ping(p,json.text("target"))
             "odds" -> sendOdds(p)
             "odds_boost" -> boostOdds(p,json)
             "creep_status" -> {val g=requireNotNull(lobbyGame);require(p.uuid in g.model.standings);sendCreepProgress(p,g,true)}
@@ -795,13 +822,13 @@ class LeagueService(private val server: MinecraftServer) {
         val members=if(game!=null)runs.values.filter{it.lobbyGame==game.id}else runs.values.filter{it.pairId==run.pairId}
         return members.flatMap{it.party.toList()}.groupingBy{it.species.resourceIdentifier.toString()}.eachCount()
     }
-    private fun offer(run: Run, excluded: Set<String> = emptySet()) {
+    private fun offer(run: Run, excluded: Set<String> = emptySet(),type:String="") {
         clearDisplays(run)
         val game=lobbyGame?.takeIf{it.id==run.lobbyGame}
         val shared=game?.offeredThisRound?:runs.values.filter{it.pairId==run.pairId&&it!==run}.flatMap{it.choices}.map{it.substringBefore('|')}.toSet()
         val recent=run.recentOffers.flatten().toSet()
         val partyCounts=draftOwnershipCounts(run)
-        run.choices=roster.chooseDiverse(3,excluded,run.drawOdds.odds,shared,recent,partyCounts).map{it.key};run.armed=false
+        run.choices=roster.chooseDiverse(3,excluded,run.drawOdds.odds,shared,recent,partyCounts,run.state.round==0,type).map{it.key};run.armed=false
         val offered=run.choices.map{it.substringBefore('|')}
         game?.offeredThisRound?.addAll(offered)
         run.recentOffers.addLast(offered);while(run.recentOffers.size>4)run.recentOffers.removeFirst()
@@ -820,7 +847,7 @@ class LeagueService(private val server: MinecraftServer) {
             val rgb=when(kind){DrawCategory.NORMAL->0xE7EDF1;DrawCategory.LEGENDARY->0xFFD45C;DrawCategory.SUBLEGENDARY->0xFFAD66;DrawCategory.MYTHICAL->0xF397E6;DrawCategory.PARADOX->0x62EDFF;DrawCategory.MEGA->0xBD9CFF}
             val percent=String.format(java.util.Locale.ROOT,"%.1f",run.drawOdds.odds.values.getValue(kind)/100.0)
             val stars=DungeonTraining.stars(pokemon).coerceIn(0,5)
-            val title=Component.literal("${index+1}. ${kind.label} · $percent%\n").withStyle{it.withColor(rgb)}
+            val title=Component.literal("${index+1}. ${if(run.state.round==0)"스타팅" else kind.label} · ${if(run.state.round==0)"기본 폼" else "$percent%"}\n").withStyle{it.withColor(rgb)}
                 .append(candidate.species.translatedName).append("\n")
             pokemon.types.forEachIndexed { i,type->
                 if(i>0)title.append(" / ")
@@ -868,11 +895,13 @@ class LeagueService(private val server: MinecraftServer) {
     }
     private fun sendRun(p: ServerPlayer, run: Run, open: Boolean = true) {
         LeagueMod.send(p, packet(if (open) "run" else "run_update") {
+            add("readyPlayers",readyRows())
             addProperty("playerId",p.uuid.toString());addProperty("opponentId",run.opponent?.toString().orEmpty())
             addProperty("round", run.state.round + 1); addProperty("version", run.state.version)
             addProperty("ready", run.state.ready); addProperty("inBattle", run.state.inBattle)
             addProperty("format", run.format.label)
             addProperty("replacement", run.replacementSlot)
+            add("rerollTypes",JsonArray().also{a->roster.availableDraftTypes(run.state.round==0).forEach{a.add(it)}})
             addProperty("canSkipPick",run.lobbyGame!=null && run.party.count()>0 && selectionActionsAvailable(p,run))
             addProperty("waiting", run.waiting)
             matches.values.firstOrNull{p.uuid in it.players}?.let{m->
@@ -985,7 +1014,7 @@ class LeagueService(private val server: MinecraftServer) {
                 }
             }
             val candidate = roster.resolve(species)
-            if (candidate.isMega) { run.partyMegaForms[pokemon.uuid] = candidate; candidate.enforceMega(pokemon) }
+            if (candidate.isMega) { run.partyMegaForms[pokemon.uuid] = candidate }
             clearDisplays(run)
             run.party.set(index, pokemon)
             syncVisibleParty(p, run.party)
@@ -1019,10 +1048,12 @@ class LeagueService(private val server: MinecraftServer) {
         val run = requireNotNull(runs[p.uuid])
         if(run.lobbyGame!=null)require(lobbyGame?.phase==LobbyGamePhase.SELECTION&&run.displays.isNotEmpty()){ "후보 선택 중에만 리롤할 수 있습니다." }
         require(!run.state.ready && !run.state.inBattle && json.text("version") == run.state.version) {"포켓몬 선택을 완료하기 전에 리롤하세요."}
+        val requestedType=json.text("type")
+        require(requestedType.isBlank()||requestedType in roster.availableDraftTypes(run.state.round==0)){"이 뽑기 풀에서 사용할 수 없는 타입입니다."}
         run.preparation.reroll(json.number("revision", -1), System.currentTimeMillis())
         val previous = run.choices.toSet()
         run.pendingPick=null
-        run.state.refreshChoices(); offer(run, previous); sendRun(p, run, open)
+        run.state.refreshChoices(); offer(run, previous,requestedType); sendRun(p, run, open)
     }
     private fun protectDraftMoves(run: Run) {
         run.party.forEach { mon ->
@@ -1068,20 +1099,20 @@ class LeagueService(private val server: MinecraftServer) {
             lobbyGame?.takeIf{it.id==run.lobbyGame}?.let{g->addProperty("mode","elimination");addProperty("stage",g.phase.name.lowercase());addProperty("health",g.model.standings[run.player]?.health?:0)}
             add("products", JsonArray().also { products ->
                 val selectable=rewardSelections(run)
-                val catalog=(DungeonShop.products + (run.equipment.keys+selectable.keys).filter { ':' in it }
+                val catalog=(DungeonShop.products + DungeonForms.products(mon) + (run.equipment.keys+selectable.keys).filter { ':' in it }
                     .map { DungeonProduct(it,0,"관장 보상") }).distinctBy { it.id }
                 catalog.forEach { product ->
-                    if(BuiltInRegistries.ITEM.containsKey(ResourceLocation.parse(product.id))) products.add(JsonObject().apply {
+                    if(BuiltInRegistries.ITEM.containsKey(ResourceLocation.parse(product.id)) && DungeonForms.eligible(BuiltInRegistries.ITEM.get(ResourceLocation.parse(product.id)),mon) && DungeonForms.trainingEligible(product.id,mon)) products.add(JsonObject().apply {
                         addProperty("id",product.id)
                         addProperty("price",product.price)
                         addProperty("tier",product.tier)
                         addProperty("owned",run.equipment[product.id]?:0)
                         addProperty("choice",selectable[product.id].orEmpty())
-                        addProperty("consumable",DungeonTraining.consumable(product.id))
+                        addProperty("consumable",DungeonTraining.consumable(product.id)||DungeonForms.consumable(BuiltInRegistries.ITEM.get(ResourceLocation.parse(product.id))))
                         addProperty("name",when(product.id){
                             DungeonTraining.GOLD->"금뚜껑"
                             DungeonTraining.ABILITY->"특성 변경 캡슐"
-                            DungeonTraining.SOUP->"다이스프"
+                            DungeonTraining.SOUP->"다이맥스 사탕"
                             DungeonTraining.GMAX->"거다이스프"
                             else->""
                         })
@@ -1101,17 +1132,24 @@ class LeagueService(private val server: MinecraftServer) {
     }
 
     private fun applyShopItem(run:Run,mon:Pokemon,id:String,item:ItemStack,ability:String) {
-        if(DungeonTraining.consumable(id))DungeonTraining.apply(mon,id,ability)
+        DungeonForms.validate(mon,item.item)
+        if(DungeonForms.consumable(item.item))DungeonForms.use(mon,item)
+        else if(DungeonTraining.consumable(id))DungeonTraining.apply(mon,id,ability)
         else equipVirtual(run,mon,item)
+        run.authorizedMoves[mon.uuid]=mon.moveSet.map{it.name}
     }
 
     private fun equipVirtual(run: Run, mon: Pokemon, item: ItemStack) {
-        val old = mon.heldItem()
+        if(!item.isEmpty)DungeonForms.validate(mon,item.item)
+        val old = mon.heldItem().copy()
+        if(!old.isEmpty)DungeonForms.nativeHeld(mon,old.item,false)
         if (!old.isEmpty) {
             val id = BuiltInRegistries.ITEM.getKey(old.item).toString()
             run.equipment[id] = (run.equipment[id] ?: 0) + 1
         }
         (mon as DungeonHeldItemAccessor).`cobbleleague$setVirtualItem`(item)
+        if(!item.isEmpty)DungeonForms.nativeHeld(mon,item.item,true)
+        run.authorizedMoves[mon.uuid]=mon.moveSet.map{it.name}
     }
     private fun buy(p: ServerPlayer, json: JsonObject) {
         val run = requireNotNull(runs[p.uuid]); require(!run.state.inBattle)
@@ -1146,8 +1184,15 @@ class LeagueService(private val server: MinecraftServer) {
                 run.preparation.check(revision,now)
                 val other=requireNotNull(run.party.firstOrNull{it.uuid.toString()==json.text("other")&&it!==mon})
                 val held=mon.heldItem().copy();val second=other.heldItem().copy()
+                if(!second.isEmpty)DungeonForms.validate(mon,second.item)
+                if(!held.isEmpty)DungeonForms.validate(other,held.item)
+                if(!held.isEmpty)DungeonForms.nativeHeld(mon,held.item,false)
+                if(!second.isEmpty)DungeonForms.nativeHeld(other,second.item,false)
                 (mon as DungeonHeldItemAccessor).`cobbleleague$setVirtualItem`(second)
                 (other as DungeonHeldItemAccessor).`cobbleleague$setVirtualItem`(held)
+                if(!second.isEmpty)DungeonForms.nativeHeld(mon,second.item,true)
+                if(!held.isEmpty)DungeonForms.nativeHeld(other,held.item,true)
+                run.authorizedMoves[mon.uuid]=mon.moveSet.map{it.name};run.authorizedMoves[other.uuid]=other.moveSet.map{it.name}
                 run.preparation.changed()
             }
             "unequip" -> {
@@ -1167,7 +1212,7 @@ class LeagueService(private val server: MinecraftServer) {
                 run.preparation.changed()
             }
             else -> {
-                val product = requireNotNull(DungeonShop.products.firstOrNull { it.id == json.text("product") })
+                val product = requireNotNull((DungeonShop.products+DungeonForms.products(mon)).firstOrNull { it.id == json.text("product") })
                 val item = BuiltInRegistries.ITEM.get(ResourceLocation.parse(product.id)); require(item != net.minecraft.world.item.Items.AIR)
                 run.preparation.pay(product.price, revision, now) { applyShopItem(run,mon,product.id,ItemStack(item),json.text("ability")) }
             }
@@ -1289,7 +1334,6 @@ class LeagueService(private val server: MinecraftServer) {
         try {
             protectDraftMoves(run); protectDraftMoves(opponentRun)
             run.party.forEach { it.recall() }; opponentRun.party.forEach { it.recall() }
-            for (member in listOf(run,opponentRun)) member.party.forEach { mon -> member.partyMegaForms[mon.uuid]?.enforceMega(mon) }
             stopWatching(p);stopWatching(other)
             teleport(p, center.first - 20.5, center.second + 0.5, -90f)
             teleport(other, center.first + 20.5, center.second + 0.5, 90f)
@@ -1593,7 +1637,6 @@ class LeagueService(private val server: MinecraftServer) {
                 val order = run.party.map { it.uuid }
                 if (order != run.lastOrder) { run.lastOrder = order; if (!run.state.inBattle) sendRun(p, run, false) }
                 if (server.tickCount % 20 == 0) sendRun(p, run, false)
-                run.party.forEach { mon -> run.partyMegaForms[mon.uuid]?.enforceMega(mon) }
                 run.displays.indices.forEach { index->
                     val (entity,anchor)=run.displays[index]
                     if(entity.isRemoved){
@@ -1605,7 +1648,6 @@ class LeagueService(private val server: MinecraftServer) {
                         }
                         return@forEach
                     }
-                    run.displayMegaForms[entity.uuid]?.enforceMega(entity.pokemon)
                     entity.deltaMovement = Vec3.ZERO; entity.moveTo(anchor.x,anchor.y,anchor.z,180f,0f)
                 }
                 if (!run.state.ready && !run.state.inBattle) {
@@ -1731,3 +1773,4 @@ class LeagueService(private val server: MinecraftServer) {
         }
     }
 }
+

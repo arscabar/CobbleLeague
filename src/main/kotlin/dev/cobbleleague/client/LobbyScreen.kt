@@ -14,7 +14,8 @@ class LobbyScreen(data:JsonObject):LeaguePane(data) {
         }
         button(px+18+w,py+ph-57,w,"로비 나가기",joined){action("lobby_leave")}
         button(px+12,py+ph-31,pw-24,"닫기"){onClose()}
-        if(data.has("scores"))button(px+pw-87,py+7,75,"HP 점수판"){minecraft?.setScreen(ScoreboardScreen(data,this))}
+        button(px+pw-87,py+7,75,"상태·핑"){action("ready_status")}
+        if(false&&data.has("scores"))button(px+pw-87,py+7,75,"HP 점수판"){minecraft?.setScreen(ScoreboardScreen(data,this))}
     }
     fun accept(update:JsonObject){data=update;rebuildWidgets()}
     override fun drawContent(g:GuiGraphics,mx:Int,my:Int,delta:Float){
