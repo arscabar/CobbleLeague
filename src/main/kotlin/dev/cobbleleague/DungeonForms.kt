@@ -11,7 +11,40 @@ internal object DungeonForms {
     private const val ROOT="com.github.yajatkaul.mega_showdown."
     private fun isClass(item:Item,suffix:String)=item.javaClass.name==ROOT+suffix
     fun isMegaStone(item:Item)=mega(item)
-    private fun mega(item:Item)=isClass(item,"item.custom.mega.MegaStone")
+    private data class MegaStone(val id:String,val species:Set<String>,val aspects:Set<String>)
+    private var megaGeneration:Any?=null
+    private var megaCache:List<MegaStone> = emptyList()
+    private fun megaStones():List<MegaStone> {
+        val generation=com.cobblemon.mod.common.api.pokemon.PokemonSpecies.species.firstOrNull()
+        if(generation!==megaGeneration){
+            megaGeneration=generation
+            megaCache=runCatching {
+                val type=Class.forName(ROOT+"gimmick.MegaGimmick")
+                val get=Class.forName(ROOT+"utils.RegistryLocator").getMethod("getComponent",Class::class.java,ItemStack::class.java)
+                BuiltInRegistries.ITEM.mapNotNull{item->
+                    val value=get.invoke(null,type,ItemStack(item))?:return@mapNotNull null
+                    val conditions=type.getMethod("aspect_conditions").invoke(value)
+                    val apply=conditions.javaClass.getMethod("aspectApply").invoke(conditions)
+                    @Suppress("UNCHECKED_CAST")
+                    MegaStone(BuiltInRegistries.ITEM.getKey(item).toString(),(type.getMethod("pokemons").invoke(value) as Collection<String>).toSet(),(apply.javaClass.getMethod("aspects").invoke(apply) as Collection<String>).map{it.substringAfter('=')}.toSet())
+                }
+            }.getOrElse{LeagueMod.LOGGER.warn("Mega stone registry could not be read",it);emptyList()}
+        }
+        return megaCache
+    }
+    private fun mega(item:Item):Boolean { val id=BuiltInRegistries.ITEM.getKey(item).toString();return megaStones().any{it.id==id} }
+    fun megaStoneFor(candidate:RandomRoster.Candidate):String? {
+        if(!candidate.isMega)return null
+        val expected=candidate.form.aspects.filter{it.startsWith("mega")}.map{it.substringAfter('=')}.toSet()
+        val matches=megaStones().filter{candidate.species.name in it.species}
+        return matches.firstOrNull{expected.isNotEmpty()&&it.aspects.containsAll(expected)}?.id
+            ?: matches.singleOrNull()?.takeIf{expected.isEmpty()}?.id
+    }
+    fun grantDrawStone(candidate:RandomRoster.Candidate,mon:Pokemon) {
+        if(!candidate.isMega)return
+        val id=requireNotNull(megaStoneFor(candidate)){"이 메가 폼과 맞는 메가스톤이 없습니다."}
+        (mon as dev.cobbleleague.mixin.DungeonHeldItemAccessor).`cobbleleague$setVirtualItem`(ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.parse(id))))
+    }
     private fun held(item:Item)=isClass(item,"item.custom.form_change.FormChangeHeldItem")
     private fun speciesAllowed(item:Item,mon:Pokemon):Boolean {
         val field=item.javaClass.getDeclaredField("pokemons").apply{isAccessible=true}

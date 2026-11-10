@@ -4,6 +4,7 @@ package dev.cobbleleague
 enum class DrawCategory(val id:String,val label:String) {
     NORMAL("normal","일반·기본형"), LEGENDARY("legendary","전설"), SUBLEGENDARY("sublegendary","준전설"),
     MYTHICAL("mythical","환상"), PARADOX("paradox","패러독스"), MEGA("mega","메가진화");
+    val rgb get()=when(this){NORMAL->0xE7EDF1;LEGENDARY->0xFFD45C;SUBLEGENDARY->0xFFAD66;MYTHICAL->0xF397E6;PARADOX->0x62EDFF;MEGA->0xBD9CFF}
     val boostBasisPoints get()=when(this){NORMAL->0;LEGENDARY->20;SUBLEGENDARY->30;MYTHICAL->40;PARADOX,MEGA->50}
     companion object {
         fun parse(id:String)=entries.firstOrNull{it.id==id}?:error("잘못된 뽑기 분류입니다.")

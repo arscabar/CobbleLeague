@@ -49,6 +49,25 @@ public class Draft080Checks {
   var offers=(List<?>)method.invoke(bot,new Stash(),List.of(charizard));boolean includes=false,bad=false;
   for(Object offer:offers){String id=(String)LeagueConvenienceChecks.call(offer,"getItem");includes|=id.equals("mega_showdown:charizardite_x")&&((Number)LeagueConvenienceChecks.call(offer,"getPrice")).intValue()==3;bad|=id.equals("mega_showdown:venusaurite");}
   rows.add(Map.of("check","ai-purchase-offers-include-native-mega-catalogue","passed",includes&&!bad));
+  var allMethod=roster.getClass().getDeclaredMethod("all");allMethod.setAccessible(true);var pool=(List<?>)allMethod.invoke(roster);
+  boolean gifts=true,noRareMega=true,variants=true;int megaCount=0;
+  for(Object candidate:pool){if(!(boolean)LeagueConvenienceChecks.call(candidate,"isMega"))continue;megaCount++;
+   var mon=(Pokemon)LeagueConvenienceChecks.call(candidate,"create");String gifted=BuiltInRegistries.ITEM.getKey(mon.heldItem().getItem()).toString();
+   boolean nativeCan=(boolean)Class.forName("com.github.yajatkaul.mega_showdown.gimmick.MegaGimmick").getMethod("canMega",Pokemon.class).invoke(null,mon);if(!nativeCan)System.out.println("[MEGA-FAIL] native "+LeagueConvenienceChecks.call(candidate,"getKey")+" held="+gifted+" aspects="+mon.getAspects());gifts&=nativeCan;
+   boolean cloned=net.minecraft.world.item.ItemStack.isSameItemSameComponents(mon.clone(false,((net.minecraft.server.MinecraftServer)net.fabricmc.loader.api.FabricLoader.getInstance().getGameInstance()).registryAccess()).heldItem(),mon.heldItem());if(!cloned)System.out.println("[MEGA-FAIL] clone "+LeagueConvenienceChecks.call(candidate,"getKey"));gifts&=cloned;
+   gifts&=!mon.heldItem().isEmpty()&&mon.getForm()==mon.getSpecies().getStandardForm()&&gifted.equals(LeagueConvenienceChecks.call(forms,"megaStoneFor",candidate));
+   var labels=new HashSet<>(mon.getSpecies().getLabels());labels.addAll(((com.cobblemon.mod.common.pokemon.FormData)LeagueConvenienceChecks.call(candidate,"getForm")).getLabels());noRareMega&=Collections.disjoint(labels,Set.of("legendary","mythical","paradox","sub_legendary","sublegendary","ultra_beast"));
+   String key=(String)LeagueConvenienceChecks.call(candidate,"getKey");if(key.contains("charizard")&&key.endsWith("Mega-X"))variants&=gifted.equals("mega_showdown:charizardite_x");if(key.contains("charizard")&&key.endsWith("Mega-Y"))variants&=gifted.equals("mega_showdown:charizardite_y");
+  }
+  rows.add(Map.of("check","all-ordinary-mega-draws-give-base-and-exact-stone","passed",gifts&&variants&&megaCount>40,"megaForms",megaCount));
+  rows.add(Map.of("check","rare-species-excluded-from-mega-category","passed",noRareMega));
+  var megaBases=(List<?>)LeagueConvenienceChecks.call(roster,"megaBasePool");
+  rows.add(Map.of("check","first-typed-reroll-broader-than-starters","passed",megaBases.size()>starters.size()&&types.size()==18,"baseSpecies",megaBases.size()));
+  @SuppressWarnings("unchecked") var coverage=(Map<String,Integer>)LeagueConvenienceChecks.call(roster,"coverageAudit");
+  rows.add(Map.of("check","cobbleverse-1025-loaded-species-source","passed",coverage.get("implemented")==1025&&coverage.get("registered")==1025,"coverage",coverage));
+  List<String> creationFailures=new ArrayList<>();
+  for(Object candidate:pool){try{var mon=(Pokemon)LeagueConvenienceChecks.call(candidate,"create");if(mon.getMoveSet().getMoves().isEmpty())creationFailures.add((String)LeagueConvenienceChecks.call(candidate,"getKey"));}catch(Exception failure){creationFailures.add((String)LeagueConvenienceChecks.call(candidate,"getKey"));}}
+  rows.add(Map.of("check","all-dungeon-pool-candidates-can-be-created-with-moves","passed",creationFailures.isEmpty(),"failures",creationFailures,"forms",pool.size()));
   return rows;
  }
 }

@@ -92,7 +92,12 @@ public final class CreepRoundSmoke implements ModInitializer {
   if(phase==4||phase==5){action(people[phase-4],"lobby_ready","ready",true);phase++;return;}
   if(phase==6){Object g=game();if(g==null||!f(g,"phase").toString().equals("SELECTION"))return;
    int currentRound=(int)call(call(f(g,"model"),"getPlan"),"getNumber");
-   if(currentRound==1&&!labelsChecked){for(var p:people){List<?> labels=(List<?>)f(run(p),"choiceLabels");if(labels.isEmpty())return;for(var label:labels)labelRefs.add((net.minecraft.world.entity.Entity)label);}record("selection-platform-labels-created",labelRefs.size()==6&&labelRefs.stream().allMatch(e->e.getTags().contains("cobbleleague_choice_label")),"three labeled platforms per participant");labelsChecked=true;}
+   if(currentRound==1&&!labelsChecked){for(var p:people){List<?> labels=(List<?>)f(run(p),"choiceLabels");if(labels.isEmpty())return;for(var label:labels)labelRefs.add((net.minecraft.world.entity.Entity)label);}record("selection-platform-labels-created",labelRefs.size()==6&&labelRefs.stream().allMatch(e->e.getTags().contains("cobbleleague_choice_label")),"three labeled platforms per participant");Object testRun=run(people[0]);Object testRoster=f(service,"roster");String megaKey="cobblemon:charizard|Mega-X";Object megaCandidate=call(testRoster,"resolve",megaKey);
+    var megaPokemon=(com.cobblemon.mod.common.pokemon.Pokemon)call(megaCandidate,"create");
+    var firstDisplay=(com.cobblemon.mod.common.entity.pokemon.PokemonEntity)call(((List<?>)f(testRun,"displays")).getFirst(),"getFirst");firstDisplay.setPokemon(megaPokemon);
+    var forced=new ArrayList<String>((List<String>)f(testRun,"choices"));forced.set(0,megaKey);var choiceField=testRun.getClass().getDeclaredField("choices");choiceField.setAccessible(true);choiceField.set(testRun,forced);
+    ((Map<UUID,Object>)f(testRun,"displayMegaForms")).put(firstDisplay.getUUID(),megaCandidate);
+    labelsChecked=true;}
    if(currentRound==5&&oddsStage==0){oddsMoney=(int)call(prep(people[1]),"getMoney");Object odds=f(run(people[1]),"drawOdds");choicesBefore=List.copyOf((List<String>)f(run(people[1]),"choices"));action(people[1],"odds_boost","category","legendary");record("selection-only-boost-cost-one-coin",(int)call(prep(people[1]),"getMoney")==oddsMoney-1&&(int)call(odds,"getUsedRound")==5,"round5");record("boost-does-not-redraw-visible-candidates",choicesBefore.equals(f(run(people[1]),"choices")),"next offer or physical reroll only");oddsStage=1;return;}
    if(currentRound==5&&oddsStage==1){boolean rejected=false;try{action(people[1],"odds_boost","category","mythical");}catch(InvocationTargetException e){rejected=true;}record("second-boost-same-round-rejected-without-charge",rejected&&(int)call(prep(people[1]),"getMoney")==oddsMoney-1,"one purchase per global round");oddsStage=2;return;}
    if(currentRound==6&&oddsStage==2){Object odds=f(run(people[1]),"drawOdds");record("next-round-can-upgrade-and-previous-buff-persists",(int)call(odds,"getUsedRound")==5&&(boolean)call(odds,"available",6),call(call(odds,"getOdds"),"getValues"));action(people[1],"odds_boost","category","mega");oddsStage=3;return;}
@@ -124,6 +129,10 @@ public final class CreepRoundSmoke implements ModInitializer {
      record("explicit-draft-slot-replacement",!before.get(1).equals(after.get(1))&&java.util.stream.IntStream.range(0,6).filter(i->i!=1).allMatch(i->before.get(i).equals(after.get(i))),"only selected slot replaced");
     }else{
      action(p,"pick","pokemon",candidate,"version",version);
+     if(candidate.toString().equals("cobblemon:charizard|Mega-X")){
+      var obtained=Cobblemon.INSTANCE.getStorage().getParty(p).get(0);
+      record("real-pick-clone-keeps-base-and-exact-mega-stone",obtained.getForm()==obtained.getSpecies().getStandardForm()&&net.minecraft.core.registries.BuiltInRegistries.ITEM.getKey(obtained.heldItem().getItem()).toString().equals("mega_showdown:charizardite_x"),"real pick endpoint after missing-display recovery");
+     }
      if(f(r,"pendingPick")!=null){
       record("full-party-preview-keeps-roster",party(p).equals(before),"candidate selected before replacement");
       waiting=true;

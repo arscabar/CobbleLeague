@@ -48,6 +48,7 @@ private class Run(val player: UUID, val format: LeagueFormat, val returnPoint: R
     var room = -1
     var replacementSlot = -1
     var pendingPick:String?=null
+    var typedStarter=false
     var armed = false
     var opponent: UUID? = null
     var pairId = id
@@ -824,6 +825,7 @@ class LeagueService(private val server: MinecraftServer) {
     }
     private fun offer(run: Run, excluded: Set<String> = emptySet(),type:String="") {
         clearDisplays(run)
+        run.typedStarter=run.state.round==0&&type.isNotBlank()
         val game=lobbyGame?.takeIf{it.id==run.lobbyGame}
         val shared=game?.offeredThisRound?:runs.values.filter{it.pairId==run.pairId&&it!==run}.flatMap{it.choices}.map{it.substringBefore('|')}.toSet()
         val recent=run.recentOffers.flatten().toSet()
@@ -844,11 +846,15 @@ class LeagueService(private val server: MinecraftServer) {
             run.displays.add(entity to anchor)
             if(candidate.isMega)run.displayMegaForms[entity.uuid]=candidate
             val kind=roster.category(candidate)
-            val rgb=when(kind){DrawCategory.NORMAL->0xE7EDF1;DrawCategory.LEGENDARY->0xFFD45C;DrawCategory.SUBLEGENDARY->0xFFAD66;DrawCategory.MYTHICAL->0xF397E6;DrawCategory.PARADOX->0x62EDFF;DrawCategory.MEGA->0xBD9CFF}
+            val rgb=kind.rgb
             val percent=String.format(java.util.Locale.ROOT,"%.1f",run.drawOdds.odds.values.getValue(kind)/100.0)
             val stars=DungeonTraining.stars(pokemon).coerceIn(0,5)
-            val title=Component.literal("${index+1}. ${if(run.state.round==0)"스타팅" else kind.label} · ${if(run.state.round==0)"기본 폼" else "$percent%"}\n").withStyle{it.withColor(rgb)}
+            val title=Component.literal("${index+1}. ${if(run.state.round==0)if(run.typedStarter)"메가 지원 일반종" else "스타팅" else if(candidate.isMega)"메가 후보" else kind.label} · ${if(run.state.round==0)"기본 폼" else "$percent%"}\n").withStyle{it.withColor(rgb)}
                 .append(candidate.species.translatedName).append("\n")
+            if(candidate.isMega){
+                title.append(Component.literal("${candidate.form.name} 후보 · 기본 폼으로 영입\n"))
+                title.append("메가스톤: ").append(pokemon.heldItem().hoverName).append("\n")
+            }
             pokemon.types.forEachIndexed { i,type->
                 if(i>0)title.append(" / ")
                 title.append(type.displayName.copy().withStyle{it.withColor(type.hue)})
@@ -895,6 +901,10 @@ class LeagueService(private val server: MinecraftServer) {
     }
     private fun sendRun(p: ServerPlayer, run: Run, open: Boolean = true) {
         LeagueMod.send(p, packet(if (open) "run" else "run_update") {
+            add("choiceColors",JsonObject().also{colors->run.displays.forEach{(entity,_)->
+                val category=if(entity.uuid in run.displayMegaForms)DrawCategory.MEGA else DrawCategory.classify(entity.pokemon.species.labels+entity.pokemon.form.labels)
+                colors.addProperty(entity.uuid.toString(),category.rgb)
+            }})
             add("readyPlayers",readyRows())
             addProperty("playerId",p.uuid.toString());addProperty("opponentId",run.opponent?.toString().orEmpty())
             addProperty("round", run.state.round + 1); addProperty("version", run.state.version)
@@ -1014,7 +1024,11 @@ class LeagueService(private val server: MinecraftServer) {
                 }
             }
             val candidate = roster.resolve(species)
-            if (candidate.isMega) { run.partyMegaForms[pokemon.uuid] = candidate }
+            if (candidate.isMega) {
+                DungeonForms.grantDrawStone(candidate,pokemon)
+                run.partyMegaForms[pokemon.uuid] = candidate
+                note(p,"메가 후보 영입 · ${candidate.form.name}용 메가스톤을 장착해 지급했습니다. 전투에서 메가진화하세요.")
+            }
             clearDisplays(run)
             run.party.set(index, pokemon)
             syncVisibleParty(p, run.party)
@@ -1232,7 +1246,7 @@ class LeagueService(private val server: MinecraftServer) {
         val r=requireNotNull(runs[p.uuid]);require(!r.state.inBattle)
         LeagueMod.send(p,packet("odds"){
             addProperty("money",r.preparation.money);addProperty("rerolls",r.preparation.rerolls);addProperty("revision",r.preparation.revision);addProperty("confirmed",r.preparation.confirmed)
-            addProperty("remainingSeconds",r.preparation.seconds(System.currentTimeMillis()));addProperty("boostAvailable",selectionActionsAvailable(p,r));addProperty("oddsRound",oddsRound(r));addProperty("oddsUsed",!r.drawOdds.available(oddsRound(r)));add("drawOdds",oddsRows(r))
+            addProperty("remainingSeconds",r.preparation.seconds(System.currentTimeMillis()));addProperty("boostAvailable",selectionActionsAvailable(p,r));addProperty("oddsRound",oddsRound(r));addProperty("oddsUsed",!r.drawOdds.available(oddsRound(r)));add("drawOdds",oddsRows(r));add("pool",com.google.gson.Gson().toJsonTree(roster.coverageAudit()))
         })
     }
     private fun boostOdds(p:ServerPlayer,json:JsonObject){

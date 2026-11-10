@@ -60,7 +60,7 @@ class TypedRerollScreen(data:JsonObject,back:net.minecraft.client.gui.screens.Sc
         types.forEachIndexed{i,type->button(px+12+(i%3)*((pw-24)/3),py+35+(i/3)*24,(pw-30)/3,Component.translatable("cobblemon.type.$type").string,data.number("rerolls")>0){action("reroll"){addProperty("type",type);addProperty("version",data.text("version"))}}}
         button(px+12,py+ph-30,pw-24,"돌아가기"){onClose()}
     }
-    override fun drawContent(g:net.minecraft.client.gui.GuiGraphics,mx:Int,my:Int,delta:Float){text(g,"선택 타입 우선 · 후보가 부족하면 다른 타입 포함",px+12,py+ph-48,0xB5E6E9)}
+    override fun drawContent(g:net.minecraft.client.gui.GuiGraphics,mx:Int,my:Int,delta:Float){text(g,if(data.number("round")==1)"일반 종 메가 지원 풀 · 기본 폼 / 스톤은 상점 구매" else "선택 타입 우선 · 후보가 부족하면 다른 타입 포함",px+12,py+ph-48,0xB5E6E9)}
 }
 
 class DungeonQuickScreen(data:JsonObject,back:net.minecraft.client.gui.screens.Screen):LeaguePane(data,back){

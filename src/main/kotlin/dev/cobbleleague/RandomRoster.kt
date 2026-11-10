@@ -21,6 +21,7 @@ class RandomRoster {
                 val initial=if(isMega)species.standardForm else form
                 it.forcedAspects = initial.aspects.toSet()
                 it.form = initial
+                DungeonForms.grantDrawStone(this,it)
                 it.initializeMoveset(preferLatest = true)
                 DungeonRandomMoves.apply(it)
                 it.heal()
@@ -43,22 +44,29 @@ class RandomRoster {
         else DrawOdds().also{Files.writeString(file,LeagueMod.GSON.toJson(it.values.mapKeys{it.key.id}.mapValues{it.value/100.0}))}
     }
     private fun mega(form:FormData)="mega" in form.labels||form.name.startsWith("Mega",true)||form.aspects.any{it.startsWith("mega")}
-    private fun all():List<Candidate> = PokemonSpecies.implemented.filter{it.standardForm.evolutions.isEmpty()||it.forms.any(::mega)}.flatMap{species->
+    private fun all():List<Candidate> = PokemonSpecies.species.filter{it.implemented}.flatMap{species->
         (listOf(species.standardForm)+species.forms).distinctBy{it.name}.filter{form->
-            (form==species.standardForm||form.evolutions.isEmpty())&&"gmax" !in form.labels&&form.aspects.none{it=="gmax"||it=="core-percent"}
-        }.map{Candidate(species,it)}
+            (form.evolutions.isEmpty() || form==species.standardForm&&species.forms.any{mega(it)&&DrawCategory.classify(species.labels+it.labels)==DrawCategory.NORMAL&&DungeonForms.megaStoneFor(Candidate(species,it))!=null}) &&
+                "gmax" !in form.labels&&form.aspects.none{it=="gmax"||it=="core-percent"}
+        }.map{Candidate(species,it)}.filter{c->!c.isMega ||
+            DrawCategory.classify(c.species.labels+c.form.labels)==DrawCategory.NORMAL&&DungeonForms.megaStoneFor(c)!=null}
     }
+    fun coverageAudit():Map<String,Int> {
+        val pool=all()
+        return mapOf("registered" to PokemonSpecies.species.size,"implemented" to PokemonSpecies.species.count{it.implemented},"species" to pool.map{it.species.resourceIdentifier}.distinct().size,"forms" to pool.size)
+    }
+    fun megaBasePool():List<Candidate> = all().filter{it.isMega}.map{Candidate(it.species,it.species.standardForm)}.distinctBy{it.species.resourceIdentifier}
     fun category(candidate:Candidate)=DrawCategory.classify(candidate.species.labels+candidate.form.labels,candidate.isMega)
     fun poolAudit():Map<String,Int>{val candidates=all();return DrawCategory.entries.associate{kind->kind.id to candidates.filter{category(it)==kind}.map{it.species.resourceIdentifier}.distinct().size}}
     fun megaBasesPresent():Boolean{val candidates=all();return candidates.filter{it.isMega}.all{m->candidates.any{it.species==m.species&&it.form==m.species.standardForm&&!it.isMega}}}
     fun choose(count:Int,excluded:Set<String> = emptySet(),odds:DrawOdds=baseOdds):List<Candidate> =
         chooseDiverse(count,excluded,odds,emptySet(),emptySet(),emptyMap())
-    fun availableDraftTypes(starters:Boolean):Set<String> = draftPool(starters).flatMap{(if(it.isMega)it.species.standardForm else it.form).types.map{t->t.name}}.toSet()
+    fun availableDraftTypes(starters:Boolean):Set<String> = (if(starters)megaBasePool() else all()).flatMap{(if(it.isMega)it.species.standardForm else it.form).types.map{t->t.name}}.toSet()
     private val starterIds=setOf("venusaur","charizard","blastoise","meganium","typhlosion","feraligatr","sceptile","blaziken","swampert","torterra","infernape","empoleon","serperior","emboar","samurott","chesnaught","delphox","greninja","decidueye","incineroar","primarina","rillaboom","cinderace","inteleon","meowscarada","skeledirge","quaquaval")
-    fun starterPool():List<Candidate> = all().filter{it.species.resourceIdentifier.path in starterIds&&it.form==it.species.standardForm&&it.species.forms.any(::mega)}.distinctBy{it.species.resourceIdentifier}
+    fun starterPool():List<Candidate> = megaBasePool().filter{it.species.resourceIdentifier.path in starterIds}.distinctBy{it.species.resourceIdentifier}
     private fun draftPool(starters:Boolean)=if(starters)starterPool().also{require(it.size>=3){"메가 스타팅 데이터가 부족합니다."}}else all()
     fun chooseDiverse(count:Int,excluded:Set<String>,odds:DrawOdds,roundAvoid:Set<String>,recent:Set<String>,partyCounts:Map<String,Int>,starters:Boolean=false,type:String=""):List<Candidate>{
-        val candidates=draftPool(starters);val previous=excluded.map{it.substringBefore('|')}.toSet()
+        val candidates=if(starters&&type.isNotBlank())megaBasePool()else draftPool(starters);val previous=excluded.map{it.substringBefore('|')}.toSet()
         require(candidates.map{it.species.resourceIdentifier}.distinct().size>=count){"등록된 최종진화체 데이터가 부족합니다."}
         val selected=mutableSetOf<String>()
         return List(count){

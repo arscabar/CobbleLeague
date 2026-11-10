@@ -1,14 +1,14 @@
 # CobbleLeague
 
-Minecraft 1.21.1 / Fabric / Cobblemon 1.7.3 기반의 대여전, 덱 결정전, 라운드형 던전 모드입니다. 현재 본체 버전은 **0.8.0**, 통신 프로토콜은 **11**입니다.
+Minecraft 1.21.1 / Fabric / Cobblemon 1.7.3 기반의 대여전, 덱 결정전, 라운드형 던전 모드입니다. 현재 본체 버전은 **0.8.1**, 통신 프로토콜은 **11**입니다.
 
 ## 구성
 
 | 경로 | 내용 | 설치 위치 |
 | --- | --- | --- |
-| 저장소 루트 | CobbleLeague 0.8.0 본체와 클라이언트 UI | 서버와 참가자 클라이언트 |
+| 저장소 루트 | CobbleLeague 0.8.1 본체와 클라이언트 UI | 서버와 참가자 클라이언트 |
 | `server-addons/league-practice` | 연습장, 전체 파티 분석 전술 AI 1.1.0, 관장전 지원 | 서버 |
-| `server-addons/cobble-synergy` | CobbleSynergy 0.4.0 타입 시너지 | 서버와 참가자 클라이언트 |
+| `server-addons/cobble-synergy` | CobbleSynergy 0.4.1 타입 시너지 | 서버와 참가자 클라이언트 |
 | `server-addons/league-battle-recorder` | 배틀 기록과 XLSX 내보내기 1.2.0 | 서버 |
 | `installer` | Windows 친구용 설치·백업·복원 스크립트 | 배포 패키지 |
 | `scripts/package_friends.py` | 빌드한 본체로 친구용 ZIP 생성 | 개발 환경 |
@@ -24,6 +24,14 @@ Minecraft 1.21.1 / Fabric / Cobblemon 1.7.3 기반의 대여전, 덱 결정전, 
 - 4·8라운드는 참가자 모두 같은 관장·파티를 상대로 각자의 방에서 레벨 50 싱글배틀을 진행합니다. 모든 전투와 전원의 보상 확인이 끝나면 다음 라운드가 함께 시작됩니다.
 - 아이템 상점, 학습 가능한 기술 검색, 개체값·특성 육성, 분류별 뽑기 확률 강화를 제공합니다. 구매 전 변경 결과와 잔액을 확인합니다.
 - 관장 승리 보상에 환상권, 전설 후보 공개, 돈, Z크리스탈, 고급 도구와 무료 기술 학습이 포함됩니다.
+
+## 0.8.1 변경점
+
+- 던전 후보는 서버에 실제 로드된 코블버스 종·폼 데이터를 사용합니다. 종 전체의 진화 여부 대신 각 폼의 진화 여부를 검사해 최종 폼 누락을 막았습니다. 뽑기 확률 창에서 등록 종 수와 실제 던전 후보 종·폼 수를 확인합니다. 미진화체 제외와 거다이맥스 등 전투 전용 폼 제한은 유지합니다.
+- 메가 확률 후보는 기본 폼과 그 메가 폼에 맞는 메가스톤을 장착해 지급합니다. 리자몽 X/Y 등은 실제 Mega Showdown 변신 데이터로 구분합니다. 후보 발판에 메가 폼과 지급 메가스톤을 표시하고 보라색 링을 사용합니다. 영입한 뒤 정상 배틀 메가진화와 횟수 제한을 사용합니다.
+- 메가 후보 분류에서 전설·준전설·환상·패러독스 계열을 제외합니다. 이 종들의 기본형은 원래 희귀 분류에서 계속 등장할 수 있습니다.
+- 첫 선택의 타입별 리롤은 스타팅 외의 일반 종까지 포함한 메가진화 지원 기본 폼 풀을 사용합니다. 첫 기본 스타팅 선택은 유지하며, 이 타입 리롤은 메가 확률 당첨과 달리 메가스톤을 동봉하지 않습니다. 메가스톤은 상점에서 구매합니다.
+- 발밑 희귀도 링은 서버가 지정한 내 선택 후보에만 그립니다. 리그 선택 단계 밖이나 일반 월드에는 적용하지 않습니다.
 
 ## 0.8.0 변경점
 
@@ -75,7 +83,7 @@ GitHub 일반 다운로드 경로의 장애를 피하도록 공식 릴리스 자
 
 배포 채널은 **이 저장소의 통합 GitHub Release 하나**입니다. `client-release.json`과 두 JAR을 함께 배포하며, 파일 해시와 실제 모드 ID·버전·의존성 조합을 검증합니다. 임시 다운로드가 실패하면 기존 설치를 보존합니다. 백업과 되돌리기는 프로필 안에서 관리합니다. 서버 자동 업데이트 기능은 포함하지 않습니다.
 
-릴리스 제작자는 본체와 `server-addons/cobble-synergy`를 빌드한 뒤 `python scripts/package_friends.py`를 실행합니다. `v0.8.0`처럼 본체 버전과 같은 태그를 올리면 `.github/workflows/release.yml`이 두 모드와 친구 ZIP을 빌드하고, 필요한 자산이 모두 올라온 후 릴리스를 공개합니다. 별도 Synergy 저장소 수정은 통합 사본에도 반영한 뒤 통합 릴리스로 배포합니다.
+릴리스 제작자는 본체와 `server-addons/cobble-synergy`를 빌드한 뒤 `python scripts/package_friends.py`를 실행합니다. `v0.8.1`처럼 본체 버전과 같은 태그를 올리면 `.github/workflows/release.yml`이 두 모드와 친구 ZIP을 빌드하고, 필요한 자산이 모두 올라온 후 릴리스를 공개합니다. 별도 Synergy 저장소 수정은 통합 사본에도 반영한 뒤 통합 릴리스로 배포합니다.
 
 참조: [GitHub Releases API](https://docs.github.com/en/rest/releases/releases), [Modrinth 실행 링크 처리](https://github.com/modrinth/code/blob/main/packages/app-lib/src/api/handler.rs). 최신 Modrinth의 고유 인스턴스 ID는 로컬 인스턴스 DB에서 읽어 같은 프로필을 실행합니다.
 
@@ -104,7 +112,7 @@ Windows PowerShell에서 실행합니다.
 .\gradlew.bat --no-daemon test build
 .\gradlew.bat -p server-addons/league-practice --no-daemon test build
 .\gradlew.bat -p server-addons/league-battle-recorder --no-daemon test build
-.\gradlew.bat -p server-addons/cobble-synergy "-Pcobbleleague_jar=../../build/libs/cobbleleague-0.8.0.jar" --no-daemon test build
+.\gradlew.bat -p server-addons/cobble-synergy "-Pcobbleleague_jar=../../build/libs/cobbleleague-0.8.1.jar" --no-daemon test build
 ```
 
 Linux와 macOS에서는 같은 명령의 실행 파일을 `./gradlew`로 바꿉니다. 각 프로젝트의 `build/libs/`에 배포용 JAR과 소스 JAR이 생성됩니다. 설치할 때에는 소스 JAR을 제외한 모드 JAR을 사용합니다.
@@ -149,7 +157,7 @@ python scripts/package_friends.py
 python tests/test_installer.py
 ```
 
-`dist/CobbleLeague-friends-0.8.0.zip`이 생성됩니다. 받은 사람은 게임을 완전히 종료하고 ZIP을 압축 해제한 뒤 `설치.bat`를 실행해 Modrinth의 COBBLEVERSE 프로필을 선택합니다. `되돌리기.bat`로 설치 전 백업을 복원합니다.
+`dist/CobbleLeague-friends-0.8.1.zip`이 생성됩니다. 받은 사람은 게임을 완전히 종료하고 ZIP을 압축 해제한 뒤 `설치.bat`를 실행해 Modrinth의 COBBLEVERSE 프로필을 선택합니다. `되돌리기.bat`로 설치 전 백업을 복원합니다.
 
 ## 검증
 

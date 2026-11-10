@@ -1,7 +1,7 @@
 package dev.cobbleleague.client
 
 import com.cobblemon.mod.common.entity.pokemon.PokemonEntity
-import dev.cobbleleague.Rarity
+import dev.cobbleleague.text
 import net.fabricmc.fabric.api.client.rendering.v1.WorldRenderEvents
 import net.minecraft.client.Minecraft
 import net.minecraft.client.renderer.RenderType
@@ -15,16 +15,18 @@ object RarityGlow {
             val client = Minecraft.getInstance()
             val world = client.level ?: return@register
             val player = client.player ?: return@register
+            val draft=DraftHud.data?:return@register
+            if(world.dimension().location().toString()!="cobbleleague:league"||LeagueClient.hasLeagueBattle||draft.get("ready")?.asBoolean==true||draft.get("inBattle")?.asBoolean==true||draft.text("stage").let{it.isNotBlank()&&it!="selection"})return@register
+            val colors=draft.getAsJsonObject("choiceColors")?:return@register
             val consumers = context.consumers() ?: return@register
             val stack = context.matrixStack() ?: return@register
             val camera = context.camera().position
             val partial = context.tickCounter().getGameTimeDeltaPartialTick(false)
             world.getEntitiesOfClass(PokemonEntity::class.java, player.boundingBox.inflate(40.0)).asSequence()
-                .mapNotNull { entity -> Rarity.fromLabels(entity.pokemon.species.labels + entity.pokemon.form.labels)?.let { entity to it } }
-                .take(16).forEach { (entity, rarity) ->
+                .mapNotNull { entity -> colors.get(entity.uuid.toString())?.asInt?.let { entity to it } }
+                .take(16).forEach { (entity, rgb) ->
                     val position = entity.getPosition(partial)
                     val radius = (entity.bbWidth * 0.8f).coerceIn(0.65f, 3.0f)
-                    val rgb = rarity.rgb
                     val r = (rgb shr 16) and 255; val g = (rgb shr 8) and 255; val b = rgb and 255
                     val pulse = 0.85 + 0.15 * sin((world.gameTime + partial) * 0.09)
                     stack.pushPose()
