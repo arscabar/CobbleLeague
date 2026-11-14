@@ -2,7 +2,7 @@ package dev.cobbleleague.client
 
 import com.google.gson.JsonParser
 import dev.cobbleleague.LeagueMod
-import dev.cobbleleague.releaseIsNewer
+import dev.cobbleleague.clientReleasePlan
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents
 import net.fabricmc.loader.api.FabricLoader
 import net.minecraft.client.Minecraft
@@ -25,6 +25,8 @@ object ClientReleaseUpdate {
     private var pending:String?=null
     private var launching=false
     private var localValidation=false
+    private var offlineBundle=false
+    private var repository="arscabar/CobbleLeague"
     private val http=HttpClient.newBuilder().connectTimeout(Duration.ofSeconds(8)).followRedirects(HttpClient.Redirect.NORMAL).build()
     fun register(){ClientTickEvents.END_CLIENT_TICK.register{client->
         if(client.screen !is TitleScreen||client.level!=null||launching)return@register
@@ -36,9 +38,12 @@ object ClientReleaseUpdate {
             if(config.get("enabled")?.asBoolean!=true)return@register
             val repo=config.get("repository")?.asString?:"arscabar/CobbleLeague"
             if(!repo.matches(Regex("[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+")))return@register
+            repository=repo
             localValidation=config.get("validationLocalRelease")?.asBoolean==true
+            offlineBundle=config.get("offlineBundle")?.asBoolean==true
             CompletableFuture.supplyAsync{
-                if(localValidation)selectUpdate(Files.readAllBytes(dir.resolve("validation/client-release.json")))else findUpdate(repo)
+                if(localValidation)selectUpdate(Files.readAllBytes(dir.resolve("validation/client-release.json")))
+                else if(offlineBundle)selectUpdate(Files.readAllBytes(dir.resolve("client-release.json")))else findUpdate(repo)
             }.whenComplete{update,error->
                 if(error!=null)LeagueMod.LOGGER.info("Client release check unavailable: {}",error.message)
                 else client.execute{pending=update}
@@ -51,6 +56,8 @@ object ClientReleaseUpdate {
             val token=java.util.UUID.randomUUID().toString().replace("-", "")
             val arguments=mutableListOf("powershell.exe","-WindowStyle","Hidden","-NoProfile","-ExecutionPolicy","Bypass","-File",dir.resolve("client-updater.ps1").toString(),"-TargetPath",client.gameDirectory.absolutePath,"-WaitForExit","-Launch","-HandoffToken",token)
             if(localValidation)arguments.addAll(listOf("-ManifestPath",dir.resolve("validation/client-release.json").toString(),"-BundleDirectory",dir.resolve("validation/payload").toString()))
+            if(offlineBundle)arguments.add("-Offline")
+            arguments.addAll(listOf("-Repository",repository))
             val process=ProcessBuilder(arguments)
                 .redirectErrorStream(true).redirectOutput(dir.resolve("auto-update.log").toFile()).start()
             LeagueMod.LOGGER.info("Client update handoff started: release={}, updaterPid={}",version,process.pid())
@@ -76,17 +83,17 @@ object ClientReleaseUpdate {
         return selectUpdate(body)
     }
     private fun selectUpdate(body:ByteArray):String? {
-        val manifest=JsonParser.parseString(String(body,Charsets.UTF_8)).asJsonObject
-        check(manifest.get("schema").asInt==1&&manifest.get("minecraft").asString=="1.21.1"&&manifest.get("cobblemon").asString=="1.7.3")
-        val entries=manifest.getAsJsonArray("mods").map{it.asJsonObject}
-        check(entries.size==2&&entries.map{it.get("id").asString}.toSet()==setOf("cobbleleague","cobblesynergy"))
-        var newer=false
-        for(entry in entries){
-            check(entry.get("sha256").asString.matches(Regex("[0-9a-f]{64}")))
-            val installed=FabricLoader.getInstance().getModContainer(entry.get("id").asString).orElse(null)?.metadata?.version?.friendlyString
-            if(installed==null||releaseIsNewer(entry.get("version").asString,installed))newer=true
-        }
-        return if(newer)manifest.get("release").asString else null
+        val installed=listOf("cobbleleague","cobblesynergy","cobblespire").mapNotNull { id ->
+            val mod=FabricLoader.getInstance().getModContainer(id).orElse(null)?:return@mapNotNull null
+            val path=mod.origin.paths.singleOrNull()
+            val hash=if(path!=null&&Files.isRegularFile(path)) Files.newInputStream(path).use { input ->
+                val digest=MessageDigest.getInstance("SHA-256");val buffer=ByteArray(65536)
+                while(true){val count=input.read(buffer);if(count<0)break;digest.update(buffer,0,count)}
+                digest.digest().joinToString(""){"%02x".format(it)}
+            }else null
+            id to (mod.metadata.version.friendlyString to hash)
+        }.toMap()
+        return clientReleasePlan(body,installed,offlineBundle||localValidation)
     }
 }
 

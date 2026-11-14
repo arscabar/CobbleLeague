@@ -1,5 +1,5 @@
 ﻿[CmdletBinding()]
-param([string]$TargetPath,[switch]$Launch,[switch]$WaitForExit,[switch]$CheckOnly,[switch]$InstallLauncher,[switch]$Restore,[string]$ManifestPath,[string]$BundleDirectory,[string]$Repository='arscabar/CobbleLeague',[string]$HandoffToken,[switch]$ResolveLaunchOnly)
+param([string]$TargetPath,[switch]$Launch,[switch]$WaitForExit,[switch]$CheckOnly,[switch]$InstallLauncher,[switch]$Restore,[string]$ManifestPath,[string]$BundleDirectory,[string]$Repository='arscabar/CobbleLeague',[string]$HandoffToken,[switch]$ResolveLaunchOnly,[switch]$Offline)
 $ErrorActionPreference='Stop'
 Add-Type -AssemblyName System.IO.Compression.FileSystem
 [Net.ServicePointManager]::SecurityProtocol=[Net.SecurityProtocolType]::Tls12
@@ -7,7 +7,40 @@ function ReadJson($path){[IO.File]::ReadAllText($path,[Text.Encoding]::UTF8)|Con
 function Hash($path){$stream=[IO.File]::OpenRead($path);$algorithm=[Security.Cryptography.SHA256]::Create();try{return ([BitConverter]::ToString($algorithm.ComputeHash($stream))).Replace('-','').ToLowerInvariant()}finally{$stream.Dispose();$algorithm.Dispose()}}
 function Child($root,$name){
  $full=[IO.Path]::GetFullPath((Join-Path $root $name));$prefix=$root.TrimEnd('\')+'\'
- if(-not $full.StartsWith($prefix,[StringComparison]::OrdinalIgnoreCase)){throw '허용된 폴더 밖의 경로입니다.'};return $full
+ if(-not $full.StartsWith($prefix,[StringComparison]::OrdinalIgnoreCase) -or $name.Contains(':')){throw '허용된 폴더 밖의 경로입니다.'}
+ $probe=$full
+ while($probe.Length-ge $root.Length){
+  if((Test-Path -LiteralPath $probe)-and ((Get-Item -LiteralPath $probe -Force).Attributes-band[IO.FileAttributes]::ReparsePoint)){throw '연결된 경로는 변경하지 않습니다.'}
+  $probe=Split-Path $probe -Parent
+ }
+ return $full
+}
+function CompareVersion([string]$a,[string]$b){
+ $pattern='^([0-9]+(?:\.[0-9]+)*)(?:-([0-9A-Za-z.-]+))?(?:\+[0-9A-Za-z.-]+)?$'
+ if($a-notmatch $pattern){throw '지원하지 않는 버전'};$av=@($Matches[1].Split('.')|ForEach-Object{[long]$_});$ap=$Matches[2]
+ if($b-notmatch $pattern){throw '지원하지 않는 버전'};$bv=@($Matches[1].Split('.')|ForEach-Object{[long]$_});$bp=$Matches[2]
+ for($i=0;$i-lt [Math]::Max($av.Count,$bv.Count);$i++){$x=0L;$y=0L;if($i-lt $av.Count){$x=$av[$i]};if($i-lt $bv.Count){$y=$bv[$i]};if($x-ne $y){return $x.CompareTo($y)}}
+ if(-not $ap -and -not $bp){return 0};if(-not $ap){return 1};if(-not $bp){return -1}
+ $ax=$ap.Split('.');$bx=$bp.Split('.')
+ for($i=0;$i-lt [Math]::Min($ax.Count,$bx.Count);$i++){
+  if($ax[$i]-ceq $bx[$i]){continue}
+  $an=$ax[$i]-match '^\d+$';$bn=$bx[$i]-match '^\d+$'
+  if($an -and $bn){return ([long]$ax[$i]).CompareTo([long]$bx[$i])};if($an){return -1};if($bn){return 1}
+  return [string]::CompareOrdinal($ax[$i],$bx[$i])
+ };return $ax.Count.CompareTo($bx.Count)
+}
+function Satisfies([string]$version,$predicates){
+ foreach($predicate in @($predicates)){
+  $ok=$true
+  foreach($part in ([string]$predicate).Split(' ',[StringSplitOptions]::RemoveEmptyEntries)){
+   if($part-eq '*'){continue}
+   if($part-notmatch '^(>=|<=|>|<|=)?([0-9].*)$'){throw '지원하지 않는 의존 버전 조건'}
+   $op=$Matches[1];$v=$Matches[2];$c=CompareVersion $version $v
+   $pass=switch($op){'>='{$c-ge 0};'<='{$c-le 0};'>'{$c-gt 0};'<'{$c-lt 0};default{$c-eq 0}}
+   if(-not $pass){$ok=$false}
+  }
+  if($ok){return $true}
+ };return $false
 }
 function Meta($path){
  $zip=$null;$reader=$null
@@ -76,11 +109,11 @@ try{
  foreach($path in @($root,$modsRoot)){if((Get-Item -LiteralPath $path).Attributes-band[IO.FileAttributes]::ReparsePoint){throw '공유·연결된 폴더는 변경하지 않습니다.'}}
  $instanceId=if($Launch -or $ResolveLaunchOnly){LaunchId $root}else{$null}
  if($ResolveLaunchOnly){Write-Output ('modrinth://launch/instance/'+[Uri]::EscapeDataString($instanceId));exit 0}
+ $lock=[IO.File]::Open((Child $root '.cobbleleague-update.lock'),[IO.FileMode]::OpenOrCreate,[IO.FileAccess]::ReadWrite,[IO.FileShare]::None)
  if($HandoffToken){
   if($HandoffToken-notmatch '^[a-f0-9]{32}$' -or -not(GameRunning $root)){throw '게임 업데이트 인계 검증 실패'}
   [IO.File]::WriteAllText((Child $root ('.cobbleleague-updater/handoff-'+$HandoffToken+'.ready')),'ready')
  }
- $lock=[IO.File]::Open((Child $root '.cobbleleague-update.lock'),[IO.FileMode]::OpenOrCreate,[IO.FileAccess]::ReadWrite,[IO.FileShare]::None)
  while(GameRunning $root){if(-not $WaitForExit){throw '게임을 완전히 종료한 뒤 실행하세요.'};Write-Host '게임이 종료되기를 기다립니다. 플레이 중인 게임은 강제로 종료하지 않습니다.';Start-Sleep -Seconds 5}
  $current=Mods $root
  $c=@($current|Where-Object{$_.meta -and $_.meta.id-eq 'cobblemon'})
@@ -108,18 +141,19 @@ try{
    foreach($name in $removed){Move-Item -LiteralPath (Child $rollback $name) -Destination (Child $modsRoot $name)};throw
   }
   $record.restored=$true;$record|ConvertTo-Json -Depth 8|Set-Content -LiteralPath (Child $backup 'record.json') -Encoding UTF8
-  Write-Host '두 애드온을 설치 전 상태로 복구했습니다. 다시 실행 배치를 누르면 최신본을 설치합니다.';exit 0
+  Write-Host '애드온을 설치 전 상태로 복구했습니다. 다시 실행 배치를 누르면 최신본을 설치합니다.';exit 0
  }
  $baseline=if($ManifestPath){[IO.Path]::GetFullPath($ManifestPath)}else{Join-Path $PSScriptRoot 'client-release.json'}
  if(-not $BundleDirectory){$BundleDirectory=Join-Path $PSScriptRoot 'payload'}
  if($Repository-notmatch '^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$'){throw '저장소 이름이 올바르지 않습니다.'}
  $manifest=$null;$assets=@();$remote=$false
- if($ManifestPath){$manifest=ReadJson $baseline}
+ if($ManifestPath -or $Offline){$manifest=ReadJson $baseline}
  else{
   $release=$null
   try{$release=Invoke-RestMethod -Uri ('https://api.github.com/repos/'+$Repository+'/releases/latest') -Headers @{'User-Agent'='CobbleLeague-client-updater';Accept='application/vnd.github+json'} -TimeoutSec 30}
   catch{if(Test-Path -LiteralPath $baseline){Write-Host '릴리스에 연결하지 못해 포함된 검증 버전을 확인합니다.';$manifest=ReadJson $baseline}else{throw}}
   if($release){
+   if($release.draft -or $release.prerelease){throw '안정 채널은 정식 릴리스만 설치합니다.'}
    $assets=@($release.assets);$asset=@($assets|Where-Object{$_.name-eq 'client-release.json'})
    if($asset.Count-ne 1){throw '최신 릴리스에 client-release.json이 없습니다. 배포자가 릴리스를 완성해야 합니다.'}
    $manifestTemp=Child $root ('.cobbleleague-release-'+[guid]::NewGuid().ToString('N')+'.tmp')
@@ -131,11 +165,15 @@ try{
   }
  }
  if($manifest.schema-ne 1 -or $manifest.minecraft-ne '1.21.1' -or $manifest.cobblemon-ne '1.7.3'){throw '지원하지 않는 업데이트 형식 또는 모드팩 버전입니다.'}
- $expected=@('cobbleleague','cobblesynergy');$entries=@($manifest.mods)
- if($entries.Count-ne 2 -or @($entries|Where-Object{$_.id-notin $expected}).Count-gt 0 -or @($entries.id|Select-Object -Unique).Count-ne 2 -or @($entries.filename|Select-Object -Unique).Count-ne 2){throw '두 모드가 함께 지정된 릴리스만 설치합니다.'}
+ $allowed=@('cobbleleague','cobblesynergy','cobblespire');$entries=@($manifest.mods);$expected=@($entries.id)
+ if($entries.Count-notin @(2,3) -or 'cobbleleague'-notin $expected -or 'cobblesynergy'-notin $expected -or @($entries|Where-Object{$_.id-notin $allowed}).Count-gt 0 -or @($entries.id|Select-Object -Unique).Count-ne $entries.Count -or @($entries.filename|Select-Object -Unique).Count-ne $entries.Count){throw '본체와 시너지를 포함한 두 개 또는 세 개의 모드만 설치합니다.'}
+ if($manifest.channel -and $manifest.channel-notin @('stable','development')){throw '알 수 없는 채널'}
+ if($manifest.channel-eq 'development' -and (-not $Offline -or $remote)){throw '개발 번들은 -Offline으로 명시적으로 선택하세요.'}
  $stage=Child $root ('.cobbleleague-stage-'+[guid]::NewGuid().ToString('N'));$null=New-Item -ItemType Directory -Path $stage
  foreach($entry in $entries){
-  if([IO.Path]::GetFileName($entry.filename)-ne $entry.filename -or $entry.filename-notmatch '\.jar$' -or $entry.sha256-notmatch '^[0-9a-f]{64}$'){throw '잘못된 릴리스 파일 정보'}
+  if($entry.filename-cnotmatch '^[A-Za-z0-9_.+-]+\.jar$' -or $entry.sha256-cnotmatch '^[0-9a-f]{64}$'){throw '잘못된 릴리스 파일 정보'}
+  $null=CompareVersion $entry.version $entry.version
+  if($manifest.channel-ne 'development' -and ($entry.version.Split('+')[0]).Contains('-')){throw '개발 버전을 안정판으로 설치하지 않습니다.'}
   $dest=Child $stage $entry.filename;$stagedPaths+=$dest
   if($remote){
    $asset=@($assets|Where-Object{$_.name-eq $entry.filename})
@@ -148,12 +186,23 @@ try{
   $meta=Meta $dest
   if(-not $meta -or $meta.id-ne $entry.id -or $meta.version-ne $entry.version){throw 'JAR의 실제 모드 정보가 릴리스와 다릅니다.'}
   $old=@($current|Where-Object{$_.meta -and $_.meta.id-eq $entry.id})
-  foreach($o in $old){if([version](($o.meta.version-split '[+-]')[0])-gt [version](($entry.version-split '[+-]')[0])){throw '이미 더 높은 버전이 설치되어 있어 자동으로 낮추지 않습니다.'}}
+  foreach($o in $old){if((CompareVersion $o.meta.version $entry.version)-gt 0){throw '이미 더 높은 버전이 설치되어 있어 자동으로 낮추지 않습니다.'}}
   $existing=Child $modsRoot $entry.filename
   if((Test-Path -LiteralPath $existing)-and -not @($old|Where-Object{$_.path-eq $existing}).Count){throw '같은 이름의 다른 파일이 있어 중단했습니다.'}
  }
  $synergy=$entries|Where-Object{$_.id-eq 'cobblesynergy'};$core=$entries|Where-Object{$_.id-eq 'cobbleleague'}
  if((Meta (Child $stage $synergy.filename)).depends.cobbleleague-ne $core.version){throw '두 애드온의 버전 조합이 맞지 않습니다.'}
+ # Baseline runtime contract: this installer targets Java 21 / Fabric Loader 0.17.2.
+ $versions=@{minecraft='1.21.1';java='21';fabricloader='0.17.2'}
+ foreach($mod in $current){if($mod.meta){$versions[$mod.meta.id]=$mod.meta.version}}
+ foreach($entry in $entries){$versions[$entry.id]=$entry.version}
+ foreach($entry in $entries){
+  $meta=Meta (Child $stage $entry.filename)
+  foreach($dep in $meta.depends.PSObject.Properties){
+   if(-not $versions.ContainsKey($dep.Name) -or -not(Satisfies $versions[$dep.Name] $dep.Value)){throw ('의존 버전 불일치: '+$entry.id+' -> '+$dep.Name)}
+   if($dep.Name-notin $expected -and $dep.Name-notin @('minecraft','java','fabricloader') -and @($current|Where-Object{$_.meta -and $_.meta.id-eq $dep.Name}).Count-ne 1){throw '의존 모드가 중복되었습니다.'}
+  }
+ }
  $changed=@($entries|Where-Object{$e=$_;$old=@($current|Where-Object{$_.meta -and $_.meta.id-eq $e.id});$old.Count-ne 1 -or (Hash $old[0].path)-ne $e.sha256})
  if($CheckOnly){Write-Host ('검사 통과 · 변경할 애드온 '+$changed.Count+'개');exit 0}
  if($changed.Count-gt 0){
@@ -173,17 +222,20 @@ try{
    foreach($name in $placed){Remove-Item -LiteralPath (Child $modsRoot $name)}
    foreach($old in $originals){Copy-Item -LiteralPath (Child $backup $old.name) -Destination $old.path -Force};throw
   }
-  Write-Host ('최신 두 애드온 적용 완료 · '+$manifest.release)
+  Write-Host ('애드온 적용 완료 · '+$manifest.release)
  }else{Write-Host ('이미 같은 릴리스가 설치되어 있습니다 · '+$manifest.release)}
  if($InstallLauncher -or (Test-Path -LiteralPath (Child $root '.cobbleleague-updater'))){
   $homePath=Child $root '.cobbleleague-updater';$null=New-Item -ItemType Directory -Force -Path $homePath
   $autoConfig=Child $homePath 'auto-update.json'
-  if(-not(Test-Path -LiteralPath $autoConfig)){@{enabled=$true;repository=$Repository}|ConvertTo-Json|Set-Content -LiteralPath $autoConfig -Encoding UTF8}
+  $config=if(Test-Path -LiteralPath $autoConfig){ReadJson $autoConfig}else{[pscustomobject]@{enabled=$true;repository=$Repository}}
+  $config|Add-Member -NotePropertyName offlineBundle -NotePropertyValue ([bool]$Offline) -Force
+  $config|ConvertTo-Json|Set-Content -LiteralPath $autoConfig -Encoding UTF8
   $bundle=Child $homePath 'payload';$null=New-Item -ItemType Directory -Force -Path $bundle
   if([IO.Path]::GetFullPath($PSCommandPath)-ne (Child $homePath 'client-updater.ps1')){Copy-Item -LiteralPath $PSCommandPath -Destination (Child $homePath 'client-updater.ps1') -Force}
   $manifest|ConvertTo-Json -Depth 8|Set-Content -LiteralPath (Child $homePath 'client-release.json') -Encoding UTF8
   foreach($entry in $entries){Copy-Item -LiteralPath (Child $modsRoot $entry.filename) -Destination (Child $bundle $entry.filename) -Force}
-  $bat="@echo off`r`npowershell.exe -NoProfile -ExecutionPolicy Bypass -File `"%~dp0client-updater.ps1`" -TargetPath `"%~dp0..`" -WaitForExit -Launch`r`nif errorlevel 1 pause`r`n"
+  $offlineArg=if($Offline){' -Offline'}else{''}
+  $bat="@echo off`r`npowershell.exe -NoProfile -ExecutionPolicy Bypass -File `"%~dp0client-updater.ps1`" -TargetPath `"%~dp0..`" -WaitForExit -Launch$offlineArg`r`nif errorlevel 1 pause`r`n"
   [IO.File]::WriteAllText((Child $homePath 'UPDATE-AND-PLAY.bat'),$bat,[Text.Encoding]::ASCII)
   if($InstallLauncher){
   $desktop=[Environment]::GetFolderPath('Desktop');$shortcut=Join-Path $desktop 'CobbleLeague-PLAY.bat'
