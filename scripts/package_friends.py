@@ -52,7 +52,7 @@ def main():
     if len({m['filename'].lower() for m in mods}) != len(mods):
         raise ValueError('Duplicate filename')
     identity = hashlib.sha256(json.dumps(mods, sort_keys=True).encode()).hexdigest()[:12]
-    release = version if args.channel == 'stable' and not args.spire_jar else f'{version}-{args.channel}-{identity}'
+    release = version if args.channel == 'stable' else f'{version}-{args.channel}-{identity}'
     manifest = dict(schema=1, release=release, channel=args.channel, minecraft='1.21.1', cobblemon='1.7.3', mods=mods)
     dist = ROOT/'dist'
     package = dist/f'cobbleleague-friends-{release}'

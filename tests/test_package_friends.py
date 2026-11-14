@@ -68,6 +68,16 @@ class PackageTest(unittest.TestCase):
             with self.assertRaises(ValueError):
                 self.run_package('--spire-jar', self.spire, '--channel', 'development')
 
+    def test_official_stable_triple(self):
+        self.jar(self.spire, 'cobblespire', '0.6.1', self.depends)
+        manifest = self.run_package('--spire-jar', self.spire, '--channel', 'stable')
+        self.assertEqual(manifest['release'], '1.0.0')
+        self.assertEqual(manifest['channel'], 'stable')
+        self.assertEqual([m['id'] for m in manifest['mods']], ['cobbleleague', 'cobblesynergy', 'cobblespire'])
+        bundle = self.root/'dist'/f'cobbleleague-friends-{manifest["release"]}'
+        self.assertNotIn('-Offline', (bundle/'INSTALL.bat').read_text())
+        self.assertTrue((bundle/'LICENSE-CobbleSpire.txt').exists())
+
 
 if __name__ == '__main__':
     (ROOT/'.test-tmp').mkdir(exist_ok=True)

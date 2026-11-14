@@ -22,8 +22,17 @@ jobs:
         run: |
           VERSION=$(python -c "import re;print(re.search(r\"version = '([^']+)'\",open('build.gradle').read()).group(1))")
           ./gradlew -p server-addons/cobble-synergy "-Pcobbleleague_jar=../../build/libs/cobbleleague-$VERSION.jar" --no-daemon test build
-      - name: Package both addons
-        run: python scripts/package_friends.py
+      - name: Fetch verified CobbleSpire release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          mkdir -p spire-dist
+          gh release download v0.6.1 --repo arscabar/slaythecobblebus --pattern "cobblespire-0.6.1.jar" --dir spire-dist
+          echo "5d28a7980dd55e84cac662e06a96e48f18224bed9cd890d06c7e2615f835a9e4  spire-dist/cobblespire-0.6.1.jar" | sha256sum -c -
+          curl -fsSL https://raw.githubusercontent.com/arscabar/slaythecobblebus/v0.6.1/LICENSE -o spire-dist/LICENSE
+      - name: Package integrated release
+        run: python scripts/package_friends.py --spire-jar spire-dist/cobblespire-0.6.1.jar --spire-license spire-dist/LICENSE --channel stable
       - name: Publish complete release
         env:
           GH_TOKEN: ${{ github.token }}
@@ -40,5 +49,5 @@ jobs:
           else
             gh release create "$TAG" --draft --title "CobbleLeague $TAG" --generate-notes
           fi
-          gh release upload "$TAG" dist/cobbleleague-*.jar dist/cobblesynergy-*.jar dist/client-release.json dist/CobbleLeague-friends-*.zip dist/SHA256SUMS.txt --clobber
+          gh release upload "$TAG" dist/cobbleleague-*.jar dist/cobblesynergy-*.jar dist/cobblespire-*.jar dist/client-release.json dist/CobbleLeague-friends-*.zip dist/SHA256SUMS.txt --clobber
           gh release edit "$TAG" --draft=false --latest

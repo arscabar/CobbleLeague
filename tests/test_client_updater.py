@@ -37,7 +37,8 @@ def modified(name, mutate):
  return target
 
 if COUNT==3:
- p=profile('개발명시필수');old=snapshot(p);run(p,offline=False,code=1);assert old==snapshot(p);checks.append('development manifest requires explicit offline consent')
+ dev=modified('개발명시필수패키지',lambda m,t:m.update(channel='development'))
+ p=profile('개발명시필수');old=snapshot(p);run(p,package=dev,offline=False,code=1);assert old==snapshot(p);checks.append('development manifest requires explicit offline consent')
  p=profile('기존 세번째 중복');fake(p/'mods/renamed.jar','cobblespire','0.5.0');fake(p/'mods/duplicate.jar','cobblespire','0.5.1');old=snapshot(p);run(p);run(p,'-Restore');assert old==snapshot(p);checks.append('duplicate Spire IDs replaced and exact originals restored')
  p=profile('세번째 최신');fake(p/'mods/newer.jar','cobblespire','99.0.0');old=snapshot(p);run(p,code=1);assert old==snapshot(p);checks.append('Spire downgrade blocks entire transaction')
  pair=modified('구형 두 모드',lambda m,t:m.update(mods=m['mods'][:2],channel='stable'))
@@ -59,6 +60,12 @@ if COUNT==3:
  run(p,package=updated);assert new==snapshot(p);assert len(list((p/'cobbleleague-auto-backups').iterdir()))==2
  run(p,'-Restore',package=updated);assert old==snapshot(p);checks.append('Spire-only preview update installs once and restores without changing pair')
 
+def masquerade(m,t):
+ entry=m['mods'][-1];path=t/'payload'/entry['filename']
+ with zipfile.ZipFile(path) as z:deps=json.loads(z.read('fabric.mod.json'))['depends']
+ base=entry['version'].split('+',1)[0].split('-',1)[0]
+ entry['version']=f'{base}-dev';fake(path,entry['id'],entry['version'],deps);entry['sha256']=hashlib.sha256(path.read_bytes()).hexdigest();m.update(channel='stable')
+
 for name,mutate in [
  ('알수없음',lambda m,t:m['mods'][-1].update(id='unknown')),
  ('중복ID',lambda m,t:m['mods'][-1].update(id='cobbleleague')),
@@ -66,7 +73,7 @@ for name,mutate in [
  ('탈출경로',lambda m,t:m['mods'][-1].update(filename='../escape.jar')),
  ('ADS경로',lambda m,t:m['mods'][-1].update(filename='file:escape.jar')),
  ('메타데이터',lambda m,t:m['mods'][-1].update(version='9.1.1')),
- ('안정판위장',lambda m,t:m.update(channel='stable')),
+ ('안정판위장',masquerade),
 ]:
  if name=='안정판위장' and COUNT!=3:continue
  bad=modified(name,mutate);p=profile(name);old=snapshot(p);run(p,package=bad,code=1);assert old==snapshot(p);checks.append(name+' rejected without file changes')
@@ -87,11 +94,12 @@ legacy=subprocess.run(['git','show','2ed6208:installer/client-updater.ps1'],capt
 shutil.copy2(PACKAGE/'client-release.json',home/'client-release.json');shutil.copytree(PACKAGE/'payload',home/'payload')
 if COUNT==3:
  old=snapshot(p);run(p,package=home,offline=False,code=1);assert snapshot(p)==old;checks.append('actual old two-mod helper rejects triple before migration')
-run(p)
+is_dev=MANIFEST.get('channel')=='development'
+run(p,offline=is_dev)
 assert (home/'client-updater.ps1').read_bytes()==(PACKAGE/'client-updater.ps1').read_bytes()
-config=json.loads((home/'auto-update.json').read_text(encoding='utf-8-sig'));assert config['offlineBundle'] and not config['enabled']
-assert '-Offline' in (home/'UPDATE-AND-PLAY.bat').read_text()
-run(p,package=home);checks.append('one-time ZIP migrates old helper, preserves opt-out and persists offline channel')
+config=json.loads((home/'auto-update.json').read_text(encoding='utf-8-sig'));assert config['offlineBundle']==is_dev and not config['enabled']
+assert ('-Offline' in (home/'UPDATE-AND-PLAY.bat').read_text())==is_dev
+run(p,package=home,offline=is_dev);checks.append('one-time ZIP migrates old helper, preserves opt-out and persists channel')
 
 # Simulate a running game without touching a real Java process or waiting in real time.
 waiting=BASE/'종료대기';shutil.copytree(PACKAGE,waiting)
