@@ -50,7 +50,9 @@ if COUNT==3:
  def spire_update(m,t):
   entry=m['mods'][2];path=t/'payload'/entry['filename']
   with zipfile.ZipFile(path) as z:deps=json.loads(z.read('fabric.mod.json'))['depends']
-  entry['version']='0.6.0-dev.2';fake(path,entry['id'],entry['version'],deps);entry['sha256']=hashlib.sha256(path.read_bytes()).hexdigest()
+  base=entry['version'].split('+',1)[0]
+  entry['version']=f'{base}.2' if '-' in base else f'{base}.1'
+  fake(path,entry['id'],entry['version'],deps);entry['sha256']=hashlib.sha256(path.read_bytes()).hexdigest()
  updated=modified('세번째 단독업데이트',spire_update)
  p=profile('독립버전');run(p);old=snapshot(p);run(p,package=updated);new=snapshot(p)
  assert old!=new and all(new[k]==v for k,v in old.items() if 'cobblespire' not in k)

@@ -18,12 +18,12 @@
 
 기본 `python scripts/package_friends.py`는 본체/시너지 두 모드 안정 번들을 만든다. 기존 GitHub `/releases/latest` 경로와 CI는 계속 정식 두 모드 릴리스를 사용한다. 개발 JAR이 안정 번들에 들어가면 제작이 실패한다.
 
-현재 확인한 CobbleSpire 산출물은 별도 `slaythecoblebus` 프로젝트의 `build/libs/cobblespire-0.6.0-dev.jar`다. 이 파일 이름을 최신으로 간주해 자동 선택하지 않는다. 배포자가 검증한 JAR을 명시한다.
+현재 확인한 CobbleSpire 산출물은 별도 `slaythecobblebus` 프로젝트의 `build/libs/cobblespire-0.6.1-dev.jar`다. 이 파일 이름을 최신으로 간주해 자동 선택하지 않는다. 배포자가 검증한 JAR을 명시한다.
 
 ```powershell
 .\gradlew.bat --no-daemon test build
 .\gradlew.bat -p server-addons/cobble-synergy "-Pcobbleleague_jar=../../build/libs/cobbleleague-0.8.2.jar" --no-daemon test build
-python scripts/package_friends.py --spire-jar ../slaythecoblebus/build/libs/cobblespire-0.6.0-dev.jar --channel development
+python scripts/package_friends.py --spire-jar ../slaythecobblebus/build/libs/cobblespire-0.6.1-dev.jar --channel development
 python tests/test_client_updater.py
 ```
 
@@ -47,7 +47,7 @@ schema 1의 기존 두 모드 manifest도 계속 지원한다. 두 모드 manife
   "mods": [
     {"id":"cobbleleague","version":"0.8.2","filename":"cobbleleague-0.8.2.jar","sha256":"<64 lowercase hex>"},
     {"id":"cobblesynergy","version":"0.4.2","filename":"cobblesynergy-0.4.2.jar","sha256":"<64 lowercase hex>"},
-    {"id":"cobblespire","version":"0.6.0-dev","filename":"cobblespire-0.6.0-dev.jar","sha256":"<64 lowercase hex>"}
+    {"id":"cobblespire","version":"0.6.1-dev","filename":"cobblespire-0.6.1-dev.jar","sha256":"<64 lowercase hex>"}
   ]
 }
 ```
