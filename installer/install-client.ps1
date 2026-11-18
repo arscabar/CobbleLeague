@@ -61,7 +61,7 @@ function Pick-Profile {
     } | Sort-Object FullName -Unique)
     if ($NonInteractive) { throw '자동 검사에는 -TargetPath를 지정해야 합니다.' }
     Write-Host ''
-    Write-Host '설치할 COBBLEVERSE 1.7.42 프로필을 골라 주세요.' -ForegroundColor Cyan
+    Write-Host '설치할 COBBLEVERSE 1.8.0 프로필을 골라 주세요.' -ForegroundColor Cyan
     for ($i=0; $i -lt $candidates.Count; $i++) { Write-Host ('[{0}] {1}' -f ($i+1), $candidates[$i].FullName) }
     if ($candidates.Count -gt 0) {
         Write-Host '[0] 다른 폴더 선택'
@@ -72,7 +72,7 @@ function Pick-Profile {
     }
     Add-Type -AssemblyName System.Windows.Forms
     $dialog = New-Object Windows.Forms.FolderBrowserDialog
-    $dialog.Description = 'Modrinth에서 프로필 → 폴더 열기로 확인한 COBBLEVERSE 1.7.42 폴더를 선택하세요. mods 폴더의 한 단계 위입니다.'
+    $dialog.Description = 'Modrinth에서 프로필 → 폴더 열기로 확인한 COBBLEVERSE 1.8.0 폴더를 선택하세요. mods 폴더의 한 단계 위입니다.'
     $dialog.ShowNewFolderButton = $false
     try {
         if ($dialog.ShowDialog() -ne [Windows.Forms.DialogResult]::OK) { throw '폴더 선택을 취소했습니다. 변경한 파일은 없습니다.' }
@@ -88,15 +88,13 @@ function Check-Closed([string]$Root) {
 }
 function Check-Version($Mods) {
     $cobblemon = @($Mods | Where-Object { $_.Meta -and $_.Meta.id -eq 'cobblemon' })
-    if ($cobblemon.Count -ne 1 -or $cobblemon[0].Meta.version -notmatch '^1\.7\.3(?:\+|$)') { throw 'Cobblemon 1.7.3용입니다. Modrinth에서 COBBLEVERSE 1.7.42를 설치한 프로필을 선택해 주세요. 1.8 프로필에는 설치하지 않습니다.' }
+    if ($cobblemon.Count -ne 1 -or $cobblemon[0].Meta.version -notmatch '^1\.8\.\d+(?:\+|$)') { throw 'Cobblemon 1.8.4용입니다. Modrinth에서 COBBLEVERSE 1.8.0 프로필을 선택해 주세요.' }
     $api = @($Mods | Where-Object { $_.Meta -and $_.Meta.id -eq 'fabric-api' })
     $kotlin = @($Mods | Where-Object { $_.Meta -and $_.Meta.id -eq 'fabric-language-kotlin' })
-    $teams = @($Mods | Where-Object { $_.Meta -and $_.Meta.id -eq 'cobblemon_quick_teams' })
     if ($api.Count -ne 1 -or $kotlin.Count -ne 1) { throw 'Fabric API와 Fabric Language Kotlin이 필요합니다. 기존 코블버스 프로필을 선택해 주세요.' }
     $apiVersion = [version](($api[0].Meta.version -split '\+')[0])
     $kotlinVersion = [version](($kotlin[0].Meta.version -split '\+')[0])
-    if ($apiVersion -lt [version]'0.116.6' -or $kotlinVersion -lt [version]'1.13.6') { throw '이 프로필의 Fabric API 또는 Kotlin 버전이 지원 범위보다 낮습니다. COBBLEVERSE 1.7.42를 사용해 주세요.' }
-    if ($teams.Count -ne 1 -or $teams[0].Meta.version -ne '1.5.5') { throw '등록 덱 기능은 Quick Teams 1.5.5 기준입니다. 해당 모드가 들어 있는 COBBLEVERSE 1.7.42 프로필을 선택해 주세요.' }
+    if ($apiVersion -lt [version]'0.116.6' -or $kotlinVersion -lt [version]'1.13.6') { throw '이 프로필의 Fabric API 또는 Kotlin 버전이 지원 범위보다 낮습니다. COBBLEVERSE 1.8.0을 사용해 주세요.' }
 }
 
 try {

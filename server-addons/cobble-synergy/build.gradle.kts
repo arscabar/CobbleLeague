@@ -24,10 +24,10 @@ dependencies {
     modImplementation("net.fabricmc:fabric-loader:${property("loader_version")}")
     modImplementation("net.fabricmc.fabric-api:fabric-api:${property("fabric_api_version")}")
     modImplementation("net.fabricmc:fabric-language-kotlin:${property("fabric_kotlin_version")}")
-    modImplementation("maven.modrinth:cobblemon:kF7CvxTo")
+    modImplementation("maven.modrinth:cobblemon:PdOzYHKU")
 
     // CobbleLeague 는 컴파일할 때만 참조한다. 실제 게임에서는 설치된 jar 를 사용한다.
-    modCompileOnly(files((findProperty("cobbleleague_jar") as String?) ?: "../../build/libs/cobbleleague-0.8.2.jar"))
+    modCompileOnly(files((findProperty("cobbleleague_jar") as String?) ?: "../../build/libs/cobbleleague-0.8.3.jar"))
 
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5:2.2.20")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")

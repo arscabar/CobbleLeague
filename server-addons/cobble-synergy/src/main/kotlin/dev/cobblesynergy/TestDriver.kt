@@ -34,7 +34,7 @@ object TestDriver {
         val request = actor.request ?: return
         if (scheduled[actor.uuid] === request || answered[actor.uuid] === request) return
         scheduled[actor.uuid] = request
-        actor.battle.doWhenClear {
+        actor.battle.dispatchGo {
             if (scheduled[actor.uuid] === request) scheduled.remove(actor.uuid)
             if (!actor.battle.ended && actor.request === request && answered[actor.uuid] !== request) {
                 answered[actor.uuid] = request

@@ -1,6 +1,6 @@
 # 클라이언트 업데이터와 CobbleSpire
 
-본체 0.8.2 / CobbleSynergy 0.4.2부터 `cobbleleague`, `cobblesynergy`, 선택적인 `cobblespire`를 같은 트랜잭션으로 설치한다. Minecraft 1.21.1, Cobblemon 1.7.3, Java 21, Fabric Loader 0.17.2 이상이 있는 COBBLEVERSE 1.7.42 클라이언트용이다. 실행 중인 게임은 정상 종료를 기다리고 서버 폴더에는 설치하지 않는다. Java/Loader 버전은 설치기의 대상 환경 계약이며 실행 중 런타임을 별도로 탐지하는 기능은 없다.
+본체 0.8.3 / CobbleSynergy 0.4.3부터 `cobbleleague`, `cobblesynergy`, 선택적인 `cobblespire`를 같은 트랜잭션으로 설치하며 COBBLEVERSE 1.8.0(Cobblemon 1.8.4)에 대응한다. Minecraft 1.21.1, Cobblemon 1.8.4, Java 21, Fabric Loader 0.19.5 이상이 있는 COBBLEVERSE 1.8.0 클라이언트용이다. 실행 중인 게임은 정상 종료를 기다리고 서버 폴더에는 설치하지 않는다. Java/Loader 버전은 설치기의 대상 환경 계약이며 실행 중 런타임을 별도로 탐지하는 기능은 없다.
 
 ## 기존 사용자 전환
 
@@ -16,14 +16,14 @@
 
 ## 채널과 패키지 제작
 
-기본 `python scripts/package_friends.py`는 본체/시너지 두 모드 안정 번들을 만듭니다. 정식 버전 `CobbleSpire`(`0.6.1` 등 `-dev` 없는 SemVer)가 준비된 통합 릴리스에서는 `--spire-jar <경로> --channel stable`로 세 모드 정식 번들(`CobbleLeague-friends-0.8.2.zip`)을 만들며, GitHub Actions `.github/workflows/release.yml`도 검증된 `cobblespire-0.6.1.jar`를 포함해 `v0.8.2` 정식 릴리스에 함께 게시합니다. 개발 JAR이 안정 번들에 들어가면 제작이 실패합니다.
+기본 `python scripts/package_friends.py`는 본체/시너지 두 모드 안정 번들을 만듭니다. 정식 버전 `CobbleSpire`(`0.6.2` 등 `-dev` 없는 SemVer)가 준비된 통합 릴리스에서는 `--spire-jar <경로> --channel stable`로 세 모드 정식 번들(`CobbleLeague-friends-0.8.3.zip`)을 만들며, GitHub Actions `.github/workflows/release.yml`도 검증된 `cobblespire-0.6.2.jar`를 포함해 `v0.8.3` 정식 릴리스에 함께 게시합니다. 개발 JAR이 안정 번들에 들어가면 제작이 실패합니다.
 
-현재 확인한 정식 CobbleSpire 산출물은 별도 `slaythecobblebus` 프로젝트의 `build/libs/cobblespire-0.6.1.jar`다. 이 파일 이름을 최신으로 간주해 자동 선택하지 않는다. 배포자가 검증한 JAR을 명시한다.
+현재 확인한 정식 CobbleSpire 산출물은 별도 `slaythecobblebus` 프로젝트의 `build/libs/cobblespire-0.6.2.jar`다. 이 파일 이름을 최신으로 간주해 자동 선택하지 않는다. 배포자가 검증한 JAR을 명시한다.
 
 ```powershell
 .\gradlew.bat --no-daemon test build
-.\gradlew.bat -p server-addons/cobble-synergy "-Pcobbleleague_jar=../../build/libs/cobbleleague-0.8.2.jar" --no-daemon test build
-python scripts/package_friends.py --spire-jar ../slaythecobblebus/build/libs/cobblespire-0.6.1.jar --channel stable
+.\gradlew.bat -p server-addons/cobble-synergy "-Pcobbleleague_jar=../../build/libs/cobbleleague-0.8.3.jar" --no-daemon test build
+python scripts/package_friends.py --spire-jar ../slaythecobblebus/build/libs/cobblespire-0.6.2.jar --channel stable
 python tests/test_client_updater.py
 ```
 
@@ -38,14 +38,14 @@ schema 1의 기존 두 모드 manifest도 계속 지원한다. 두 모드 manife
 ```json
 {
   "schema": 1,
-  "release": "0.8.2",
+  "release": "0.8.3",
   "channel": "stable",
   "minecraft": "1.21.1",
-  "cobblemon": "1.7.3",
+  "cobblemon": "1.8.4",
   "mods": [
-    {"id":"cobbleleague","version":"0.8.2","filename":"cobbleleague-0.8.2.jar","sha256":"<64 lowercase hex>"},
-    {"id":"cobblesynergy","version":"0.4.2","filename":"cobblesynergy-0.4.2.jar","sha256":"<64 lowercase hex>"},
-    {"id":"cobblespire","version":"0.6.1","filename":"cobblespire-0.6.1.jar","sha256":"<64 lowercase hex>"}
+    {"id":"cobbleleague","version":"0.8.3","filename":"cobbleleague-0.8.3.jar","sha256":"<64 lowercase hex>"},
+    {"id":"cobblesynergy","version":"0.4.3","filename":"cobblesynergy-0.4.3.jar","sha256":"<64 lowercase hex>"},
+    {"id":"cobblespire","version":"0.6.2","filename":"cobblespire-0.6.2.jar","sha256":"<64 lowercase hex>"}
   ]
 }
 ```

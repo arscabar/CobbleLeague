@@ -28,11 +28,11 @@ jobs:
         shell: bash
         run: |
           mkdir -p spire-dist
-          gh release download v0.6.1 --repo arscabar/slaythecobblebus --pattern "cobblespire-0.6.1.jar" --dir spire-dist
-          echo "5d28a7980dd55e84cac662e06a96e48f18224bed9cd890d06c7e2615f835a9e4  spire-dist/cobblespire-0.6.1.jar" | sha256sum -c -
-          curl -fsSL https://raw.githubusercontent.com/arscabar/slaythecobblebus/v0.6.1/LICENSE -o spire-dist/LICENSE
+          gh release download v0.6.2 --repo arscabar/slaythecobblebus --pattern "cobblespire-0.6.2.jar" --dir spire-dist
+          echo "8748b29e20f5cbd89a7c88d73f3543447547feae7d0b18ea01df7fa4c402acdf  spire-dist/cobblespire-0.6.2.jar" | sha256sum -c -
+          curl -fsSL https://raw.githubusercontent.com/arscabar/slaythecobblebus/v0.6.2/LICENSE -o spire-dist/LICENSE
       - name: Package integrated release
-        run: python scripts/package_friends.py --spire-jar spire-dist/cobblespire-0.6.1.jar --spire-license spire-dist/LICENSE --channel stable
+        run: python scripts/package_friends.py --spire-jar spire-dist/cobblespire-0.6.2.jar --spire-license spire-dist/LICENSE --channel stable
       - name: Publish complete release
         env:
           GH_TOKEN: ${{ github.token }}

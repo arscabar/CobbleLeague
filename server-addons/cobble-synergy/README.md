@@ -1,6 +1,10 @@
-# CobbleSynergy 0.4.1
+# CobbleSynergy 0.4.3
 
-CobbleLeague 0.8.1 / Minecraft 1.21.1 / Cobblemon 1.7.3용 타입 시너지 애드온입니다. 던전 임시 파티의 타입을 계산하고 전투 효과와 HUD·U 도감을 제공합니다. 효과는 서버가 적용하며 화면 표시는 클라이언트 애드온을 사용합니다.
+CobbleLeague 0.8.3 / Minecraft 1.21.1 / Cobblemon 1.8.4용 타입 시너지 애드온입니다. 던전 임시 파티의 타입을 계산하고 전투 효과와 HUD·U 도감을 제공합니다. 효과는 서버가 적용하며 화면 표시는 클라이언트 애드온을 사용합니다.
+
+## 0.4.3 변경점
+
+COBBLEVERSE 1.8.0 (Cobblemon 1.8.4) 대응 호환 릴리스입니다. CobbleLeague 0.8.3과 함께 동작하며, `PokemonBattle.doWhenClear` 제거에 대응해 `dispatchGo`를 사용하도록 갱신했습니다.
 
 ## 0.4.1 변경점
 

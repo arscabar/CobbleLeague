@@ -36,7 +36,7 @@ public abstract class NativeBattleRulesMixin {
         return NativeBattleRules.caption((BattleConfigureGUI) (Object) this, nativeKey);
     }
 
-    // Pinned to Cobblemon 1.7.3; contract tests check the real compiled callback and caption.
+    // Pinned to Cobblemon 1.8.4; contract tests check the real compiled callback and caption.
     @Inject(method = "init$lambda$4", at = @At("HEAD"), cancellable = true)
     private static void cobbleleague$challenge(BattleConfigureGUI screen, Button button, CallbackInfo ci) {
         if (NativeBattleRules.submit(screen)) ci.cancel();

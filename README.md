@@ -1,17 +1,17 @@
 # CobbleLeague
 
-Minecraft 1.21.1 / Fabric / Cobblemon 1.7.3 기반의 대여전, 덱 결정전, 라운드형 던전 모드입니다. 현재 본체 버전은 **0.8.2**, 통신 프로토콜은 **11**입니다.
+Minecraft 1.21.1 / Fabric / Cobblemon 1.8.4 기반의 대여전, 덱 결정전, 라운드형 던전 모드입니다. 현재 본체 버전은 **0.8.3**, 통신 프로토콜은 **11**입니다.
 
-0.8.2는 CobbleLeague 0.8.2 + CobbleSynergy 0.4.2 + CobbleSpire(`cobblespire`) 0.6.1 세 모드를 **정식 안정 릴리즈(`stable`)**로 함께 통합 배포합니다. 기존 두 모드 전용 설치 사용자도 새 `CobbleLeague-friends-0.8.2.zip`의 `설치.bat`를 한 번 실행해 helper를 전환하면 이후 온라인 자동 업데이트가 세 모드를 함께 관리합니다. [채널 정책·전환·패키징·검증 절차](docs/client-updater.md)를 먼저 확인하세요.
+0.8.3은 COBBLEVERSE 1.8.0(Cobblemon 1.8.4, Fabric Loader 0.19.5)에 대응하며, CobbleLeague 0.8.3 + CobbleSynergy 0.4.3 + CobbleSpire(`cobblespire`) 0.6.2 세 모드를 **정식 안정 릴리즈(`stable`)**로 함께 통합 배포합니다. 기존 두 모드 전용 설치 사용자도 새 `CobbleLeague-friends-0.8.3.zip`의 `설치.bat`를 한 번 실행해 helper를 전환하면 이후 온라인 자동 업데이트가 세 모드를 함께 관리합니다. [채널 정책·전환·패키징·검증 절차](docs/client-updater.md)를 먼저 확인하세요.
 
 ## 구성
 
 | 경로 | 내용 | 설치 위치 |
 | --- | --- | --- |
-| 저장소 루트 | CobbleLeague 0.8.2 본체와 클라이언트 UI | 서버와 참가자 클라이언트 |
-| `server-addons/league-practice` | 연습장, 전체 파티 분석 전술 AI 1.1.0, 관장전 지원 | 서버 |
-| `server-addons/cobble-synergy` | CobbleSynergy 0.4.2 타입 시너지 | 서버와 참가자 클라이언트 |
-| `server-addons/league-battle-recorder` | 배틀 기록과 XLSX 내보내기 1.2.0 | 서버 |
+| 저장소 루트 | CobbleLeague 0.8.3 본체와 클라이언트 UI | 서버와 참가자 클라이언트 |
+| `server-addons/league-practice` | 연습장, 전체 파티 분석 전술 AI 1.1.1, 관장전 지원 | 서버 |
+| `server-addons/cobble-synergy` | CobbleSynergy 0.4.3 타입 시너지 | 서버와 참가자 클라이언트 |
+| `server-addons/league-battle-recorder` | 배틀 기록과 XLSX 내보내기 1.2.1 | 서버 |
 | `installer` | Windows 친구용 설치·백업·복원 스크립트 | 배포 패키지 |
 | `scripts/package_friends.py` | 빌드한 본체로 친구용 ZIP 생성 | 개발 환경 |
 | `examples` | 15HP 던전 설정 예시 | 서버 설정 참고 |
@@ -81,11 +81,11 @@ GitHub 일반 다운로드 경로의 장애를 피하도록 공식 릴리스 자
 
 이후에는 **Modrinth의 원래 Play 버튼으로 실행해도** 메인 메뉴에서 GitHub의 최신 안정 릴리스를 확인합니다. 새 버전이 있으면 게임을 정상 종료하고 두 애드온을 함께 검증·백업·교체한 뒤 **같은 Modrinth 프로필로 자동 재실행**합니다. 월드나 서버에서 플레이하는 도중에는 이 재시작을 시작하지 않습니다. `.cobbleleague-updater/auto-update.json`의 `enabled`로 자동 확인을 끌 수 있습니다.
 
-바탕화면 `CobbleLeague-PLAY.bat`는 게임 실행 전에 먼저 업데이트를 확인하는 별도 실행 경로입니다. JAR만 수동 복사한 경우에는 자동 업데이트 보조 파일이 없으므로 처음 한 번 친구용 설치기를 사용해야 합니다. 모드팩 본체 업데이트는 별도이며, 대상은 Minecraft 1.21.1 / Cobblemon 1.7.3입니다.
+바탕화면 `CobbleLeague-PLAY.bat`는 게임 실행 전에 먼저 업데이트를 확인하는 별도 실행 경로입니다. JAR만 수동 복사한 경우에는 자동 업데이트 보조 파일이 없으므로 처음 한 번 친구용 설치기를 사용해야 합니다. 모드팩 본체 업데이트는 별도이며, 대상은 Minecraft 1.21.1 / Cobblemon 1.8.4입니다.
 
-안정 배포 채널은 **이 저장소의 통합 GitHub Release**입니다. `0.8.2`부터 `CobbleLeague 0.8.2` + `CobbleSynergy 0.4.2` + `CobbleSpire 0.6.1` 세 모드를 `client-release.json`과 함께 정식 배포합니다(Spire 개발판 테스트 시에는 별도 `--channel development` 오프라인 ZIP을 사용합니다). 파일 해시와 실제 모드 ID·버전·의존성 조합을 검증합니다. 임시 다운로드가 실패하면 기존 설치를 보존합니다. 백업과 되돌리기는 프로필 안에서 관리합니다. 서버 자동 업데이트 기능은 포함하지 않습니다.
+안정 배포 채널은 **이 저장소의 통합 GitHub Release**입니다. `0.8.3`은 `CobbleLeague 0.8.3` + `CobbleSynergy 0.4.3` + `CobbleSpire 0.6.2` 세 모드를 `client-release.json`과 함께 정식 배포합니다(Spire 개발판 테스트 시에는 별도 `--channel development` 오프라인 ZIP을 사용합니다). 파일 해시와 실제 모드 ID·버전·의존성 조합을 검증합니다. 임시 다운로드가 실패하면 기존 설치를 보존합니다. 백업과 되돌리기는 프로필 안에서 관리합니다. 서버 자동 업데이트 기능은 포함하지 않습니다.
 
-릴리스 제작자는 본체와 `server-addons/cobble-synergy`를 빌드한 뒤 검증된 정식 `cobblespire-0.6.1.jar`를 포함해 `python scripts/package_friends.py --spire-jar <경로> --channel stable`을 실행합니다. `v0.8.2`처럼 본체 버전과 같은 태그를 올리면 `.github/workflows/release.yml`이 검증된 CobbleSpire 정식 JAR을 내려받아 세 모드와 통합 친구 ZIP을 함께 빌드·공개합니다. 별도 Synergy 저장소 수정은 통합 사본에도 반영한 뒤 통합 릴리스로 배포합니다.
+릴리스 제작자는 본체와 `server-addons/cobble-synergy`를 빌드한 뒤 검증된 정식 `cobblespire-0.6.2.jar`를 포함해 `python scripts/package_friends.py --spire-jar <경로> --channel stable`을 실행합니다. `v0.8.3`처럼 본체 버전과 같은 태그를 올리면 `.github/workflows/release.yml`이 검증된 CobbleSpire 정식 JAR을 내려받아 세 모드와 통합 친구 ZIP을 함께 빌드·공개합니다. 별도 Synergy 저장소 수정은 통합 사본에도 반영한 뒤 통합 릴리스로 배포합니다.
 
 참조: [GitHub Releases API](https://docs.github.com/en/rest/releases/releases), [Modrinth 실행 링크 처리](https://github.com/modrinth/code/blob/main/packages/app-lib/src/api/handler.rs). 최신 Modrinth의 고유 인스턴스 ID는 로컬 인스턴스 DB에서 읽어 같은 프로필을 실행합니다.
 
@@ -114,18 +114,18 @@ Windows PowerShell에서 실행합니다.
 .\gradlew.bat --no-daemon test build
 .\gradlew.bat -p server-addons/league-practice --no-daemon test build
 .\gradlew.bat -p server-addons/league-battle-recorder --no-daemon test build
-.\gradlew.bat -p server-addons/cobble-synergy "-Pcobbleleague_jar=../../build/libs/cobbleleague-0.8.2.jar" --no-daemon test build
+.\gradlew.bat -p server-addons/cobble-synergy "-Pcobbleleague_jar=../../build/libs/cobbleleague-0.8.3.jar" --no-daemon test build
 ```
 
 Linux와 macOS에서는 같은 명령의 실행 파일을 `./gradlew`로 바꿉니다. 각 프로젝트의 `build/libs/`에 배포용 JAR과 소스 JAR이 생성됩니다. 설치할 때에는 소스 JAR을 제외한 모드 JAR을 사용합니다.
 
 ## 실행 환경과 설치
 
-검증한 모드팩은 COBBLEVERSE 1.7.42입니다.
+검증한 모드팩은 COBBLEVERSE 1.8.0입니다.
 
-- Minecraft 1.21.1, Java 21, Fabric Loader 0.18.4 이상
-- Cobblemon 1.7.3, Fabric API, Fabric Language Kotlin
-- 저장 덱 기능을 사용할 클라이언트의 Cobblemon Quick Teams 1.5.5
+- Minecraft 1.21.1, Java 21, Fabric Loader 0.19.5 이상
+- Cobblemon 1.8.4, Fabric API, Fabric Language Kotlin
+- 저장 덱 기능을 사용할 클라이언트의 Cobblemon Quick Teams (선택 설치; 1.8.0 미포함 시 대여전 외 기능 정상 동작)
 - 관장전 서버의 이 저장소 `league-practice`와 Run & Bun Cobblemon Trainers AI 호환 설치본 0.15.4-beta
 - Run & Bun의 선행 모드인 RCT API, Radical Cobblemon Trainers, Architectury
 - 메가진화·Z기술·다이맥스 아이템과 프리셋을 사용할 서버·클라이언트의 Mega Showdown 호환 설치본
@@ -155,11 +155,11 @@ Linux와 macOS에서는 같은 명령의 실행 파일을 `./gradlew`로 바꿉�
 본체 빌드 후 Python 3으로 패키지를 만듭니다.
 
 ```powershell
-python scripts/package_friends.py --spire-jar ../slaythecobblebus/build/libs/cobblespire-0.6.1.jar --channel stable
+python scripts/package_friends.py --spire-jar ../slaythecobblebus/build/libs/cobblespire-0.6.2.jar --channel stable
 python tests/test_client_updater.py
 ```
 
-위 명령은 `dist/CobbleLeague-friends-0.8.2.zip` 통합 정식(세 모드) ZIP을 생성합니다. (`--spire-jar` 생략 시 두 모드 안정 ZIP을 생성하며, 개발판 Spire 테스트는 `--channel development`를 사용합니다.) 받은 사람은 게임을 완전히 종료하고 ZIP을 압축 해제한 뒤 `설치.bat`를 실행해 Modrinth의 COBBLEVERSE 프로필을 선택합니다. `되돌리기.bat`로 설치 전 백업을 복원합니다.
+위 명령은 `dist/CobbleLeague-friends-0.8.3.zip` 통합 정식(세 모드) ZIP을 생성합니다. (`--spire-jar` 생략 시 두 모드 안정 ZIP을 생성하며, 개발판 Spire 테스트는 `--channel development`를 사용합니다.) 받은 사람은 게임을 완전히 종료하고 ZIP을 압축 해제한 뒤 `설치.bat`를 실행해 Modrinth의 COBBLEVERSE 프로필을 선택합니다. `되돌리기.bat`로 설치 전 백업을 복원합니다.
 
 ## 검증
 

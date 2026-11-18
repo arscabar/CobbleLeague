@@ -24,7 +24,7 @@ public abstract class PracticeNpcAiMixin {
             var request = npcActor.getRequest();
             if (request == null || request == leaguePractice$scheduled || request == leaguePractice$answered) return;
             leaguePractice$scheduled = request;
-            npcActor.getBattle().doWhenClear(() -> {
+            npcActor.getBattle().dispatchGo(() -> {
                 if (leaguePractice$scheduled == request) leaguePractice$scheduled = null;
                 if (!npcActor.getBattle().getEnded() && npcActor.getRequest() == request && leaguePractice$answered != request) {
                     leaguePractice$answered = request;

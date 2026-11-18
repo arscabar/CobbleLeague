@@ -23,7 +23,7 @@ class KoreanCoverageTest {
             } else continue;
             assertEquals(ko.get(key).getAsString(), actual, key);
         }
-        assertEquals(1025, species); assertEquals(929, moves); assertEquals(310, abilities);
+        assertEquals(1025, species); assertEquals(931, moves); assertEquals(314, abilities);
     }
 
     @Test void coversEveryBundledBattleForm() throws Exception {

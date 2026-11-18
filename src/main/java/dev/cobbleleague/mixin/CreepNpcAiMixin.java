@@ -19,7 +19,7 @@ public abstract class CreepNpcAiMixin {
   ci.cancel();var request=actor.getRequest();
   if(request==null||request==cobbleleague$scheduled||request==cobbleleague$answered)return;
   cobbleleague$scheduled=request;
-  actor.getBattle().doWhenClear(()->{
+  actor.getBattle().dispatchGo(()->{
    if(cobbleleague$scheduled==request)cobbleleague$scheduled=null;
    if(!actor.getBattle().getEnded()&&actor.getRequest()==request&&cobbleleague$answered!=request){
     cobbleleague$answered=request;

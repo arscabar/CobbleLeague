@@ -463,7 +463,7 @@ object DungeonBot {
         // CobbleLeague 관장 NPC 와 같은 방식: 전투 처리(연출, 상대에게 선택 화면 보내기)가 모두 끝난 뒤 한 번 고른다.
         // 먼저 답하면 사람 쪽 선택 요청이 전달되기 전에 Cobblemon 이 봇의 선택만 보내 버려 상대가 고를 수 없게 된다.
         pilot.scheduled = request
-        b.doWhenClear {
+        b.dispatchGo {
             if (pilot.scheduled === request) pilot.scheduled = null
             if (!b.ended && actor.request === request && actor.responses.isEmpty()) {
                 pilot.answered = request

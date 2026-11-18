@@ -9,7 +9,7 @@ class ClientReleasePlanTest {
     private val hash = "a".repeat(64)
     private fun manifest(spire: String? = "0.6.0-dev", channel: String = "development", extra: String? = null): ByteArray {
         val json = JsonObject()
-        json.addProperty("schema", 1); json.addProperty("minecraft", "1.21.1"); json.addProperty("cobblemon", "1.7.3")
+        json.addProperty("schema", 1); json.addProperty("minecraft", "1.21.1"); json.addProperty("cobblemon", "1.8.4")
         json.addProperty("release", "independent-content-identity"); json.addProperty("channel", channel)
         val mods = JsonArray()
         val versions = linkedMapOf("cobbleleague" to "0.8.2", "cobblesynergy" to "0.4.2")

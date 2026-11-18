@@ -6,7 +6,7 @@ import net.fabricmc.loader.api.Version
 /** Shared manifest contract; legacy pairs deliberately leave an installed Spire alone. */
 internal fun clientReleasePlan(body: ByteArray, installed: Map<String, Pair<String, String?>>, offline: Boolean): String? {
     val manifest = JsonParser.parseString(String(body, Charsets.UTF_8).trimStart('\uFEFF')).asJsonObject
-    check(manifest.get("schema").asInt == 1 && manifest.get("minecraft").asString == "1.21.1" && manifest.get("cobblemon").asString == "1.7.3")
+    check(manifest.get("schema").asInt == 1 && manifest.get("minecraft").asString == "1.21.1" && manifest.get("cobblemon").asString == "1.8.4")
     val entries = manifest.getAsJsonArray("mods").map { it.asJsonObject }
     val ids = entries.map { it.get("id").asString }
     check(ids.size in 2..3 && ids.toSet().size == ids.size && ids.containsAll(listOf("cobbleleague", "cobblesynergy")) && ids.all { it in setOf("cobbleleague", "cobblesynergy", "cobblespire") })

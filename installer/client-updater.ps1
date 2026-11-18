@@ -117,8 +117,8 @@ try{
  while(GameRunning $root){if(-not $WaitForExit){throw '게임을 완전히 종료한 뒤 실행하세요.'};Write-Host '게임이 종료되기를 기다립니다. 플레이 중인 게임은 강제로 종료하지 않습니다.';Start-Sleep -Seconds 5}
  $current=Mods $root
  $c=@($current|Where-Object{$_.meta -and $_.meta.id-eq 'cobblemon'})
- if($c.Count-ne 1 -or $c[0].meta.version-notmatch '^1\.7\.3(?:\+|$)'){throw 'Cobblemon 1.7.3이 있는 COBBLEVERSE 1.7.42용입니다.'}
- foreach($id in @('fabric-api','fabric-language-kotlin','cobblemon_quick_teams')){if(@($current|Where-Object{$_.meta -and $_.meta.id-eq $id}).Count-ne 1){throw ('필요한 모드가 없습니다: '+$id)}}
+ if($c.Count-ne 1 -or -not(Satisfies $c[0].meta.version '>=1.8.4 <1.9')){throw 'Cobblemon 1.8.4 이상이 있는 COBBLEVERSE 1.8.0용입니다.'}
+ foreach($id in @('fabric-api','fabric-language-kotlin')){if(@($current|Where-Object{$_.meta -and $_.meta.id-eq $id}).Count-ne 1){throw ('필요한 모드가 없습니다: '+$id)}}
  $statePath=Child $root 'cobbleleague-auto-install.json'
  if($Restore){
   if(-not(Test-Path -LiteralPath $statePath)){throw '이 자동 설치기의 복구 기록이 없습니다.'}
@@ -164,7 +164,7 @@ try{
    }finally{if(Test-Path -LiteralPath $manifestTemp){Remove-Item -LiteralPath $manifestTemp}}
   }
  }
- if($manifest.schema-ne 1 -or $manifest.minecraft-ne '1.21.1' -or $manifest.cobblemon-ne '1.7.3'){throw '지원하지 않는 업데이트 형식 또는 모드팩 버전입니다.'}
+ if($manifest.schema-ne 1 -or $manifest.minecraft-ne '1.21.1' -or $manifest.cobblemon-ne '1.8.4'){throw '지원하지 않는 업데이트 형식 또는 모드팩 버전입니다.'}
  $allowed=@('cobbleleague','cobblesynergy','cobblespire');$entries=@($manifest.mods);$expected=@($entries.id)
  if($entries.Count-notin @(2,3) -or 'cobbleleague'-notin $expected -or 'cobblesynergy'-notin $expected -or @($entries|Where-Object{$_.id-notin $allowed}).Count-gt 0 -or @($entries.id|Select-Object -Unique).Count-ne $entries.Count -or @($entries.filename|Select-Object -Unique).Count-ne $entries.Count){throw '본체와 시너지를 포함한 두 개 또는 세 개의 모드만 설치합니다.'}
  if($manifest.channel -and $manifest.channel-notin @('stable','development')){throw '알 수 없는 채널'}
@@ -192,8 +192,8 @@ try{
  }
  $synergy=$entries|Where-Object{$_.id-eq 'cobblesynergy'};$core=$entries|Where-Object{$_.id-eq 'cobbleleague'}
  if((Meta (Child $stage $synergy.filename)).depends.cobbleleague-ne $core.version){throw '두 애드온의 버전 조합이 맞지 않습니다.'}
- # Baseline runtime contract: this installer targets Java 21 / Fabric Loader 0.17.2.
- $versions=@{minecraft='1.21.1';java='21';fabricloader='0.17.2'}
+ # Baseline runtime contract: this installer targets Java 21 / Fabric Loader 0.19.5.
+ $versions=@{minecraft='1.21.1';java='21';fabricloader='0.19.5'}
  foreach($mod in $current){if($mod.meta){$versions[$mod.meta.id]=$mod.meta.version}}
  foreach($entry in $entries){$versions[$entry.id]=$entry.version}
  foreach($entry in $entries){

@@ -10,9 +10,9 @@ BASE=ROOT/'.test-tmp'/('자동 업데이트 '+uuid.uuid4().hex[:8]);BASE.mkdir(p
 checks=[]
 def fake(path,id,version,depends=None):
  with zipfile.ZipFile(path,'w') as z:z.writestr('fabric.mod.json',json.dumps(dict(id=id,version=version,depends=depends or {})))
-def profile(name,version='1.7.3+1.21.1',core='0.7.3'):
+def profile(name,version='1.8.4+1.21.1',core='0.7.3'):
  p=BASE/name;(p/'mods').mkdir(parents=True)
- for name,id,v in [('cobblemon','cobblemon',version),('api','fabric-api','0.116.14+1.21.1'),('kotlin','fabric-language-kotlin','1.13.13+kotlin.2.4.10'),('teams','cobblemon_quick_teams','1.5.5'),('old-core','cobbleleague',core),('old-synergy','cobblesynergy','0.2.0+cl0.7.3')]:fake(p/'mods'/f'{name}.jar',id,v)
+ for name,id,v in [('cobblemon','cobblemon',version),('api','fabric-api','0.116.18+1.21.1'),('kotlin','fabric-language-kotlin','1.14.2+kotlin.2.4.21'),('old-core','cobbleleague',core),('old-synergy','cobblesynergy','0.2.0+cl0.7.3')]:fake(p/'mods'/f'{name}.jar',id,v)
  fake(p/'mods/unrelated.jar','unrelated','1.0.0')
  for folder in ['config','saves','world']:(p/folder).mkdir();(p/folder/'keep.txt').write_text('keep')
  return p
@@ -22,7 +22,7 @@ def run(p,*extra,code=0,package=PACKAGE,offline=True):
  assert result.returncode==code,(result.stdout+result.stderr).decode('utf-8',errors='replace')+' expected '+str(code)
  return result
 p=profile('정상');before=snapshot(p);run(p,'-CheckOnly');assert before==snapshot(p);checks.append('check only preserves both addons and world')
-run(p);after=snapshot(p);assert (p/'mods'/f'cobbleleague-{CORE}.jar').exists();assert len(list((p/'mods').glob('*.jar')))==5+COUNT
+run(p);after=snapshot(p);assert (p/'mods'/f'cobbleleague-{CORE}.jar').exists();assert len(list((p/'mods').glob('*.jar')))==4+COUNT
 assert (p/'config/keep.txt').read_text()=='keep' and (p/'saves/keep.txt').read_text()=='keep';checks.append('atomic paired install and other files preserved')
 run(p);assert after==snapshot(p);assert len(list((p/'cobbleleague-auto-backups').iterdir()))==1;checks.append('repeat install does not duplicate backup')
 run(p,'-Restore');assert before==snapshot(p);checks.append('paired restore returns exact old files')

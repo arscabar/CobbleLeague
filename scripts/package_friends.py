@@ -42,7 +42,7 @@ def main():
                 if meta['depends']['cobbleleague'] != version or archive.read('cobblesynergy/build.properties').decode().strip() != 'test=false':
                     raise ValueError('Synergy must be a matched production build')
             if expected_id == 'cobblespire':
-                baseline = {'minecraft': '1.21.1', 'java': '>=21', 'fabricloader': '>=0.17.2', 'fabric-api': '*', 'fabric-language-kotlin': '*', 'cobblemon': '>=1.7.3 <1.8'}
+                baseline = {'minecraft': '1.21.1', 'java': '>=21', 'fabricloader': '>=0.17.2', 'fabric-api': '*', 'fabric-language-kotlin': '*', 'cobblemon': '>=1.8.4 <1.9'}
                 if meta['depends'] != baseline:
                     raise ValueError('CobbleSpire dependencies changed; review compatibility before packaging')
             if not re.fullmatch(r'[A-Za-z0-9_.+-]+\.jar', path.name):
@@ -53,7 +53,7 @@ def main():
         raise ValueError('Duplicate filename')
     identity = hashlib.sha256(json.dumps(mods, sort_keys=True).encode()).hexdigest()[:12]
     release = version if args.channel == 'stable' else f'{version}-{args.channel}-{identity}'
-    manifest = dict(schema=1, release=release, channel=args.channel, minecraft='1.21.1', cobblemon='1.7.3', mods=mods)
+    manifest = dict(schema=1, release=release, channel=args.channel, minecraft='1.21.1', cobblemon='1.8.4', mods=mods)
     dist = ROOT/'dist'
     package = dist/f'cobbleleague-friends-{release}'
     (package/'payload').mkdir(parents=True, exist_ok=True)

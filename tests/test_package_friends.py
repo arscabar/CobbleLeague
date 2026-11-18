@@ -29,7 +29,7 @@ class PackageTest(unittest.TestCase):
         self.spire = self.root/'spire/build/libs/spire.jar'
         (self.root/'spire').mkdir()
         (self.root/'spire/LICENSE').write_text('MIT Spire')
-        self.depends = {'minecraft': '1.21.1', 'java': '>=21', 'fabricloader': '>=0.17.2', 'fabric-api': '*', 'fabric-language-kotlin': '*', 'cobblemon': '>=1.7.3 <1.8'}
+        self.depends = {'minecraft': '1.21.1', 'java': '>=21', 'fabricloader': '>=0.17.2', 'fabric-api': '*', 'fabric-language-kotlin': '*', 'cobblemon': '>=1.8.4 <1.9'}
         self.jar(self.spire, 'cobblespire', '0.6.0-dev', self.depends)
 
     def jar(self, path, mod_id, version, depends=None):
